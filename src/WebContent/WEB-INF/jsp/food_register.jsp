@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE>
+<html>
+	<head>
+		<link rel = "stylesheet" href = "css/food_register.css">
+	</head>
+	<body>
+		<header>
+			<div id = "head">
+				<div>
+					<img class = "img" src = "logo.png" alt = "ロゴ">
+				</div>
+				<div id = "menu">
+
+				</div>
+			</div>
+		</header>
+		<main>
+			<h1>品目登録</h1>
+			<!-- 登録してある食事を検索して表示 -->
+			<div id = "foods_show">
+				<p1>検索</p1>
+				<form action = "" method = "" id = "search_foods">
+					<select name = "s_category" id = "s_category" class = "search_input">
+						<option value = "" selected hidden>カテゴリー</option>
+					</select>
+					<input type = "text" name = "s_name" id = "s_name" class = "search_input">
+					<input type = "submit" name = "s_submit" id = "s_submit" class = "search_input">
+				</form>
+				<ul id = "s_result">
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+				</ul>
+			</div>
+
+			<!-- 食事を登録するフォーム -->
+			<div id = "register_foods">
+				<form action = "" method = "">
+					<div class = "register_input">
+						<p>カテゴリー</p>
+						<select name = "a_category" id = "a_category">
+							<option value = "" selected hidden>カテゴリーを選択</option>
+						</select>
+					</div>
+
+					<div class = "register_input">
+						<p>品目名</p>
+						<input type = "text" name = "a_name" id = "a_name">
+					</div>
+
+					<div class = "register_input">
+						<p>カロリー</p>
+						<input type = "number" step = "0.1" min ="0" name = "a_cal" id = "a_cal">
+					</div>
+					<input type = "submit" value = "登録" name = "a_submit" id = "a_submit">
+				</form>
+			</div>
+		</main>
+	</body>
+</html>

@@ -10,24 +10,24 @@
 	<link rel="icon" href="/mippy/img/mippy1号.gif">
 
     <!-- 共通css -->
-	<link rel="stylesheet" type="text/css" href="/mippy/css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
     <!-- top用css -->
-    <link rel="stylesheet" type="text/css" href="/mippy/css/top.css">
+    <link rel="stylesheet" type="text/css" href="css/top.css">
 
     <!-- 共通js -->
     <script src="/mippy/js/common.js"></script>
     <!-- top用js -->
-    <script src="/mippy/css/top.js"></script>
+    <script src="js/top.js"></script>
 
 </head>
 <body>
     <form name="Top" method="POST" action="/mippy/Top">
         <div class="wrapper">
             <header>
-                <img id="avatar_top" src="/mippy/img/mippy2号.gif" alt="avatar">
+                <img id="avatar_top" src="img/mippy2号.gif" alt="avatar">
             </header>
             <main>
-                <img class="logo" src="/mippy/img/logo.png" alt="mippy">
+                <img class="logo" src="img/logo.png" alt="mippy">
                 <p>Eat well, live well.</p>
                 <div class="slide">
                     <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="calendar" class="active">
