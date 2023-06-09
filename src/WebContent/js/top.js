@@ -1,12 +1,27 @@
-$('.slider').slick({
-    autoplay: true,//自動的に動き出すか。初期値はfalse。
-    infinite: true,//スライドをループさせるかどうか。初期値はtrue。
-    speed: 500,//スライドのスピード。初期値は300。
-    slidesToShow: 3,//スライドを画面に3枚見せる
-    slidesToScroll: 1,//1回のスクロールで1枚の写真を移動して見せる
-    prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
-    nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
-    centerMode: true,//要素を中央ぞろえにする
-    variableWidth: true,//幅の違う画像の高さを揃えて表示
-    dots: true,//下部ドットナビゲーションの表示
+window.addEventListener('load', function() {
+    var slideIndex = 0;
+    showSlide(slideIndex);
+    function showSlide(n) {
+        var slides = document.getElementsByClassName("slide")[0].getElementsByTagName("img");
+        if (n >= slides.length) {
+            slideIndex = 0;
+        } else if (n < 0) {
+            slideIndex = slides.length - 1;
+        }
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.opacity = "0";
+            slides[i].style.transform = "translateX(100%)";
+        }
+        slides[slideIndex].style.opacity = "1";
+        slides[slideIndex].style.transform = "translateX(0)";
+    }
+    function nextSlide() {
+        slideIndex++;
+        showSlide(slideIndex);
+    }
+    function previousSlide() {
+        slideIndex--;
+        showSlide(slideIndex);
+    }
+    setInterval(nextSlide, 4000); // 4秒ごとに次のスライドに切り替える
 });

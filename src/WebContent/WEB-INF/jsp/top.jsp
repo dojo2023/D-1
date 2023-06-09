@@ -13,36 +13,34 @@
 	<link rel="stylesheet" type="text/css" href="/mippy/css/common.css">
     <!-- top用css -->
     <link rel="stylesheet" type="text/css" href="/mippy/css/top.css">
-    <!-- slickのcssを適用する（https://kenwheeler.github.io/slick/） -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 
     <!-- 共通js -->
     <script src="/mippy/js/common.js"></script>
     <!-- top用js -->
-    <script src="/mippy/js/top.js"></script>
-    <!-- slick用js -->
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/mippy/css/top.js"></script>
 
 </head>
 <body>
-    <div class="wrapper">
-        <main>
-            <form name="Top" method="POST" action="/mippy/Top">
+    <form name="Top" method="POST" action="/mippy/Top">
+        <div class="wrapper">
+            <header>
+                <img id="avatar_top" src="/mippy/img/mippy2号.gif" alt="avatar">
+            </header>
+            <main>
                 <img class="logo" src="/mippy/img/logo.png" alt="mippy">
-                <h3>Eat well, live well.</h3>
-                <img id="avatar_top" src="/mippy/img/mippy2号.png" alt="avatar">
-                <ul class="slide">
-                    <li><img src="" alt="calendar"></li>
-                    <li><img src="" alt="profile"></li>
-                    <li><img src="" alt="graph"></li>
-                </ul>
+                <p>Eat well, live well.</p>
+                <div class="slide">
+                    <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="calendar" class="active">
+                    <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_02.jpg" alt="profile">
+                    <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_03.jpg" alt="graph">
+                </div>
                 <p class="exp">説明文</p>
                 <div class="sign">
                     <input name="signup" type="button" onclick="window.location.href='/mippy/User_Register';" value="新規登録">
-                    <input type="submit" name="signin" onclick="window.location.href='/mippy/Login';" value="ログイン">
+                    <input name="signin" type="submit" onclick="window.location.href='/mippy/Login';" value="ログイン">
                 </div>
-            </form>
-        </main>
-    </div>
+            </main>
+        </div>
+    </form>
 </body>
 </html>
