@@ -15,32 +15,41 @@
     <link rel="stylesheet" type="text/css" href="css/top.css">
 
     <!-- 共通js -->
-    <script src="/mippy/js/common.js"></script>
+    <script src="js/common.js"></script>
     <!-- top用js -->
     <script src="js/top.js"></script>
 
 </head>
 <body>
-    <form name="Top" method="POST" action="/mippy/Top">
-        <div class="wrapper">
-            <header>
-                <img id="avatar_top" src="img/mippy2号.gif" alt="avatar">
-            </header>
-            <main>
-                <img class="logo" src="img/logo.png" alt="mippy">
-                <p>Eat well, live well.</p>
-                <div class="slide">
-                    <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="calendar" class="active">
-                    <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_02.jpg" alt="profile">
-                    <img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_03.jpg" alt="graph">
-                </div>
-                <p class="exp">説明文</p>
-                <div class="sign">
-                    <input name="signup" type="button" onclick="window.location.href='/mippy/User_Register';" value="新規登録">
-                    <input name="signin" type="submit" onclick="window.location.href='/mippy/Login';" value="ログイン">
-                </div>
-            </main>
-        </div>
-    </form>
+	<header>
+		<div id="head">
+			<a id="logo" href="カレンダーサーブレット"><img class="img" src="img/logo.png" alt="ロゴ"></a>
+			<div id="menu" onclick="menu()">
+				<ul id="menu_bar">
+					<li class="bar"></li>
+					<li class="bar"></li>
+					<li class="bar"></li>
+				</ul>
+			</div>
+			<div id="box">
+				<ul id="menu_text"></ul>
+			</div>
+		</div>
+	</header>​
+	<form name="Top" method="POST" action="/mippy/Top">
+		<main>
+			<p>Eat well, live well.</p>
+			<div class="slide">
+				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="calendar" class="active">
+				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_02.jpg" alt="profile">
+				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_03.jpg" alt="graph">
+			</div>
+			<p class="exp">説明文</p>
+			<div class="sign">
+				<input name="signup" type="button" onclick="window.location.href='/mippy/User_Register';" value="新規登録">
+				<input name="signin" type="submit" onclick="window.location.href='/mippy/Login';" value="ログイン">
+			</div>
+		</main>
+	</form>
 </body>
 </html>
