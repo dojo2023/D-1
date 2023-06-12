@@ -1,0 +1,120 @@
+【ドライバ】
+org.h2.Driver
+
+【JDBC URL】
+jdbc:h2:file:C:/pleiades/workspace/data/mippy
+
+
+【ユーザー名】	【パスワード】
+sa		（なし）
+
+【m_userテーブルを作成するSQL文】
+create table m_user (
+USER_NUM INT AUTO_INCREMENT PRIMARY KEY, 
+USER_ADDR varchar (80),
+USER_PW varchar (20),
+USER_NICKNAME varchar (20),
+USER_HEIGHT double (4),
+USER_WEIGHT double (4),
+USER_GENDER int (1),
+USER_GOALW double (4),
+USER_BIRTH date ,
+USER_LIMIT date ,
+USER_SECRET int (1),
+USER_ANSWER varchar (50),
+USER_AVATAR int (1),
+USER_COLOR int (1)
+)
+
+【m_userテーブルにサンプルデータを登録するSQL文】
+INSERT INTO m_user VALUES (NULL, 'DOJO@plus.com', 'password', 'dojo','172', '65', '1', '60', '20010405', '20230631', '3', '答え', '3', '1');
+
+【m_userテーブルを削除するSQL文】
+DROP TABLE m_user;
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+【m_foodsテーブルを作成するSQL文】
+create table m_foods (
+FOODS_NUM INT AUTO_INCREMENT PRIMARY KEY,
+FOODS_CATEGORY varchar (10),
+FOODS_NAME varchar (20),
+FOODS_CAL double (5)
+)
+
+【m_foodsテーブルにサンプルデータを登録するSQL文】
+INSERT INTO m_foods VALUES (NULL, '麵類','担々麵', '500' );
+
+【m_foodsテーブルを削除するSQL文】
+DROP TABLE m_foods;
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+【m_recordテーブルを作成するSQL文】
+create table m_record (
+USER_NUM int ,
+RECORD_DATE date ,
+RECORD_TYPE int (1),
+FOODS_NUM int 
+)
+
+【m_recordテーブルにサンプルデータを登録するSQL文】
+INSERT INTO m_record VALUES ('1', '2023-06-12','1', '1' );
+
+【m_recordテーブルを削除するSQL文】
+DROP TABLE m_record;
+
+
+
+
+
+
+
+
+
+
+
+
+
+3テーブルJOIN
+SELECT M_USER.USER_NICKNAME, M_RECORD.RECORD_DATE, M_FOODS.FOODS_NAME, M_FOODS.FOODS_CAL
+FROM M_USER
+JOIN M_RECORD ON M_USER.USER_NUM = M_RECORD.USER_NUM
+JOIN M_FOODS ON M_RECORD.FOODS_NUM = M_FOODS.FOODS_NUM;
+
+
+　	ニックネーム　　　日付		食べ物名　カロリー
+結果は　　dojo	　　　　2023-06-12	担々麵	　500.0
+
+
+
+
+その日　総カロリー
+SELECT M_USER.USER_NICKNAME, M_RECORD.RECORD_DATE, SUM(M_FOODS.FOODS_CAL) AS TotalCalories
+FROM M_USER
+JOIN M_RECORD ON M_USER.USER_NUM = M_RECORD.USER_NUM
+JOIN M_FOODS ON M_RECORD.FOODS_NUM = M_FOODS.FOODS_NUM
+GROUP BY M_USER.USER_NICKNAME, M_RECORD.RECORD_DATE;
+
+
+	ニックネーム　　日付　　　　　　総カロリー
+結果は 　dojo	　　　2023-06-12	890.0
+
+
+
+
+
+SELECT M_USER.USER_NICKNAME, M_RECORD.RECORD_DATE, 
+       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '1' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS breakfast,
+       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '2' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS lunch,
+       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '3' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS dinner
+FROM M_USER
+JOIN M_RECORD ON M_USER.USER_NUM = M_RECORD.USER_NUM
+JOIN M_FOODS ON M_RECORD.FOODS_NUM = M_FOODS.FOODS_NUM
+GROUP BY M_USER.USER_NICKNAME, M_RECORD.RECORD_DATE;
+
+
+ニックネーム　　　日付		　　朝　　　　　昼　　　夜
+dojo	　　　　2023-06-12	　　890.0	750.0	250.0
+
+
