@@ -23,7 +23,7 @@ public class FoodDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 全ての項目を入れました　
-			String sql = "select FOODS_CATEGORY, FOODS_NAME, FOODS_CAL  from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_CATEGORY LIKE ? FOODS_NAME LIKE ? FOODS_CAL LIKE ? ORDER BY  FOODS_NUM";
+			String sql = "select FOODS_CATEGORY, FOODS_NAME, FOODS_CAL  from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ? FOODS_CAL LIKE ? ORDER BY  FOODS_NUM";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -52,9 +52,9 @@ public class FoodDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Food card = new Food(
-				rs.getString("FOOD_NUM"),
-				rs.getString("FOOD_NAME"),
 				rs.getString("FOOD_CATEGORY"),
+				rs.getString("FOOD_NAME"),
+				rs.getString("FOOD_CAL"),
 				rs.getString("USER_NUM")
 				);
 				cardList.add(card);
@@ -101,29 +101,29 @@ public class FoodDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getFood_num() != null && !card.getFood_num().equals("")) {
-				pStmt.setString(1, card.getFood_num());
+			if (card.getFoods_category() != null && !card.getFoods_category().equals("")) {
+				pStmt.setString(1, card.getFoods_category());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
 
-			if (card.getFood_name() != null && !card.getFood_name().equals("")) {
-				pStmt.setString(2, card.getFood_name());
+			if (card.getFoods_name() != null && !card.getFoods_name().equals("")) {
+				pStmt.setString(2, card.getFoods_name());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
 
-			if (card.getFood_category() != null && !card.getFood_category().equals("")) {
-				pStmt.setString(3, card.getFood_category());
+			if (card.getFoods_cal() != null && !card.getFoods_cal().equals("")) {
+				pStmt.setString(3, card.getFoods_cal());
 			}
 			else {
 				pStmt.setString(3, null);
 			}
 
-			if (card.getUser_num() != null && !card.getUser_num().equals("")) {
-				pStmt.setString(4, card.getUser_num());
+			if (card.getFoods_num() != null && !card.getFoods_num().equals("")) {
+				pStmt.setString(4, card.getFoods_num());
 			}
 			else {
 				pStmt.setString(4, null);
