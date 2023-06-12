@@ -2,21 +2,32 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
-	<head>
-		<link rel = "stylesheet" href = "css/food_register.css">
-	</head>
-	<body>
-		<header>
-			<div id = "head">
-				<div>
-					<img class = "img" src = "logo.png" alt = "ロゴ">
-				</div>
-				<div id = "menu">
+    <head>
+        <!-- 共通css -->
+        <link rel = "stylesheet" href = "css/common.css">
+        <!-- ページcss -->
+        <link rel = "stylesheet" href = "css/food_register.css">
+    </head>
+    <body>
 
-				</div>
-			</div>
-		</header>
-		<main>
+        <header>
+            <div id = "head">
+                <a id = "logo" href = "カレンダーサーブレット">
+                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
+                </a>
+                <div id = "menu" onclick="menu()">
+                    <ul id = "menu_bar">
+                        <li class = "bar"></li>
+                        <li class = "bar"></li>
+                        <li class = "bar"></li>
+                    </ul>
+                </div>
+                <div id = "box">
+                    <ul id = "menu_text"></ul>
+                </div>
+            </div>
+        </header>
+<main>
 			<h1>品目登録</h1>
 			<!-- 登録してある食事を検索して表示 -->
 			<div id = "foods_show">
@@ -63,5 +74,10 @@
 				</form>
 			</div>
 		</main>
-	</body>
+
+        <!-- 共通js -->
+        <script src = "js/common.js"></script>
+        <!-- ページjs -->
+        <script src = "js/"></script>
+    </body>
 </html>
