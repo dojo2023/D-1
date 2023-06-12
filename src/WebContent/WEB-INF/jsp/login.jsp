@@ -10,14 +10,14 @@
 	<link rel="icon" href="/mippy/img/mippy1号.gif">
 
     <!-- 共通css -->
-	<link rel="stylesheet" type="text/css" href="/mippy/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/miffy/css/common.css">
     <!-- login用css -->
-    <link rel="stylesheet" type="text/css" href="/mippy/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/miffy/css/login.css">
 
     <!-- 共通js -->
-    <script src="/mippy/js/common.js"></script>
+    <script src="/miffy/js/common.js"></script>
     <!-- login用js -->
-    <script src="/mippy/js/login.js"></script>
+    <script src="/miffy/js/login.js"></script>
 
 </head>
 <body>
@@ -25,8 +25,7 @@
     <div class = "login-html">
 
         <button type = "button">ログイン</button>
-        <button type = "button" onclick = "sign-up()">新規登録</button>
-
+		<input type="button" onclick="location.href='/miffy/User_RegisterServlet'" value="新規登録">
         <div class = "login-form">
             <div class = "sign-in-html">
 

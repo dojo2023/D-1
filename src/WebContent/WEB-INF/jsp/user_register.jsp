@@ -12,8 +12,8 @@
     <div class = "User_Register-html">
 
     <div class="sign">
-    				<input name="signin" type="button" onclick="window.location.href='/servlet/LoginServlet';" value="ログイン">
-                    <input name="signup" type="button" onclick="window.location.href='/servlet/User_RegisterServlet';" value="新規登録">
+    				<input name="signin" type="button" onclick="window.location.href='/miffy/LoginServlet';" value="ログイン">
+                    <input name="signup" type="button" onclick="window.location.href='/miffy/User_RegisterServlet';" value="新規登録">
     </div>
 
     <div class = "User_Register-form">
