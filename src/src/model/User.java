@@ -38,20 +38,20 @@ public class User implements Serializable {
 	}
 //初期値？
 	public User() {
-		this.user_secret = "";
+		this.user_secret = "0";
 		this.user_nickname = "USER";
 		this.user_height = "0";
 		this.user_pw = "";
-		this.user_gender = "2";
-		this.user_limit = "";
-		this.user_birth = "";
+		this.user_gender = "0";
+		this.user_limit = "0";
+		this.user_birth = "0";
 		this.user_weight = "0";
-		this.user_answer = "";
+		this.user_answer = "0";
 		this.user_goalw = "0";
 		this.user_color = "0";
 		this.user_addr = "";
 		this.user_avatar = "0";
-		this.user_num = "";
+		this.user_num = "0";
 	}
 
 	public String getUser_num() {
