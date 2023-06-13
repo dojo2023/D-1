@@ -46,6 +46,7 @@
         <button type = "button" class = "button1">ログイン</button>
 		<input type="button" class = "button1" onclick="location.href='/miffy/User_RegisterServlet'" value="新規登録">
 	</div>
+
 	<form name="LoginServlet" method="POST" action="/mippy/LoginServlet">
 		<div class = "login-form">
             <div class = "sign-in-html">
@@ -64,7 +65,7 @@
 
 			<div class ="big-button2">
 					<input type="button" class = "button2" value="ログイン">
- 					<button type = "button" class = "button2">リセット</button>
+ 					<input type = "reset" class = "button2"></button>
 			</div>
 
                 <div class  = "foot-link">
