@@ -1,1 +1,48 @@
-@charset "utf-8";
+@charset "UTF-8";
+
+body {
+	background-color: #ffffff;
+	font: "油性マジック";
+}
+
+.register-wrap {
+	width: 100%;
+	margin: auto;
+	max-width: 525px;
+	height: 480px;
+	position: relative;
+	background-color: #AEE2FF;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+
+.button1 {
+	width:180px;
+	height: 40px;
+	background-color: #ACBCFF;
+	border-radius:30px;
+	border: none;
+	margin-top: 40px;
+}
+
+.register-html {
+	text-align: center;
+}
+
+.big-group {
+	margin-top: 30px;
+}
+
+.button2 {
+	width:180px;
+	height: 40px;
+	background-color: #E6FFFD;
+	border-radius:30px;
+	border: none;
+	margin-top: 40px;
+}
+
+.confirm {
+	text-align: center;
+	color:red;
+	font-size: 70%;
+}
