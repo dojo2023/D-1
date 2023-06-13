@@ -21,33 +21,51 @@
 
 </head>
 <body>
+
+<header>
+            <div id = "head">
+                <a id = "logo" href = "カレンダーサーブレット">
+                    <img class = "img" src = "logo.png" alt = "ロゴ">
+                </a>
+                <div id = "menu" onclick="menu()">
+                    <ul id = "menu_bar">
+                        <li class = "bar"></li>
+                        <li class = "bar"></li>
+                        <li class = "bar"></li>
+                    </ul>
+                </div>
+                <div id = "box">
+                    <ul id = "menu_text"></ul>
+                </div>
+            </div>
+        </header>
     <div class = "login-wrap">
     <div class = "login-html">
 
-        <button type = "button">ログイン</button>
-		<input type="button" onclick="location.href='/miffy/User_RegisterServlet'" value="新規登録">
-        <div class = "login-form">
+	<div class ="big-button1">
+        <button type = "button" class = "button1">ログイン</button>
+		<input type="button" class = "button1" onclick="location.href='/miffy/User_RegisterServlet'" value="新規登録">
+	</div>
+	<form name="LoginServlet" method="POST" action="/mippy/LoginServlet">
+		<div class = "login-form">
             <div class = "sign-in-html">
 
+			<div class = "big-group">
                 <div class = "group">
                     <label for = "user" class = "label">メールアドレス</label><br>
-                    <input id = "user" type = "text" class = "input">
+                    <input id = "user_addr" type = "text" class = "input">
                 </div>
 
                 <div class = "group">
                     <label for = "pass" class = "label">パスワード</label><br>
-                    <input id = "pass" type = "password" class = "input">
+                    <input id = "user_pw" type = "password" class = "input">
                 </div>
+            </div>
 
-                <table><tr><td>
-                    <div class = "group">
-                    <input type = "submit" class = "button" value = "ログイン">
-                    <button type = "button">リセット</button>
-                </div></td></tr></table>
-
-                <hr>
-
-                <div class = "hr"></div>
+			<div class ="big-button2">
+					<input type="button" class = "button2" value="ログイン">
+ 					<button type = "button" class = "button2">リセット</button>
+			</div>
 
                 <div class  = "foot-link">
                     <a href = secret.jsp>パスワードを忘れた方はこちら</a>
@@ -55,6 +73,9 @@
 
             </div>
         </div>
+	</form>
+
+
     </div>
 </div>
 </body>
