@@ -27,7 +27,7 @@ public class FoodDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getFoods_num() != null) {
+			if (param.getFoods_num() != 0) {
 				pStmt.setString(1, "%" + param.getFoods_num() + "%");
 			}
 			else {
@@ -45,7 +45,7 @@ public class FoodDao {
 			else {
 				pStmt.setString(3, "%");
 			}
-			if (param.getFoods_cal() != null) {
+			if (param.getFoods_cal() != 0) {
 				pStmt.setString(4, "%" + param.getFoods_cal() + "%");
 			}
 			else {
@@ -58,10 +58,10 @@ public class FoodDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Food card = new Food(
-				rs.getString("FOOD_NUM"),
-				rs.getString("FOOD_NAME"),
-				rs.getString("FOOD_CAL"),
-				rs.getString("FOOD_CATEGORY")
+				rs.getInt("FOODS_NUM"),
+				rs.getString("FOODS_CATEGORY"),
+				rs.getString("FOODS_NAME"),
+				rs.getDouble("FOODS_CAL")
 				);
 				cardList.add(card);
 			}
@@ -107,8 +107,8 @@ public class FoodDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getFoods_num() != null && !card.getFoods_num().equals("")) {
-				pStmt.setString(1, card.getFoods_num());
+			if (card.getFoods_num() != 0) {
+				pStmt.setInt(1, card.getFoods_num());
 			}
 			else {
 				pStmt.setString(1, null);
@@ -128,8 +128,8 @@ public class FoodDao {
 				pStmt.setString(3, null);
 			}
 
-			if (card.getFoods_cal() != null && !card.getFoods_cal().equals("")) {
-				pStmt.setString(4, card.getFoods_cal());
+			if (card.getFoods_cal() != 0) {
+				pStmt.setDouble(4, card.getFoods_cal());
 			}
 			else {
 				pStmt.setString(4, null);

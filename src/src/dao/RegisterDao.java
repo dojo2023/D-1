@@ -105,8 +105,8 @@ public class RegisterDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getFoods_num() != null && !card.getFoods_num().equals("")) {
-				pStmt.setString(1, card.getFoods_num());
+			if (card.getFoods_num() != 0) {
+				pStmt.setInt(1, card.getFoods_num());
 			}
 			else {
 				pStmt.setString(1, null);
@@ -126,8 +126,8 @@ public class RegisterDao {
 				pStmt.setString(3, null);
 			}
 
-			if (card.getFoods_cal() != null && !card.getFoods_cal().equals("")) {
-				pStmt.setString(4, card.getFoods_cal());
+			if (card.getFoods_cal() != 0) {
+				pStmt.setDouble(4, card.getFoods_cal());
 			}
 			else {
 				pStmt.setString(4, null);
