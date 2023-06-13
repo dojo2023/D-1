@@ -28,6 +28,7 @@ public class Food_registerServlet extends HttpServlet {
 		FoodDao Fdao = new FoodDao();
 		List<Food> f_category = Fdao.cat_select();
 
+
 		//情報をセットしておく
 		request.setAttribute("f_category", f_category);
 
