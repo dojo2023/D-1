@@ -63,7 +63,7 @@
             </div>
 
 			<div class ="big-button2">
-					<input type="button" class = "button2" onclick="location.href='/miffy/CalendarServlet'" value="ログイン">
+					<input type="button" class = "button2" onclick="location.href='/miffy/LoginServlet'" value="ログイン">
  					<button type = "button" class = "button2">リセット</button>
 			</div>
 
