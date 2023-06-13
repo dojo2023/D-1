@@ -47,7 +47,7 @@
 		<input type="button" class = "button1" onclick="location.href='/miffy/User_RegisterServlet'" value="新規登録">
 	</div>
 
-	<form name="LoginServlet" method="POST" action="/mippy/LoginServlet">
+	<form name="LoginServlet" method="POST" action="/miffy/LoginServlet">
 		<div class = "login-form">
             <div class = "sign-in-html">
 
