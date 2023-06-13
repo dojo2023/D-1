@@ -1,9 +1,10 @@
 
-        function execute() {
-            location.href = "/BlogApplication/secret"
-        }
+//送信押ししたらデータ参照する.
+function execute() {
+  location.href = "/BlogApplication/secret"
+}
 
-
+//パスワード変更押して一致するか確認
     btn.addEventListener('click', function() {
     var password = ('新しいパスワード');
     var pass = prompt('確認');
