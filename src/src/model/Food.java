@@ -21,6 +21,10 @@ public class Food implements Serializable {
 		this.foods_name = "";
 	}
 
+	public Food(String foods_category) {
+		this.foods_category = foods_category;
+	}
+
 	public String getFoods_num() {
 		return foods_num;
 	}

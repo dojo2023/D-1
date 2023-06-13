@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
     <head>
@@ -9,7 +10,6 @@
         <link rel = "stylesheet" href = "css/food_register.css">
     </head>
     <body>
-
         <header>
             <div id = "head">
                 <a id = "logo" href = "カレンダーサーブレット">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </header>
-<main>
+		<main>
 			<h1>品目登録</h1>
 			<!-- 登録してある食事を検索して表示 -->
 			<div id = "foods_show">
@@ -35,19 +35,17 @@
 				<form action = "" method = "" id = "search_foods">
 					<select name = "s_category" id = "s_category" class = "search_input">
 						<option value = "" selected hidden>カテゴリー</option>
+						<!-- サーブレットからリストを受け取る -->
+						<c:forEach var = "e" items = "${f_category}">
+							<option value = "${e.foods_category}">${e.foods_category}</option>
+						</c:forEach>
 					</select>
 					<input type = "text" name = "s_name" id = "s_name" class = "search_input">
 					<input type = "submit" name = "s_submit" id = "s_submit" class = "search_input">
 				</form>
 				<ul id = "s_result">
 					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
+
 				</ul>
 			</div>
 
