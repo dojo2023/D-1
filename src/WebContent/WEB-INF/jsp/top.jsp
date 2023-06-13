@@ -38,18 +38,16 @@
 	</header>​
 	<form name="Top" method="POST" action="/mippy/Top">
 		<main>
-			<div class="wrapper">
-				<p>Eat well, live well.</p>
-				<div class="slide">
-					<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="calendar" class="active">
-					<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_02.jpg" alt="profile">
-					<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_03.jpg" alt="graph">
-				</div>
-				<p class="exp">説明文</p>
-				<div class="sign">
-					<input name="signup" type="button" onclick="window.location.href='/mippy/User_Register';" value="新規登録">
-					<input name="signin" type="submit" onclick="window.location.href='/mippy/Login';" value="ログイン">
-				</div>
+			<p>Eat well, live well.</p>
+			<div class="slide">
+				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="calendar" class="active">
+				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_02.jpg" alt="profile">
+				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_03.jpg" alt="graph">
+			</div>
+			<p class="exp">説明文</p>
+			<div class="sign">
+				<input name="signup" type="button" onclick="window.location.href='/mippy/User_Register';" value="新規登録">
+				<input name="signin" type="submit" onclick="window.location.href='/mippy/Login';" value="ログイン">
 			</div>
 		</main>
 	</form>

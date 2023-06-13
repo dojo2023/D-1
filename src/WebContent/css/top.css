@@ -49,8 +49,8 @@ input[type="button"] {
 }
 
 .slide img {
-    width: 600px;
-    height: 400px;
+    max-width: 100%;
+  	height: auto;
     position: absolute;
     top: 0;
     left: 0;
