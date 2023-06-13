@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
-import model.LoginUser;
+import model.Loggedin;
+import model.Login;
 
 /**
  * Servlet implementation class LoginServlet
@@ -46,9 +47,9 @@ public class LoginServlet extends HttpServlet {
 		String user_pw=request.getParameter("USER_PW");
 		UserDao uDao=new UserDao();
 
-		if(uDao.loggedin(new User(user_addr, user_pw))) {
+		if(uDao.isLoginOK(new Login(user_addr, user_pw))) {
 			HttpSession session=request.getSession();
-			session.setAttribute("user_addr", new LoginUser(user_addr));
+			session.setAttribute("user_addr", new Loggedin(user_addr));
 			response.sendRedirect("/mippy/Calendar");
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");

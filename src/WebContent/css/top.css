@@ -41,8 +41,9 @@ input[type="button"] {
 
 
 .slide {
-    width: 50vw;
-    height: auto;
+	max-width: 640px;
+    width: auto;
+    height: 400px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;

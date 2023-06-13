@@ -7,10 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Login;
 import model.User;
 
 public class UserDao {
-	public boolean isLoginOK(User user) {
+	public boolean isLoginOK(Login login) {
 		Connection conn = null;
 		boolean loginResult = false;
 
@@ -24,8 +25,8 @@ public class UserDao {
 			// SELECT文を準備する
 			String sql = "select count(*) from M_USER where USER_ADDR = ? and USER_PW = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, user.getUser_addr());
-			pStmt.setString(2,user.getUser_pw());
+			pStmt.setString(1, login.getUser_addr());
+			pStmt.setString(2, login.getUser_pw());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
