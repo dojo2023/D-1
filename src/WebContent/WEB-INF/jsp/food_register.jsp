@@ -56,6 +56,10 @@
 						<p>カテゴリー</p>
 						<select name = "a_category" id = "a_category">
 							<option value = "" selected hidden>カテゴリーを選択</option>
+							<!-- サーブレットからリストを受け取る -->
+							<c:forEach var = "e" items = "${f_category}">
+								<option value = "${e.foods_category}">${e.foods_category}</option>
+							</c:forEach>
 						</select>
 					</div>
 

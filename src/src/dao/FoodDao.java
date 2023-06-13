@@ -162,6 +162,7 @@ public class FoodDao {
 		return result;
 	}
 
+
 	//カテゴリーをすべて取得
 	public List<Food> cat_select () {
 		Connection conn = null;
@@ -184,7 +185,9 @@ public class FoodDao {
 			while(rs.next()) {
 				Food card = new Food(rs.getString("FOODS_CATEGORY"));
 				cardList.add(card);
+				System.out.println(rs.getString("FOODS_CATEGORY"));
 			}
+			System.out.println(cardList.get(0).getFoods_category());
 
 		}catch (SQLException e) {
 
