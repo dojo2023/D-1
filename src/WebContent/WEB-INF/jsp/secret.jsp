@@ -4,7 +4,20 @@
 
 <head>
 <meta charset="UTF-8">
-<title>秘密の質問</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>mippy</title>
+	<link rel="icon" href="/mippy/img/mippy1号.gif">
+
+    <!-- 共通css -->
+	<link rel="stylesheet" type="text/css" href="/miffy/css/common.css">
+    <!-- login用css -->
+    <link rel="stylesheet" type="text/css" href="/miffy/css/login.css">
+
+    <!-- 共通js -->
+    <script src="/miffy/js/common.js"></script>
+    <!-- login用js -->
+    <script src="/miffy/js/login.js"></script>
+
 <link rel="stylesheet" href="/WebContent/css/secret.css">
 </head>
 
