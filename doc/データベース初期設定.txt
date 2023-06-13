@@ -8,6 +8,11 @@ jdbc:h2:file:C:/pleiades/workspace/data/mippy
 【ユーザー名】	【パスワード】
 sa		（なし）
 
+
+
+【テーブルAIを初期化するSQL文】
+ALTER TABLE <table_name> ALTER COLUMN <column_name> RESTART WITH 1
+
 【m_userテーブルを作成するSQL文】
 create table m_user (
 USER_NUM INT AUTO_INCREMENT PRIMARY KEY, 
@@ -27,7 +32,10 @@ USER_COLOR int (1)
 )
 
 【m_userテーブルにサンプルデータを登録するSQL文】
-INSERT INTO m_user VALUES (NULL, 'DOJO@plus.com', 'password', 'dojo','172', '65', '1', '60', '20010405', '20230631', '3', '答え', '3', '1');
+INSERT INTO m_user VALUES (NULL, 'AAAA@plus.com', 'password', 'aaaa','172', '65', '1', '60', '20010405', '20230630', '1', '答え', '3', '3');
+INSERT INTO m_user VALUES (NULL, 'BBBB@plus.com', 'password', 'bbbb','170', '63', '1', '60', '20010405', '20230630', '2', '答え', '3', '3');
+INSERT INTO m_user VALUES (NULL, 'VVVV@plus.com', 'password', 'cccc','180', '65', '1', '74', '20010405', '20230630', '3', '答え', '2', '2');
+INSERT INTO m_user VALUES (NULL, 'DDDD@plus.com', 'password', 'dddd','150', '45', '2', '40', '20000405', '20230530', '4', '答え', '1', '1');
 
 【m_userテーブルを削除するSQL文】
 DROP TABLE m_user;
