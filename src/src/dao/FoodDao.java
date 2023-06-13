@@ -23,27 +23,33 @@ public class FoodDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 全ての項目を入れました　
-			String sql = "select FOODS_CATEGORY, FOODS_NAME, FOODS_CAL  from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ? FOODS_CAL LIKE ? ORDER BY  FOODS_NUM";
+			String sql = "select FOODS_NUM, FOODS_CATEGORY, FOODS_NAME, FOODS_CAL  from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ? ORDER BY  FOODS_CATEGORY";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getFoods_category() != null) {
-				pStmt.setString(1, "%" + param.getFoods_category() + "%");
+			if (param.getFoods_num() != null) {
+				pStmt.setString(1, "%" + param.getFoods_num() + "%");
 			}
 			else {
 				pStmt.setString(1, "%");
 			}
-			if (param.getFoods_name() != null) {
-				pStmt.setString(2, "%" + param.getFoods_name() + "%");
+			if (param.getFoods_category() != null) {
+				pStmt.setString(2, "%" + param.getFoods_category() + "%");
 			}
 			else {
 				pStmt.setString(2, "%");
 			}
-			if (param.getFoods_cal() != null) {
-				pStmt.setString(3, "%" + param.getFoods_cal() + "%");
+			if (param.getFoods_name() != null) {
+				pStmt.setString(3, "%" + param.getFoods_name() + "%");
 			}
 			else {
 				pStmt.setString(3, "%");
+			}
+			if (param.getFoods_cal() != null) {
+				pStmt.setString(4, "%" + param.getFoods_cal() + "%");
+			}
+			else {
+				pStmt.setString(4, "%");
 			}
 
 			// SQL文を実行し、結果表を取得する
@@ -52,7 +58,7 @@ public class FoodDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Food card = new Food(
-				rs.getString("USER_NUM"),
+				rs.getString("FOOD_NUM"),
 				rs.getString("FOOD_NAME"),
 				rs.getString("FOOD_CAL"),
 				rs.getString("FOOD_CATEGORY")
@@ -108,22 +114,22 @@ public class FoodDao {
 				pStmt.setString(1, null);
 			}
 
-			if (card.getFoods_name() != null && !card.getFoods_name().equals("")) {
-				pStmt.setString(2, card.getFoods_name());
+			if (card.getFoods_category() != null && !card.getFoods_category().equals("")) {
+				pStmt.setString(2, card.getFoods_category());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
 
-			if (card.getFoods_cal() != null && !card.getFoods_cal().equals("")) {
-				pStmt.setString(3, card.getFoods_cal());
+			if (card.getFoods_name() != null && !card.getFoods_name().equals("")) {
+				pStmt.setString(3, card.getFoods_name());
 			}
 			else {
 				pStmt.setString(3, null);
 			}
 
-			if (card.getFoods_category() != null && !card.getFoods_category().equals("")) {
-				pStmt.setString(4, card.getFoods_category());
+			if (card.getFoods_cal() != null && !card.getFoods_cal().equals("")) {
+				pStmt.setString(4, card.getFoods_cal());
 			}
 			else {
 				pStmt.setString(4, null);
