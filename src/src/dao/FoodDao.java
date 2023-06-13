@@ -20,7 +20,7 @@ public class FoodDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
 
 			// 全ての項目を入れました　
 			String sql = "select FOODS_NUM, FOODS_CATEGORY, FOODS_NAME, FOODS_CAL  from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ? ORDER BY  FOODS_CATEGORY";
@@ -100,7 +100,7 @@ public class FoodDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
 
 			// 全ても項目を入れました（新規登録の時に使うと思うので）
 			String sql = "insert into M_FOODS values (?, ?, ?, ?)";
@@ -173,7 +173,7 @@ public class FoodDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
 
 
 			String sql = "SELECT DISTINCT FOODS_CATEGORY FROM m_foods";

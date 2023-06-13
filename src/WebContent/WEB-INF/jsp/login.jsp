@@ -64,7 +64,7 @@
             </div>
 
 			<div class ="big-button2">
-					<input type="button" class = "button2" value="ログイン">
+					<input type="submit" class = "button2" value="ログイン">
  					<input type = "reset" class = "button2">
 			</div>
 

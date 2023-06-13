@@ -64,9 +64,11 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session=request.getSession();
 			session.setAttribute("user_addr", new Loggedin(user_addr));
 			response.sendRedirect("/miffy/CalendarServlet");
+			System.out.println("in");
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 			dispatcher.forward(request, response);
+			System.out.println("out");
 		}
 	}
 }

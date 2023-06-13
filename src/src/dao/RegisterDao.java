@@ -21,7 +21,7 @@ public class RegisterDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
 
 			// SQL文を準備する
 			String sql = "SELECT M_USER.USER_NUM,  M_USER.USER_NICKNAME, M_RECORD.RECORD_DATE, \r\n"
@@ -98,7 +98,7 @@ public class RegisterDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
 
 			// SQL文を準備する
 			String sql = "insert into M_FOODS values (?, ?, ?, ?)";
