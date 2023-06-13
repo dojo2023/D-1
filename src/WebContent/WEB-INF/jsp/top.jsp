@@ -40,9 +40,9 @@
 		<main>
 			<p>Eat well, live well.</p>
 			<div class="slide">
-				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_01.jpg" alt="calendar" class="active">
-				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_02.jpg" alt="profile">
-				<img src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/img/img_03.jpg" alt="graph">
+				<img src="logo.png" alt="calendar" class="active">
+				<img src="logo.png" alt="profile">
+				<img src="logo.png" alt="graph">
 			</div>
 			<p class="exp">説明文</p>
 			<div class="sign">
