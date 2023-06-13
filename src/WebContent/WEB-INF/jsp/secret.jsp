@@ -23,7 +23,7 @@
 
 <body>
 <form method="POST" action="/WebContent/SecretServlet">
-    <h1><a href="secret.html"><img src="/WebContent/img/logo.png" width="240" height="60" alt="mippy"></a></h1>
+    <h1>秘密の質問</h1>
     <input placeholder="mailaddress" type="text" name="MAIL"/><br>
     <input placeholder="answer" type="text" name="ANSER">
     <input type="button" value="送信" onclick="execute()">
