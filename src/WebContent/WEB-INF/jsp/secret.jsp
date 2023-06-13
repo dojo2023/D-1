@@ -20,32 +20,59 @@
 
 <link rel="stylesheet" href="/WebContent/css/secret.css">
 </head>
-
+<!-- 入力フォーム -->
 <body>
 <form method="POST" action="/WebContent/SecretServlet">
     <h1>秘密の質問</h1>
-    <input placeholder="mailaddress" type="text" name="MAIL"/><br>
-    <input placeholder="answer" type="text" name="ANSER">
-    <input type="button" value="送信" onclick="execute()">
-    -
-    <select name="secret">
-        <option value="food">好きな食べ物は？</option>
-        <option value="pet">ペットの名前は？</option>
-        <option value="school">小学校の名前は？</option>
-        <option value="name">母親の旧姓は？</option>
-        <option value="date">一番最初にデートした場所は？</option>
-        <option value="love">初恋の相手の名前は？</option>
-        <option value="sushi">好きなお寿司のネタは？</option>
-        <option value="chara">好きなキャラクターは？</option>
-     </select>
+    <div id = "secret1">
+	    <input placeholder="mailaddress" type="text" name="MAIL"/><br>
+	    <input placeholder="answer" type="text" name="ANSER">
+	    <select name="secret">
+	        <option value="food">好きな食べ物は？</option>
+	        <option value="pet">ペットの名前は？</option>
+	        <option value="school">小学校の名前は？</option>
+	        <option value="name">母親の旧姓は？</option>
+	        <option value="date">一番最初にデートした場所は？</option>
+	        <option value="love">初恋の相手の名前は？</option>
+	        <option value="sushi">好きなお寿司のネタは？</option>
+	        <option value="chara">好きなキャラクターは？</option>
+	     </select>
+	    <input type="button" value="送信" onclick="execute()">
+
+	    <script>
+	    type="text/javascript"
+	        // サーブレットにリクエストを投げる
+	        function execute() {
+	            location.href = "/BlogApplication/secret"
+	     </script>
+   </div>
+</form >
+<!-- パスワード変更ポップアップ -->
+btn.addEventListener('click', function() {
+ const text = prompt('新しいパスワード');
+ const text = prompt('確認');
+<label>
+	<span></span>
+		<script>
+			 function SheckPassword(password_confirmation) {
+			    var password =password.value;
+			    var pass = password_comfirmation.value;
+			    formObj.onreset = function() {
+			  errorMessageObj.textContent = null;
+			  };
+			    if(password != pass){
+			        password_confirmation.setCustomValidity("入力値が一致しません。");
+			    }else{
+			        password_confirmation.setCustomValidity('');
+			    }
+			 }
+}
+		</script>
+
+    <input type = "submit" class = "button" value = "更新">
+    <button type = "button">リセット</button>
 
 
-    <button onclick="secret()">	更新</button>
-    <button onclick="secret()">	クリア</button>
- </form>
-
-  <footer>
-    <h5> &copy; mippy.</h5>
-  </footer>
+</label>
 </body>
 </html>
