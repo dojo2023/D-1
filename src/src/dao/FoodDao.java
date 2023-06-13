@@ -162,5 +162,50 @@ public class FoodDao {
 		return result;
 	}
 
+	//カテゴリーをすべて取得
+	public List<Food> cat_select () {
+		Connection conn = null;
+		List<Food> cardList = new ArrayList<Food>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+
+			String sql = "SELECT DISTINCT FOODS_CATEGORY FROM m_foods";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//結果を保存
+			ResultSet rs = pStmt.executeQuery();
+
+			while(rs.next()) {
+				Food card = new Food(rs.getString("FOODS_CATEGORY"));
+				cardList.add(card);
+			}
+
+		}catch (SQLException e) {
+
+
+		}catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				cardList = null;
+		}finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+		return cardList;
+	}
+
 
 }
