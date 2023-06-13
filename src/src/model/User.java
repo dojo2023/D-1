@@ -3,15 +3,15 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 	private String user_num;
-	private String user_addr;// ID
+	private String user_addr; // ID
 	private String user_pw;	// PW
 	private String user_nickname;
-	private String user_height;
-	private String user_weight;
-	private String user_gender;
-	private String user_goalw;
-	private String user_birth;
-	private String user_limit;
+	private String user_height; //cm
+	private String user_weight; //kg
+	private String user_gender; //0male, 1female, 2other
+	private String user_goalw; //date
+	private String user_birth; //date
+	private String user_limit; //date
 	private String user_secret;
 	private String user_answer;
 	private String user_avatar;
@@ -42,7 +42,7 @@ public class User implements Serializable {
 		this.user_nickname = "USER";
 		this.user_height = "0";
 		this.user_pw = "";
-		this.user_gender = "0";
+		this.user_gender = "2";
 		this.user_limit = "";
 		this.user_birth = "";
 		this.user_weight = "0";
