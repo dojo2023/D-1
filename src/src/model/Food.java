@@ -6,19 +6,20 @@ public class Food implements Serializable {
 	private String foods_category;
 	private String foods_name;
 
-	public Food(int foods_num, double foods_cal, String foods_category, String foods_name) {
+	public Food(int foods_num, String foods_category, String foods_name, double foods_cal) {
 
 		this.foods_num = foods_num;
-		this.foods_cal = foods_cal;
 		this.foods_category = foods_category;
 		this.foods_name = foods_name;
+		this.foods_cal = foods_cal;
+
 	}
 	//初期値？
 	public Food() {
 		this.foods_num = 0;
-		this.foods_cal = 0;
 		this.foods_category = "";
 		this.foods_name = "";
+		this.foods_cal = 0;
 	}
 
 	//プルダウン検索時に使用
