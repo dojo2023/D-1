@@ -3,10 +3,10 @@ import java.io.Serializable;
 public class Register implements Serializable {
 	private int user_num;
 	private String record_date;
-	private String record_type;
+	private int record_type;
 	private int foods_num;
 
-	public Register(int user_num, String record_date, String record_type, int foods_num) {
+	public Register(int user_num, String record_date, int record_type, int foods_num) {
 
 		this.user_num = user_num;
 		this.record_date = record_date;
@@ -17,7 +17,7 @@ public class Register implements Serializable {
 	public Register() {
 		this.user_num = 0;
 		this.record_date = "";
-		this.record_type = "";
+		this.record_type = 0;
 		this.foods_num = 0;
 	}
 
@@ -33,10 +33,10 @@ public class Register implements Serializable {
 	public void setRecord_date(String record_date) {
 		this.record_date = record_date;
 	}
-	public String getRecord_type() {
+	public int getRecord_type() {
 		return record_type;
 	}
-	public void setRecord_type(String record_type) {
+	public void setRecord_type(int record_type) {
 		this.record_type = record_type;
 	}
 	public int getFoods_num() {
