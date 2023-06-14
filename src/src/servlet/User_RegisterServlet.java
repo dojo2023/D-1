@@ -29,9 +29,27 @@ public class User_RegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // リクエストパラメータからフォームデータを取得
+        String email = request.getParameter("USER_ADDR");
+        String password = request.getParameter("USER_PW");
+        //String confirmPassword = request.getParameter("confirmPassword");
+        String secretQuestion = request.getParameter("secret");
+        String secretAnswer = request.getParameter("USER_ANSWER");
+
+        // フォームデータの処理
+        // データベースへの登録
+
+        // レスポンスを設定
+        /*response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write("登録が完了しました");
+        */
+        request.setAttribute("message", "登録が完了しました");
+
+        //response.sendRedirect("/mippy/TopServlet");
+        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+    }
 
 }
+
