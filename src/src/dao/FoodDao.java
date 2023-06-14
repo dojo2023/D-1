@@ -100,29 +100,29 @@ public class FoodDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 全ても項目を入れました（新規登録の時に使うと思うので）
-			String sql = "insert into M_FOODS values (?, ?, ?, ?)";
+			String sql = "INSERT INTO M_FOODS ( FOODS_CATEGORY , FOODS_NAME , FOODS_CAL) VALUES(?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getFoods_num() != 0) {
-				pStmt.setInt(1, card.getFoods_num());
+			if (card.getFoods_category() != null && !card.getFoods_category().equals("")) {
+				pStmt.setString(1, card.getFoods_category());
 			}
 			else {
 				pStmt.setInt(1, 0);
 			}
 
-			if (card.getFoods_category() != null && !card.getFoods_category().equals("")) {
-				pStmt.setString(2, card.getFoods_category());
+			if (card.getFoods_name() != null && !card.getFoods_name().equals("")) {
+				pStmt.setString(2, card.getFoods_name());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
 
-			if (card.getFoods_name() != null && !card.getFoods_name().equals("")) {
-				pStmt.setString(3, card.getFoods_name());
+			if (card.getFoods_cal() != 0) {
+				pStmt.setDouble(3, card.getFoods_cal());
 			}
 			else {
 				pStmt.setString(3, null);
@@ -163,6 +163,72 @@ public class FoodDao {
 	}
 
 
+	public List<Food> search(Food param) {
+		Connection conn = null;
+		List<Food> cardList = new ArrayList<Food>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+			// 全ての項目を入れました　
+			String sql = "select FOODS_NAME, FOODS_CAL from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (param.getFoods_category() != null) {
+				pStmt.setString(1, "%" + param.getFoods_category() + "%");
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
+			if (param.getFoods_name() != null) {
+				pStmt.setString(2, "%" + param.getFoods_name() + "%");
+			}
+			else {
+				pStmt.setString(2, "%");
+			}
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Food card = new Food();
+				card.setFoods_name(rs.getString("FOODS_NAME"));
+				card.setFoods_cal(rs.getDouble("FOODS_CAL"));
+				cardList.add(card);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return cardList;
+	}
+
+
 	//カテゴリーをすべて取得
 	public List<Food> cat_select () {
 		Connection conn = null;
@@ -173,10 +239,10 @@ public class FoodDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 
-			String sql = "SELECT DISTINCT FOODS_CATEGORY FROM m_foods";
+			String sql = "SELECT DISTINCT FOODS_CATEGORY FROM M_FOODS";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//結果を保存

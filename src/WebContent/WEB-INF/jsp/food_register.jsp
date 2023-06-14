@@ -32,7 +32,7 @@
 			<!-- 登録してある食事を検索して表示 -->
 			<div id = "foods_show">
 				<p1>検索</p1>
-				<form action = "" method = "" id = "search_foods">
+				<form action = "Food_registerServlet" method = "POST" id = "search_foods">
 					<select name = "s_category" id = "s_category" class = "search_input">
 						<option value = "" selected hidden>カテゴリー</option>
 						<!-- サーブレットからリストを受け取る -->
@@ -41,7 +41,7 @@
 						</c:forEach>
 					</select>
 					<input type = "text" name = "s_name" id = "s_name" class = "search_input">
-					<input type = "submit" name = "s_submit" id = "s_submit" class = "search_input">
+					<input type = "submit" name = "s_submit" id = "s_submit" class = "search_input" value = "検索">
 				</form>
 				<ul id = "s_result">
 					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
@@ -51,7 +51,7 @@
 
 			<!-- 食事を登録するフォーム -->
 			<div id = "register_foods">
-				<form action = "" method = "">
+				<form action = "Food_registerServlet" method = "POST">
 					<div class = "register_input">
 						<p>カテゴリー</p>
 						<select name = "a_category" id = "a_category">
