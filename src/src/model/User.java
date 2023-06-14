@@ -36,6 +36,12 @@ public class User implements Serializable {
 		this.user_avatar = user_avatar;
 		this.user_num = user_num;
 	}
+	//login
+	public User(String user_addr, String user_pw) {
+		this.user_addr = user_addr;
+		this.user_pw = user_pw;
+	}
+
 //初期値？
 	public User() {
 		this.user_secret = 0;
