@@ -111,7 +111,7 @@ public class FoodDao {
 				pStmt.setInt(1, card.getFoods_num());
 			}
 			else {
-				pStmt.setString(1, null);
+				pStmt.setInt(1, 0);
 			}
 
 			if (card.getFoods_category() != null && !card.getFoods_category().equals("")) {
@@ -132,7 +132,7 @@ public class FoodDao {
 				pStmt.setDouble(4, card.getFoods_cal());
 			}
 			else {
-				pStmt.setString(4, null);
+				pStmt.setDouble(4, 0);
 			}
 
 			// SQL文を実行する
