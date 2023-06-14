@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Food;
 import model.Register;
 
 public class RegisterDao {
@@ -86,80 +85,5 @@ public class RegisterDao {
 		// 結果を返す
 		return cardList;
 	}
-
-
-
-	public boolean insert(Food card) {
-		Connection conn = null;
-		boolean result = false;
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
-
-			// SQL文を準備する
-			String sql = "insert into M_FOODS values (?, ?, ?, ?)";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
-			if (card.getFoods_num() != 0) {
-				pStmt.setInt(1, card.getFoods_num());
-			}
-			else {
-				pStmt.setString(1, null);
-			}
-
-			if (card.getFoods_category() != null && !card.getFoods_category().equals("")) {
-				pStmt.setString(2, card.getFoods_category());
-			}
-			else {
-				pStmt.setString(2, null);
-			}
-
-			if (card.getFoods_name() != null && !card.getFoods_name().equals("")) {
-				pStmt.setString(3, card.getFoods_name());
-			}
-			else {
-				pStmt.setString(3, null);
-			}
-
-			if (card.getFoods_cal() != 0) {
-				pStmt.setDouble(4, card.getFoods_cal());
-			}
-			else {
-				pStmt.setString(4, null);
-			}
-
-			// SQL文を実行する
-			if (pStmt.executeUpdate() == 1) {
-				result = true;
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		// 結果を返す
-		return result;
-	}
-
-
 
 }
