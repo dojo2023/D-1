@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		        	title: {
 		          		display: true,
 		          		text: '日付',
+						position: 'top-end',
 		          		padding: {top: 20},
 		        	},
 		      	},
