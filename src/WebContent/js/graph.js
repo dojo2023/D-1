@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		data: {
 			labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
 			datasets: [{
-				label: '最高気温(度）',
+				label: '合計摂取カロリー',
 		        data: [35, 34, 37, 35, 34, 35, 34, 25],
 		        borderColor: "rgba(255,0,0,1)",
 		        backgroundColor: "rgba(0,0,0,0)"
@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		        	title: {
 		          		display: true,
 		          		text: '日付',
-						position: 'top-end',
 		          		padding: {top: 20},
 		        	},
 		      	},

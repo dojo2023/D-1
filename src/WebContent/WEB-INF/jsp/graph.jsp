@@ -44,9 +44,11 @@
                 <canvas id="graph" width="1000" height="400"></canvas>
             </div>
             <div class="goal">
-            	<p>基礎代謝</p>
-            	<p>目標カロリー</p>
-            	<p>目標まであと</p>
+            	<form method="POST" action="/mippy/">
+					基礎代謝<input type="text" name="NUMBER" value="${e.number}"><br>
+					目標カロリー<input type="text" name="NUMBER" value="${e.number}"><br>
+					目標まであと<input type="text" name="NUMBER" value="${e.number}"><br>
+				</form>
             </div>
         </main>
     </form>
