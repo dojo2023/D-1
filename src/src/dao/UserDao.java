@@ -27,14 +27,17 @@ public class UserDao {
 			pStmt.setString(1, user.getUser_addr());
 			pStmt.setString(2, user.getUser_pw());
 
+			System.out.println(user.getUser_addr());
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
 			rs.next();
+			System.out.println(rs.getInt("count(*)"));
 			if (rs.getInt("count(*)") == 1) {
 				loginResult = true;
 			}
+			System.out.println("oh my god.");
 		}
 		catch (SQLException e) {
 			e.printStackTrace();

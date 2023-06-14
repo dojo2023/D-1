@@ -54,12 +54,12 @@
 			<div class = "big-group">
                 <div class = "group">
                     <label for = "user" class = "label">メールアドレス</label><br>
-                    <input id = "user_addr" type = "text" class = "input">
+                    <input id = "user_addr" type = "text" class = "input" name = "user_addr">
                 </div>
 
                 <div class = "group">
                     <label for = "pass" class = "label">パスワード</label><br>
-                    <input id = "user_pw" type = "password" class = "input">
+                    <input id = "user_pw" type = "password" class = "input" name = "user_pw">
                 </div>
             </div>
 

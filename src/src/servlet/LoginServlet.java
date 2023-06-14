@@ -43,29 +43,18 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String user_secret = request.getParameter("USER_SECRET");
-		String user_nickname = request.getParameter("USER_NICKNAME");
-		String user_height = request.getParameter("USER_HEIGHT");
-		String user_pw = request.getParameter("USER_PW");
-		String user_gender = request.getParameter("USER_GENDER");
-		String user_limit = request.getParameter("USER_LIMIT");
-		String user_birth = request.getParameter("USER_BIRTH");
-		String user_weight = request.getParameter("USER_WEIGHT");
-		String user_answer = request.getParameter("USER_ANSWER");
-		String user_goalw = request.getParameter("USER_GOALW");
-		String user_color = request.getParameter("USER_COLOR");
-		String user_addr = request.getParameter("USER_ADDR");
-		String user_avatar = request.getParameter("USER_AVATAR");
-		String user_num = request.getParameter("USER_NUM");
-
+		String user_pw = request.getParameter("user_pw");
+		String user_addr = request.getParameter("user_addr");
+		System.out.println(user_pw);
+		System.out.println(user_addr);
 		UserDao uDao=new UserDao();
 
-		if(uDao.isLoginOK(new User(user_secret, user_nickname, user_height, user_pw, user_gender, user_limit, user_birth, user_weight, user_answer, user_goalw, user_color, user_addr, user_avatar, user_num))) {
+		if(uDao.isLoginOK(new User(user_addr, user_pw))) {
 			HttpSession session=request.getSession();
 			session.setAttribute("user_addr", new Loggedin(user_addr));
 			response.sendRedirect("/miffy/CalendarServlet");
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			System.out.println("out");
 			dispatcher.forward(request, response);
 		}
