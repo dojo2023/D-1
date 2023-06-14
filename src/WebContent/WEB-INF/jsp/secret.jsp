@@ -30,9 +30,8 @@
         <main>
             <div class="center">
             <form method="POST" action="/WebContent/SecretServlet">
-                <h1>秘密の質問</h1>
+                <h1>本人確認</h1>
                     <input placeholder="mailaddress" type="text" name="MAIL"/><br>
-                    <input placeholder="answer" type="text1" name="ANSER"><br>
                     <select name="secret">
                         <option value="food">好きな食べ物は？</option>
                         <option value="pet">ペットの名前は？</option>
@@ -43,12 +42,13 @@
                         <option value="sushi">好きなお寿司のネタは？</option>
                         <option value="chara">好きなキャラクターは？</option>
                      </select>
+                     <input placeholder="answer" type="text1" name="ANSER"><br>
             <button id="c" onclick = "popup()">送信</button>
             </div>
             <div class="popup">
                 <div class="close_btn">&times;</div>
                 <div class="form">
-                 <h2>秘密の質問</h2>
+                 <h2>パスワード変更</h2>
                  <div class = "form-element">
                     <label for="newpassword">新しいパスワード</label><br>
                     <input type="text" id="newpassword" placeholder="新しいパスワードを入力">
