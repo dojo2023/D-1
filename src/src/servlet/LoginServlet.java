@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 		if(uDao.isLoginOK(new User(user_addr, user_pw))) {
 			HttpSession session=request.getSession();
 			session.setAttribute("user_addr", new Loggedin(user_addr));
-			response.sendRedirect("/miffy/CalendarServlet");
+			response.sendRedirect("/mippy/CalendarServlet");
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			System.out.println("out");
