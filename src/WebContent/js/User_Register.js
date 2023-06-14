@@ -9,7 +9,7 @@
       alert('全てのフィールドを入力してください');
       return false;
     }
-
+		// パスワードが一致しない場合の処理
     if (userPw !== confirmPw) {
       alert('パスワードが一致しません');
       return false;
@@ -17,4 +17,3 @@
 
     return true;
   }
-
