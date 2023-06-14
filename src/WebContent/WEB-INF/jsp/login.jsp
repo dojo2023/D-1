@@ -39,45 +39,41 @@
                 </div>
             </div>
         </header>
-    <div class = "login-wrap">
-    <div class = "login-html">
+<div class = "login-wrap">
+	<div class = "login-html">
+		<div class ="big-button1">
+			<button type = "button" class = "button1">ログイン</button>
+			<input type="button" class = "button1" onclick="location.href='/mippy/User_RegisterServlet'" value="新規登録">
+		</div>
 
-	<div class ="big-button1">
-        <button type = "button" class = "button1">ログイン</button>
-		<input type="button" class = "button1" onclick="location.href='/mippy/User_RegisterServlet'" value="新規登録">
-	</div>
+		<form name="LoginServlet" method="POST" action="" id="login">
+			<div class = "login-form">
+				<div class = "sign-in-html">
 
-	<form name="LoginServlet" method="POST" action="/mippy/LoginServlet">
-		<div class = "login-form">
-            <div class = "sign-in-html">
+					<div class = "big-group">
+						<div class = "group">
+						<!--  <label  class = "label">メールアドレス</label><br>-->
+							<input id = "user_addr" type = "text" class = "input" name = "user_addr">
+						</div>
 
-			<div class = "big-group">
-                <div class = "group">
-                    <label for = "user" class = "label">メールアドレス</label><br>
-                    <input id = "user_addr" type = "text" class = "input" name = "user_addr">
-                </div>
+						<div class = "group">
+						<!--  --><label class = "label">パスワード</label><br>
+							<input id = "user_pw" type = "password" class = "input" name = "user_pw">
+						</div>
+					</div>
 
-                <div class = "group">
-                    <label for = "pass" class = "label">パスワード</label><br>
-                    <input id = "user_pw" type = "password" class = "input" name = "user_pw">
-                </div>
-            </div>
-
-			<div class ="big-button2">
-					<input type="submit" class = "button2" value="ログイン" onClick = "return check();">
- 					<input type = "reset" class = "button2">
+					<div class ="big-button2">
+						<input type = "button" class = "button2" value="ログイン" onclick="check()">
+						<input type = "reset" class = "button2">
+					</div>
+				</div>
 			</div>
+		</form>
 
-                <div class  = "foot-link">
-                    <a href = secret.jsp>パスワードを忘れた方はこちら</a>
-                </div>
-
-            </div>
-        </div>
-	</form>
-
-
-    </div>
+		<div class  = "foot-link">
+			<a href = secret.jsp>パスワードを忘れた方はこちら</a>
+		</div>
+	</div>
 </div>
 </body>
 </html>
