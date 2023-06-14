@@ -15,7 +15,7 @@
 	<header>
             <div id = "head">
                 <a id = "logo" href = "カレンダーサーブレット">
-                    <img class = "img" src = "logo.png" alt = "ロゴ">
+                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
                 </a>
                 <div id = "menu" onclick="menu()">
                     <ul id = "menu_bar">
@@ -39,12 +39,12 @@
     <div class = "register-html">
 
     <div class="big-button1">
-    <input name="signin" type="button" class = "button1" onclick="window.location.href='/miffy/LoginServlet';" value="ログイン">
-    <input name="signup" type="button" class = "button1" onclick="window.location.href='/miffy/User_RegisterServlet';" value="新規登録">
+    <input name="signin" type="button" class = "button1" onclick="window.location.href='/mippy/LoginServlet';" value="ログイン">
+    <input name="signup" type="button" class = "button1" onclick="window.location.href='/mippy/User_RegisterServlet';" value="新規登録">
     </div>
 
 	<div class = "big-group">
-     <form method="POST" action="/miffy/User_RegisterServlet" onsubmit="return validateForm();">
+     <form method="POST" action="/mippy/User_RegisterServlet" onsubmit="return validateForm();">
      メールアドレス<br><input type="text" name="USER_ADDR"><br>
 	 パスワード<br><input type="text" name="USER_PW"><br>
 	 <label for = "pass" class = "label">パスワード <br>
