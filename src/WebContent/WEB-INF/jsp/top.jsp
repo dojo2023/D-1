@@ -6,8 +6,8 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>名刺管理</title>
-	<link rel="icon" href="/miffy/img/mippy1号.gif">
+	<title>mippy</title>
+	<link rel="icon" href="/mippy/img/mippy1号.gif">
 
     <!-- 共通css -->
 	<link rel="stylesheet" type="text/css" href="css/common.css">
@@ -36,7 +36,7 @@
 			</div>
 		</div>
 	</header>​
-	<form name="Top" method="POST" action="/miffy/Top">
+	<form name="Top" method="POST" action="/mippy/Top">
 		<main>
 			<p>Eat well, live well.</p>
 			<div class="slide">
@@ -46,8 +46,8 @@
 			</div>
 			<p class="exp">説明文</p>
 			<div class="sign">
-				<input name="signup" type="button" onclick="window.location.href='/miffy/User_Register';" value="新規登録">
-				<input name="signin" type="submit" onclick="window.location.href='/miffy/Login';" value="ログイン">
+				<input name="signup" type="button" onclick="window.location.href='/mippy/User_Register';" value="新規登録">
+				<input name="signin" type="submit" onclick="window.location.href='/mippy/Login';" value="ログイン">
 			</div>
 		</main>
 	</form>

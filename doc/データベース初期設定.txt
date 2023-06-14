@@ -2,7 +2,7 @@
 org.h2.Driver
 
 【JDBC URL】
-jdbc:h2:file:C:/pleiades/workspace/data/miffy
+jdbc:h2:file:C:/pleiades/workspace/data/mippy
 
 
 【ユーザー名】	【パスワード】

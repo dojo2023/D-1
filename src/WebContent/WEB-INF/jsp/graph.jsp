@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>mippy</title>
-	<link rel="icon" href="/miffy/img/mippy1号.gif">
+	<link rel="icon" href="/mippy/img/mippy1号.gif">
 
     <!-- 共通css -->
 	<link rel="stylesheet" type="text/css" href="css/common.css">
@@ -19,24 +19,6 @@
     <script src="js/graph.js"></script>
 </head>
 <body>
-    <header>
-        <div id="head">
-            <a id="logo" href="カレンダーサーブレット"><img class="img" src="img/logo.png" alt="ロゴ"></a>
-            <div id="menu" onclick="menu()">
-                <ul id="menu_bar">
-                    <li class="bar"></li>
-                    <li class="bar"></li>
-                    <li class="bar"></li>
-                </ul>
-            </div>
-            <div id="box">
-                <ul id="menu_text"></ul>
-            </div>
-        </div>
-    </header>​
-    <form name="Top" method="POST" action="/miffy/Top">
-        <main>
-        </main>
-    </form>
+
 </body>
 </html>
