@@ -83,19 +83,19 @@ public class UserDao {
 			else {
 				pStmt.setString(1, "%");
 			}
-			if (param.getUser_height() != null) {
+			if (param.getUser_height() != 0) {
 				pStmt.setString(2, "%" + param.getUser_height() + "%");
 			}
 			else {
 				pStmt.setString(2, "%");
 			}
-			if (param.getUser_weight() != null) {
+			if (param.getUser_weight() != 0) {
 				pStmt.setString(3, "%" + param.getUser_weight() + "%");
 			}
 			else {
 				pStmt.setString(3, "%");
 			}
-			if (param.getUser_gender() != null) {
+			if (param.getUser_gender() != 0) {
 				pStmt.setString(4, "%" + param.getUser_gender() + "%");
 			}
 			else {
@@ -107,7 +107,7 @@ public class UserDao {
 			else {
 				pStmt.setString(5, "%");
 			}
-			if (param.getUser_goalw() != null) {
+			if (param.getUser_goalw() != 0) {
 				pStmt.setString(6, "%" + param.getUser_goalw() + "%");
 			}
 			else {
@@ -119,13 +119,13 @@ public class UserDao {
 			else {
 				pStmt.setString(7, "%");
 			}
-			if (param.getUser_avatar() != null) {
+			if (param.getUser_avatar() != 0) {
 				pStmt.setString(8, "%" + param.getUser_avatar() + "%");
 			}
 			else {
 				pStmt.setString(8, "%");
 			}
-			if (param.getUser_color() != null) {
+			if (param.getUser_color() != 0) {
 				pStmt.setString(9, "%" + param.getUser_color() + "%");
 			}
 			else {
@@ -138,20 +138,20 @@ public class UserDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				User card = new User(
-				rs.getString("USER_ADDR"),
-				rs.getString("USER_PW"),
-				rs.getString("USER_SECRET"),
-				rs.getString("USER_NUM"),
-				rs.getString("USER_ANSWER"),
+				rs.getInt("USER_SECRET"),
 				rs.getString("USER_NICKNAME"),
-				rs.getString("USER_HEIGHT"),
-				rs.getString("USER_WEIGHT"),
-				rs.getString("USER_GENDER"),
-				rs.getString("USER_BIRTH"),
-				rs.getString("USER_GOALW"),
+				rs.getDouble("USER_HEIGHT"),
+				rs.getString("USER_PW"),
+				rs.getInt("USER_GENDER"),
 				rs.getString("USER_LIMIT"),
-				rs.getString("USER_AVATAR"),
-				rs.getString("USER_COLOR")
+				rs.getString("USER_BIRTH"),
+				rs.getDouble("USER_WEIGHT"),
+				rs.getString("USER_ANSWER"),
+				rs.getDouble("USER_GOALW"),
+				rs.getInt("USER_COLOR"),
+				rs.getString("USER_ADDR"),
+				rs.getInt("USER_AVATAR"),
+				rs.getInt("USER_NUM")
 				);
 				cardList.add(card);
 			}
@@ -198,11 +198,11 @@ public class UserDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getUser_num() != null && !card.getUser_num().equals("")) {
-				pStmt.setString(1, card.getUser_num());
+			if (card.getUser_num() != 0) {
+				pStmt.setInt(1, card.getUser_num());
 			}
 			else {
-				pStmt.setString(1, null);
+				pStmt.setInt(1, 0);
 			}
 
 			if (card.getUser_addr() != null && !card.getUser_addr().equals("")) {
@@ -226,32 +226,32 @@ public class UserDao {
 				pStmt.setString(4, null);
 			}
 
-			if (card.getUser_height() != null && !card.getUser_height().equals("")) {
-				pStmt.setString(5, card.getUser_height());
+			if (card.getUser_height() != 0) {
+				pStmt.setDouble(5, card.getUser_height());
 			}
 			else {
-				pStmt.setString(5, null);
+				pStmt.setDouble(5, 0);
 			}
 
-			if (card.getUser_weight() != null && !card.getUser_weight().equals("")) {
-				pStmt.setString(6, card.getUser_weight());
+			if (card.getUser_weight() != 0) {
+				pStmt.setDouble(6, card.getUser_weight());
 			}
 			else {
-				pStmt.setString(6, null);
+				pStmt.setDouble(6, 0);
 			}
 
-			if (card.getUser_gender() != null && !card.getUser_gender().equals("")) {
-				pStmt.setString(7, card.getUser_gender());
+			if (card.getUser_gender() != 0) {
+				pStmt.setInt(7, card.getUser_gender());
 			}
 			else {
-				pStmt.setString(7, null);
+				pStmt.setInt(7, 0);
 			}
 
-			if (card.getUser_goalw() != null && !card.getUser_goalw().equals("")) {
-				pStmt.setString(8, card.getUser_goalw());
+			if (card.getUser_goalw() != 0) {
+				pStmt.setDouble(8, card.getUser_goalw());
 			}
 			else {
-				pStmt.setString(8, null);
+				pStmt.setDouble(8, 0);
 			}
 
 			if (card.getUser_birth() != null && !card.getUser_birth().equals("")) {
@@ -268,20 +268,20 @@ public class UserDao {
 				pStmt.setString(10, null);
 			}
 
-			if (card.getUser_secret() != null && !card.getUser_secret().equals("")) {
-				pStmt.setString(11, card.getUser_secret());
+			if (card.getUser_secret() != 0) {
+				pStmt.setInt(11, card.getUser_secret());
 			}
 			else {
-				pStmt.setString(11, null);
+				pStmt.setInt(11, 0);
 			}
-			if (card.getUser_avatar() != null && !card.getUser_avatar().equals("")) {
-				pStmt.setString(12, card.getUser_avatar());
+			if (card.getUser_avatar() != 0) {
+				pStmt.setInt(12, card.getUser_avatar());
 			}
 			else {
 				pStmt.setString(12, null);
 			}
-			if (card.getUser_color() != null && !card.getUser_color().equals("")) {
-				pStmt.setString(13, card.getUser_color());
+			if (card.getUser_color() != 0) {
+				pStmt.setInt(13, card.getUser_color());
 			}
 			else {
 				pStmt.setString(13, null);
@@ -345,32 +345,32 @@ public class UserDao {
 				pStmt.setString(2, null);
 			}
 
-			if (card.getUser_height() != null && !card.getUser_height().equals("")) {
-				pStmt.setString(3, card.getUser_height());
+			if (card.getUser_height() != 0) {
+				pStmt.setDouble(3, card.getUser_height());
 			}
 			else {
-				pStmt.setString(3, null);
+				pStmt.setDouble(3, 0);
 			}
 
-			if (card.getUser_weight() != null && !card.getUser_weight().equals("")) {
-				pStmt.setString(4, card.getUser_weight());
+			if (card.getUser_weight() != 0) {
+				pStmt.setDouble(4, card.getUser_weight());
 			}
 			else {
-				pStmt.setString(4, null);
+				pStmt.setDouble(4, 0);
 			}
 
-			if (card.getUser_gender() != null && !card.getUser_gender().equals("")) {
-				pStmt.setString(5, card.getUser_gender());
+			if (card.getUser_gender() != 0) {
+				pStmt.setDouble(5, card.getUser_gender());
 			}
 			else {
-				pStmt.setString(5, null);
+				pStmt.setDouble(5, 0);
 			}
 
-			if (card.getUser_goalw() != null && !card.getUser_goalw().equals("")) {
-				pStmt.setString(6, card.getUser_goalw());
+			if (card.getUser_goalw() != 0) {
+				pStmt.setDouble(6, card.getUser_goalw());
 			}
 			else {
-				pStmt.setString(6, null);
+				pStmt.setDouble(6, 0);
 			}
 
 			if (card.getUser_birth() != null && !card.getUser_birth().equals("")) {
@@ -387,21 +387,21 @@ public class UserDao {
 				pStmt.setString(8, null);
 			}
 
-			if (card.getUser_avatar() != null && !card.getUser_avatar().equals("")) {
-				pStmt.setString(9, card.getUser_avatar());
+			if (card.getUser_avatar() != 0) {
+				pStmt.setInt(9, card.getUser_avatar());
 			}
 			else {
-				pStmt.setString(9, null);
+				pStmt.setInt(9, 0);
 			}
 
-			if (card.getUser_color() != null && !card.getUser_color().equals("")) {
-				pStmt.setString(10, card.getUser_color());
+			if (card.getUser_color() != 0) {
+				pStmt.setInt(10, card.getUser_color());
 			}
 			else {
-				pStmt.setString(10, null);
+				pStmt.setInt(10, 0);
 			}
 
-			pStmt.setString(11, card.getUser_num());
+			pStmt.setInt(11, card.getUser_num());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

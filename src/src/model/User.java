@@ -2,24 +2,24 @@ package model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-	private String user_num;
+	private int user_num;
 	private String user_addr; // ID
 	private String user_pw;	// PW
 	private String user_nickname;
-	private String user_height; //cm
-	private String user_weight; //kg
-	private String user_gender; //0male, 1female, 2other
-	private String user_goalw; //date
+	private double user_height; //cm
+	private double user_weight; //kg
+	private int user_gender; //1male, 2female, 3other
+	private double user_goalw; //kg
 	private String user_birth; //date
 	private String user_limit; //date
-	private String user_secret;
+	private int user_secret;
 	private String user_answer;
-	private String user_avatar;
-	private String user_color;
+	private int user_avatar;
+	private int user_color;
 
-	public User(String user_secret, String user_nickname, String user_height, String user_pw, String user_gender,
-			String user_limit, String user_birth, String user_weight, String user_answer, String user_goalw,
-			String user_color, String user_addr, String user_avatar, String user_num) {
+	public User(int user_secret, String user_nickname, double user_height, String user_pw, int user_gender,
+			String user_limit, String user_birth, double user_weight, String user_answer, double user_goalw,
+			int user_color, String user_addr, int user_avatar, int user_num) {
 
 		this.user_secret = user_secret;
 		this.user_nickname = user_nickname;
@@ -38,27 +38,27 @@ public class User implements Serializable {
 	}
 //初期値？
 	public User() {
-		this.user_secret = "0";
+		this.user_secret = 0;
 		this.user_nickname = "USER";
-		this.user_height = "0";
+		this.user_height = 0;
 		this.user_pw = "";
-		this.user_gender = "0";
+		this.user_gender = 0;
 		this.user_limit = "0";
 		this.user_birth = "0";
-		this.user_weight = "0";
+		this.user_weight = 0;
 		this.user_answer = "0";
-		this.user_goalw = "0";
-		this.user_color = "0";
+		this.user_goalw = 0;
+		this.user_color = 0;
 		this.user_addr = "";
-		this.user_avatar = "0";
-		this.user_num = "0";
+		this.user_avatar = 0;
+		this.user_num = 0;
 	}
 
-	public String getUser_num() {
+	public int getUser_num() {
 		return user_num;
 	}
 
-	public void setUser_num(String user_num) {
+	public void setUser_num(int user_num) {
 		this.user_num = user_num;
 	}
 
@@ -86,35 +86,35 @@ public class User implements Serializable {
 		this.user_nickname = user_nickname;
 	}
 
-	public String getUser_height() {
+	public double getUser_height() {
 		return user_height;
 	}
 
-	public void setUser_height(String user_height) {
+	public void setUser_height(double user_height) {
 		this.user_height = user_height;
 	}
 
-	public String getUser_weight() {
+	public double getUser_weight() {
 		return user_weight;
 	}
 
-	public void setUser_weight(String user_weight) {
+	public void setUser_weight(double user_weight) {
 		this.user_weight = user_weight;
 	}
 
-	public String getUser_gender() {
+	public int getUser_gender() {
 		return user_gender;
 	}
 
-	public void setUser_gender(String user_gender) {
+	public void setUser_gender(int user_gender) {
 		this.user_gender = user_gender;
 	}
 
-	public String getUser_goalw() {
+	public double getUser_goalw() {
 		return user_goalw;
 	}
 
-	public void setUser_goalw(String user_goalw) {
+	public void setUser_goalw(double user_goalw) {
 		this.user_goalw = user_goalw;
 	}
 
@@ -134,11 +134,11 @@ public class User implements Serializable {
 		this.user_limit = user_limit;
 	}
 
-	public String getUser_secret() {
+	public int getUser_secret() {
 		return user_secret;
 	}
 
-	public void setUser_secret(String user_secret) {
+	public void setUser_secret(int user_secret) {
 		this.user_secret = user_secret;
 	}
 
@@ -150,19 +150,19 @@ public class User implements Serializable {
 		this.user_answer = user_answer;
 	}
 
-	public String getUser_avatar() {
+	public int getUser_avatar() {
 		return user_avatar;
 	}
 
-	public void setUser_avatar(String user_avatar) {
+	public void setUser_avatar(int user_avatar) {
 		this.user_avatar = user_avatar;
 	}
 
-	public String getUser_color() {
+	public int getUser_color() {
 		return user_color;
 	}
 
-	public void setUser_color(String user_color) {
+	public void setUser_color(int user_color) {
 		this.user_color = user_color;
 	}
 }
