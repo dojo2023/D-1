@@ -28,7 +28,6 @@ public class Food_registerServlet extends HttpServlet {
 		FoodDao Fdao = new FoodDao();
 		List<Food> f_category = Fdao.cat_select();
 
-
 		//情報をセットしておく
 		request.setAttribute("f_category", f_category);
 
@@ -41,7 +40,54 @@ public class Food_registerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String category;
+		String name;
+		Food food = new Food();
+		FoodDao Fdao = new FoodDao();
+		//double cal = Double.parseDouble(request.getParameter("a_cal"));
+
+		//検索ボタンを押された
+		if (request.getParameter("s_submit") != null) {
+
+			//HTMLから取得
+			category = request.getParameter("s_category");
+			name = request.getParameter("s_name");
+
+			//modelにセット
+			food.setFoods_category(category);
+			food.setFoods_name(name);
+
+			//検索をかける
+			List<Food> search_list = Fdao.search(food);
+			request.setAttribute("search_list", search_list);
+
+			//画面に戻る
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/food_register.jsp");
+			dispatcher.forward(request, response);
+
+			System.out.println("成功");
+		//追加ボタンを押された
+		}else if (request.getParameter("a_submit") != null) {
+			category = request.getParameter("a_category");
+			name = request.getParameter("a_name");
+		}
+
+		/*
+		Food food = new Food();
+		food.setFoods_category(category);
+		food.setFoods_name(name);
+		food.setFoods_cal(cal);
+
+		FoodDao Fdao = new FoodDao();
+		boolean insert = Fdao.insert(food);
+
+		if(insert) {
+			System.out.println("追加できた");
+		}else {
+			System.out.println("追加できない");
+		}
+		*/
 	}
 
 }
