@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>名刺管理</title>
+	<title>mippy</title>
 	<link rel="icon" href="/mippy/img/mippy1号.gif">
 
     <!-- 共通css -->
