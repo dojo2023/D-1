@@ -10,14 +10,14 @@
 	<link rel="icon" href="/mippy/img/mippy1号.gif">
 
     <!-- 共通css -->
-	<link rel="stylesheet" type="text/css" href="/miffy/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/mippy/css/common.css">
     <!-- login用css -->
-    <link rel="stylesheet" type="text/css" href="/miffy/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/mippy/css/login.css">
 
     <!-- 共通js -->
-    <script src="/miffy/js/common.js"></script>
+    <script src="/mippy/js/common.js"></script>
     <!-- login用js -->
-    <script src="/miffy/js/login.js"></script>
+    <script src="/mippy/js/login.js"></script>
 
 </head>
 <body>
@@ -44,10 +44,10 @@
 
 	<div class ="big-button1">
         <button type = "button" class = "button1">ログイン</button>
-		<input type="button" class = "button1" onclick="location.href='/miffy/User_RegisterServlet'" value="新規登録">
+		<input type="button" class = "button1" onclick="location.href='/mippy/User_RegisterServlet'" value="新規登録">
 	</div>
 
-	<form name="LoginServlet" method="POST" action="/miffy/LoginServlet">
+	<form name="LoginServlet" method="POST" action="/mippy/LoginServlet">
 		<div class = "login-form">
             <div class = "sign-in-html">
 
@@ -64,7 +64,7 @@
             </div>
 
 			<div class ="big-button2">
-					<input type="submit" class = "button2" value="ログイン">
+					<input type="submit" class = "button2" value="ログイン" onClick = "return check();">
  					<input type = "reset" class = "button2">
 			</div>
 
