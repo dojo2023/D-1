@@ -23,7 +23,7 @@ public class RegisterDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/miffy", "sa", "");
 
-			// SQL文を準備する
+			// SQL文を準備・ SELECT分でUSER_NUM,RECORD_DATEで検索する時使用
 			String sql = "SELECT M_USER.USER_NUM,  M_USER.USER_NICKNAME, M_RECORD.RECORD_DATE, \r\n"
 					+ "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '1' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS breakfast,\r\n"
 					+ "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '2' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS lunch,\r\n"
@@ -35,7 +35,7 @@ public class RegisterDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getUser_num() != null) {
+			if (param.getUser_num() != 0) {
 				pStmt.setString(1, "%" + param.getUser_num() + "%");
 			}
 			else {
@@ -54,10 +54,10 @@ public class RegisterDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Register card = new Register(
-				rs.getString("USER_NUM"),
+				rs.getInt("USER_NUM"),
 				rs.getString("USER_NICKNAME"),
 				rs.getString("RECORD_DATE"),
-				rs.getString("FOODS_NUM")
+				rs.getInt("FOODS_NUM")
 				);
 				cardList.add(card);
 			}
