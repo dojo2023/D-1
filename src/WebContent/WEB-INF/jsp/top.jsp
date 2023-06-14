@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>mippy</title>
+	<title>名刺管理</title>
 	<link rel="icon" href="/miffy/img/mippy1号.gif">
 
     <!-- 共通css -->
@@ -46,8 +46,8 @@
 			</div>
 			<p class="exp">説明文</p>
 			<div class="sign">
-				<input name="signin" type="button" onclick="window.location.href='/miffy/LoginServlet';" value="ログイン">
-				<input name="signup" type="button" onclick="window.location.href='/miffy/User_RegisterServlet';" value="新規登録">
+				<input name="signup" type="button" onclick="window.location.href='/miffy/User_Register';" value="新規登録">
+				<input name="signin" type="submit" onclick="window.location.href='/miffy/Login';" value="ログイン">
 			</div>
 		</main>
 	</form>
