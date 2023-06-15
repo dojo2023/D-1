@@ -8,7 +8,7 @@ body {
     background:linear-gradient(to right,#AEE2FF,#AEE2FF);
     font-family:"Yusei Magic";
 }
-.center{
+center{
 	position:absolute;
 	top:50%;
 	left:50%;
@@ -82,7 +82,8 @@ form {
   box-shadow:15px 15px 0px rgba(0,0,0,.1);
 }
 input {
-  width:100%;
+  width:70vw;
+  margin: auto;
   background:#f5f5f5;
   border:0;
   padding:20px;
@@ -97,20 +98,24 @@ input {
 	margin:10px 0px 20px;
 	font-size:25px;
 }
-.popup .form .form-element label{
+.form .form-element label{
 	font-size:14px;
 	color:#222;
 }
-.popup .form .form-element input[type="text"],
-.popup .form .form-element input[type="newpassword"],
-.popup .form .form-element input[type="chpassword"]{
+.form .form-element input[type="text"],
+.form .form-element input[type="newpassword"],
+.form .form-element input[type="chpassword"]{
 	margin-top:5px;
 	display:blorgb(157, 234, 232)157, 234, 232)0, 255, 255)128, 255, 255)
-	width:100%;
+	width:70vw;
 	padding:10px;
 	outline:none;
 	border:1px solid #aaa;
 	border-radius:5px;
+}
+form-element{
+	width: 50vw;
+    margin: auto;
 }
 .table button{
     width:100%;
