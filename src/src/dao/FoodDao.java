@@ -27,29 +27,19 @@ public class FoodDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getFoods_num() != 0) {
-				pStmt.setString(1, "%" + param.getFoods_num() + "%");
+
+			if (param.getFoods_category() != null) {
+				pStmt.setString(1, "%" + param.getFoods_category() + "%");
 			}
 			else {
 				pStmt.setString(1, "%");
 			}
-			if (param.getFoods_category() != null) {
-				pStmt.setString(2, "%" + param.getFoods_category() + "%");
+
+			if (param.getFoods_name() != null) {
+				pStmt.setString(2, "%" + param.getFoods_name() + "%");
 			}
 			else {
 				pStmt.setString(2, "%");
-			}
-			if (param.getFoods_name() != null) {
-				pStmt.setString(3, "%" + param.getFoods_name() + "%");
-			}
-			else {
-				pStmt.setString(3, "%");
-			}
-			if (param.getFoods_cal() != 0) {
-				pStmt.setString(4, "%" + param.getFoods_cal() + "%");
-			}
-			else {
-				pStmt.setString(4, "%");
 			}
 
 			// SQL文を実行し、結果表を取得する
