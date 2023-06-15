@@ -507,21 +507,21 @@ public class UserDao {
 	        // 結果セットからデータを取得し、Userオブジェクトを作成してリストに追加
 	        while (rs.next()) {
 	            User user = new User(
-	                rs.getInt("USER_SECRET"),
-	                rs.getString("USER_NICKNAME"),
-	                rs.getDouble("USER_HEIGHT"),
-	                rs.getString("USER_PW"),
-	                rs.getInt("USER_GENDER"),
-	                rs.getString("USER_LIMIT"),
-	                rs.getString("USER_BIRTH"),
-	                rs.getDouble("USER_WEIGHT"),
-	                rs.getString("USER_ANSWER"),
-	                rs.getDouble("USER_GOALW"),
-	                rs.getInt("USER_COLOR"),
-	                rs.getString("USER_ADDR"),
-	                rs.getInt("USER_AVATAR"),
-	                rs.getInt("USER_NUM")
-	            );
+            		rs.getInt("USER_NUM"),
+    				rs.getString("USER_ADDR"),
+    				rs.getString("USER_PW"),
+    				rs.getString("USER_NICKNAME"),
+    				rs.getDouble("USER_HEIGHT"),
+    				rs.getDouble("USER_WEIGHT"),
+    				rs.getInt("USER_GENDER"),
+    				rs.getDouble("USER_GOALW"),
+    				rs.getString("USER_BIRTH"),
+    				rs.getString("USER_LIMIT"),
+    				rs.getInt("USER_SECRET"),
+    				rs.getString("USER_ANSWER"),
+    				rs.getInt("USER_AVATAR"),
+    				rs.getInt("USER_COLOR")
+    			);
 	            userList.add(user);
 	        }
 	    } catch (SQLException e) {
