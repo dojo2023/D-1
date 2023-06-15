@@ -158,7 +158,7 @@ public class FoodDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
-			// 全ての項目を入れました　
+			// 　
 			String sql = "select FOODS_NAME, FOODS_CAL from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
