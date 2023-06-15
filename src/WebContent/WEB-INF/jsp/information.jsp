@@ -39,8 +39,8 @@
 	     <table>
 	     	<div class = "form-element">
 	     		<tr>
-				<tb><button>更新</button></tb>
-				<tb><button>クリア</button></tb>
+				<tb><input type="submit" value="更新" /></tb>
+				<tb><input type="button" value="クリア" onclick="clearText()" /></tb>
 				</tr>
 			</div>
 		</table>
@@ -64,6 +64,15 @@
 		</table>
 	</div>
 	<script >
+	function clearText() {
+    	var textForm = document.getElementById("newpassword");
+      textForm.value = '';
+    }
+
+    function clearTextarea() {
+    	var textareaForm = document.getElementById("chpassword");
+      textareaForm.value = '';
+    }
 	const btn = document.getElementById('btn');
 
         function SheckPassword(password_confirmation) {
@@ -77,6 +86,7 @@
             }else{
                 password_confirmation.setCustomValidity('');
             }
+
 	</script>
 </body>
 </html>
