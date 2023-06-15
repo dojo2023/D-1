@@ -54,15 +54,15 @@
 
      <input id = "pass" type = "password" class = "input"><br>
      秘密の質問<br>
-     <select name="secret">
-        <option value="food">好きな食べ物は？</option>
-        <option value="pet">ペットの名前は？</option>
-        <option value="school">小学校の名前は？</option>
-        <option value="name">母親の旧姓は？</option>
-        <option value="date">一番最初にデートした場所は？</option>
-        <option value="love">初恋の相手の名前は？</option>
-        <option value="sushi">好きなお寿司のネタは？</option>
-        <option value="chara">好きなキャラクターは？</option>
+     <select name="USER_SECRET">
+        <option value="1">好きな食べ物は？</option>
+        <option value="2">ペットの名前は？</option>
+        <option value="3">小学校の名前は？</option>
+        <option value="4">母親の旧姓は？</option>
+        <option value="5">一番最初にデートした場所は？</option>
+        <option value="6">初恋の相手の名前は？</option>
+        <option value="7">好きなお寿司のネタは？</option>
+        <option value="8">好きなキャラクターは？</option>
      </select><br>
      秘密の質問の答え<br>
      <input type ="text" name ="USER_ANSWER"><br>

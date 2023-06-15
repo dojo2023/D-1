@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserDao;
+import model.User;
+
 /**
  * Servlet implementation class User_RegisterServlet
  */
@@ -33,22 +36,24 @@ public class User_RegisterServlet extends HttpServlet {
         // リクエストパラメータからフォームデータを取得
         String email = request.getParameter("USER_ADDR");
         String password = request.getParameter("USER_PW");
-        //String confirmPassword = request.getParameter("confirmPassword");
-        String secretQuestion = request.getParameter("secret");
+        int secretQuestion = Integer.parseInt(request.getParameter("USER_SECRET"));
         String secretAnswer = request.getParameter("USER_ANSWER");
 
-        // フォームデータの処理
-        // データベースへの登録
+        // データベースへの登録 email
+        UserDao uDao = new UserDao();
+        User user = new User();
+        user.setUser_addr(email);
+        user.setUser_pw(password);
+        user.setUser_secret(secretQuestion);
+        user.setUser_answer(secretAnswer);
 
-        // レスポンスを設定
-        /*response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("登録が完了しました");
-        */
+        uDao.insert(user);
+
+
+        //レスポンスを設定
         request.setAttribute("message", "登録が完了しました");
-
-        //response.sendRedirect("/mippy/TopServlet");
         request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+
     }
 
 }
