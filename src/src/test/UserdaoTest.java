@@ -30,7 +30,7 @@ public class UserdaoTest {
 		}
 
 		// insert()のテスト
-		System.out.println("---------- insert()のテスト ----------");
+		System.out.println("---------- insert()のテスト ----------");//全身が書いているがUserDaoのinsert文通りADDR,PW,SECRET,ANSWERだけがが保存される
 		User insRec = new User(10, "ap@gmail.com", "password", "aasaa", 131.4, 45.6, 2, 40.0, "2000-01-01", "2023-06-30", 3, "answer", 1, 3);
 
 		if (dao.insert(insRec)) {
@@ -60,7 +60,7 @@ public class UserdaoTest {
 
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		User upRec = new User(10, "ap@gmail.com", "password", "更新", 131.4, 45.6, 2, 40.0, "2000-01-01", "2023-06-30", 3, "更新", 1, 3);
+		User upRec = new User(2/*USER_NUMが一致ないと更新できない*/, "ap@gmail.com", "password", "更新３", 131.4, 45.6, 2, 40.0, "2000-01-01", "2023-06-30", 3, "更新", 1, 3);
 
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
