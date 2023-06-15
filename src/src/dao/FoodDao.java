@@ -128,12 +128,6 @@ public class FoodDao {
 				pStmt.setString(3, null);
 			}
 
-			if (card.getFoods_cal() != 0) {
-				pStmt.setDouble(4, card.getFoods_cal());
-			}
-			else {
-				pStmt.setString(4, null);
-			}
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

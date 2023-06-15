@@ -28,13 +28,13 @@ public class GraphServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		String user_addr = (String) session.getAttribute("user_addr");
 
-		UserDao dao = new UserDao();
+		UserDao uDao = new UserDao();
 
         // DAOのメソッドを呼び出してリストを取得
-        List<User> resultList = dao.selectAll();
+        List<User> userList = uDao.selectByUserAddress(user_addr);
+        request.setAttribute("userList",userList);
         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
 	/**
