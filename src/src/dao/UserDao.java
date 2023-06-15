@@ -442,5 +442,69 @@ public class UserDao {
 	//delete文いらない？
 
 
+	//graph用メソッド
+	public List<User> selectByUserAddress(String user_addr) {
+	    Connection conn = null;
+	    List<User> userList = new ArrayList<>();
+
+	    try {
+	        // JDBCドライバを読み込む
+	        Class.forName("org.h2.Driver");
+
+	        // データベースに接続する
+	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+	        // SQLクエリを作成
+	        String sql = "SELECT * FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
+	        PreparedStatement pStmt = conn.prepareStatement(sql);
+
+	        // プレースホルダにログイン中のユーザーの住所を設定
+	        pStmt.setString(1, user_addr);
+
+	        // SQL文を実行し、結果セットを取得
+	        ResultSet rs = pStmt.executeQuery();
+
+	        // 結果セットからデータを取得し、Userオブジェクトを作成してリストに追加
+	        while (rs.next()) {
+	            User user = new User(
+	                rs.getInt("USER_SECRET"),
+	                rs.getString("USER_NICKNAME"),
+	                rs.getDouble("USER_HEIGHT"),
+	                rs.getString("USER_PW"),
+	                rs.getInt("USER_GENDER"),
+	                rs.getString("USER_LIMIT"),
+	                rs.getString("USER_BIRTH"),
+	                rs.getDouble("USER_WEIGHT"),
+	                rs.getString("USER_ANSWER"),
+	                rs.getDouble("USER_GOALW"),
+	                rs.getInt("USER_COLOR"),
+	                rs.getString("USER_ADDR"),
+	                rs.getInt("USER_AVATAR"),
+	                rs.getInt("USER_NUM")
+	            );
+	            userList.add(user);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        userList = null;
+	    } catch (ClassNotFoundException e) {
+	        e.printStackTrace();
+	        userList = null;
+	    } finally {
+	        // データベースを切断
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	                userList = null;
+	            }
+	        }
+	    }
+
+	    // 結果を返す
+	    return userList;
+	}
+
 
 }

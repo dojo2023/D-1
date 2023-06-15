@@ -44,11 +44,11 @@
                 <canvas id="graph" width="1000" height="400"></canvas>
             </div>
             <div class="goal">
-            	<form method="POST" action="/mippy/">
-					基礎代謝<input type="text" name="NUMBER" value="${e.number}"><br>
-					目標カロリー<input type="text" name="NUMBER" value="${e.number}"><br>
-					目標まであと<input type="text" name="NUMBER" value="${e.number}"><br>
-				</form>
+            	<c:forEach var="goal" items="${cardList}" >
+					基礎代謝（BMR）<br>${bmr}<br>
+					目標体重<br>${goal.user_weight}kg<br>
+					目標まであと<br>${object}<br>
+				</c:forEach>
             </div>
         </main>
     </form>
