@@ -198,7 +198,7 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 全ても項目を入れました（新規登録の時に使うと思うので）
-			String sql = "insert into M_USER USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER values (?, ?, ?, ?)";
+			String sql = "insert into M_USER (USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER) values (?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
