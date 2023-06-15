@@ -76,7 +76,7 @@ public class UserDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
-			// USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER以外全部入れた --> 入れなかったらテストでエラーが出るので入れるようにしました。。
+			// USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER以外全部入れた(selectに) --> 入れなかったらテストでエラーが出るので入れるようにしました。。
 			String sql = "select USER_NUM, USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER, USER_NICKNAME, USER_HEIGHT, USER_WEIGHT, USER_GENDER, USER_BIRTH, USER_GOALW, USER_LIMIT, USER_AVATAR, USER_COLOR from M_USER WHERE USER_NICKNAME LIKE ? AND USER_HEIGHT LIKE ? AND USER_WEIGHT LIKE ? AND USER_GENDER LIKE ? AND USER_BIRTH LIKE ? AND USER_GOALW LIKE ? AND USER_LIMIT LIKE ? AND USER_AVATAR LIKE ? AND USER_COLOR LIKE ?  ORDER BY USER_NUM";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -389,7 +389,7 @@ public class UserDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
-			String sql = "SELECT USER_NUM M_USER WHERE USER_ADDR = ?";
+			String sql = "SELECT USER_NUM FROM M_USER WHERE USER_ADDR = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, user.getId());
 			ResultSet rs = pStmt.executeQuery();

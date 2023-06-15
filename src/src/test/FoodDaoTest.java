@@ -20,13 +20,13 @@ public class FoodDaoTest {
 			System.out.println("FOODS_CAL：" + card.getFoods_cal());
 			System.out.println();
 		}
-		// insert()のテスト  cardList 番号が被るとエラーでるが実際のDaoではcardList使用後、初期化するので問題ない
+		// insert()のテスト
 		System.out.println("---------- insert()のテスト ----------");
 		Food insRec = new Food(202, "主食", "pizza", 5846.8);
 		if (dao.insert(insRec)) {
 			System.out.println("登録成功！");
-			List<Food> cardList = dao.select(insRec);
-			for (Food card : cardList) {
+			List<Food> cardList2 = dao.select(insRec);
+			for (Food card : cardList2) {
 				System.out.println("FOODS_NUM：" + card.getFoods_num());
 				System.out.println("FOODS_CATEGORY：" + card.getFoods_category());
 				System.out.println("FOODS_NAME：" + card.getFoods_name());
