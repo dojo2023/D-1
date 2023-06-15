@@ -25,9 +25,9 @@ public class GraphServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session=request.getSession();
         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
 		dispatcher.forward(request, response);
-		HttpSession session=request.getSession();
 		String user_addr = (String) session.getAttribute("user_addr");
 
 		UserDao uDao = new UserDao();

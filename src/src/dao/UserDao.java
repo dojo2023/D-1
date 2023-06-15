@@ -429,34 +429,47 @@ public class UserDao {
 
 	        // SQLクエリを作成
 	        String sql = "SELECT * FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
+			String sql2 = "select count(*) from M_USER where USER_ADDR = ? and USER_PW = ?";
 	        PreparedStatement pStmt = conn.prepareStatement(sql);
+	        PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 	        // プレースホルダにログイン中のユーザーの住所を設定
-	        pStmt.setString(1, user_addr);
+	        pStmt2.setString(1, user_addr);
+	        System.out.println(user_addr);
 
 	        // SQL文を実行し、結果セットを取得
 	        ResultSet rs = pStmt.executeQuery();
+	        ResultSet rs2 = pStmt2.executeQuery();
+	        System.out.println("hello");
+
+			// ユーザーID一致するユーザーがいたかどうかをチェックする
+			rs.next();
+			System.out.println(rs2.getInt("count(*)"));
+			if (rs2.getInt("count(*)") == 1) {
+				while (rs.next()) {
+		            User user = new User(
+	            		rs.getInt("USER_NUM"),
+	    				rs.getString("USER_ADDR"),
+	    				rs.getString("USER_PW"),
+	    				rs.getString("USER_NICKNAME"),
+	    				rs.getDouble("USER_HEIGHT"),
+	    				rs.getDouble("USER_WEIGHT"),
+	    				rs.getInt("USER_GENDER"),
+	    				rs.getDouble("USER_GOALW"),
+	    				rs.getString("USER_BIRTH"),
+	    				rs.getString("USER_LIMIT"),
+	    				rs.getInt("USER_SECRET"),
+	    				rs.getString("USER_ANSWER"),
+	    				rs.getInt("USER_AVATAR"),
+	    				rs.getInt("USER_COLOR")
+	    			);
+		            userList.add(user);
+		        }
+			}
 
 	        // 結果セットからデータを取得し、Userオブジェクトを作成してリストに追加
-	        while (rs.next()) {
-	            User user = new User(
-            		rs.getInt("USER_NUM"),
-    				rs.getString("USER_ADDR"),
-    				rs.getString("USER_PW"),
-    				rs.getString("USER_NICKNAME"),
-    				rs.getDouble("USER_HEIGHT"),
-    				rs.getDouble("USER_WEIGHT"),
-    				rs.getInt("USER_GENDER"),
-    				rs.getDouble("USER_GOALW"),
-    				rs.getString("USER_BIRTH"),
-    				rs.getString("USER_LIMIT"),
-    				rs.getInt("USER_SECRET"),
-    				rs.getString("USER_ANSWER"),
-    				rs.getInt("USER_AVATAR"),
-    				rs.getInt("USER_COLOR")
-    			);
-	            userList.add(user);
-	        }
+
+	        System.out.println(userList);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	        userList = null;
