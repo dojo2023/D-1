@@ -2,7 +2,7 @@
 
 body {
 	background-color: #ffffff;
-	font: "油性マジック";
+	font: "";
 }
 
 .login-wrap {
@@ -42,7 +42,6 @@ body {
 }
 
 .foot-link {
-	margin-top:50px;
 	text-align: center;
 	text-decoration: underline;
 	color: black;
@@ -52,3 +51,8 @@ a:hover{
 	color:red;
 	text-decoration: underline;
 }
+
+#output {
+	color:red;
+
+	}

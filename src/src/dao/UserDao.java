@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Loggedin;
 import model.User;
 
 public class UserDao {
@@ -75,8 +76,8 @@ public class UserDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
-			// USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER以外全部入れた
-			String sql = "select USER_NICKNAME, USER_HEIGHT, USER_WEIGHT, USER_GENDER, USER_BIRTH, USER_GOALW, USER_LIMIT, USER_AVATAR, USER_COLOR from M_USER WHERE USER_NICKNAME LIKE ? AND USER_HEIGHT LIKE ? AND USER_WEIGHT LIKE ? AND USER_GENDER LIKE ? AND USER_BIRTH LIKE ? AND USER_GOALW LIKE ? AND USER_LIMIT LIKE ? AND USER_AVATAR LIKE ? AND USER_COLOR LIKE ?  ORDER BY USER_NUM";
+			// USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER以外全部入れた --> 入れなかったらテストでエラーが出るので入れるようにしました。。
+			String sql = "select USER_NUM, USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER, USER_NICKNAME, USER_HEIGHT, USER_WEIGHT, USER_GENDER, USER_BIRTH, USER_GOALW, USER_LIMIT, USER_AVATAR, USER_COLOR from M_USER WHERE USER_NICKNAME LIKE ? AND USER_HEIGHT LIKE ? AND USER_WEIGHT LIKE ? AND USER_GENDER LIKE ? AND USER_BIRTH LIKE ? AND USER_GOALW LIKE ? AND USER_LIMIT LIKE ? AND USER_AVATAR LIKE ? AND USER_COLOR LIKE ?  ORDER BY USER_NUM";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -141,20 +142,20 @@ public class UserDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				User card = new User(
-				rs.getInt("USER_SECRET"),
+				rs.getInt("USER_NUM"),
+				rs.getString("USER_ADDR"),
+				rs.getString("USER_PW"),
 				rs.getString("USER_NICKNAME"),
 				rs.getDouble("USER_HEIGHT"),
-				rs.getString("USER_PW"),
-				rs.getInt("USER_GENDER"),
-				rs.getString("USER_LIMIT"),
-				rs.getString("USER_BIRTH"),
 				rs.getDouble("USER_WEIGHT"),
-				rs.getString("USER_ANSWER"),
+				rs.getInt("USER_GENDER"),
 				rs.getDouble("USER_GOALW"),
-				rs.getInt("USER_COLOR"),
-				rs.getString("USER_ADDR"),
+				rs.getString("USER_BIRTH"),
+				rs.getString("USER_LIMIT"),
+				rs.getInt("USER_SECRET"),
+				rs.getString("USER_ANSWER"),
 				rs.getInt("USER_AVATAR"),
-				rs.getInt("USER_NUM")
+				rs.getInt("USER_COLOR")
 				);
 				cardList.add(card);
 			}
@@ -197,7 +198,7 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 全ても項目を入れました（新規登録の時に使うと思うので）
-			String sql = "insert into M_USER values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into M_USER values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -277,17 +278,23 @@ public class UserDao {
 			else {
 				pStmt.setInt(11, 0);
 			}
-			if (card.getUser_avatar() != 0) {
-				pStmt.setInt(12, card.getUser_avatar());
+			if (card.getUser_answer() != null && !card.getUser_limit().equals("")) {
+				pStmt.setString(12, card.getUser_answer());
 			}
 			else {
 				pStmt.setString(12, null);
 			}
-			if (card.getUser_color() != 0) {
-				pStmt.setInt(13, card.getUser_color());
+			if (card.getUser_avatar() != 0) {
+				pStmt.setInt(13, card.getUser_avatar());
 			}
 			else {
 				pStmt.setString(13, null);
+			}
+			if (card.getUser_color() != 0) {
+				pStmt.setInt(14, card.getUser_color());
+			}
+			else {
+				pStmt.setString(14, null);
 			}
 
 			// SQL文を実行する
@@ -330,7 +337,7 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 変更できる項目だけ入れました
-			String sql = "update M_USER set USER_PW=?, USER_NICKNAME=?, USER_HEIGHT=?, USER_WEIGHT=?, USER_GENDER=?, USER_GOALW=?, USER_BIRTH=?, USER_LIMIT=?, USER_AVATAR=? USER_COLOR=?  where USER_NUM=?";
+			String sql = "update M_USER set USER_PW=?, USER_NICKNAME=?, USER_HEIGHT=?, USER_WEIGHT=?, USER_GENDER=?, USER_GOALW=?, USER_BIRTH=?, USER_LIMIT=?, USER_AVATAR=?, USER_COLOR=?  where USER_NUM=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -434,7 +441,110 @@ public class UserDao {
 	}
 
 	//delete文いらない？
+	//↑たぶん
 
+	//user_numを取得
+	public int getNum(Loggedin user) {
+		int id = 0;
+		Connection conn = null;
+
+		try {
+
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+			String sql = "SELECT USER_NUM M_USER WHERE USER_ADDR = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, user.getId());
+			ResultSet rs = pStmt.executeQuery();
+
+			rs.next();
+			id = rs.getInt("USER_NUM");
+
+		}catch(SQLException e ) {
+
+		}catch(ClassNotFoundException e) {
+
+		}finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return id;
+	}
+
+	//graph用メソッド
+	public List<User> selectByUserAddress(String user_addr) {
+	    Connection conn = null;
+	    List<User> userList = new ArrayList<>();
+
+	    try {
+	        // JDBCドライバを読み込む
+	        Class.forName("org.h2.Driver");
+
+	        // データベースに接続する
+	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+	        // SQLクエリを作成
+	        String sql = "SELECT * FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
+	        PreparedStatement pStmt = conn.prepareStatement(sql);
+
+	        // プレースホルダにログイン中のユーザーの住所を設定
+	        pStmt.setString(1, user_addr);
+
+	        // SQL文を実行し、結果セットを取得
+	        ResultSet rs = pStmt.executeQuery();
+
+	        // 結果セットからデータを取得し、Userオブジェクトを作成してリストに追加
+	        while (rs.next()) {
+	            User user = new User(
+	                rs.getInt("USER_SECRET"),
+	                rs.getString("USER_NICKNAME"),
+	                rs.getDouble("USER_HEIGHT"),
+	                rs.getString("USER_PW"),
+	                rs.getInt("USER_GENDER"),
+	                rs.getString("USER_LIMIT"),
+	                rs.getString("USER_BIRTH"),
+	                rs.getDouble("USER_WEIGHT"),
+	                rs.getString("USER_ANSWER"),
+	                rs.getDouble("USER_GOALW"),
+	                rs.getInt("USER_COLOR"),
+	                rs.getString("USER_ADDR"),
+	                rs.getInt("USER_AVATAR"),
+	                rs.getInt("USER_NUM")
+	            );
+	            userList.add(user);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        userList = null;
+	    } catch (ClassNotFoundException e) {
+	        e.printStackTrace();
+	        userList = null;
+	    } finally {
+	        // データベースを切断
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	                userList = null;
+	            }
+	        }
+	    }
+
+	    // 結果を返す
+	    return userList;
+	}
 
 
 }
