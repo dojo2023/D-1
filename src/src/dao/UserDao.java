@@ -198,104 +198,37 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 全ても項目を入れました（新規登録の時に使うと思うので）
-			String sql = "insert into M_USER values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into M_USER (USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER) values (?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getUser_num() != 0) {
-				pStmt.setInt(1, card.getUser_num());
+			if (card.getUser_addr() != null && !card.getUser_addr().equals("")) {
+				pStmt.setString(1, card.getUser_addr());
 			}
 			else {
-				pStmt.setInt(1, 0);
+				pStmt.setString(1, null);
 			}
 
-			if (card.getUser_addr() != null && !card.getUser_addr().equals("")) {
-				pStmt.setString(2, card.getUser_addr());
+			if (card.getUser_pw() != null && !card.getUser_pw().equals("")) {
+				pStmt.setString(2, card.getUser_pw());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
 
-			if (card.getUser_pw() != null && !card.getUser_pw().equals("")) {
-				pStmt.setString(3, card.getUser_pw());
+			if (card.getUser_secret() != 0) {
+				pStmt.setInt(3, card.getUser_secret());
 			}
 			else {
-				pStmt.setString(3, null);
+				pStmt.setInt(3, 0);
 			}
-
-			if (card.getUser_nickname() != null && !card.getUser_nickname().equals("")) {
-				pStmt.setString(4, card.getUser_nickname());
+			if (card.getUser_answer() != null && !card.getUser_limit().equals("")) {
+				pStmt.setString(4, card.getUser_answer());
 			}
 			else {
 				pStmt.setString(4, null);
 			}
 
-			if (card.getUser_height() != 0) {
-				pStmt.setDouble(5, card.getUser_height());
-			}
-			else {
-				pStmt.setDouble(5, 0);
-			}
-
-			if (card.getUser_weight() != 0) {
-				pStmt.setDouble(6, card.getUser_weight());
-			}
-			else {
-				pStmt.setDouble(6, 0);
-			}
-
-			if (card.getUser_gender() != 0) {
-				pStmt.setInt(7, card.getUser_gender());
-			}
-			else {
-				pStmt.setInt(7, 0);
-			}
-
-			if (card.getUser_goalw() != 0) {
-				pStmt.setDouble(8, card.getUser_goalw());
-			}
-			else {
-				pStmt.setDouble(8, 0);
-			}
-
-			if (card.getUser_birth() != null && !card.getUser_birth().equals("")) {
-				pStmt.setString(9, card.getUser_birth());
-			}
-			else {
-				pStmt.setString(9, null);
-			}
-
-			if (card.getUser_limit() != null && !card.getUser_limit().equals("")) {
-				pStmt.setString(10, card.getUser_limit());
-			}
-			else {
-				pStmt.setString(10, null);
-			}
-
-			if (card.getUser_secret() != 0) {
-				pStmt.setInt(11, card.getUser_secret());
-			}
-			else {
-				pStmt.setInt(11, 0);
-			}
-			if (card.getUser_answer() != null && !card.getUser_limit().equals("")) {
-				pStmt.setString(12, card.getUser_answer());
-			}
-			else {
-				pStmt.setString(12, null);
-			}
-			if (card.getUser_avatar() != 0) {
-				pStmt.setInt(13, card.getUser_avatar());
-			}
-			else {
-				pStmt.setString(13, null);
-			}
-			if (card.getUser_color() != 0) {
-				pStmt.setInt(14, card.getUser_color());
-			}
-			else {
-				pStmt.setString(14, null);
-			}
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
