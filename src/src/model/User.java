@@ -17,24 +17,24 @@ public class User implements Serializable {
 	private int user_avatar;
 	private int user_color;
 
-	public User(int user_secret, String user_nickname, double user_height, String user_pw, int user_gender,
-			String user_limit, String user_birth, double user_weight, String user_answer, double user_goalw,
-			int user_color, String user_addr, int user_avatar, int user_num) {
+	public User(int user_num, String user_addr, String user_pw, String user_nickname, double user_height,
+	double user_weight, int user_gender, double user_goalw, String user_birth, String user_limit,
+	int user_secret, String user_answer, int user_avatar, int user_color) {
 
-		this.user_secret = user_secret;
+		this.user_num = user_num;
+		this.user_addr = user_addr;
+		this.user_pw = user_pw;
 		this.user_nickname = user_nickname;
 		this.user_height = user_height;
-		this.user_pw = user_pw;
-		this.user_gender = user_gender;
-		this.user_limit = user_limit;
-		this.user_birth = user_birth;
 		this.user_weight = user_weight;
-		this.user_answer = user_answer;
+		this.user_gender = user_gender;
 		this.user_goalw = user_goalw;
-		this.user_color = user_color;
-		this.user_addr = user_addr;
+		this.user_birth = user_birth;
+		this.user_limit = user_limit;
+		this.user_secret = user_secret;
+		this.user_answer = user_answer;
 		this.user_avatar = user_avatar;
-		this.user_num = user_num;
+		this.user_color = user_color;
 	}
 	//login
 	public User(String user_addr, String user_pw) {
