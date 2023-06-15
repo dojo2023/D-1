@@ -433,18 +433,20 @@ public class UserDao {
 	        PreparedStatement pStmt = conn.prepareStatement(sql);
 	        PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
-	        // プレースホルダにログイン中のユーザーの住所を設定
+	        // プレースホルダにログイン中のユーザーのmailを設定
 	        pStmt2.setString(1, user_addr);
 	        System.out.println(user_addr);
 
 	        // SQL文を実行し、結果セットを取得
 	        ResultSet rs = pStmt.executeQuery();
+	        System.out.println("hello");
 	        ResultSet rs2 = pStmt2.executeQuery();
 	        System.out.println("hello");
 
 			// ユーザーID一致するユーザーがいたかどうかをチェックする
 			rs.next();
 			System.out.println(rs2.getInt("count(*)"));
+
 			if (rs2.getInt("count(*)") == 1) {
 				while (rs.next()) {
 		            User user = new User(
