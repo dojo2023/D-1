@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Loggedin;
 import model.User;
 
 public class UserDao {
@@ -434,7 +435,46 @@ public class UserDao {
 	}
 
 	//delete文いらない？
+	//↑たぶん
 
+	//user_numを取得
+	public int getNum(Loggedin user) {
+		int id = 0;
+		Connection conn = null;
+
+		try {
+
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+			String sql = "SELECT USER_NUM M_USER WHERE USER_ADDR = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, user.getId());
+			ResultSet rs = pStmt.executeQuery();
+
+			rs.next();
+			id = rs.getInt("USER_NUM");
+
+		}catch(SQLException e ) {
+
+		}catch(ClassNotFoundException e) {
+
+		}finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return id;
+	}
 
 
 }
