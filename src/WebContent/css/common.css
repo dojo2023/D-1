@@ -11,10 +11,6 @@ a{
     margin-left: 5%;
 }
 
-.img {
-
-}
-
 #menu {
     margin-top: 2.1%;
     margin-right: 2%;
@@ -46,6 +42,6 @@ a{
 }
 
 .m_text {
-    margin-top: 25px;
     user-select: none;
 }
+

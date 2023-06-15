@@ -44,8 +44,6 @@
 					<input type = "submit" name = "s_submit" id = "s_submit" class = "search_input" value = "検索">
 				</form>
 				<ul id = "s_result">
-					<li class = "list"><span class = "left">うどん</span><span class = "right">1000kcal</span></li>
-
 					<c:forEach var = "e" items = "${search_list}">
 						<li class = "list"><span class = "left">${e.foods_name}</span><span class = "right">${e.foods_cal}kcal</span></li>
 					</c:forEach>

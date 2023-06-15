@@ -42,9 +42,9 @@ public class Log_Servlet extends HttpServlet {
 
 	        //日付をyyyyMMddの形で出力する
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	        Date today = sdf.format(cl.getTime());
-	        
-	        
+	        //Date today = sdf.format(cl.getTime());
+
+
 
 
 		}else {
