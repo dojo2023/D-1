@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
     <link rel = "stylesheet" href = "css/secret.css">
@@ -42,11 +43,14 @@
                         <option value="sushi">好きなお寿司のネタは？</option>
                         <option value="chara">好きなキャラクターは？</option>
                      </select>
-                     <input placeholder="answer" type="text1" name="ANSER"><br>
+                     <input placeholder="answer" type="text" name="ANSER"><br>
             <button id="c" onclick = "popup()">送信</button>
+            </form>
             </div>
+
             <div class="popup">
-                <div class="close_btn">&times;</div>
+                <div class="close_btn">&times;
+                </div>
                 <div class="form">
                  <h2>パスワード変更</h2>
                  <div class = "form-element">
@@ -57,13 +61,16 @@
                     <label for="chpassword">確認</label><br>
                     <input type="text" id="chpassword" placeholder="もう一度パスワードを入力">
                 </div>
+                <table>
                 <div class = "form-element">
-                    <button>更新</button>
-                </div>
-                <div class = "form-element">
-                    <button>クリア</button>
-                </div>
-
+				<tr>
+				<tb><button>更新</button></tb>
+				<tb><button>クリア</button></tb>
+				</tr>
+				</div>
+				</table>
+		   </div>
+		</div>
         </main>
 ​
     <!-- 共通js -->
