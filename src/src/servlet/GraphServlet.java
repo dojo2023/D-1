@@ -25,6 +25,8 @@ public class GraphServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
+		dispatcher.forward(request, response);
 		HttpSession session=request.getSession();
 		String user_addr = (String) session.getAttribute("user_addr");
 
@@ -33,8 +35,6 @@ public class GraphServlet extends HttpServlet {
         // DAOのメソッドを呼び出してリストを取得
         List<User> userList = uDao.selectByUserAddress(user_addr);
         request.setAttribute("userList",userList);
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	/**
