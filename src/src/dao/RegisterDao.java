@@ -25,7 +25,7 @@ public class RegisterDao {
 			String sql = "SELECT * FROM M_RECORD WHERE USER_NUM = ? AND RECORD_DATE = ? AND RECORD_TYPE = ? ORDER BY USER_NUM;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文を完成させる
+			// SQL文を完成させるtestの時"%" + param.get＃＃) + "%"形式でエラー出たので変更しました。。
 			if (param.getUser_num() != 0) {
 				pStmt.setInt(1, param.getUser_num());
 			}
@@ -33,7 +33,7 @@ public class RegisterDao {
 				pStmt.setInt(1, 0);
 			}
 			if (param.getRecord_date() != null) {
-				pStmt.setString(2, "%" + param.getRecord_date() + "%");
+				pStmt.setString(2, param.getRecord_date());
 			}
 			else {
 				pStmt.setString(2, "%");
