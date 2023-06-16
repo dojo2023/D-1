@@ -434,6 +434,7 @@ public class UserDao {
 	        PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
 	        // プレースホルダにログイン中のユーザーのmailを設定
+	        pStmt.setString(1, user_addr);
 	        pStmt2.setString(1, user_addr);
 	        System.out.println(user_addr);
 
@@ -448,7 +449,7 @@ public class UserDao {
 			System.out.println(rs2.getInt("count(*)"));
 
 			if (rs2.getInt("count(*)") == 1) {
-				while (rs2.next()) {
+				while (rs.next()) {
 		            User user = new User(
 	            		rs.getInt("USER_NUM"),
 	    				rs.getString("USER_ADDR"),
