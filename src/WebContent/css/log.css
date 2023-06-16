@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    width: 98vw;
+}
+
+main {
+    height: 85vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+#list_show {
+    width: 67.5%;
+    height: 85%;
+    margin-right: 0.5%;
+    margin-left: 2.0%;
+    float: left;
+
+    background-color: #AEE2FF;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#food_list {
+    width: 86%;
+    height:90%;
+    margin: 3% 7%;
+    overflow-y: scroll;
+    list-style: none;
+    padding-left: 0;
+    background-color: white;
+    border-radius: 8px;
+    display: inline-block;
+
+    letter-spacing: 5px;
+    text-align: left;
+}
+
+#food_list::-webkit-scrollbar {
+    width: 0.6em;
+}
+#food_list::-webkit-scrollbar-track {
+   background-color: #ccc;
+   border-radius: 3px
+}
+#food_list::-webkit-scrollbar-thumb {
+   background-color: #acbcff;
+   border-radius: 4px;
+}
+
+#log_list_1, #log_list_2, #log_list_3, #log_list_4 {
+    border-radius: 10px;
+    margin: 2%;
+    background-color: #e6fffd;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+#record_form {
+    width: 27.5%;
+    height: 85%;
+    margin-right: 2%;
+    margin-left: 0.5%;
+    float: right;
+
+    background-color: #AEE2FF;
+    border-radius: 10px;
+}
+
+#record_category_date, #record_category_time, #record_category,#record_item {
+    width: 80%;
+    height: auto;
+    margin-right: 10%;
+    margin-left: 10%;
+    border-radius: 5px;
+    outline: none;
+}
+
+#record_submit {
+    width: 30%;
+    height: 8%;
+    margin: 2% 35%;
+    border-radius: 5px;
+    border: solid 1px black;
+}
+
+.foot-link {
+    margin-top: 5px;
+    text-align: center;
+	text-decoration: underline;
+	color: black;
+    text-decoration: underline;
+}
+
+.recor_input {
+    padding-left: 1em;
+    height: 15%;
+    text-indent: 10%;
+}
+
+p.item {
+    padding-left: 2em;
+}
