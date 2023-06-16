@@ -25,3 +25,43 @@ public class Profile_Servlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 }
+
+
+/**
+ * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+ */
+
+	/*
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    // リクエストパラメータからフォームデータを取得
+    String nickname = request.getParameter("USER_NICKNAME");
+    double height = request.getParameter("USER_HEIGHT");
+    double weight = request.getParameter("USER_WEIGHT");
+    int gender = Integer.parseInt(request.getParameter("USER_GENDER"));
+    int birth = request.getParameter("USER_BIRTH");
+    double goalw = request.getParameter("USER_GOALW");
+    int limit = request.getParameter("USER_LIMIT");
+
+    // データベースへの登録 email
+    UserDao uDao = new UserDao();
+    User user = new User();
+    user.setUser_nickname(nickname);
+    user.setUser_height(height);
+    user.setUser_weight(weight);
+    user.setUser_gender(gender);
+    user.setUser_birth(birth);
+    user.setUser_goalw(goalw);
+    user.setUser_limit(limit);
+
+    uDao.insert(user);
+
+
+    //レスポンスを設定
+    request.setAttribute("message", "更新が完了しました");
+    request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+
+}
+
+}
+
+*/
