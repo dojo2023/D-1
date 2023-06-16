@@ -27,79 +27,56 @@
                     <ul id = "menu_text"></ul>
                 </div>
             </div>
+            <meta charset="UTF-8">
+			<title>秘密の質問</title>
         </header>
-        <main>
-            <div class="center">
-            <form method="POST" action="/WebContent/SecretServlet">
-                <h1>本人確認</h1>
-                    <input placeholder="mailaddress" type="text" name="MAIL"/><br>
-                    <select name="secret">
-                        <option value="food">好きな食べ物は？</option>
-                        <option value="pet">ペットの名前は？</option>
-                        <option value="school">小学校の名前は？</option>
-                        <option value="name">母親の旧姓は？</option>
-                        <option value="date">一番最初にデートした場所は？</option>
-                        <option value="love">初恋の相手の名前は？</option>
-                        <option value="sushi">好きなお寿司のネタは？</option>
-                        <option value="chara">好きなキャラクターは？</option>
-                     </select>
-                     <input placeholder="answer" type="text" name="ANSER"><br>
-            <button id="c" onclick = "popup()">送信</button>
-            </form>
-            </div>
+       <body>
+		<form name="SecretServlet" method="POST" action="" id="secret">
+                            <div class = "form">
 
-            <div class="popup">
-                <div class="close_btn">&times;
-                </div>
-                <div class="form">
-                 <h2>パスワード変更</h2>
-                 <div class = "form-element">
-                    <label for="newpassword">新しいパスワード</label><br>
-                    <input type="text" id="newpassword" placeholder="新しいパスワードを入力">
-                </div>
-                <div class = "form-element">
-                    <label for="chpassword">確認</label><br>
-                    <input type="text" id="chpassword" placeholder="もう一度パスワードを入力">
-                </div>
-                <table>
-                <div class = "form-element">
-				<tr>
-				<tb><button>更新</button></tb>
-				<tb><button>クリア</button></tb>
-				</tr>
-				</div>
-				</table>
-		   </div>
-		</div>
-        </main>
+                               <div class = "form1">
+                                <h1>本人確認</h1>
+                                    <div class = "group">
+                                    <label  class = "label">メールアドレス</label><br>
+                                    <input id = "u_addr" type = "text" class = "q_addr" name = "MAIL"placeholder="メールアドレスを入力">
+                                    </div>
+                                    <select name="question">
+				                        <option value="food">好きな食べ物は？</option>
+				                        <option value="pet">ペットの名前は？</option>
+				                        <option value="school">小学校の名前は？</option>
+				                        <option value="name">母親の旧姓は？</option>
+				                        <option value="date">一番最初にデートした場所は？</option>
+				                        <option value="love">初恋の相手の名前は？</option>
+				                        <option value="sushi">好きなお寿司のネタは？</option>
+				                        <option value="chara">好きなキャラクターは？</option>
+                     				</select><br>
+                     				<input placeholder="秘密の質問答え" type="text" name="answer"><br>
+                                    <input type = "button" class = "q_submit" value="送信" onclick="check()" >
+								</div>
+
+							<div class = "popup">
+								<h2>パスワード変更</h2>
+                                    <div class = "group">
+                                    <label class = "label">新規パスワード</label><br>
+                                        <input id = "u_pw" type = "password" class = "input" name = "new_pw"placeholder="新しいパスワードを入力">
+                                    </div>
+                                    <div class = "group">
+                                    <label class = "label">確認</label><br>
+                                        <input id = "u_pw" type = "password" class = "input" name = "co_pw"placeholder="もう一度パスワードを入力">
+                                    </div>
+
+								</div>
+                                <div class ="info2">
+                                    <input type = "button" class = "update" value="更新" onclick="check()" >
+                                    <input type = "reset" class = "reset" value="クリア"><br><br>
+
+                                </div>
+                                <span id="output"></span><br>
+                            </div>
+
+                    </form>
 ​
     <!-- 共通js -->
-<script >
-    document.querySelector("btn").
-    addEventListener("click",function(){
-        document.
-        querySelector(".popup").classList.add("active");
-    });
-    document.querySelector("popup. close_btn").
-    addEventListener("click",function(){
-        document.querySelector(".popup").classList.add("active");
-    });
-
-    const btn = document.getElementById('btn');
-
-        function SheckPassword(password_confirmation) {
-            var newpassword =password.value;
-            var chpassword = password_comfirmation.value;
-            formObj.onreset = function() {
-                errorMessageObj.textContent = null;
-            };
-            if(newpassword != chpassword){
-                password_confirmation.setCustomValidity("入力値が一致しません。");
-            }else{
-                password_confirmation.setCustomValidity('');
-            }
-        }
-</script>
-<script src = "/mippy/js/common.js"></script>
+   <script src = "/mippy/js/common.js"></script>
 </body>
 </html>

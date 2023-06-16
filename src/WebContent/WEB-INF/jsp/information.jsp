@@ -28,10 +28,10 @@
             </div>
 	<meta charset="UTF-8">
 	<title>個人情報変更</title>
-<body>
+	</header>
+	<body>
 	<form name="InfomationServlet" method="POST" action="" id="info">
                         <div class = "info-form">
-                            <div class = "info-html">
 
                                 <div class = "big-group">
                                 <h1>個人情報変更</h1>
@@ -59,7 +59,7 @@
                                 </div>
                                 <span id="output"></span><br>
                             </div>
-                        </div>
+
                     </form>
 	<script src = "/mippy/js/common.js"></script>
 </body>
