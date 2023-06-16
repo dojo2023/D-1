@@ -53,7 +53,7 @@
                                 </div>
 
                                 <div class ="info2">
-                                    <input type = "button" class = "addr_update" value="更新" onclick="check()" >
+                                    <input type = "submit" class = "addr_update" value="更新" onclick="return check()" >
                                     <input type = "reset" class = "reset" value="クリア"><br><br>
 
                                 </div>
