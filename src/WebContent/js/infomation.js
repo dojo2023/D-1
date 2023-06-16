@@ -2,12 +2,12 @@
 const btn = document.getElementById('btn');
 
         function SheckPassword(password_confirmation) {
-            var now_pass =password.value;
-            var new_pass = password_comfirmation.value;
+            var new_pass =password.value;
+            var co_pw = password_comfirmation.value;
             formObj.onreset = function() {
                 errorMessageObj.textContent = null;
             };
-            if( now_pass!= new_pass ){
+            if( new_pass!= co_pw){
                 password_confirmation.setCustomValidity("入力値が一致しません。");
             }else{
                 password_confirmation.setCustomValidity('');

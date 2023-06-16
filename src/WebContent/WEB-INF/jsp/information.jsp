@@ -44,11 +44,11 @@
 
                                     <div class = "group">
                                     <label class = "label">新規パスワード</label><br>
-                                        <input id = "u_pw" type = "password" class = "input" name = "now_pw"placeholder="新しいパスワードを入力">
+                                        <input id = "u_pw" type = "password" class = "input" name = "new_pw"placeholder="新しいパスワードを入力">
                                     </div>
                                     <div class = "group">
                                     <label class = "label">確認</label><br>
-                                        <input id = "u_pw" type = "password" class = "input" name = "new_pw"placeholder="もう一度パスワードを入力">
+                                        <input id = "u_pw" type = "password" class = "input" name = "co_pw"placeholder="もう一度パスワードを入力">
                                     </div>
                                 </div>
 
