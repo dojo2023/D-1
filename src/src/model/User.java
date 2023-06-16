@@ -66,6 +66,25 @@ public class User implements Serializable {
 		this.user_age = user_age;
 	}
 
+
+	//update プロフィール画面
+	public User(int user_num, String user_nickname, double user_height,
+			double user_weight, int user_gender, double user_goalw,
+			String user_birth, String user_limit,
+			String user_answer, int user_avatar, int user_color) {
+		this.user_num = user_num;
+		this.user_nickname = user_nickname;
+		this.user_height = user_height;
+		this.user_weight = user_weight;
+		this.user_gender = user_gender;
+		this.user_goalw = user_goalw;
+		this.user_birth = user_birth;
+		this.user_limit = user_limit;
+		this.user_answer = user_answer;
+		this.user_avatar = user_avatar;
+		this.user_color = user_color;
+	}
+
 //初期値？
 	public User() {
 		this.user_secret = 0;
