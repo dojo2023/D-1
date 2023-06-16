@@ -1,9 +1,14 @@
-function check(){
-                if (new_pw != co_pw){
-                    //条件に一致する場合(メールアドレスが空の場合)
-                    alert("パスワードが一致しません。");    //エラーメッセージを出力
-                    return false;    //送信ボタン本来の動作をキャンセルします
-                }else{
-                    //条件に一致しない場合(メールアドレスが入力されている場合)
-                    return true;    //送信ボタン本来の動作を実行します
-                }
+function CheckEmail_1() {
+    //IE対応の為変更
+    //var mail = new_pw.value; //メールフォームの値を取得
+    //var mailConfirm = co_pw.value; //メール確認用フォームの値を取得
+    var mail = document.getElementById("new_pw").value; //メールフォームの値を取得
+    var mailConfirm = document.getElementById("co_pw").value; //メール確認用フォームの値を取得
+    // パスワードの一致確認
+    if (mail != mailConfirm){
+      alert("パスワードと確認用パスワードが一致しません"); // 一致していなかったら、エラーメッセージを表示する
+      return false;
+    }else{
+      return true;
+    }
+  };
