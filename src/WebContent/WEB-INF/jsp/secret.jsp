@@ -100,5 +100,6 @@
             }
         }
 </script>
+<script src = "/mippy/js/common.js"></script>
 </body>
 </html>

@@ -26,67 +26,44 @@
                     <ul id = "menu_text"></ul>
                 </div>
             </div>
-<meta charset="UTF-8">
-<title>個人情報変更</title>
-
+	<meta charset="UTF-8">
+	<title>個人情報変更</title>
 <body>
-     <div class="mail">
-		<h1>メールアドレス変更</h1>
-			<div class = "form-element">
-	     	<label for="mailaddress">新規メールアドレス</label><br>
-	     	<input type="text" id="mailaddress" placeholder="新規メールアドレスを入力">
-	     </div>
-	     <table>
-	     	<div class = "form-element">
-	     		<tr>
-				<tb><input type="submit" value="更新" /></tb>
-				<tb><input type="button" value="クリア" onclick="clearText()" /></tb>
-				</tr>
-			</div>
-		</table>
-	 <div class="form">
-	     	<h2>パスワード変更</h2>
-	     <div class = "form-element">
-	     	<label for="newpassword">新しいパスワード</label><br>
-	     	<input type="text" id="newpassword" placeholder="新しいパスワードを入力">
-	     </div>
-	     <div class = "form-element">
-	     	<label for="chpassword">確認</label><br>
-	     	<input type="text" id="chpassword" placeholder="もう一度パスワードを入力">
-	     </div>
-	     <table>
-	     	<div class = "form-element">
-	     		<tr>
-				<tb><button>更新</button></tb>
-				<tb><button>クリア</button></tb>
-				</tr>
-			</div>
-		</table>
-	</div>
+	<form name="InfomationServlet" method="POST" action="" id="info">
+                        <div class = "info-form">
+                            <div class = "info-html">
+
+                                <div class = "big-group">
+                                <h1>個人情報変更</h1>
+                                    <div class = "group">
+                                    <label  class = "label">メールアドレス</label><br>
+                                        <input id = "u_addr" type = "text" class = "input" name = "u_addr"placeholder="新規メールアドレスを入力">
+                                    </div>
+                                    <input type = "button" class = "addr_update" value="更新" onclick="check()" >
+                                    <input type = "reset" class = "reset" value="クリア"><br><br>
+
+                                    <div class = "group">
+                                    <label class = "label">新規パスワード</label><br>
+                                        <input id = "u_pw" type = "password" class = "input" name = "now_pw"placeholder="新しいパスワードを入力">
+                                    </div>
+                                    <div class = "group">
+                                    <label class = "label">確認</label><br>
+                                        <input id = "u_pw" type = "password" class = "input" name = "new_pw"placeholder="もう一度パスワードを入力">
+                                    </div>
+                                </div>
+
+                                <div class ="info2">
+                                    <input type = "button" class = "addr_update" value="更新" onclick="check()" >
+                                    <input type = "reset" class = "reset" value="クリア"><br><br>
+
+                                </div>
+                                <span id="output"></span><br>
+                            </div>
+                        </div>
+                    </form>
 	<script >
-	function clearText() {
-    	var textForm = document.getElementById("newpassword");
-      textForm.value = '';
-    }
-
-    function clearTextarea() {
-    	var textareaForm = document.getElementById("chpassword");
-      textareaForm.value = '';
-    }
-	const btn = document.getElementById('btn');
-
-        function SheckPassword(password_confirmation) {
-            var newpassword =password.value;
-            var chpassword = password_comfirmation.value;
-            formObj.onreset = function() {
-                errorMessageObj.textContent = null;
-            };
-            if(newpassword != chpassword){
-                password_confirmation.setCustomValidity("入力値が一致しません。");
-            }else{
-                password_confirmation.setCustomValidity('');
-            }
 
 	</script>
+	<script src = "/mippy/js/common.js"></script>
 </body>
 </html>
