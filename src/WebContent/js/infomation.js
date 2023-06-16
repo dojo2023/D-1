@@ -1,32 +1,14 @@
-'use strict'
-const btn = document.getElementById('btn');
-
-        function SheckPassword(password_confirmation) {
-            var new_pass =password.value;
-            var co_pw = password_comfirmation.value;
-            formObj.onreset = function() {
-                errorMessageObj.textContent = null;
-            };
-            if( new_pass!= co_pw){
-                password_confirmation.setCustomValidity("入力値が一致しません。");
-            }else{
-                password_confirmation.setCustomValidity('');
-            }
-
-let addr = document.getElementById("u_addr");
-
-function check() {
-	if ( form.user_addr.value.length === 0 && form.user_pw.value.length === 0 ) {
-		document.getElementById('output').textContent="入力してください";
-	}
-	else if ( form.u_pw.value.length === 0) {
-		document.getElementById('output').textContent="パスワードを入力してください";
-	}
-	else if ( form.u_addr.value.length === 0) {
-		document.getElementById('output').textContent="メールアドレスを入力してください";
-	}
-	else {
-		form.action = "/mippy/InfomationServlet";
-		form.submit();
-	}
-}
+function CheckEmail_1() {
+    //IE対応の為変更
+    //var mail = new_pw.value; //メールフォームの値を取得
+    //var mailConfirm = co_pw.value; //メール確認用フォームの値を取得
+    var mail = document.getElementById("new_pw").value; //メールフォームの値を取得
+    var mailConfirm = document.getElementById("co_pw").value; //メール確認用フォームの値を取得
+    // パスワードの一致確認
+    if (mail != mailConfirm){
+      alert("パスワードと確認用パスワードが一致しません"); // 一致していなかったら、エラーメッセージを表示する
+      return false;
+    }else{
+      return true;
+    }
+  };

@@ -51,7 +51,7 @@
 				                        <option value="chara">好きなキャラクターは？</option>
                      				</select><br>
                      				<input placeholder="秘密の質問答え" type="text" name="answer"><br>
-                                    <input type = "button" class = "q_submit" value="送信" onclick="check()" >
+                                    <input type = "subumit" class = "q_submit" value="送信" onclick="check()" >
 								</div>
 
 							<div class = "popup">
@@ -67,7 +67,7 @@
 
 								</div>
                                 <div class ="info2">
-                                    <input type = "button" class = "update" value="更新" onclick="check()" >
+                                    <input type = "submit" class = "update" value="更新" onclick="check()" >
                                     <input type = "reset" class = "reset" value="クリア"><br><br>
 
                                 </div>

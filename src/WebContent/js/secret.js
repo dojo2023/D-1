@@ -1,35 +1,20 @@
 'use strict'
 const btn = document.getElementById('btn');
 //パスワード変更押して一致するか確認
-        function SheckPassword(password_confirmation) {
-            var now_pass =password.value;
-            var new_pass = password_comfirmation.value;
-            formObj.onreset = function() {
-                errorMessageObj.textContent = null;
-            };
-            if( now_pass!= new_pass ){
-                password_confirmation.setCustomValidity("入力値が一致しません。");
-            }else{
-                password_confirmation.setCustomValidity('');
+
+ function check(){
+                if (new_pw != co_pw){
+                    //条件に一致する場合(メールアドレスが空の場合)
+                    alert("パスワードが一致しません。");    //エラーメッセージを出力
+                    return false;    //送信ボタン本来の動作をキャンセルします
+                }else{
+                    //条件に一致しない場合(メールアドレスが入力されている場合)
+                    return true;    //送信ボタン本来の動作を実行します
+                }
             }
 
 let addr = document.getElementById("q_addr");
 
-function check() {
-	if ( form.user_addr.value.length === 0 && form.user_pw.value.length === 0 ) {
-		document.getElementById('output').textContent="入力してください";
-	}
-	else if ( form.u_pw.value.length === 0) {
-		document.getElementById('output').textContent="パスワードを入力してください";
-	}
-	else if ( form.u_addr.value.length === 0) {
-		document.getElementById('output').textContent="メールアドレスを入力してください";
-	}
-	else {
-		form.action = "/mippy/SecretServlet";
-		form.submit();
-	}
-}
 //送信押ししたらデータ参照する.
 function execute() {
   location.href = "/BlogApplication/secret"

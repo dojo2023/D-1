@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
 			datasets: [{
 				label: '合計摂取カロリー',
-				data: [35, 34, 37, 35, 34, 35, 34, 25],
+				data: [1639, 873, 536, 596, 1851, 1028, 1127, 1613, 1333, 1165, 1303, 752, 622, 1230, 1572, 1579, 617, 68, 1296, 1270, 1945, 1853, 1592, 864, 1106, 1667, 1332, 392, 1761, 336, 1024],
 				borderColor: "rgba(255,0,0,1)",
 				backgroundColor: "rgba(0,0,0,0)"
 			}],
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				y: {
 					// 最小値・最大値
 					min: 0,
-					max: 60,
+					max: 2500,
 					// 軸タイトル
 					title: {
 						display: true,
@@ -101,19 +101,20 @@ document.addEventListener("DOMContentLoaded", function() {
 	})
 })
 
+//体重か摂取カロリーの変更プルダウン
+var dropDown = document.getElementById("");
+dropDown.onchange = function() {
+	var weight = $(this).val();
+}
 
+//計算結果
 function result(gender, weight, height, age) {
-	var result;
-	var bmrExpression = resultElement.getAttribute("data-bmr");
-	var bmrResult = eval(bmrExpression);
-	resultElement.textContent = bmrResult;
+	var result = 0;
 	if (gender === 1) {
 		result = 13.397 * weight + 4.799 * height - 5.677 * age + 88.362;
 	} else {
 		result = 9.247 * weight + 3.098 * height - 4.33 * age + 447.593;
 	}
-    document.getElementById("result").textContent = result;
-
-	console.log(result);
+    document.getElementById("result").textContent = result.toFixed(2);
 	return result;
 }
