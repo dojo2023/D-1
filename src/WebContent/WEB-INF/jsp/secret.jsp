@@ -28,7 +28,7 @@
                 </div>
             </div>
             <meta charset="UTF-8">
-			<title>秘密の質問</title>
+            <title>秘密の質問</title>
         </header>
        <body>
 		<form name="SecretServlet" method="POST" action="" id="secret">
