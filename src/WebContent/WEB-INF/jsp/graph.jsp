@@ -37,17 +37,17 @@
                 <canvas id="graph" width="1000" height="400"></canvas>
             </div>
             <div class="goal">
-
-            <c:forEach var="e" items="${userList}" >
-            	基礎代謝（BMR）<br>
-				<p>BMR: </p><br>
-				目標体重<br>${e.user_weight}kg<br>
-				目標まであと<br>${e.user_weight- e.user_goalw}<br>
-			</c:forEach>
+	            <c:forEach var="e" items="${userList}" >
+	            	基礎代謝<br>
+	            	BMR:
+	            	<span id="result" data-bmr="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})"></span><br>
+					目標体重<br>${e.user_weight} kg<br>
+					目標まであと<br>${e.user_weight- e.user_goalw} kg<br>
+				</c:forEach>
             </div>
         </main>
 
-    <!-- 共通js -->
+	<!-- 共通js -->
     <script src="js/common.js"></script>
     <!-- top用js -->
     <script src="js/graph.js"></script>

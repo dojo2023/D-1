@@ -428,7 +428,7 @@ public class UserDao {
 	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 	        // SQLクエリを作成
-	        String sql = "SELECT * FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
+	        String sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) AS USER_AGE FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
 			String sql2 = "select count(*) from M_USER where USER_ADDR = ?";
 	        PreparedStatement pStmt = conn.prepareStatement(sql);
 	        PreparedStatement pStmt2 = conn.prepareStatement(sql2);
@@ -464,7 +464,8 @@ public class UserDao {
 	    				rs.getInt("USER_SECRET"),
 	    				rs.getString("USER_ANSWER"),
 	    				rs.getInt("USER_AVATAR"),
-	    				rs.getInt("USER_COLOR")
+	    				rs.getInt("USER_COLOR"),
+	    				rs.getInt("USER_AGE")
 	    			);
 		            userList.add(user);
 		        }
