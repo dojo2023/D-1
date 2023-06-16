@@ -39,9 +39,8 @@
             <div class="goal">
 	            <c:forEach var="e" items="${userList}" >
 	            	基礎代謝<br>
-	            	BMR:
-	            	<span id="result" data-bmr="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})"></span><br>
-					目標体重<br>${e.user_weight} kg<br>
+	            	<input type="button" onclick="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})" value = "BMR">: <span id="result"></span><br>
+					目標体重<br>${e.user_goalw} kg<br>
 					目標まであと<br>${e.user_weight- e.user_goalw} kg<br>
 				</c:forEach>
             </div>
@@ -53,5 +52,16 @@
     <script src="js/graph.js"></script>
     <!-- guraph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    <script>
+	    graphData = {
+			labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+			datasets: [{
+				label: '合計摂取カロリー',
+				data: [35, 34, 37, 35, 34, 35, 34, 25],
+				borderColor: "rgba(255,0,0,1)",
+				backgroundColor: "rgba(0,0,0,0)"
+			}],
+		};
+    </script>
 </body>
 </html>

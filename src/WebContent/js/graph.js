@@ -101,19 +101,20 @@ document.addEventListener("DOMContentLoaded", function() {
 	})
 })
 
+//体重か摂取カロリーの変更プルダウン
+var dropDown = document.getElementById("");
+dropDown.onchange = function() {
+	var weight = $(this).val();
+}
 
+//計算結果
 function result(gender, weight, height, age) {
-	var result;
-	var bmrExpression = resultElement.getAttribute("data-bmr");
-	var bmrResult = eval(bmrExpression);
-	resultElement.textContent = bmrResult;
+	var result = 0;
 	if (gender === 1) {
 		result = 13.397 * weight + 4.799 * height - 5.677 * age + 88.362;
 	} else {
 		result = 9.247 * weight + 3.098 * height - 4.33 * age + 447.593;
 	}
-    document.getElementById("result").textContent = result;
-
-	console.log(result);
+    document.getElementById("result").textContent = result.toFixed(2);
 	return result;
 }
