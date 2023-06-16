@@ -36,6 +36,7 @@ public class GraphServlet extends HttpServlet {
         // DAOのメソッドを呼び出してリストを取得
         List<User> userList = uDao.selectByUserAddress(id);
         request.setAttribute("userList",userList);
+
         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
 		dispatcher.forward(request, response);
 	}

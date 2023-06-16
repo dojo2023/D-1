@@ -22,12 +22,11 @@ public class FoodDaoTest {
 		}
 		// insert()のテスト
 		System.out.println("---------- insert()のテスト ----------");
-		Food insRec = new Food(202, "主食", "pizza", 5846.8);
+		Food insRec = new Food(5846.8, "主食", "hotdog");
 		if (dao.insert(insRec)) {
 			System.out.println("登録成功！");
 			List<Food> cardList2 = dao.select(insRec);
 			for (Food card : cardList2) {
-				System.out.println("FOODS_NUM：" + card.getFoods_num());
 				System.out.println("FOODS_CATEGORY：" + card.getFoods_category());
 				System.out.println("FOODS_NAME：" + card.getFoods_name());
 				System.out.println("FOODS_CAL：" + card.getFoods_cal());

@@ -258,7 +258,7 @@ public class UserDao {
 	}
 
 
-	public boolean update(User card) {
+	public boolean update(User card2) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -269,82 +269,76 @@ public class UserDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
-			// 変更できる項目だけ入れました
-			String sql = "update M_USER set USER_PW=?, USER_NICKNAME=?, USER_HEIGHT=?, USER_WEIGHT=?, USER_GENDER=?, USER_GOALW=?, USER_BIRTH=?, USER_LIMIT=?, USER_AVATAR=?, USER_COLOR=?  where USER_NUM=?";
+			// プロフィール画面で変更する時のコード
+			String sql = "update M_USER set USER_NICKNAME=?, USER_HEIGHT=?, USER_WEIGHT=?, USER_GENDER=?, USER_GOALW=?, USER_BIRTH=?, USER_LIMIT=?, USER_AVATAR=?, USER_COLOR=?  where USER_NUM=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getUser_pw() != null && !card.getUser_pw().equals("")) {
-				pStmt.setString(1, card.getUser_pw());
+
+			if (card2.getUser_nickname() != null && !card2.getUser_nickname().equals("")) {
+				pStmt.setString(1, card2.getUser_nickname());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
 
-			if (card.getUser_nickname() != null && !card.getUser_nickname().equals("")) {
-				pStmt.setString(2, card.getUser_nickname());
+			if (card2.getUser_height() != 0) {
+				pStmt.setDouble(2, card2.getUser_height());
 			}
 			else {
-				pStmt.setString(2, null);
+				pStmt.setDouble(2, 0);
 			}
 
-			if (card.getUser_height() != 0) {
-				pStmt.setDouble(3, card.getUser_height());
+			if (card2.getUser_weight() != 0) {
+				pStmt.setDouble(3, card2.getUser_weight());
 			}
 			else {
 				pStmt.setDouble(3, 0);
 			}
 
-			if (card.getUser_weight() != 0) {
-				pStmt.setDouble(4, card.getUser_weight());
+			if (card2.getUser_gender() != 0) {
+				pStmt.setDouble(4, card2.getUser_gender());
 			}
 			else {
 				pStmt.setDouble(4, 0);
 			}
 
-			if (card.getUser_gender() != 0) {
-				pStmt.setDouble(5, card.getUser_gender());
+			if (card2.getUser_goalw() != 0) {
+				pStmt.setDouble(5, card2.getUser_goalw());
 			}
 			else {
 				pStmt.setDouble(5, 0);
 			}
 
-			if (card.getUser_goalw() != 0) {
-				pStmt.setDouble(6, card.getUser_goalw());
+			if (card2.getUser_birth() != null && !card2.getUser_birth().equals("")) {
+				pStmt.setString(6, card2.getUser_birth());
 			}
 			else {
-				pStmt.setDouble(6, 0);
+				pStmt.setString(6, null);
 			}
 
-			if (card.getUser_birth() != null && !card.getUser_birth().equals("")) {
-				pStmt.setString(7, card.getUser_birth());
+			if (card2.getUser_limit() != null && !card2.getUser_limit().equals("")) {
+				pStmt.setString(7, card2.getUser_limit());
 			}
 			else {
 				pStmt.setString(7, null);
 			}
 
-			if (card.getUser_limit() != null && !card.getUser_limit().equals("")) {
-				pStmt.setString(8, card.getUser_limit());
+			if (card2.getUser_avatar() != 0) {
+				pStmt.setInt(8, card2.getUser_avatar());
 			}
 			else {
-				pStmt.setString(8, null);
+				pStmt.setInt(8, 0);
 			}
 
-			if (card.getUser_avatar() != 0) {
-				pStmt.setInt(9, card.getUser_avatar());
+			if (card2.getUser_color() != 0) {
+				pStmt.setInt(9, card2.getUser_color());
 			}
 			else {
 				pStmt.setInt(9, 0);
 			}
 
-			if (card.getUser_color() != 0) {
-				pStmt.setInt(10, card.getUser_color());
-			}
-			else {
-				pStmt.setInt(10, 0);
-			}
-
-			pStmt.setInt(11, card.getUser_num());
+			pStmt.setInt(10, card2.getUser_num());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -428,7 +422,7 @@ public class UserDao {
 	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 	        // SQLクエリを作成
-	        String sql = "SELECT * FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
+	        String sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) AS USER_AGE FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
 			String sql2 = "select count(*) from M_USER where USER_ADDR = ?";
 	        PreparedStatement pStmt = conn.prepareStatement(sql);
 	        PreparedStatement pStmt2 = conn.prepareStatement(sql2);
@@ -464,7 +458,8 @@ public class UserDao {
 	    				rs.getInt("USER_SECRET"),
 	    				rs.getString("USER_ANSWER"),
 	    				rs.getInt("USER_AVATAR"),
-	    				rs.getInt("USER_COLOR")
+	    				rs.getInt("USER_COLOR"),
+	    				rs.getInt("USER_AGE")
 	    			);
 		            userList.add(user);
 		        }
