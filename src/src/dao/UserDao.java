@@ -429,7 +429,7 @@ public class UserDao {
 
 	        // SQLクエリを作成
 	        String sql = "SELECT * FROM M_USER WHERE USER_ADDR = ? ORDER BY USER_NUM";
-			String sql2 = "select count(*) from M_USER where USER_ADDR = ? and USER_PW = ?";
+			String sql2 = "select count(*) from M_USER where USER_ADDR = ?";
 	        PreparedStatement pStmt = conn.prepareStatement(sql);
 	        PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 
