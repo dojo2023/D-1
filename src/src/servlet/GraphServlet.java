@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
+import model.Loggedin;
 import model.User;
 
 /**
@@ -26,15 +27,17 @@ public class GraphServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
-		dispatcher.forward(request, response);
-		String user_addr = (String) session.getAttribute("user_addr");
+
+		Loggedin user_addr = (Loggedin) session.getAttribute("user_addr");
+		String id = user_addr.getId();
 
 		UserDao uDao = new UserDao();
 
         // DAOのメソッドを呼び出してリストを取得
-        List<User> userList = uDao.selectByUserAddress(user_addr);
+        List<User> userList = uDao.selectByUserAddress(id);
         request.setAttribute("userList",userList);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

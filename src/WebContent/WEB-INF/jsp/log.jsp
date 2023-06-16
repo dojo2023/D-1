@@ -71,7 +71,7 @@
                     </div>
 
                     <div class = "record_input">
-                        <p>朝昼夜その他</p>
+                        <p>時間帯</p>
                         <select name = "record_category_time" id = "record_category_time">
                             <option value = "selected hidden">選択</option>
                             <option value = "time1">朝</option>
@@ -95,6 +95,7 @@
 
                     <div class = "record_input">
                         <p>品目</p>
+                        <input type = "text" name = "record_item" id = "record_item">
 
                     </div>
 
