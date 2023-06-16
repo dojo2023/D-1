@@ -13,6 +13,15 @@ public class Register implements Serializable {
 		this.record_type = record_type;
 		this.foods_num = foods_num;
 	}
+
+	//登録時
+	public Register(String record_date, int record_type, int foods_num) {
+
+		this.record_date = record_date;
+		this.record_type = record_type;
+		this.foods_num = foods_num;
+	}
+
 	//初期値？
 	public Register() {
 		this.user_num = 0;
