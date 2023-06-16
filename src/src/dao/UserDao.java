@@ -444,11 +444,11 @@ public class UserDao {
 	        System.out.println("hello");
 
 			// ユーザーID一致するユーザーがいたかどうかをチェックする
-			rs.next();
+			rs2.next();
 			System.out.println(rs2.getInt("count(*)"));
 
 			if (rs2.getInt("count(*)") == 1) {
-				while (rs.next()) {
+				while (rs2.next()) {
 		            User user = new User(
 	            		rs.getInt("USER_NUM"),
 	    				rs.getString("USER_ADDR"),
