@@ -16,9 +16,7 @@ public class RecordDaoTest {
 
 		List<Record> cardList = dao.select(new Record());
 		for (Record card : cardList) {
-			System.out.println("USER_NUM：" + card.getUser_num());
 			System.out.println("RECORD_DATE：" + card.getRecord_date());
-			System.out.println("FOODS_NUM：" + card.getFoods_num());
 			System.out.println("TOTALCAL：" + card.getTotalcal());
 			System.out.println();
 		}
