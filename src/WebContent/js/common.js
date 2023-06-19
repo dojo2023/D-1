@@ -31,20 +31,20 @@
                     "グラフ表示",
                     "プロフィール設定",
                     "ログアウト"
-                    ]
+                    ];
 
                     //※作成したサーブレットを追加予定
                     const url = [
-                        "CalenderServlet",
+                        "CalendarServlet",
                         "Log_Servlet",
                         "GraphServlet",
                         "Profile_Servlet",
                         "TopServlet"
-                    ]
+                    ];
 
                     //ulの中に追加する
                     for(let t of text){
-                        const li = `<li id = "` +id+ `" class = "m_text"><a href = "`+ url[id]+`">${t}</a></li>`;
+                        const li = `<li id = "` +id+ `" class = "m_text"><a href = "`+ url[id+1]+`">${t}</a></li>`;
                         menu.insertAdjacentHTML("beforeend", li);
                         id++;
                     }
