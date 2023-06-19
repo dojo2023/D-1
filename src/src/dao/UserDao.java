@@ -367,6 +367,67 @@ public class UserDao {
 		return result;
 	}
 
+	public boolean updateAddrPw(User card) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+			// プロフィール画面で変更する時のコード
+			String sql = "update M_USER set user_addr = ?, user_pw = ?  where USER_NUM=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+			if (card.getUser_addr() != null && !card.getUser_addr().equals("")) {
+				pStmt.setString(1, card.getUser_addr());
+			}
+			else {
+				pStmt.setString(1, null);
+			}
+
+			if (card.getUser_pw() != null && !card.getUser_pw().equals("")) {
+				pStmt.setString(2, card.getUser_pw());
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+
+			pStmt.setInt(3, card.getUser_num());
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+
 	//delete文いらない？
 	//↑たぶん
 

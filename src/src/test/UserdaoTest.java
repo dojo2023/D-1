@@ -7,7 +7,6 @@ import model.User;
 public class UserdaoTest {
 	public static void main(String[] args) {
 		UserDao dao = new UserDao();
-
 		// select()のテスト
 		System.out.println("---------- select()のテスト ----------");
 		List<User> cardList2 = dao.select(new User());
@@ -80,6 +79,25 @@ public class UserdaoTest {
 				System.out.println("USER_ANSWER：" + card.getUser_answer());
 				System.out.println("USER_AVATAR：" + card.getUser_avatar());
 				System.out.println("USER_COLOR：" + card.getUser_color());
+				System.out.println();
+			}
+		}
+		else {
+			System.out.println("更新失敗！");
+		}
+
+
+		// update()のテスト
+		System.out.println("---------- update()のテスト ----------");
+		User upRec2 = new User( "nakamura@gmail.com", "password");
+
+		if (dao.updateAddrPw(upRec2)) {
+			System.out.println("更新成功！");
+			List<User> cardList4 = dao.select(upRec2);
+			for (User card : cardList4) {
+				System.out.println("USER_NUM：" + card.getUser_num());
+				System.out.println("USER_ADDR：" + card.getUser_addr());
+				System.out.println("USER_PW：" + card.getUser_pw());
 				System.out.println();
 			}
 		}
