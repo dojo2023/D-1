@@ -22,7 +22,7 @@ public class RecordDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// graph用でSELECT ￥￥USER_NICKNAMEをUSER_NUMに変えました
-			String sql = " SELECT m_record.record_date, SUM(m_foods.foods_cal) AS totalcal\r\n"
+			String sql = " SELECT m_record.record_date, SUM(m_foods.foods_cal) AS TOTALCAL\r\n"
 					+ "\r\n"
 					+ "FROM m_user \r\n"
 					+ "\r\n"
@@ -49,6 +49,7 @@ public class RecordDao {
 				);
 				cardList.add(card);
 			}
+			System.out.println(cardList);
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
