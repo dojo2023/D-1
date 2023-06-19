@@ -64,7 +64,7 @@
                     </form>
 
                     <div class  = "foot-link">
-                        <a href = secret.jsp>パスワードを忘れた方はこちら</a>
+                        <a href = /mippy/SecretServlet>パスワードを忘れた方はこちら</a>
                     </div>
                 </div>
             </div>
