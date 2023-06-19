@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.FoodDao;
 import dao.UserDao;
+import model.Food;
 import model.Loggedin;
 /**
  * Servlet implementation class Log_Servlet
@@ -37,14 +40,23 @@ public class Log_Servlet extends HttpServlet {
 			UserDao Udao = new UserDao();
 			int id = Udao.getNum(user_addr);
 
+			//カテゴリーを取得
+			FoodDao Fdao = new FoodDao();
+			List<Food> f_category = Fdao.cat_select();
+
+			//情報をセットしておく
+			request.setAttribute("f_category", f_category);
+
+
 			//データベースから記録を取得
 	        Calendar cl = Calendar.getInstance();
 
 	        //日付をyyyyMMddの形で出力する
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	        //Date today = sdf.format(cl.getTime());
 
-
+	        //画面へフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/log.jsp");
+			dispatcher.forward(request, response);
 
 
 		}else {

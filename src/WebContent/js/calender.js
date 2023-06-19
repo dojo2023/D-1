@@ -156,7 +156,7 @@ const elements = document.getElementsByClassName("Day");
 Array.prototype.forEach.call(elements, function(item){
   // itemを利用した処理
   item.onclick = function() {
-    location.href = "/mippy/src/servlet/Food_registerServlet";
+    location.href = "/mippy/Log_Servlet";
   }
 }
 )

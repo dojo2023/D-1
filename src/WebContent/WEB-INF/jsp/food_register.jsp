@@ -12,7 +12,7 @@
     <body>
         <header>
             <div id = "head">
-                <a id = "logo" href = "カレンダーサーブレット">
+                <a id = "logo" href = "/mippy/CalendarServlet">
                     <img class = "img" src = "img/logo.png" alt = "ロゴ">
                 </a>
                 <div id = "menu" onclick="menu()">
