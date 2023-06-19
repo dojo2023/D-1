@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.RecordDao;
 import dao.UserDao;
 import model.Loggedin;
+import model.Record;
 import model.User;
 
 /**
@@ -32,10 +34,14 @@ public class GraphServlet extends HttpServlet {
 		String id = user_addr.getId();
 
 		UserDao uDao = new UserDao();
+		RecordDao rDao = new RecordDao();
 
         // DAOのメソッドを呼び出してリストを取得
         List<User> userList = uDao.selectByUserAddress(id);
         request.setAttribute("userList",userList);
+
+        List<Record> cardList = rDao.select(id);
+        request.setAttribute("cardList",cardList);
 
         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/graph.jsp");
 		dispatcher.forward(request, response);

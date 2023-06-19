@@ -32,7 +32,7 @@
         </div>
     </header>
         <main>
-       	<p>平均カロリー： <!-- ${calList.total_cal/calList.count(record_date)} -->kcal</p>
+       	<p>平均カロリー： <!-- ${ cardList.totalcal / cardList.count(record_date) } -->kcal</p>
             <div class="graphArea">
                 <canvas id="graph" width="1000" height="400"></canvas>
             </div>
@@ -75,9 +75,9 @@
     <!-- guraph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     <script>
-    	/*var rawData = [
-    		for(int i = 0; i <= ${calList}.length; i++){
-        		{ date: '${calList.record_date}', total_calories: '${calList.record_cal}' },
+    	var rawData = [
+    		for(int i = 0; i <= ${cardList.length}; i++){
+        		{ date: '${cardList.record_date}', total_calories: '${cardList.totalcal}' },
     		}
     	]
 	    var graphData = {
@@ -89,8 +89,8 @@
 				backgroundColor: "rgba(0,0,0,0)"
 			}],
 		};
-    	*/
-	    var graphData = {
+
+	    /* var graphData = {
 			labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
 			datasets: [{
 				label: '合計摂取カロリー',
@@ -98,7 +98,7 @@
 				borderColor: "rgba(255,0,0,1)",
 				backgroundColor: "rgba(0,0,0,0)"
 			}],
-		};
+		}; */
     </script>
 </body>
 </html>

@@ -10,7 +10,7 @@ import java.util.List;
 import model.Record;
 public class RecordDao {
 
-	public List<Record> select(Record param) {
+	public List<Record> select(String user_addr) {
 		Connection conn = null;
 		List<Record> cardList = new ArrayList<Record>();
 
@@ -30,19 +30,13 @@ public class RecordDao {
 					+ "\r\n"
 					+ "LEFT JOIN m_foods ON m_record.foods_num = m_foods.foods_num \r\n"
 					+ "\r\n"
-					+ "WHERE M_USER.USER_NUM = ? \r\n"
+					+ "WHERE M_USER.USER_ADDR = ? \r\n"
 					+ "\r\n"
 					+ "GROUP BY m_record.record_date; ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-
-			if (param.getUser_num() != 0) {
-			    pStmt.setInt(1, param.getUser_num());
-			} else {
-			    pStmt.setString(1, "%");
-			}
-
+			pStmt.setString(1, user_addr);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
