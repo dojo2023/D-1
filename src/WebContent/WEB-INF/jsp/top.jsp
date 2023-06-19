@@ -45,8 +45,8 @@
 			</div>
 			<p class="exp">説明文</p>
 			<div class="sign">
-				<input name="signup" type="button" onclick="window.location.href='/mippy/User_Register';" value="新規登録">
-				<input name="signin" type="submit" onclick="window.location.href='/mippy/LoginServlet';" value="ログイン">
+				<input name="signup" type="button" onclick="location.href='/mippy/User_RegisterServlet'" value="新規登録">
+				<input name="signin" type="button" onclick="location.href='/mippy/LoginServlet'" value="ログイン">
 			</div>
 		</main>
 	</form>
