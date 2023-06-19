@@ -1,35 +1,40 @@
 @charset "UTF-8";
 
-body {
-    margin: 0;
-    width: 98vw;
-}
-
-main {
-    height:  81vh;
-}
-
-#calender {
-	width: 80vw;
-	background-color: pink;
-}
-
 #selecter {
 	height: 10%;
 	width: 90%;
 	background-color: green;
 	margin-right: 5%;
 	margin-left: 5%
+
 }
 
-#Weekone, #Weektwo, #Weekthree, #Weekfour {
-	height: 20%;
+#Weekone, #Weektwo, #Weekthree, #Weekfour, #Weekfive {
+	height: 10%;
 	width: 90%;
 	background-color: green;
 	margin-right: 5%;
 	margin-left: 5%;
 }
 
-#Weekfour {
-	margin-bottom: 10%;
+.Day {
+    width: 10%;
+    height: 100%;
+    border: solid 1px;
+    display: inline-block;
+}
+
+span {
+    position: absolute;
+}
+
+#before {
+    width: 10%;
+    height: 15%;
+    background-color: blue;
+}
+#after {
+    width: 10%;
+    height: 15%;
+    background-color: red;
 }

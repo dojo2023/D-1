@@ -9,98 +9,136 @@
         <link rel = "stylesheet" href = "css/calender.css">
     </head>
     <body>
-        <header>
-        	<div id = "head">
-                <a id = "logo" href = "カレンダーサーブレット">
-                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
-                </a>
-                <div id = "menu" onclick="menu()">
-                    <ul id = "menu_bar">
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                    </ul>
-                </div>
-                <div id = "box"></div>
-            </div>
-        </header>
         <main>
         	<div id = "calender">
         		<div id = "selecter">
+                    <div id = "before" onclick = "beforeMonth()"></div>
+                    <div id = "after" onclick = afterMonth()></div>
+                    <input type = "month" id = "cal" value = "" oninput="onInput()">
         		</div>
         		<div id = "Weekone">
-        			<div class = "1stDay Day">
-        			</div>
+                    <div class = "1stDay Day">
+                        <span></span>
+                    </div>
         			<div class = "2stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "3stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "4stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "5stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "6stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "7stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         		</div>
 
         		<div id = "Weektwo">
-        			<div class = "1stDay Day">
-        			</div>
+                    <div class = "1stDay Day">
+                        <span></span>
+                    </div>
         			<div class = "2stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "3stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "4stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "5stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "6stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "7stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         		</div>
 
         		<div id = "Weekthree">
-         			<div class = "1stDay Day">
-        			</div>
+                    <div class = "1stDay Day">
+                        <span></span>
+                    </div>
         			<div class = "2stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "3stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "4stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "5stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "6stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "7stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         		</div>
 
         		<div id = "Weekfour">
-        			<div class = "1stDay Day">
-        			</div>
+                    <div class = "1stDay Day">
+                        <span></span>
+                    </div>
         			<div class = "2stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "3stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "4stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "5stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "6stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         			<div class = "7stDay Day">
-        			</div>
+                        <span></span>
+                    </div>
         		</div>
+                <div id = "Weekfive">
+                    <div class = "1stDay Day">
+                        <span></span>
+                    </div>
+                    <div class = "2stDay Day">
+                        <span></span>
+                    </div>
+                    <div class = "3stDay Day">
+                        <span></span>
+                    </div>
+                    <div class = "4stDay Day">
+                        <span></span>
+                    </div>
+                    <div class = "5stDay Day">
+                        <span></span>
+                    </div>
+                    <div class = "6stDay Day">
+                        <span></span>
+                    </div>
+                    <div class = "7stDay Day">
+                        <span></span>
+                    </div>
+                </div>
         	</div>
-
         </main>
         <!-- 共通js -->
         <script src = "js/common.js"></script>
         <!-- ページjs -->
-        <script src = ""></script>
+        <script src = "js/calender.js"></script>
     </body>
 </html>
