@@ -2,15 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	let context = document.querySelector("#graph").getContext('2d')
 	new Chart(context, {
 		type: 'line',
-		data: {
-			labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
-			datasets: [{
-				label: '合計摂取カロリー',
-				data: [1639, 873, 536, 596, 1851, 1028, 1127, 1613, 1333, 1165, 1303, 752, 622, 1230, 1572, 1579, 617, 68, 1296, 1270, 1945, 1853, 1592, 864, 1106, 1667, 1332, 392, 1761, 336, 1024],
-				borderColor: "rgba(255,0,0,1)",
-				backgroundColor: "rgba(0,0,0,0)"
-			}],
-		},
+		data: graphData,
 		options: {
 			plugins: {
 				// グラフタイトル
@@ -91,6 +83,19 @@ document.addEventListener("DOMContentLoaded", function() {
 					},
 				},
 				x: {
+					/*type: 'date',
+					date: {
+					  parser: 'YYYY-MM-DD',
+					  unit: 'day',
+					  stepSize: 1,
+					  displayFormats: {
+					    'day': 'YYYY-MM-DD'
+					  }
+					},
+					ticks: {
+						min: '1',
+						max: '31'
+					},*/
 					grid: {
 						borderColor: 'orange',
 						borderWidth: 2,
@@ -101,11 +106,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	})
 })
 
-//体重か摂取カロリーの変更プルダウン
+/*体重か摂取カロリーの変更プルダウン
 var dropDown = document.getElementById("");
 dropDown.onchange = function() {
 	var weight = $(this).val();
 }
+*/
 
 //計算結果
 function result(gender, weight, height, age) {
@@ -118,3 +124,19 @@ function result(gender, weight, height, age) {
     document.getElementById("result").textContent = result.toFixed(2);
 	return result;
 }
+
+/*コメントランダム表示
+function message() {
+	var msg = new Array();
+	// 設定開始（メッセージの内容を設定してください）
+	msg[0] = '<b>大吉！</b> … 今日はものすごく良いことがあるでしょう';
+	msg[1] = '<b>吉！</b> … 今日はまあまあ良いことがあるでしょう';
+	msg[2] = '<b>小吉！</b> … 今日は普通の日ですね';
+	msg[3] = '<b>凶！</b> … 今日は凶。。。';
+	msg[4] = '<b>大・激・凶！</b> … もう最悪っスね！！（ウソです）';
+	// 設定終了
+	var no = Math.floor(Math.random() * msg.length);
+	// 表示開始
+	document.getElementById("massage").innerHTML = msg[no];
+}
+*/
