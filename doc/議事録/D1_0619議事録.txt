@@ -1,0 +1,72 @@
+6月19日（月）（猪瀬） 
+
+【今日の目標】 
+
+jspをすべて終了させる！ 
+
+【個人目標】（○○のファイルを作る！なども） 
+
+リーダー  山本：jspを完成させる 
+
+DBA  クォン： プロフィール画面が出来上がったらDAOが正常に作動するか確認して問題があったら直す 
+
+構成  柿崎：プロフィール画面の機能を完成させる。 
+
+コミュ  石松：個人情報設定画面細かいところ詰める 
+品質  加藤：データベースの情報からグラフを作成する 
+
+発表　猪瀬：log.js（エラー表示など）完成させる 
+
+ 
+
+ 
+
+・modelでrecord.java追加？ 
+
+・   SELECT m_record.record_date, SUM(m_foods.foods_cal) 
+
+　　FROM m_user 
+
+　　LEFT JOIN m_record ON m_user.user_num = m_record.user_num 
+
+　　LEFT JOIN m_foods ON m_record.foods_num = m_foods.foods_num 
+
+　　WHERE USER_ADDR = ? 
+
+　　GROUP BY m_record.record_date; 
+
+この分のモデル 
+
+ 
+
+飛ばした機能 
+
+・体重のグラフ 
+
+・カレンダー（短くタップ、長くタップ） 
+
+ 
+
+追加ファイル 
+
+RecordDao,  
+
+Record.java 
+
+　理由：グラフ作成時、カレンダー表示時にその日の合計摂取カロリーのデータが必要。朝昼晩に分けたものと、合計のmodelが必要になった。 
+
+【進捗確認】 
+
+山本：カレンダー画面周辺 
+
+石松：個人情報確認画面詳細 
+
+柿崎：プロフィール画面周辺 
+
+加藤：グラフ画面周辺 
+
+クォン：個人情報画面servlet 
+
+猪瀬：食事ログjs 
+
+ 
