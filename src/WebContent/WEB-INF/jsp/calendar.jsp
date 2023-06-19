@@ -6,7 +6,7 @@
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
         <!-- ページcss -->
-        <link rel = "stylesheet" href = "css/calender.css">
+        <link rel = "stylesheet" href = "css/calendar.css">
     </head>
     <body>
         <main>
@@ -139,6 +139,6 @@
         <!-- 共通js -->
         <script src = "js/common.js"></script>
         <!-- ページjs -->
-        <script src = "js/calender.js"></script>
+        <script src = "js/calendar.js"></script>
     </body>
 </html>
