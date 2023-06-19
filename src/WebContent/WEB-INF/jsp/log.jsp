@@ -63,16 +63,16 @@
             </div>
 
             <!-- 食事を記録するフォーム -->
-            <div id = "record_form">
-                <form action = "FoodLogServlet" method = "POST">
+           <div id = "record_form">
+                <form action = "FoodLogServlet" method = "POST" id = "form">
                     <div class = "record_input">
-                        <p>日付</p>
-                        <input type = "date">
+                        <p class = "item">日付</p>
+                        <input type = "date" name = "record_category_date" id = "record_category_date" value = "日付" required>
                     </div>
 
                     <div class = "record_input">
-                        <p>時間帯</p>
-                        <select name = "record_category_time" id = "record_category_time">
+                        <p class = "item">朝昼夜その他</p>
+                        <select name = "record_category_time" id = "record_category_time" value = "時間" required>
                             <option value = "selected hidden">選択</option>
                             <option value = "time1">朝</option>
                             <option value = "time2">昼</option>
@@ -83,9 +83,10 @@
                     </div>
 
                     <div class = "record_input">
-                        <p>カテゴリー</p>
-                        <select name = "record_category" id = "record_category">
+                        <p class = "item">カテゴリー</p>
+                        <select name = "record_category" id = "record_category" value = "選択" required>
                             <option value = "selected hidden">カテゴリーを選択</option>
+                            <option value = "time2">昼</option>
                             <!-- サーブレットからリストを受け取る -->
                             <!-- <c:forEach >
 
@@ -94,16 +95,15 @@
                     </div>
 
                     <div class = "record_input">
-                        <p>品目</p>
-                        <input type = "text" name = "record_item" id = "record_item">
-
-                    </div>
+                        <p class = "item">品目</p>
+                        <input type = "text" name = "record_item" id = "record_item" value = "品目" required>
+                    </div><br>
 
                     <div class = "foot-link">
                         <a href = food_register.jsp>該当がなければこちら</a>
-                    </div>
+                    </div><br>
 
-                    <input type = "submit" value = "登録" name = "record_submit" id = "record_submit">
+                    <input type = "submit" value = "登録" name = "record_submit" id = "button" disabled>
                 </form>
 
 
@@ -115,8 +115,8 @@
         </main>
 
         <!-- 共通js -->
-        <script src = "js/common.js"></script>
+        <script src = "/mippy/js/common.js"></script>
         <!-- ページjs -->
-        <script src = "js/"></script>
+        <script src = "/mippy/js/lo.js"></script>
     </body>
 </html>

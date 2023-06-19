@@ -54,7 +54,7 @@
                                 </div>
 
                                 <div class ="big-button2">
-                                    <input type = "button" class = "button2" value="ログイン" onclick="check()" >
+                                    <input type = "button" class = "button2" value="ログイン" onClick = "return check();" >
                                     <input type = "reset" class = "button2"><br><br>
 
                                 </div>
