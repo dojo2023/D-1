@@ -6,7 +6,7 @@
         <!-- 共通css -->
         <link rel = "stylesheet" href = "/mippy/css/common.css">
         <!-- ページcss -->
-        <link rel = "stylesheet" href = "log（参考）.css">
+        <link rel = "stylesheet" href = "/mippy/css/log.css">
     </head>
     <body>
 
@@ -126,9 +126,9 @@
         </main>
 
         <!-- 共通js -->
-        <script src = "js/common.js"></script>
+        <script src = "/mippy/js/common.js"></script>
         <!-- ページjs -->
-        <script src = "log（参考）.js"></script>
+        <script src = "/mippy/js/log.js"></script>
     </body>
 </html>
 
