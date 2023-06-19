@@ -27,7 +27,7 @@
                 </ul>
             </div>
             <div id="box">
-                <ul id="menu_text"></ul>
+
             </div>
         </div>
     </header>
@@ -62,7 +62,8 @@
 				        "img/mippy_1.gif",
 				        "img/mippy_2.gif",
 				        "img/mippy_3.gif",
-				        "img/mippy_4.gif"
+				        "img/mippy_4.gif",
+				        "img/mippy_5.gif"
 				    };
 				    int selectnum = (int) (Math.random() * imglist.length);
 				    String selectedImage = imglist[selectnum];
