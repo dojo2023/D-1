@@ -35,22 +35,16 @@
 
                     //※作成したサーブレットを追加予定
                     const url = [
-                        "1",
-                        "2",
-                        "3",
-                        "4",
-                        "5"
+                        "CalenderServlet",
+                        "Log_Servlet",
+                        "GraphServlet",
+                        "Profile_Servlet",
+                        "TopServlet"
                     ]
-
-                    const url = ["CalenderServlet",
-                    			 "Log_Servlet",
-                    			 "GraphServlet",
-                    			 "Profile_Servlet",
-                    			 "TopServlet"]
 
                     //ulの中に追加する
                     for(let t of text){
-                        const li = `<li id = "`+id+`" class = "m_text"><a href = "'+ aurl[id]+'">${t}</a></li>`;
+                        const li = `<li id = "` +id+ `" class = "m_text"><a href = "`+ url[id]+`">${t}</a></li>`;
                         menu.insertAdjacentHTML("beforeend", li);
                         id++;
                     }
@@ -60,7 +54,7 @@
                 }else if (count == 1){
                     count = 0;
                     box.style.cssText = "";
-					document.getElementById("menu_text").remove();
+            		document.getElementById("menu_text").remove();
                     for(let s = 1; s < 6 ; s++){
                         let remove = document.getElementById(s);
                         remove.remove();
