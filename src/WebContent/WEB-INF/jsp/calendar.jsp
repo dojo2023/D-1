@@ -8,7 +8,25 @@
         <!-- ページcss -->
         <link rel = "stylesheet" href = "css/calendar.css">
     </head>
+
     <body>
+	<header>
+		<div id = "head">
+		<a id = "logo" href = "カレンダーサーブレット">
+		<img class = "img" src = "logo.png" alt = "ロゴ">
+		</a>
+			<div id = "menu" onclick="menu()">
+				<ul id = "menu_bar">
+				<li class = "bar"></li>
+				<li class = "bar"></li>
+				<li class = "bar"></li>
+				</ul>
+			</div>
+			<div id = "box">
+				<ul id = "menu_text"></ul>
+			</div>
+		</div>
+	</header>
         <main>
         	<div id = "calender">
         		<div id = "selecter">
