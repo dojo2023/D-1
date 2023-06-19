@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>プロフィール画面	</title>
+<title>プロフィール設定画面	</title>
 	    <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
         <!-- ページcss -->
@@ -23,8 +23,9 @@
                         <li class = "bar"></li>
                     </ul>
                 </div>
+
                 <div id = "box">
-                    <ul id = "menu_text"></ul>
+
                 </div>
             </div>
 
@@ -34,15 +35,18 @@
     <main>
         <div class = "profile">
 			<form method="POST" action="/mippy/Profile_Servlet" onsubmit="return validateForm();">
-     			ニックネーム<br><input type="text" name="USER_NICKNAME"><br>
-				身長<br><input type="text" name="USER_HEIGHT">cm<br>
-	 			体重<br><input type="text" name="USER_WEIGHT">kg<br>
+     			ニックネーム<br><input type="text" name="USER_NICKNAME" ><br>
+				身長<br><input type="text" name="USER_HEIGHT" required>cm<br>
+	 			体重<br><input type="text" name="USER_WEIGHT" required>kg<br>
 	 			性別<br>
-	 			<select name="USER_GENDER">
+	 				<select name="USER_GENDER">
+	 				<option value="" disabled selected>性別を選択してください
 	 				<option value="1">男性</option>
 	 				<option value="2">女性</option>
-	 			</select><br><br>
+	 				</select><br><br>
+	 			生年月日<br><input type="text" name="USER_BIRTH"pattern="[0-9]{8}" placeholder="YYYYMMDD" maxlength="8" >
 
+<!-- 保留1
 	 			<div class="form-select-wrap1">
    					 <select class="birthday-year">
     				</select>年
@@ -51,8 +55,11 @@
    					<select class="birthday-day">
     				</select>日
 				</div>
+-->
 				<div class="goal">
 					目標体重<br><input type="text" name="USER_GOALW">kg<br>
+				期限<br><input type="text" name="USER_LIMIT"pattern="[0-9]{8}" placeholder="YYYYMMDD" maxlength="8" >まで！
+<!-- 保留2
 					期限
 					<div class="form-select-wrap2">
    					 <select class="goal-year">
@@ -62,10 +69,13 @@
    					<select class="goal-day">
     				</select>日
 					</div>
+-->
+
 				</div>
 				<div class = "avatar">
 				<img src="img/mippy_3.gif" alt="アバター表示"><br>
 				</div>
+				<!-- アバターの色変更ボタン -->
 				<div class = "button-group">
 				 <input type="button" class="button1" onclick="buttonClicked()">
  				 <input type="button" class="button2" onclick="buttonClicked()">
