@@ -32,7 +32,6 @@
 				</ul>
 			</div>
 			<div id="box">
-				<ul id="menu_text"></ul>
 			</div>
 		</div>
 	</header>​
