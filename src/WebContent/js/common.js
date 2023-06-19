@@ -42,9 +42,15 @@
                         "5"
                     ]
 
+                    const url = ["CalenderServlet",
+                    			 "Log_Servlet",
+                    			 "GraphServlet",
+                    			 "Profile_Servlet",
+                    			 "TopServlet"]
+
                     //ulの中に追加する
                     for(let t of text){
-                        const li = `<li id = "`+id+`" class = "m_text"><a href = "url[${id}]">${t}</a></li>`;
+                        const li = `<li id = "`+id+`" class = "m_text"><a href = "'+ aurl[id]+'">${t}</a></li>`;
                         menu.insertAdjacentHTML("beforeend", li);
                         id++;
                     }

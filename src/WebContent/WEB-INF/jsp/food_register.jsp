@@ -80,6 +80,6 @@
         <!-- 共通js -->
         <script src = "js/common.js"></script>
         <!-- ページjs -->
-        <script src = "js/"></script>
+        <!-- <script src = "js/"></script>-->
     </body>
 </html>
