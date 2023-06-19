@@ -89,20 +89,16 @@ public class UserdaoTest {
 
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		User upRec2 = new User( "nakamura@gmail.com", "password");
+		String userAddr = "nakamura999@gmail.com";
+		String userPw = "password";
 
-		if (dao.updateAddrPw(upRec2)) {
-			System.out.println("更新成功！");
-			List<User> cardList4 = dao.select(upRec2);
-			for (User card : cardList4) {
-				System.out.println("USER_NUM：" + card.getUser_num());
-				System.out.println("USER_ADDR：" + card.getUser_addr());
-				System.out.println("USER_PW：" + card.getUser_pw());
-				System.out.println();
-			}
-		}
-		else {
-			System.out.println("更新失敗！");
+		UserDao userDao = new UserDao();
+		boolean updateResult = userDao.updateAddrPw(userAddr, userPw);
+
+		if (updateResult) {
+		    System.out.println("変更成功!");
+		} else {
+		    System.out.println("変更失敗");
 		}
 
 		// delete()のテストなし

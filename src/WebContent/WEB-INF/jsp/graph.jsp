@@ -32,7 +32,7 @@
         </div>
     </header>
         <main>
-       	<p>平均カロリー： <!-- ${calList.total_cal/calList.count(record_date)} -->kcal</p>
+       	<p>平均カロリー：  kcal</p>
             <div class="graphArea">
                 <canvas id="graph" width="1000" height="400"></canvas>
             </div>
@@ -42,6 +42,9 @@
 	            	<input type="button" onclick="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})" value = "BMR">：<span id="result"></span><br>
 					目標体重<br>${e.user_goalw} kg<br>
 					目標まであと<br>${e.user_weight- e.user_goalw} kg<br>
+				</c:forEach>
+				<c:forEach var = "a" items = "${cardList }">
+					${a.record_date}:${a.totalcal}<br>
 				</c:forEach>
 				<%!
 				    String[] msg = {
@@ -75,22 +78,24 @@
     <!-- guraph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     <script>
-    	/*var rawData = [
-    		for(int i = 0; i <= ${calList}.length; i++){
-        		{ date: '${calList.record_date}', total_calories: '${calList.record_cal}' },
-    		}
-    	]
+	    var rawData = [
+    		<c:forEach var="a" items="${cardList}">
+    			{ date: '${a.record_date}', total_calories: '${a.totalcal}' },
+    		</c:forEach>
+    	];
+	    var filteredData = rawData.filter(data => data.date.includes("2023-06"));
 	    var graphData = {
-			labels: rawData.map(data => data.date),
-			datasets: [{
-				label: '合計摂取カロリー',
-				data: rawData.map(data => data.total_calories),
-				borderColor: "rgba(255,0,0,1)",
-				backgroundColor: "rgba(0,0,0,0)"
-			}],
-		};
-    	*/
-	    var graphData = {
+   			labels: filteredData.map(data => data.date),
+   			datasets: [{
+   				label: '合計摂取カロリー',
+   				data: filteredData.map(data => data.total_calories),
+   				borderColor: "rgba(255,0,0,1)",
+   				backgroundColor: "rgba(0,0,0,0)"
+   			}],
+   		};
+
+	    /* sample
+		    var graphData = {
 			labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
 			datasets: [{
 				label: '合計摂取カロリー',
@@ -98,7 +103,7 @@
 				borderColor: "rgba(255,0,0,1)",
 				backgroundColor: "rgba(0,0,0,0)"
 			}],
-		};
+		}; */
     </script>
 </body>
 </html>

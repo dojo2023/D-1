@@ -11,7 +11,7 @@
 <script>
 	//2秒後にリダイレクトする処理
 	setTimeout(function() {
-		location.href = "/mippy/TopServlet";
+		location.href = "/mippy/CalendarServlet";
 	}, 2000);
 </script>
 </body>
