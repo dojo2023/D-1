@@ -60,7 +60,7 @@ public class UserdaoTest {
 
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		User upRec = new User(2/*USER_NUMが一致ないと更新できない*/, "ap@gmail.com", "password", "更新３", 131.4, 45.6, 2, 40.0, "2000-01-01", "2023-06-30", 3, "更新", 1, 3);
+		User upRec = new User(5/*USER_NUMが一致ないと更新できない*/, "ap@gmail.com", "password", "更新３", 131.4, 45.6, 2, 40.0, "20000101", "20230630", 3, "更新", 1, 3);
 
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
