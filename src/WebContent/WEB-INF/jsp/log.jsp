@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
     <head>
@@ -78,7 +79,7 @@
                 <form action = "FoodLogServlet" method = "POST" id = "form">
                     <div class = "record_input">
                         <p class = "item">日付</p>
-                        <input type = "date" name = "record_category_date" id = "record_category_date" value = "日付" required>
+                        <input type = "date" name = "record_category_date" id = "record_category_date" value ="${day}" required>
                     </div>
 
                     <div class = "record_input">
@@ -97,11 +98,10 @@
                         <p class = "item">カテゴリー</p>
                         <select name = "record_category" id = "record_category" value = "選択" required>
                             <option value = "" selected hidden>カテゴリーを選択</option>
-                            <option value = "time2">昼</option>
                             <!-- サーブレットからリストを受け取る -->
-                            <!-- <c:forEach >
-
-                            </c:forEach> -->
+							<c:forEach var = "e" items = "${f_category}">
+								<option value = "${e.foods_category}">${e.foods_category}</option>
+							</c:forEach>
                         </select>
                     </div>
 

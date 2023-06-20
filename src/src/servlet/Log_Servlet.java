@@ -44,9 +44,10 @@ public class Log_Servlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		if(request.getParameter("GETmonth") != null) {
 			String year = request.getParameter("GETyear");
-			String month = request.getParameter("GETmonth");
-			String date = request.getParameter("GETdate");
+			String month = String.format("%02d",Integer.parseInt(request.getParameter("GETmonth")));
+			String date = String.format("%02d",Integer.parseInt(request.getParameter("GETdate")));
 			String day = year + "-" + month + "-" + date;
+			System.out.println(day);
 			request.setAttribute("day", day);
 		}else {
 			//日付をyyyyMMddの形で出力する
