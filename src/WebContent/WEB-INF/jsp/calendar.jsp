@@ -30,7 +30,7 @@
         	<div id = "calender">
         		<div id = "selecter">
                     <div id = "before" onclick = "beforeMonth()"></div>
-                    <div id = "after" onclick = afterMonth()></div>
+                    <div id = "after" onclick = "afterMonth()"></div>
                     <input type = "month" id = "cal" value = "" oninput="onInput()">
         		</div>
         		<div id = "Weekone">

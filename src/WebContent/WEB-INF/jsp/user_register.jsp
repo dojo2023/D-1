@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,28 +13,13 @@
 </head>
 <body>
 	<header>
-            <div id = "head">
-                <a id = "logo" href = "カレンダーサーブレット">
-                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
-                </a>
-                <div id = "menu" onclick="menu()">
-                    <ul id = "menu_bar">
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                    </ul>
-                </div>
-                <div id = "box">
-                    <ul id = "menu_text"></ul>
-                </div>
-            </div>
+	    <div id = "head">
+	        <a id = "logo" href = "/mippy/TopServlet">
+	            <img class = "img" src = "img/logo.png" alt = "ロゴ">
+	        </a>
+	    </div>
     </header>
     <main>
-        <!-- 共通js -->
-        <script src = "js/common.js"></script>
-        <!-- ページjs -->
-        <script src = "js/User_Register.js"></script>
-
 	<div class = "register-wrap">
     <div class = "register-html">
 
@@ -42,7 +27,6 @@
     <input name="signin" type="button" class = "button1" onclick="window.location.href='/mippy/LoginServlet';" value="ログイン">
     <input name="signup" type="button" class = "button1" onclick="window.location.href='/mippy/User_RegisterServlet';" value="新規登録">
     </div>
-
 	<div class = "big-group">
      <form method="POST" action="/mippy/User_RegisterServlet" onsubmit="return validateForm();">
      メールアドレス<br><input type="text" name="USER_ADDR"><br>
@@ -73,5 +57,9 @@
 	</div>
 	</div>
     </main>
+    <!-- 共通js -->
+    <script src = "js/common.js"></script>
+    <!-- ページjs -->
+    <script src = "js/User_Register.js"></script>
 </body>
 </html>

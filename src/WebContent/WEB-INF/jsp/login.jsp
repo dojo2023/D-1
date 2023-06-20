@@ -1,35 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
     <head>
-    <title>mippy</title>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>mippy</title>
         <!-- 共通css -->
         <link rel = "stylesheet" href = "/mippy/css/common.css">
         <!-- ページcss -->
         <link rel = "stylesheet" href = "/mippy/css/login.css">
     </head>
     <body>
-
         <header>
             <div id = "head">
-                <a id = "logo" href = "カレンダーサーブレット">
-                    <img class = "img" src = "logo.png" alt = "ロゴ">
+                <a id = "logo" href = "/mippy/TopServlet">
+                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
                 </a>
-                <div id = "menu" onclick="menu()">
-                    <ul id = "menu_bar">
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                    </ul>
-                </div>
-                <div id = "box">
-                    <ul id = "menu_text"></ul>
-                </div>
             </div>
         </header>
         <main>
-
             <div class = "login-wrap">
                 <div class = "login-html">
                     <div class ="big-button1">
@@ -62,16 +53,12 @@
                             </div>
                         </div>
                     </form>
-
                     <div class  = "foot-link">
                         <a href = /mippy/SecretServlet>パスワードを忘れた方はこちら</a>
                     </div>
                 </div>
             </div>
-
-
         </main>
-
         <!-- 共通js -->
         <script src = "/mippy/js/common.js"></script>
         <!-- ページjs -->
