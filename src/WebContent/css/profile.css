@@ -1,64 +1,6 @@
 @charset "UTF-8";
 
-.form-select-wrap1{
-  display: flex;
-  max-width: 300px;
-  align-items: center;
-}
-.form-select-wrap1 > select{
-  padding: 8px 16px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border: 1px solid gray;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.form-select-wrap2{
-  display: flex;
-  max-width: 300px;
-  align-items: center;
-}
-.form-select-wrap2 > select{
-  padding: 8px 16px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border: 1px solid gray;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
- .button1 {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #ff0000;
-      margin-right: 10px;
-}
-.button2 {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #0000FF;
-      margin-right: 10px;
-}
-
-.button3 {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #00FF00;
-      margin-right: 10px;
-}
-
-.button4 {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #FFFF00;
-      margin-right: 10px;
+body {
+	background-color: #ffffff;
+	font: "";
 }
