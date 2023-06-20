@@ -10,6 +10,7 @@ public class Record implements Serializable{
 	private double breakfast;
 	private double lunch;
 	private double dinner;
+	private double dessert;
 	private double totalcal;
 
 
@@ -21,12 +22,13 @@ public class Record implements Serializable{
 
 
 	//朝昼夜別合計
-	public Record(int user_num, String record_date, double breakfast, double lunch, double dinner){
+	public Record(int user_num, String record_date, double breakfast, double lunch, double dinner, double dessert){
 		this.user_num = user_num;
 		this.record_date = record_date;
 		this.breakfast = breakfast;
 		this.lunch = lunch;
 		this.dinner = dinner;
+		this.dessert = dessert;
 	}
 
 
@@ -88,6 +90,12 @@ public class Record implements Serializable{
 	}
 	public void setDinner(double dinner) {
 		this.dinner = dinner;
+	}
+	public double getDessert() {
+		return dessert;
+	}
+	public void setDessert(double dessert) {
+		this.dessert = dessert;
 	}
 	public double getTotalcal() {
 		return totalcal;

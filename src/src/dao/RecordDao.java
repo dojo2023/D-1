@@ -93,6 +93,7 @@ public class RecordDao {
 				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '1' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS breakfast, "
 				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '2' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS lunch, "
 				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '3' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS dinner "
+				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '4' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS dessert "
 				    + "FROM M_USER "
 				    + "JOIN M_RECORD ON M_USER.USER_NUM = M_RECORD.USER_NUM "
 				    + "JOIN M_FOODS ON M_RECORD.FOODS_NUM = M_FOODS.FOODS_NUM "
@@ -119,7 +120,8 @@ public class RecordDao {
 				rs.getString("RECORD_DATE"),
 				rs.getDouble("BREAKFAST"),
 				rs.getDouble("LUNCH"),
-				rs.getDouble("DINNER")
+				rs.getDouble("DINNER"),
+				rs.getDouble("DESSERT")
 
 				);
 				cardList.add(card);

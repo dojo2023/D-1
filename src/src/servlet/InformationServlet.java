@@ -48,7 +48,7 @@ public class InformationServlet extends HttpServlet {
 	        // データベースへの登録
 	        String u_addr = request.getParameter("u_addr");
 	        String new_pw = request.getParameter("new_pw");
-	        String old_addr = (String) session.getAttribute("user_addr");
+	        String old_addr = user_addr.getId();
 	        String session_now = old_addr;
 			System.out.println(new_pw);
 			System.out.println(user_addr);
