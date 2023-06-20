@@ -77,7 +77,7 @@ public class RecordDao {
 	}
 
 
-	public List<Record> select1(Record param) {
+	public List<Record> select1(int user_num) {
 		Connection conn = null;
 		List<Record> cardList = new ArrayList<Record>();
 
@@ -92,22 +92,20 @@ public class RecordDao {
 			String sql = "SELECT M_USER.USER_NUM, M_RECORD.RECORD_DATE, "
 				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '1' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS breakfast, "
 				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '2' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS lunch, "
-				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '3' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS dinner "
+				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '3' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS dinner, "
 				    + "       SUM(CASE WHEN M_RECORD.RECORD_TYPE = '4' THEN M_FOODS.FOODS_CAL ELSE 0 END) AS dessert "
 				    + "FROM M_USER "
 				    + "JOIN M_RECORD ON M_USER.USER_NUM = M_RECORD.USER_NUM "
 				    + "JOIN M_FOODS ON M_RECORD.FOODS_NUM = M_FOODS.FOODS_NUM "
-				    + "WHERE M_USER.USER_NUM = ? "
+				    + "WHERE M_USER.USER_NUM = ?"
 				    + "GROUP BY M_USER.USER_NUM, M_RECORD.RECORD_DATE;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-			if (param.getUser_num() != 0) {
-			    pStmt.setInt(1, param.getUser_num());
-			} else {
-			    pStmt.setString(1, "%");
-			}
+
+			    pStmt.setInt(1, user_num);
+
 
 
 			// SQL文を実行し、結果表を取得する
