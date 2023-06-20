@@ -1,38 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>mippy</title>
-	<link rel="icon" href="/mippy/img/mippy1号.gif">
 
     <!-- 共通css -->
 	<link rel="stylesheet" type="text/css" href="css/common.css">
     <!-- top用css -->
     <link rel="stylesheet" type="text/css" href="css/top.css">
-
-    <!-- 共通js -->
-    <script src="js/common.js"></script>
-    <!-- top用js -->
-    <script src="js/top.js"></script>
-
 </head>
 <body>
 	<header>
 		<div id="head">
-			<a id="logo" href="カレンダーサーブレット"><img class="img" src="img/logo.png" alt="ロゴ"></a>
-			<div id="menu" onclick="menu()">
-				<ul id="menu_bar">
-					<li class="bar"></li>
-					<li class="bar"></li>
-					<li class="bar"></li>
-				</ul>
-			</div>
-			<div id="box">
-			</div>
+			<a id="logo" href="/servlet/TopServlet"><img class="img" src="img/logo.png" alt="ロゴ"></a>
 		</div>
 	</header>​
 	<form name="Top" method="POST" action="/mippy/Top">
@@ -51,4 +35,8 @@
 		</main>
 	</form>
 </body>
+    <!-- 共通js -->
+    <script src="js/common.js"></script>
+    <!-- top用js -->
+    <script src="js/top.js"></script>
 </html>
