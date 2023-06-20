@@ -79,13 +79,18 @@
     <script src="js/graph.js"></script>
     <!-- guraph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
     <script>
 	    var rawData = [
     		<c:forEach var="a" items="${cardList}">
-    			{ date: '${a.record_date}', total_calories: '${a.totalcal}' },
+    			{ date: '${a.record_date}'+ 'T00:00:00', total_calories: '${a.totalcal}' },
     		</c:forEach>
     	];
 	    var filteredData = rawData.filter(data => data.date.includes("2023-06"));
+	    let test1 = filteredData.map(data => data.date);
+	    let test2 = filteredData.map(data => data.total_calories);
 	    var graphData = {
    			labels: filteredData.map(data => data.date),
    			datasets: [{
