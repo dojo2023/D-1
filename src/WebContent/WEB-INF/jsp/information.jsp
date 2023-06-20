@@ -30,7 +30,7 @@
 	<title>個人情報変更</title>
 	</header>
 	<body>
-	<form name="InfomationServlet" method="POST" action="" id="info">
+	<form name="" method="POST" action="InfomationServlet" id="info">
                         <div class = "info-form">
 
                                 <div class = "big-group">
@@ -44,19 +44,20 @@
 										document.getElementById('u_addr').value = '';
 									}
 									</script>
-                                    <input type = "button" class = "addr_update" value="更新" onclick="koushin1()" >
+                                    <input type = "submit" class = "addr_update" value="更新" onclick="koushin1()" >
                                     <h3 id="heading_A"></h3>
                                     <input type = "button" class = "reset" value="クリア" onclick="clearInput()"><br><br>
 									</div>
-
+</form>
+<form name="" method="POST" action="InfomationServlet" id="info2">
                                     <div class = "group">
                                     <label for = "new_pw">新規パスワード</label><br>
-                                    <input type="password" id = "new_pw" placeholder=新しいパスワードを入力 required>
+                                    <input type="password" id = "new_pw" placeholder=新しいパスワードを入力>
                                     </div>
                                     <label class = "co_pw">確認</label><br>
-                                        <input type="password" id = "co_pw" placeholder=もう一度パスワードを入力 required>
+                                        <input type="password" id = "co_pw" placeholder=もう一度パスワードを入力 onChange="check()">
 
-                                </div>
+
 
                                 <div class ="info2">
                                     <input  type = "submit" class = "addr_update" value="更新" onclick="koushin2()" >
@@ -73,5 +74,6 @@
 
                     </form>
 	<script src = "/mippy/js/common.js"></script>
+	<script src = "/mippy/js/infomation.js"></script>
 </body>
 </html>
