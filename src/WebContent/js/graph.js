@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
 					},
 				},
 				x: {
-					/*type: 'date',
-					date: {
+					type: 'time',
+					time: {
 					  parser: 'YYYY-MM-DD',
 					  unit: 'day',
 					  stepSize: 1,
@@ -93,9 +93,12 @@ document.addEventListener("DOMContentLoaded", function() {
 					  }
 					},
 					ticks: {
-						min: '1',
-						max: '31'
-					},*/
+						min: '2023-06-01',
+						max: '2023-06-31',
+						autoSkip: false,  // ラベルの自動スキップを無効化
+	                    maxRotation: 0,   // ラベルの最大回転角度を0度に設定
+	                    minRotation: 0
+					},
 					grid: {
 						borderColor: 'orange',
 						borderWidth: 2,
