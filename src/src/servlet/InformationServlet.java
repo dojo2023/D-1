@@ -58,4 +58,3 @@ public class InformationServlet extends HttpServlet {
 
 	}
 	}
-
