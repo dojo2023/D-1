@@ -50,23 +50,28 @@ public class InformationServlet extends HttpServlet {
 		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
 
 		//user_addrがあるのか判定
-		if (user_addr == null) {
+		if (user_addr != null) {
 
 	        // データベースへの登録
 	        String u_addr = request.getParameter("u_addr");
 	        String new_pw = request.getParameter("new_pw");
+	        String old_addr = (String) session.getAttribute("user_addr");
+	        String session_now = old_addr;
 			System.out.println(new_pw);
 			System.out.println(user_addr);
+
 	        UserDao uDao = new UserDao();
-	        uDao.updateAddrPw(u_addr, new_pw);
-	        request.setAttribute("message", "更新が完了しました");
+	        uDao.updateAddrPw(u_addr, new_pw, session_now);
+	        session.setAttribute("user_addr", new Loggedin(u_addr));
+
+	        request.setAttribute("message", "update complete");
 	        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+
 
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			dispatcher.forward(request, response);
-		}
 
-
+	}
 	}
 	}

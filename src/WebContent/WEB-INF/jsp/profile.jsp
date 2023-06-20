@@ -31,8 +31,7 @@
 	<div id="date"></div>
 	<main>
 		<div class="profile">
-			<form method="POST" action="/mippy/Profile_Servlet"
-				onsubmit="return validateForm();">
+			<form method="POST" action="/mippy/ProfileServlet">
 				ニックネーム<br>
 				<input type="text" name="USER_NICKNAME" value="${nickname}"><br>
 				身長<br>
@@ -54,16 +53,28 @@
 				<input type="text" name="USER_LIMIT" value="${limit}"
 					pattern="[0-9]{8}" placeholder="YYYYMMDD" maxlength="8">まで！<br>
 		</div>
-		<div class="avatar">
+		アバター<br>
+		<select name = "USER_AVATAR">
+		<option value="1" ${avatar == 1 ? 'selected' : ''}>アバター1</option>
+		<option value="2" ${avatar == 2 ? 'selected' : ''}>アバター2</option>
+		<option value="3" ${avatar == 3 ? 'selected' : ''}>アバター3</option>
+		</select><br>
+		アバターカラー<br>
+		<select name = "USER_COLOR">
+		<option value="1" ${color == 1 ? 'selected' : ''}>カラー1</option>
+		<option value="2" ${color == 2 ? 'selected' : ''}>カラー2</option>
+		<option value="3" ${color == 3 ? 'selected' : ''}>カラー3</option>
+		</select><br>
+		<!-- <div class="avatar">
 			<img src="img/mippy_3.gif" alt="アバター表示"><br>
 		</div>
-		<!-- アバターの色変更ボタン -->
+		アバターの色変更ボタン
 		<div class="button-group">
 			<input type="button" class="button1" onclick="buttonClicked()">
 			<input type="button" class="button2" onclick="buttonClicked()">
 			<input type="button" class="button3" onclick="buttonClicked()">
 			<input type="button" class="button4" onclick="buttonClicked()">
-		</div>
+		</div> -->
 		<input type="submit" class="button5" name="update" value="更新">
 		<div class="avatars"></div>
 		<input type="button" class="button6"

@@ -342,7 +342,7 @@ public class UserDao {
 				pStmt.setInt(9, 0);
 			}
 
-			pStmt.setInt(10, card2.getUser_num());
+			pStmt.setString(10, card2.getUser_addr());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -371,7 +371,7 @@ public class UserDao {
 		return result;
 	}
 
-	public boolean updateAddrPw(String user_addr, String user_pw) {
+	public boolean updateAddrPw(String user_addr, String user_pw, String session_now) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -383,7 +383,7 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// Addr, Pwの変更
-			String sql = "update M_USER set user_addr = ?, user_pw = ?  where USER_NUM=?";
+			String sql = "update M_USER set user_addr = ?, user_pw = ?  where USER_ADDR=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -391,6 +391,8 @@ public class UserDao {
 				pStmt.setString(1, user_addr);
 
 				pStmt.setString(2, user_pw);
+
+				pStmt.setString(3, (session_now)); // session
 
 
 
