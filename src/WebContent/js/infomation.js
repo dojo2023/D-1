@@ -1,4 +1,4 @@
-function CheckEmail_1() {
+function check(){
     //IE対応の為変更
     //var mail = new_pw.value; //メールフォームの値を取得
     //var mailConfirm = co_pw.value; //メール確認用フォームの値を取得
@@ -7,11 +7,13 @@ function CheckEmail_1() {
     // パスワードの一致確認
     if (mail != mailConfirm){
       alert("パスワードと確認用パスワードが一致しません"); // 一致していなかったら、エラーメッセージを表示する
+      form.value = '';
+    document.getElementById('errorText').innerHTML = '同じパスワードを入力してください。';
       return false;
     }else{
       return true;
-    }
-  };
+      }
+    };
 
  function koushin1(){
   location.reload();
@@ -24,7 +26,7 @@ const addr_update = document.querySelector('#addr_update');
 const headingA = document.querySelector('#heading_A');
 
 buttonA.onclick = () => {
-  const name = prompt('メールアドレすは？');
+  const name = prompt('メールアドレスは？');
   alert(`こんにちは、${name}さん、はじめまして！`);
   headingA.textContent = `${name}さん、ようこそ`;
 }
