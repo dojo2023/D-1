@@ -42,7 +42,7 @@
 										document.getElementById('u_addr').value = '';
 									}
 									</script>
-                                    <input type = "submit" class = "addr_update" value="更新" onclick="koushin1()" >
+                                    <input type = "submit" class = "addr_update" value="更新" name = "AddrButton" onclick="koushin1()" >
                                     <h3 id="heading_A"></h3>
                                     <input type = "button" class = "reset" value="クリア" onclick="clearInput()"><br><br>
 
@@ -58,7 +58,7 @@
                                      <input type="password" id = "co_pw" placeholder=もう一度パスワードを入力  required/>
 
 
-                                    <input type = "submit" class = "addr_update" value="更新"  onclick="return check();">
+                                    <input type = "submit" class = "addr_update" value="更新" name = "PwButton"  onclick="return check();">
                                     <input type = "button" class = "reset" value="クリア"onclick="clearInput2()"><br><br>
 									<p id="errorText"></p>
 									<script>
