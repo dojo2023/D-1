@@ -342,7 +342,7 @@ public class UserDao {
 				pStmt.setInt(9, 0);
 			}
 
-			pStmt.setInt(10, card2.getUser_num());
+			pStmt.setString(10, card2.getUser_addr());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
