@@ -16,6 +16,7 @@ public class User implements Serializable {
 	private String user_answer;
 	private int user_avatar;
 	private int user_color;
+	private String session_now;
 
 	//age
 	private int user_age;
@@ -38,6 +39,7 @@ public class User implements Serializable {
 		this.user_answer = user_answer;
 		this.user_avatar = user_avatar;
 		this.user_color = user_color;
+
 	}
 	//login
 	public User(String user_addr, String user_pw) {
@@ -83,6 +85,14 @@ public class User implements Serializable {
 		this.user_color = user_color;
 	}
 
+
+
+
+	public User(String user_addr, String user_pw, String session_now) {
+		this.user_addr = user_addr;
+		this.user_pw = user_pw;
+		this.session_now = session_now;
+	}
 //初期値？
 	public User() {
 		this.user_secret = 0;
