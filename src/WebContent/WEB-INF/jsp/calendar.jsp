@@ -34,120 +34,120 @@
                     <input type = "month" id = "cal" value = "" oninput="onInput()">
         		</div>
         		<div id = "Weekone">
-                    <div class = "1stDay Day">
+                    <div class = "FirstDay Day">
                         <span></span>
                     </div>
-        			<div class = "2stDay Day">
+        			<div class = "SecondDay Day">
                         <span></span>
                     </div>
-        			<div class = "3stDay Day">
+        			<div class = "ThirdDay Day">
                         <span></span>
                     </div>
-        			<div class = "4stDay Day">
+        			<div class = "FourthDay Day">
                         <span></span>
                     </div>
-        			<div class = "5stDay Day">
+        			<div class = "FifthtDay Day">
                         <span></span>
                     </div>
-        			<div class = "6stDay Day">
+        			<div class = "SixthDay Day">
                         <span></span>
                     </div>
-        			<div class = "7stDay Day">
+        			<div class = "SeventhDay Day">
                         <span></span>
                     </div>
         		</div>
 
         		<div id = "Weektwo">
-                    <div class = "1stDay Day">
+                    <div class = "FirstDay Day">
                         <span></span>
                     </div>
-        			<div class = "2stDay Day">
+        			<div class = "SecondDay Day">
                         <span></span>
                     </div>
-        			<div class = "3stDay Day">
+        			<div class = "ThirdDay Day">
                         <span></span>
                     </div>
-        			<div class = "4stDay Day">
+        			<div class = "FourthDay Day">
                         <span></span>
                     </div>
-        			<div class = "5stDay Day">
+        			<div class = "FifthtDay Day">
                         <span></span>
                     </div>
-        			<div class = "6stDay Day">
+        			<div class = "SixthDay Day">
                         <span></span>
                     </div>
-        			<div class = "7stDay Day">
+        			<div class = "SeventhDay Day">
                         <span></span>
                     </div>
         		</div>
 
         		<div id = "Weekthree">
-                    <div class = "1stDay Day">
+                    <div class = "FirstDay Day">
                         <span></span>
                     </div>
-        			<div class = "2stDay Day">
+        			<div class = "SecondDay Day">
                         <span></span>
                     </div>
-        			<div class = "3stDay Day">
+        			<div class = "ThirdDay Day">
                         <span></span>
                     </div>
-        			<div class = "4stDay Day">
+        			<div class = "FourthDay Day">
                         <span></span>
                     </div>
-        			<div class = "5stDay Day">
+        			<div class = "FifthtDay Day">
                         <span></span>
                     </div>
-        			<div class = "6stDay Day">
+        			<div class = "SixthDay Day">
                         <span></span>
                     </div>
-        			<div class = "7stDay Day">
+        			<div class = "SeventhDay Day">
                         <span></span>
                     </div>
         		</div>
 
         		<div id = "Weekfour">
-                    <div class = "1stDay Day">
+                    <div class = "FirstDay Day">
                         <span></span>
                     </div>
-        			<div class = "2stDay Day">
+        			<div class = "SecondDay Day">
                         <span></span>
                     </div>
-        			<div class = "3stDay Day">
+        			<div class = "ThirdDay Day">
                         <span></span>
                     </div>
-        			<div class = "4stDay Day">
+        			<div class = "FourthDay Day">
                         <span></span>
                     </div>
-        			<div class = "5stDay Day">
+        			<div class = "FifthtDay Day">
                         <span></span>
                     </div>
-        			<div class = "6stDay Day">
+        			<div class = "SixthDay Day">
                         <span></span>
                     </div>
-        			<div class = "7stDay Day">
+        			<div class = "SeventhDay Day">
                         <span></span>
                     </div>
         		</div>
                 <div id = "Weekfive">
-                    <div class = "1stDay Day">
+                    <div class = "FirstDay Day">
                         <span></span>
                     </div>
-                    <div class = "2stDay Day">
+        			<div class = "SecondDay Day">
                         <span></span>
                     </div>
-                    <div class = "3stDay Day">
+        			<div class = "ThirdDay Day">
                         <span></span>
                     </div>
-                    <div class = "4stDay Day">
+        			<div class = "FourthDay Day">
                         <span></span>
                     </div>
-                    <div class = "5stDay Day">
+        			<div class = "FifthtDay Day">
                         <span></span>
                     </div>
-                    <div class = "6stDay Day">
+        			<div class = "SixthDay Day">
                         <span></span>
                     </div>
-                    <div class = "7stDay Day">
+        			<div class = "SeventhDay Day">
                         <span></span>
                     </div>
                 </div>
