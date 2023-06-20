@@ -45,12 +45,12 @@
 					<option value="2" ${gender == 2 ? 'selected' : ''}>女性</option>
 					<option value="3" ${gender == 3 ? 'selected' : ''}>その他</option>
 				</select><br> 生年月日<br>
-				<input type="text" name="USER_BIRTH" value="${birth}"
+				<input type="date" name="USER_BIRTH" value="${birth}"
 					pattern="[0-9]{8}" placeholder="YYYYMMDD" maxlength="8"><br>
 				目標体重<br>
 				<input type="text" name="USER_GOALW" value="${goalw}">kg<br>
 				期限<br>
-				<input type="text" name="USER_LIMIT" value="${limit}"
+				<input type="date" name="USER_LIMIT" value="${limit}"
 					pattern="[0-9]{8}" placeholder="YYYYMMDD" maxlength="8">まで！<br>
 		</div>
 		アバター<br>
@@ -65,19 +65,10 @@
 		<option value="2" ${color == 2 ? 'selected' : ''}>カラー2</option>
 		<option value="3" ${color == 3 ? 'selected' : ''}>カラー3</option>
 		</select><br>
-		<!-- <div class="avatar">
-			<img src="img/mippy_3.gif" alt="アバター表示"><br>
-		</div>
-		アバターの色変更ボタン
-		<div class="button-group">
-			<input type="button" class="button1" onclick="buttonClicked()">
-			<input type="button" class="button2" onclick="buttonClicked()">
-			<input type="button" class="button3" onclick="buttonClicked()">
-			<input type="button" class="button4" onclick="buttonClicked()">
-		</div> -->
-		<input type="submit" class="button5" name="update" value="更新">
+
+		<input type="submit" class="button" name="update" value="更新">
 		<div class="avatars"></div>
-		<input type="button" class="button6"
+		<input type="button" class="button"
 			onclick="window.location.href='/mippy/InformationServlet';"
 			value="個人情報変更">
 		</form>
