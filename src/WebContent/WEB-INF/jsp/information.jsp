@@ -36,26 +36,37 @@
                                 <div class = "big-group">
                                 <h1>個人情報変更</h1>
                                     <div class = "group">
+
                                     <label  class = "u_addr">メールアドレス</label><br>
                                         <input id = "u_addr" type = "text" class = "input" name = "u_addr"placeholder="新規メールアドレスを入力">
-                                    </div>
-                                    <input type = "button" class = "addr_update" value="更新" onclick="check()" >
-                                    <input type = "reset" class = "reset" value="クリア"><br><br>
+									<script>
+									function clearInput(){
+										document.getElementById('u_addr').value = '';
+									}
+									</script>
+                                    <input type = "button" class = "addr_update" value="更新" onclick="koushin1()" >
+                                    <h3 id="heading_A"></h3>
+                                    <input type = "button" class = "reset" value="クリア" onclick="clearInput()"><br><br>
+									</div>
 
                                     <div class = "group">
                                     <label for = "new_pw">新規パスワード</label><br>
                                     <input type="password" id = "new_pw" placeholder=新しいパスワードを入力 required>
                                     </div>
-                                    <div class = "group">
                                     <label class = "co_pw">確認</label><br>
                                         <input type="password" id = "co_pw" placeholder=もう一度パスワードを入力 required>
-                                    </div>
+
                                 </div>
 
                                 <div class ="info2">
-                                    <input type = "submit" class = "addr_update" value="更新" onclick="return check()" >
-                                    <input type = "reset" class = "reset" value="クリア"><br><br>
-
+                                    <input  type = "submit" class = "addr_update" value="更新" onclick="koushin2()" >
+                                    <input type = "button" class = "reset" value="クリア"onclick="clearInput2()"><br><br>
+									<script>
+									function clearInput2(){
+										document.getElementById('new_pw').value = '';
+										document.getElementById('co_pw').value = '';
+									}
+									</script>
                                 </div>
                                 <span id="output"></span><br>
                             </div>

@@ -12,3 +12,19 @@ function CheckEmail_1() {
       return true;
     }
   };
+
+ function koushin1(){
+  location.reload();
+}
+function koushin2(){
+  location.reload();
+}
+
+const addr_update = document.querySelector('#addr_update');
+const headingA = document.querySelector('#heading_A');
+
+buttonA.onclick = () => {
+  const name = prompt('メールアドレすは？');
+  alert(`こんにちは、${name}さん、はじめまして！`);
+  headingA.textContent = `${name}さん、ようこそ`;
+}
