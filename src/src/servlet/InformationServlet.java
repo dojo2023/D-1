@@ -44,27 +44,52 @@ public class InformationServlet extends HttpServlet {
 
 		//user_addrがあるのか判定
 		if (user_addr != null) {
+			//HTMLから取得
+			String u_addr = request.getParameter("u_addr");
+			String new_pw = request.getParameter("new_pw");
+			String old_addr = user_addr.getId();
+			String session_now = old_addr;
+			UserDao uDao = new UserDao();
 
-	        // データベースへの登録
-	        String u_addr = request.getParameter("u_addr");
-	        String new_pw = request.getParameter("new_pw");
-	        String old_addr = user_addr.getId();
-	        String session_now = old_addr;
-			System.out.println(new_pw);
-			System.out.println(user_addr);
-
-	        UserDao uDao = new UserDao();
-	        uDao.updateAddrPw(u_addr, new_pw, session_now);
-	        session.setAttribute("user_addr", new Loggedin(u_addr));
-
-	        request.setAttribute("message", "update complete");
-	        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+			if (request.getParameter("AddrButton") != null) {
 
 
-		}else {
+				uDao.updateAddrPw1(u_addr, new_pw, session_now);
+		        session.setAttribute("user_addr", new Loggedin(u_addr));
+
+				//画面に戻る
+		        request.setAttribute("message", "update complete");
+		        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+
+
+			//追加ボタンを押された
+			}else if (request.getParameter("PwButton") != null) {
+
+				try {
+					uDao.updateAddrPw2(u_addr, new_pw, session_now);
+			        session.setAttribute("user_addr", new Loggedin(u_addr));
+
+					//画面に戻る
+			        request.setAttribute("message", "update complete");
+			        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+				}catch(Exception e) {
+
+				}finally {
+					//画面にフォワードする
+					response.sendRedirect("/mippy/Food_registerServlet");
+				}
+
+			}
+
+
+}
+		else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			dispatcher.forward(request, response);
 
 	}
+
+
 	}
-	}
+
+}
