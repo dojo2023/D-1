@@ -50,50 +50,17 @@ public class ProfileServlet extends HttpServlet {
 	    double goalw = Double.parseDouble(request.getParameter("USER_GOALW"));
 	    String limit = request.getParameter("USER_LIMIT");
 
-		/* String sHeight = request.getParameter("USER_HEIGHT");
-		 String sWeight = request.getParameter("USER_WEIGHT");
-		 String sGender = request.getParameter("USER_GENDER");
-		 String sGoalw = request.getParameter("USER_GOALW");
-		*/
-
 	    UserDao uDao = new UserDao();
 	    if(request.getParameter("update").equals("更新")) {
 			if(uDao.update(new User(addr, nickname, height, weight, gender, goalw, birth, limit, avatar, color))){
 				System.out.println("更新");
-			}
+			    request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
+
 			}else {
 				System.out.println("失敗");
+			    request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp").forward(request, response);
 
-			}
-	    request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
-
-	    // フォームが空ならエラー
-		/*if (nickname.isEmpty() || sHeight.isEmpty() || sWeight.isEmpty() || sGender.isEmpty()
-		|| birth.isEmpty() || sGoalw.isEmpty() || limit.isEmpty()) {
-		    response.getWriter().write("エラー：フォームが空です");
-		    return;
-		}*/
-
-
-	    // データベースへの登録
-
-	/*    user.setUser_nickname(nickname);
-	    user.setUser_height(height);
-	    user.setUser_weight(weight);
-	    user.setUser_gender(gender);
-	    user.setUser_birth(birth);
-	    user.setUser_goalw(goalw);
-	    user.setUser_limit(limit);
-
-	    uDao.update(user);
-
-
-
-	    //レスポンスを設定
-	    request.setAttribute("message", "更新が完了しました");
-		request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
-
-	}*/
+			}}
 	}
 
 }

@@ -348,6 +348,10 @@ public class UserDao {
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
+			ResultSet rs=pStmt.executeQuery();
+			rs.getString("nickname");
+			System.out.println(rs.getString("nickname"));
+
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
