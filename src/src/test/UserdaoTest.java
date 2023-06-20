@@ -91,9 +91,10 @@ public class UserdaoTest {
 		System.out.println("---------- update()のテスト ----------");
 		String userAddr = "nakamura999@gmail.com";
 		String userPw = "password";
+		String session_now = "AAAA@plus.com";
 
 		UserDao userDao = new UserDao();
-		boolean updateResult = userDao.updateAddrPw(userAddr, userPw);
+		boolean updateResult = userDao.updateAddrPw(userAddr, userPw, session_now);
 
 		if (updateResult) {
 		    System.out.println("変更成功!");
