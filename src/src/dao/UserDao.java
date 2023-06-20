@@ -375,7 +375,7 @@ public class UserDao {
 		return result;
 	}
 
-	public boolean updateAddrPw(String user_addr, String user_pw, String session_now) {
+	public boolean updateAddrPw1(String user_addr,String user_pw, String session_now) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -387,16 +387,66 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// Addr, Pwの変更
-			String sql = "update M_USER set user_addr = ?, user_pw = ?  where USER_ADDR=?";
+			String sql = "update M_USER set user_addr = ?  where USER_ADDR=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
 				pStmt.setString(1, user_addr);
 
-				pStmt.setString(2, user_pw);
 
-				pStmt.setString(3, (session_now)); // session
+				pStmt.setString(2, (session_now)); // session
+
+
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+	public boolean updateAddrPw2(String user_addr,String user_pw, String session_now) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+			// Addr, Pwの変更
+			String sql = "update M_USER set user_pw = ?  where USER_ADDR=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+				pStmt.setString(1, user_pw);
+
+
+				pStmt.setString(2, (session_now)); // session
 
 
 

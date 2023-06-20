@@ -83,18 +83,23 @@ document.addEventListener("DOMContentLoaded", function() {
 					},
 				},
 				x: {
+					min: '2023-06-01',
+					max: '2023-06-30',
+					scaleLabel: {
+						display:true,
+					},
 					type: 'time',
 					time: {
 					  parser: 'YYYY-MM-DD',
 					  unit: 'day',
-					  stepSize: 1,
+					  //stepSize: 1,
 					  displayFormats: {
 					    'day': 'YYYY-MM-DD'
 					  }
 					},
 					ticks: {
-						min: '2023-06-01',
-						max: '2023-06-31',
+//						min: '2023-06-01',
+//						max: '2023-06-30',
 						autoSkip: false,  // ラベルの自動スキップを無効化
 	                    maxRotation: 0,   // ラベルの最大回転角度を0度に設定
 	                    minRotation: 0
@@ -102,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					grid: {
 						borderColor: 'orange',
 						borderWidth: 2,
+						sampleSize: 31
 					},
 				},
 			},
