@@ -26,13 +26,20 @@ h1{
 	text-align: center;
 	color:#222;
 	margin-top:50px;
+	margin-bottom:20px;
 	font-size:25px;
 }
-form  {
+h2{
+	text-align: center;
+	color:#222;
+	margin-top:60px;
+	font-size:25px;
+}
+form{
     width: 80vw;
-	margin: auto;
-	max-width: 600px;
-	height: 650px;
+	margin:auto;
+	max-width: 650px;
+	height: 370px;
 	position: relative;
 	background-color: #AEE2FF;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
