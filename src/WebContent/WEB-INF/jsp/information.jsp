@@ -36,7 +36,7 @@
                                 <div class = "group1">
 
                                     <label  class = "u_addr">メールアドレス</label><br>
-                                        <input id = "u_addr" type = "text" class = "input" name = "u_addr" placeholder="新規メールアドレスを入力">
+                                        <input id = "u_addr" type = "text" class = "input" name = "u_addr" placeholder="新規メールアドレスを入力"required/>
 									<script>
 									function clearInput(){
 										document.getElementById('u_addr').value = '';
@@ -45,20 +45,22 @@
                                     <input type = "submit" class = "addr_update" value="更新" onclick="koushin1()" >
                                     <h3 id="heading_A"></h3>
                                     <input type = "button" class = "reset" value="クリア" onclick="clearInput()"><br><br>
+
 									</div>
   </form>
-  <form name="" method="POST" action="InformationServlet" id="info2">
+  <form  method="POST" action="InformationServlet" id="info2">
                                     <div class = "group">
                                     <h2>パスワード変更</h2>
                                     <label for = "new_pw">新規パスワード</label><br>
-                                    <input type="password" id = "new_pw" name = "new_pw" placeholder=新しいパスワードを入力>
+                                    <input type="password" id = "new_pw" name = "new_pw" placeholder=新しいパスワードを入力 required/>
                                     </div>
                                     <label class = "co_pw">確認</label><br>
-                                        <input type="password" id = "co_pw" placeholder=もう一度パスワードを入力 onChange="check()">
+                                     <input type="password" id = "co_pw" placeholder=もう一度パスワードを入力  required/>
 
 
-                                    <input  type = "submit" class = "addr_update" value="更新" onclick="koushin2()" >
+                                    <input type = "submit" class = "addr_update" value="更新"  onclick="return check();">
                                     <input type = "button" class = "reset" value="クリア"onclick="clearInput2()"><br><br>
+									<p id="errorText"></p>
 									<script>
 									function clearInput2(){
 										document.getElementById('new_pw').value = '';
