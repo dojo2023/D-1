@@ -65,7 +65,7 @@ public class UserDao {
 		return loginResult;
 	}
 
-	public List<User> select(User param) {
+	public List<User> select(String addr) {
 		Connection conn = null;
 		List<User> cardList = new ArrayList<User>();
 
@@ -77,68 +77,15 @@ public class UserDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER以外全部入れた(selectに) --> 入れなかったらテストでエラーが出るので入れるようにしました。。
-			String sql = "select USER_NUM, USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER, USER_NICKNAME, USER_HEIGHT, USER_WEIGHT, USER_GENDER, USER_BIRTH, USER_GOALW, USER_LIMIT, USER_AVATAR, USER_COLOR from M_USER WHERE USER_NICKNAME LIKE ? AND USER_HEIGHT LIKE ? AND USER_WEIGHT LIKE ? AND USER_GENDER LIKE ? AND USER_BIRTH LIKE ? AND USER_GOALW LIKE ? AND USER_LIMIT LIKE ? AND USER_AVATAR LIKE ? AND USER_COLOR LIKE ?  ORDER BY USER_NUM";
+			String sql = "select USER_NUM, USER_ADDR, USER_PW, USER_SECRET, USER_ANSWER, USER_NICKNAME, USER_HEIGHT, USER_WEIGHT, USER_GENDER, USER_BIRTH, USER_GOALW, USER_LIMIT, USER_AVATAR, USER_COLOR from M_USER WHERE USER_ADDR = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// プレースホルダにログイン中のユーザーのmailを設定
-	        pStmt.setString(1, param.getUser_addr());
-	        System.out.println(param.getUser_addr());
+	        pStmt.setString(1, addr);
+	        System.out.println(addr);
 
 			// SQL文を完成させる
-			if (param.getUser_nickname() != null) {
-				pStmt.setString(1, "%" + param.getUser_nickname() + "%");
-			}
-			else {
-				pStmt.setString(1, "%");
-			}
-			if (param.getUser_height() != 0) {
-				pStmt.setString(2, "%" + param.getUser_height() + "%");
-			}
-			else {
-				pStmt.setString(2, "%");
-			}
-			if (param.getUser_weight() != 0) {
-				pStmt.setString(3, "%" + param.getUser_weight() + "%");
-			}
-			else {
-				pStmt.setString(3, "%");
-			}
-			if (param.getUser_gender() != 0) {
-				pStmt.setString(4, "%" + param.getUser_gender() + "%");
-			}
-			else {
-				pStmt.setString(4, "%");
-			}
-			if (param.getUser_birth() != null) {
-				pStmt.setString(5, "%" + param.getUser_birth() + "%");
-			}
-			else {
-				pStmt.setString(5, "%");
-			}
-			if (param.getUser_goalw() != 0) {
-				pStmt.setString(6, "%" + param.getUser_goalw() + "%");
-			}
-			else {
-				pStmt.setString(6, "%");
-			}
-			if (param.getUser_limit() != null) {
-				pStmt.setString(7, "%" + param.getUser_limit() + "%");
-			}
-			else {
-				pStmt.setString(7, "%");
-			}
-			if (param.getUser_avatar() != 0) {
-				pStmt.setString(8, "%" + param.getUser_avatar() + "%");
-			}
-			else {
-				pStmt.setString(8, "%");
-			}
-			if (param.getUser_color() != 0) {
-				pStmt.setString(9, "%" + param.getUser_color() + "%");
-			}
-			else {
-				pStmt.setString(9, "%");
-			}
+
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

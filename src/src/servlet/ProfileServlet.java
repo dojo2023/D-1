@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,29 +26,19 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session=request.getSession();
+		request.setCharacterEncoding("UTF-8");
+		Loggedin user_addr = (Loggedin) session.getAttribute("user_addr");
+		String addr = user_addr.getId();
+
+
+		// データベースから値を取得する処理
+		UserDao uDao = new UserDao();
+		List<User> cardList = uDao.select(addr);
+		request.setAttribute("cardList",cardList);
+
         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
 		dispatcher.forward(request, response);
-
-
-		/*		HttpSession session = request.getSession();
-				Loggedin user = (Loggedin) session.getAttribute("user_addr");
-				String addr = user.getId();
-
-				// データベースから値を取得する処理
-				UserDao uDao = new UserDao();
-				User userProfile = uDao.getUserProfile(addr);
-
-				// 取得した値をリクエスト属性に設定
-				request.setAttribute("nickname", userProfile.getNickname());
-				request.setAttribute("height", userProfile.getHeight());
-				request.setAttribute("weight", userProfile.getWeight());
-				request.setAttribute("avatar", userProfile.getAvatar());
-				request.setAttribute("color", userProfile.getColor());
-				request.setAttribute("gender", userProfile.getGender());
-				request.setAttribute("gender", userProfile.getGender());
-		*/
-
-
 	}
 
 	/**
@@ -55,12 +46,16 @@ public class ProfileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-
 		request.setCharacterEncoding("UTF-8");
 		Loggedin user_addr = (Loggedin) session.getAttribute("user_addr");
 		String addr = user_addr.getId();
 
 
+		// データベースから値を取得する処理
+		UserDao uDao = new UserDao();
+		/*List<User> cardList = uDao.select(addr);
+		request.setAttribute("cardList",cardList);
+		*/
 		// リクエストパラメータからフォームデータを取得
 	    String nickname = request.getParameter("USER_NICKNAME");
 	    double height = Double.parseDouble(request.getParameter("USER_HEIGHT"));
@@ -72,10 +67,7 @@ public class ProfileServlet extends HttpServlet {
 	    double goalw = Double.parseDouble(request.getParameter("USER_GOALW"));
 	    String limit = request.getParameter("USER_LIMIT");
 
-	    request.setAttribute("nickname", nickname);
 
-
-	    UserDao uDao = new UserDao();
 	    if(request.getParameter("update").equals("更新")) {
 			if(uDao.update(new User(addr, nickname, height, weight, gender, goalw, birth, limit, avatar, color))){
 				System.out.println("更新");
