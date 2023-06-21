@@ -123,7 +123,7 @@ function show_cal(year, month, first, last){
         if((1 + (l - center)/2) > 0 && last >= (1 + (l - center)/2)){
             one.childNodes[l].childNodes[1].innerHTML = (1 + (l - center)/2);
         }else{
-            one.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (29 + (l - center)/2)).getDate();
+            one.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (1 + (l - center)/2)).getDate();
         }
 
         if((8 + (l - center)/2) > 0 && last >= (8 + (l - center)/2)){
