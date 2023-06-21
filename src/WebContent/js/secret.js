@@ -1,4 +1,3 @@
-
 'use strict';
 const btn = document.getElementById('btn');
 
@@ -16,13 +15,21 @@ function addrsecretcheck() {
     } else if (answer_js !== answer) {
         alert("答えが一致しません");
         return false;
+
     } else {
+        openPopup();
         return true;
     }
 }
 
+function openPopup() {
+    var popup = document.getElementById('popup');
+    popup.style.display = 'block';
+}
 
-
+function closePopup() {
+    popup.style.display = 'none';
+}
 
 function pwcheck(){
     var newPassword = document.getElementById('u_pw').value;

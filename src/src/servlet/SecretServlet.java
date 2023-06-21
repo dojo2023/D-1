@@ -58,6 +58,8 @@ public class SecretServlet extends HttpServlet {
 
 			} else {
 				counttrue = 0;
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+				dispatcher.forward(request, response);
 					}
 
 	    }

@@ -55,7 +55,7 @@
                                     <input type = "submit" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
 								</div>
 
-							<div class = "popup">
+							<div class = "popup" id = "popup" style="display: none;">
 								<h2>パスワード変更</h2>
                                     <div class = "group">
                                     <label class = "label">新規パスワード</label><br>
@@ -66,13 +66,12 @@
                                         <input id = "u_pw" type = "password" class = "input" name = "co_pw" placeholder="もう一度パスワードを入力">
                                     </div>
 
-								</div>
                                 <div class ="info2">
                                     <input type = "submit" class = "update" value="更新" name = "pwsubmit" onclick="pwcheck()" >
                                     <input type = "reset" class = "reset" value="クリア"><br><br>
-
                                 </div>
                                 <span id="output"></span><br>
+                                </div>
                             </div>
 		<div class = "hidden">
 <p id = "A">${counttrue}</p>
