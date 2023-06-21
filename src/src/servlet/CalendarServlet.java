@@ -22,6 +22,8 @@ public class CalendarServlet extends HttpServlet {
 		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
 
 		if (user_addr != null) {
+			
+
 	        //画面へフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 			dispatcher.forward(request, response);

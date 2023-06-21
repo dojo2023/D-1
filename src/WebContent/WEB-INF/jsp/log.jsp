@@ -13,8 +13,8 @@
 
         <header>
             <div id = "head">
-                <a id = "logo" href = "カレンダーサーブレット">
-                    <img class = "img" src = "logo.png" alt = "ロゴ">
+                <a id = "logo" href = "/mippy/CalendarServlet">
+                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
                 </a>
                 <div id = "menu" onclick="menu()">
                     <ul id = "menu_bar">
@@ -106,7 +106,7 @@
                     </div><br>
 
                     <div class = "foot-link">
-                        <a href = /mippy/Food_register>該当がなければこちら</a>
+                        <a href = /mippy/Food_registerServlet>該当がなければこちら</a>
                     </div><br>
 
                     <input type = "submit" value = "登録" name = "record_submit" id = "button" disabled>

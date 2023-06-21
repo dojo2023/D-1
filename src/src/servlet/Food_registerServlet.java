@@ -89,7 +89,8 @@ public class Food_registerServlet extends HttpServlet {
 
 			}finally {
 				//画面にフォワードする
-				response.sendRedirect("/mippy/Food_registerServlet");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/food_register.jsp");
+				dispatcher.forward(request, response);
 			}
 
 		}
