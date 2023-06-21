@@ -27,7 +27,7 @@
 		</div>
 	</header>
         <main>
-        	<div id = "calender">
+        	<div id = "calendar">
         		<div id = "selecter">
                     <div id = "before" onclick = "beforeMonth()"></div>
                     <div id = "after" onclick = "afterMonth()"></div>

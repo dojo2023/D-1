@@ -1,20 +1,34 @@
 @charset "UTF-8";
 
-#selecter {
-	height: 10%;
+#head {
+	margin-left: 10%;
+	height: 15%;
+	margin-bottom: 5%;
+}
+
+#calendar {
 	width: 90%;
-	background-color: green;
+	height: 90%;
+	background-color:#AEE2FF;
+	margin-left: 5%;
 	margin-right: 5%;
-	margin-left: 5%
+	margin-bottom: 5%;
+}
+
+#selecter {
+	height: 25%;
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%
 
 }
 
 #Weekone, #Weektwo, #Weekthree, #Weekfour, #Weekfive {
 	height: 10%;
-	width: 90%;
-	background-color: green;
-	margin-right: 5%;
-	margin-left: 5%;
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 0.7%;
 }
 
 .Day {
@@ -29,12 +43,16 @@ span {
 }
 
 #before {
-    width: 10%;
-    height: 15%;
-    background-color: blue;
+  	width: 100px;
+  	height: 100px;
+  	clip-path: polygon(100% 0%, 100% 100%, 0 50%);
+  	background-color: red;
+  	transform: scale(0.5);
 }
 #after {
-    width: 10%;
-    height: 15%;
-    background-color: red;
+  	width: 100px;
+  	height: 100px;
+  	clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  	background-color: blue;
+  	transform: scale(0.5);
 }
