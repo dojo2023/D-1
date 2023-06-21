@@ -29,6 +29,7 @@
         <main>
         	<div id = "calendar">
         		<div id = "selecter">
+        		<p id = "Month" ></p>
                     <div id = "before" onclick = "beforeMonth()"></div>
                     <div id = "after" onclick = "afterMonth()"></div>
                     <input type = "month" id = "cal" value = "" oninput="onInput()">

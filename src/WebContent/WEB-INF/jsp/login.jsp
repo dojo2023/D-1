@@ -34,13 +34,11 @@
 
                                 <div class = "big-group">
                                     <div class = "group">
-                                    <label  class = "label">メールアドレス</label><br>
-                                        <input id = "user_addr" type = "text" class = "input" name = "user_addr">
+                                        <input id = "user_addr" type = "text" class = "input" name = "user_addr" placeholder= "メールアドレス">
                                     </div>
 
                                     <div class = "group">
-                                    <label class = "label">パスワード</label><br>
-                                        <input id = "user_pw" type = "password" class = "input" name = "user_pw">
+                                        <input id = "user_pw" type = "password" class = "input" name = "user_pw" placeholder= "パスワード">
                                     </div>
                                 </div>
 
