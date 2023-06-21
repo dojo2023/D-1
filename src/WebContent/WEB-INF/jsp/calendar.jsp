@@ -151,6 +151,29 @@
                         <span></span>
                     </div>
                 </div>
+                <div id = "Weeksix">
+                    <div class = "FirstDay Day">
+                        <span></span>
+                    </div>
+        			<div class = "SecondDay Day">
+                        <span></span>
+                    </div>
+        			<div class = "ThirdDay Day">
+                        <span></span>
+                    </div>
+        			<div class = "FourthDay Day">
+                        <span></span>
+                    </div>
+        			<div class = "FifthtDay Day">
+                        <span></span>
+                    </div>
+        			<div class = "SixthDay Day">
+                        <span></span>
+                    </div>
+        			<div class = "SeventhDay Day">
+                        <span></span>
+                    </div>
+                </div>
         	</div>
         </main>
         <!-- 共通js -->
