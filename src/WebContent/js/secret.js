@@ -1,29 +1,26 @@
-'use strict'
+
+'use strict';
 const btn = document.getElementById('btn');
-//パスワード変更押して一致するか確認
 
- function addrsecretcheck(){
+function addrsecretcheck() {
+    var counttrue = "<%= counttrue %>";
+    var question_js = "<%= userSecret %>";
+    var answer_js = "<%= userAnswer %>";
 
-                if (addr != datebaseにある || 該当メールと答えが一致  ){
+    if (counttrue === "0") {
+        alert("メールアドレスが存在しません");
+        return false;
+    } else if (question_js !== question) {
+        alert("質問が一致しません");
+        return false;
+    } else if (answer_js !== answer) {
+        alert("答えが一致しません");
+        return false;
+    } else {
+        return true;
+    }
+}
 
-                    alert("メールアドレスか秘密の質問");    //エラーメッセージを出力
-                    return false;    //送信ボタン本来の動作をキャンセルします
-                }
-                else if(){
-
-                }
-
-                else if(){
-
-                }
-
-
-
-                else{
-
-                    return true;    //送信ボタン本来の動作を実行します
-                }
-            }
 
 
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
     <link rel = "stylesheet" href = "css/secret.css">
     <head>
@@ -32,19 +32,7 @@
         </header>
        <body>
 		<form name="SecretServlet" method="POST" action="" id="secret">
-		<div class = "hidden">
-				<!-- sevletからのデータ受け取る
-										1. 一致するメールアドレスがあるか　0か１で？
-										2. 一致するメールアドレスがある場合、そのメールアドレスの
-											秘密の質問（Q)、答え(ANS)
-				-->
-			<%
-        		int addr_js = (int) request.getAttribute("addrjs");
-			int question_js = (int) request.getAttribute("questionjs");
-			String answer_js = (String) request.getAttribute("answerjs");
 
-    		%>
-		</div>
                             <div class = "form">
 
                                <div class = "form1">
@@ -86,7 +74,11 @@
                                 </div>
                                 <span id="output"></span><br>
                             </div>
-
+		<div class = "hidden">
+<p id = "A">${counttrue}</p>
+<p id = "A">${userSecret}</p>
+<p id = "A">${userAnswer}</p>
+		</div>
                     </form>
 ​
     <!-- 共通js -->

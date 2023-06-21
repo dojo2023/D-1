@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.UserDao;
+import model.User;
 
 /**
  * Servlet implementation class secretServlet
@@ -30,7 +34,34 @@ public class SecretServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		request.setCharacterEncoding("UTF-8");
+
+		String MAIL = request.getParameter("MAIL");
+		UserDao uDao = new UserDao();
+	    int counttrue = 0;
+	    int userSecret = 0;
+	    String userAnswer = null;
+
+	   if(request.getParameter("secretsubmit") != null) {
+
+			List<User> userList = uDao.checkEmailExistence(MAIL);
+
+			if (!userList.isEmpty()) {
+				User user = userList.get(0);
+				counttrue = 1;
+				userSecret = user.getUser_secret();
+				userAnswer = user.getUser_answer();
+				request.setAttribute("counttrue", counttrue);
+				request.setAttribute("userSecret", userSecret);
+				request.setAttribute("userAnswer", userAnswer);
+
+
+			} else {
+				counttrue = 0;
+					}
+
+	    }
+
+}
 
 }
