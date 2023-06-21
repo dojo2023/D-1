@@ -110,7 +110,6 @@
 
 	    // 関数を呼び出す
 	    onInput();
-
 	    console.log(display_year);  // 表示された年
 	    console.log(display_month);  // 表示された月
 	    console.log(display_first);  // 月の最初の日
@@ -118,17 +117,17 @@
 	    //ここまでファンクション
 
 	    var display_month1 = display_month + 1;
+
 	    if (display_month1 < 10) {
 	    	var display_month2 = "0" + display_month1;
 	    } else {
 	    	var display_month2 = display_month1;
 	    }
+
 	    var inc = display_year + "-" + display_month2;
 	    console.log(inc);
 
 	    var filteredData = rawData.filter(data => data.date.includes(inc));
-	    let test1 = filteredData.map(data => data.date);
-	    let test2 = filteredData.map(data => data.total_calories);
 	    var labels = filteredData.map(data => new Date(data.date));
 	    var graphData = {
    			labels: labels/* filteredData.map(data => data.date) */,
