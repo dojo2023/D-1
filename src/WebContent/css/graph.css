@@ -1,1 +1,16 @@
 @charset "UTF-8";
+
+#before {
+  	width: 100px;
+  	height: 100px;
+  	clip-path: polygon(100% 0%, 100% 100%, 0 50%);
+  	background-color: red;
+  	transform: scale(0.5);
+}
+#after {
+  	width: 100px;
+  	height: 100px;
+  	clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  	background-color: blue;
+  	transform: scale(0.5);
+}
