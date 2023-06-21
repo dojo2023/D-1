@@ -32,6 +32,19 @@
         </header>
        <body>
 		<form name="SecretServlet" method="POST" action="" id="secret">
+		<div class = "hidden">
+				<!-- sevletからのデータ受け取る
+										1. 一致するメールアドレスがあるか　0か１で？
+										2. 一致するメールアドレスがある場合、そのメールアドレスの
+											秘密の質問（Q)、答え(ANS)
+				-->
+			<%
+        		int addr_js = (int) request.getAttribute("addrjs");
+			int question_js = (int) request.getAttribute("questionjs");
+			String answer_js = (String) request.getAttribute("answerjs");
+
+    		%>
+		</div>
                             <div class = "form">
 
                                <div class = "form1">
