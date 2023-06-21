@@ -29,14 +29,12 @@
 	<meta charset="UTF-8">
 	<title>個人情報変更</title>
 	</header>
-	<h1>個人情報変更</h1>
 	<body>
 	<form name="" method="POST" action="InformationServlet" id="info">
                                 <h2>メールアドレス変更</h2>
                                 <div class = "group1">
 
-                                    <label  class = "u_addr">メールアドレス</label><br>
-                                        <input id = "u_addr" type = "text" class = "input" name = "u_addr" placeholder="新規メールアドレスを入力"required/>
+                                        <input id = "u_addr" type = "text" class = "input" name = "u_addr" placeholder="新規メールアドレス"required/>
 									<script>
 									function clearInput(){
 										document.getElementById('u_addr').value = '';
@@ -51,16 +49,15 @@
   <form  method="POST" action="InformationServlet" id="info2">
                                     <div class = "group">
                                     <h2>パスワード変更</h2>
-                                    <label for = "new_pw">新規パスワード</label><br>
-                                    <input type="password" id = "new_pw" name = "new_pw" placeholder=新しいパスワードを入力 required/>
+                                    <input type="password" id = "new_pw" name = "new_pw" placeholder=新規パスワード required/>
                                     </div>
-                                    <label class = "co_pw">確認</label><br>
-                                     <input type="password" id = "co_pw" placeholder=もう一度パスワードを入力  required/>
+
+                                     <input type="password" id = "co_pw" placeholder=パスワードをもう一度入力してください  required/>
 
 
-                                    <input type = "submit" class = "addr_update" value="更新" name = "PwButton"  onclick="return check();">
-                                    <input type = "button" class = "reset" value="クリア"onclick="clearInput2()"><br><br>
-									<p id="errorText"></p>
+	                                    <input type = "submit" class = "addr_update" value="更新" name = "PwButton"  onclick="return check();">
+	                                    <input type = "button" class = "reset" value="クリア"onclick="clearInput2()"><br><br>
+										<p id="errorText"></p>
 									<script>
 									function clearInput2(){
 										document.getElementById('new_pw').value = '';
