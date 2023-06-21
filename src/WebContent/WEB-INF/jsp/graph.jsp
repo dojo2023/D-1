@@ -32,7 +32,6 @@
         </div>
     </header>
         <main>
-        <input name="signup" type="button" onclick="location.href='/mippy/ProfileServlet'" value="プロフィール">
        	<p>平均カロリー：  kcal</p>
             <div class="graphArea">
                 <canvas id="graph" width="1000" height="400"></canvas>
