@@ -81,10 +81,10 @@
                         <p class = "item">朝昼夜その他</p>
                         <select name = "record_category_time" id = "record_category_time" value = "時間" required>
                             <option value = "" selected hidden>選択</option>
-                            <option value = "time1">朝</option>
-                            <option value = "time2">昼</option>
-                            <option value = "time3">夜</option>
-                            <option value = "time4">その他</option>
+                            <option value = "1">朝</option>
+                            <option value = "2">昼</option>
+                            <option value = "3">夜</option>
+                            <option value = "4">その他</option>
                         </select>
 
                     </div>

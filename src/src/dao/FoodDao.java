@@ -159,7 +159,7 @@ public class FoodDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
 
 			// 　
-			String sql = "select FOODS_NAME, FOODS_CAL from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ?";
+			String sql = "select FOODS_NUM, FOODS_NAME, FOODS_CAL from M_FOODS WHERE FOODS_CATEGORY LIKE ? AND FOODS_NAME LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -182,6 +182,7 @@ public class FoodDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Food card = new Food();
+				card.setFoods_num(rs.getInt("FOODS_NUM"));
 				card.setFoods_name(rs.getString("FOODS_NAME"));
 				card.setFoods_cal(rs.getDouble("FOODS_CAL"));
 				cardList.add(card);
