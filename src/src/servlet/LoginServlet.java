@@ -30,19 +30,20 @@ public class LoginServlet extends HttpServlet {
 		String user_pw = request.getParameter("user_pw");
 		String user_addr = request.getParameter("user_addr");
 
-		System.out.println(user_pw);
-		System.out.println(user_addr);
-
 		//ログインの処理
 		UserDao uDao=new UserDao();
 		if(uDao.isLoginOK(new User(user_addr, user_pw))) {
 			HttpSession session=request.getSession();
 			session.setAttribute("user_addr", new Loggedin(user_addr));
-			response.sendRedirect("/mippy/GraphServlet");
+			response.sendRedirect("/mippy/CalendarServlet");
+
+			System.out.println("ログイン成功。user_addr:"+user_addr);
 		}else {
 			//
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
+
+			System.out.println("ログイン失敗。");
 		}
 	}
 }

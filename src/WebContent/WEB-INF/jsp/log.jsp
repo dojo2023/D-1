@@ -36,39 +36,34 @@
                 <div id = "food_list">
                         <ul id = "log_list_1">
                             <li id = "list_1">
-                                ＜朝＞<br>
-                                卵ご飯
+                                ＜朝＞${list.getBreakfast()}kcal<br>
+								<c:forEach var = "a" items = "${breakfast}">
+									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+								</c:forEach>
                             </li>
                         </ul>
                         <ul id = "log_list_2">
                             <li id = "list_2">
-                                ＜昼＞<br>
-                                チーズリゾット<br>
-                                チーズ明太パスタ<br>
-                                ガーリックトースト
+                                ＜昼＞${list.getLunch()}kcal<br>
+								<c:forEach var = "a" items = "${lunch}">
+									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+								</c:forEach>
                             </li>
                         </ul>
                         <ul id = "log_list_3">
                             <li id = "list_3">
-                                ＜夜＞<br>
-                                焼肉<br>
-                                ラーメン<br>
-                                炒飯<br>
-                                餃子<br>
-                                エビチリ<br>
-                                天津飯<br>
-                                ゴマ団子<br>
-                                杏仁豆腐
+                                ＜夜＞${list.getDinner()}kcal<br>
+								<c:forEach var = "a" items = "${dinner}">
+									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+								</c:forEach>
                             </li>
                         </ul>
                         <ul id = "log_list_4">
                             <li id = "list_4">
-                                ＜その他＞<br>
-                                クロワッサン<br>
-                                ベビーカステラ<br>
-                                メロンパン<br>
-                                フルーツタルト<br>
-                                イチゴパフェ
+                                ＜その他＞${list.getDessert()}kcal<br>
+								<c:forEach var = "a" items = "${dessert}">
+									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+								</c:forEach>
                             </li>
                         </ul>
                 </div>

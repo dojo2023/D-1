@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Food;
 import model.Record;
 public class RecordDao {
 
@@ -122,6 +123,69 @@ public class RecordDao {
 				rs.getDouble("DESSERT")
 
 				);
+				cardList.add(card);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return cardList;
+	}
+
+	public List<Food> select2(String date, int user_num, int type) {
+		Connection conn = null;
+		List<Food> cardList = new ArrayList<Food>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+			// 朝昼夜でSELECT　
+			String sql =
+					"SELECT  M_FOODS.FOODS_NAME,FOODS_CAL "
+				   +"FROM M_RECORD "
+				   +"INNER JOIN M_FOODS "
+				   +"ON M_RECORD.FOODS_NUM = M_FOODS.FOODS_NUM "
+				   +"WHERE RECORD_DATE = ? "
+				   +"AND USER_NUM = ? "
+				   +"AND RECORD_TYPE = ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1,date);
+			pStmt.setInt(2,user_num);
+			pStmt.setInt(3,type);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Food card = new Food();
+				card.setFoods_name(rs.getString("FOODS_NAME"));
+				card.setFoods_cal(rs.getDouble("FOODS_CAL"));
 				cardList.add(card);
 			}
 		}
