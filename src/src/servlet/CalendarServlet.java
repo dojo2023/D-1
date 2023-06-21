@@ -27,7 +27,7 @@ public class CalendarServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
