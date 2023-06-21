@@ -37,7 +37,7 @@ function menu(){
             "CalendarServlet",
             "Log_Servlet",
             "GraphServlet",
-            "Profile_Servlet",
+            "ProfileServlet",
             "TopServlet"
         ];
 
