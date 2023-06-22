@@ -144,55 +144,53 @@ function show_cal(year, month, first, last){
     for (const l of list){
         if((1 + (l - center)/2) > 0 && last >= (1 + (l - center)/2)){
             one.childNodes[l].childNodes[1].innerHTML = (1 + (l - center)/2);
-            one.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (1 + (l - center)/2));
+            one.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month + 1)).slice( -2 ) + "-" + ('00' + (1 + (l - center)/2)).slice( -2 ));
         }else{
             one.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (1 + (l - center)/2)).getDate();
-            one.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (1 + (l - center)/2)).getDate());
+            one.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + month).slice( -2 ) + "-" + ('00' + new Date(year, month, (1 + (l - center)/2)).getDate()).slice( -2 ));
         }
-
 
         if((8 + (l - center)/2) > 0 && last >= (8 + (l - center)/2)){
             two.childNodes[l].childNodes[1].innerHTML = (8 + (l - center)/2);
-            two.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (8 + (l - center)/2));
+            two.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month + 1)).slice( -2 ) + "-" + ('00' + (8 + (l - center)/2)).slice( -2 ))
         }else{
             two.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (8 + (l - center)/2)).getDate();
-            two.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (8 + (l - center)/2)).getDate());
+            two.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + month).slice( -2 ) + "-" + ('00' + new Date(year, month, (8 + (l - center)/2)).getDate()).slice( -2 ));
         }
 
         if((15 + (l - center)/2) > 0 && last >= (15 + (l - center)/2)){
             thr.childNodes[l].childNodes[1].innerHTML = (15 + (l - center)/2);
-            thr.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (15 + (l - center)/2));
+            thr.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month + 1)).slice( -2 ) + "-" + ('00' + (15 + (l - center)/2)).slice( -2 ));
         }else{
             thr.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (15 + (l - center)/2)).getDate();
-            thr.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (15 + (l - center)/2)).getDate());
+            thr.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + month).slice( -2 ) + "-" + ('00' + new Date(year, month, (15 + (l - center)/2)).getDate()).slice( -2 ));
         }
 
         if((22 + (l - center)/2) > 0 && last >= (22 + (l - center)/2)){
             fou.childNodes[l].childNodes[1].innerHTML = (22 + (l - center)/2);
-            fou.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (22 + (l - center)/2));
+            fou.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month + 1)).slice( -2 ) + "-" + ('00' + (22 + (l - center)/2)).slice( -2 ));
         }else{
             fou.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (22 + (l - center)/2)).getDate();
-            fou.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (22 + (l - center)/2)).getDate());
+            fou.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + month).slice( -2 ) + "-" + ('00' + new Date(year, month, (22 + (l - center)/2)).getDate()).slice( -2 ));
         }
 
         if((29 + (l - center)/2) > 0 && last >= (29 + (l - center)/2)){
             fiv.childNodes[l].childNodes[1].innerHTML = (29 + (l - center)/2);
-            fiv.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (29 + (l - center)/2));
+            fiv.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month + 1)).slice( -2 ) + "-" + ('00' + (29 + (l - center)/2)).slice( -2 ));
         }else{
             fiv.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (29 + (l - center)/2)).getDate();
-            fiv.childNodes[l].childNodes[3].setAttribute("name", year + "-" + (month + 2) + "-" + new Date(year, month, (29 + (l - center)/2)).getDate());
+            fiv.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month+2)).slice( -2 ) + "-" + ('00' + new Date(year, month, (29 + (l - center)/2)).getDate()).slice( -2 ));
         }
 
         if((36 + (l - center)/2) > 0 && last >= (36 + (l - center)/2)){
             six.childNodes[l].childNodes[1].innerHTML = (36 + (l - center)/2);
-            six.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (36 + (l - center)/2));
+            six.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month + 1)).slice( -2 ) + "-" + ('00' + (36 + (l - center)/2)).slice( -2 ));
         }else{
             six.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (36 + (l - center)/2)).getDate();
-            six.childNodes[l].childNodes[3].setAttribute("name", year + "-" + (month + 2) + "-" + new Date(year, month, (36 + (l - center)/2)).getDate());
+            six.childNodes[l].childNodes[1].setAttribute("name", year + "-" + ('00' + (month+2)).slice( -2 ) + "-" + ('00' + new Date(year, month, (36 + (l - center)/2)).getDate()).slice( -2 ));
         }
     }
 }
-
 
 const firstDay = document.getElementsByClassName("FirstDay");
 const secondDay = document.getElementsByClassName("SecondDay");
