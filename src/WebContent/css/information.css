@@ -32,17 +32,6 @@ body {
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 
-.
-
-h1{
-	text-align: center;
-	color:#222;
-	margin-top:50px;
-	font-size:25px;
-    margin-bottom:50px;
-    padding: 20px;
-}
-
 h2{
 	text-align: center;
 	color:#222;
@@ -64,29 +53,19 @@ h2{
     border:1px solid #eee;
 }
 
-/*.button {
-    width:180px;
+.button1 {
+	width:180px;
 	height: 40px;
 	background-color: #ACBCFF;
 	border-radius:30px;
 	border: none;
 	margin-top: 40px;
-}*/
-
-.button1 {
-	display: flex;
-	justify-content: center;
 }
 
 .button2 {
-	display: flex;
-	justify-content: center;
-}
-
-#koushin, #clear, #addr_update, #reset {
 	width:180px;
 	height: 40px;
-	background-color: #ACBCFF;
+	background-color: #E6FFFD;
 	border-radius:30px;
 	border: none;
 	margin-top: 40px;

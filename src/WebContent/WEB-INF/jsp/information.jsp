@@ -30,26 +30,19 @@
 
 	    <title>個人情報変更</title>
         <form name="" method="POST" action="InformationServlet" class="info">
-            <div class = "group1">
             <h2>メールアドレス変更</h2>
                 <input ,class = "u_addr" type = "text" name = "u_addr" placeholder="新規メールアドレス"required/>
-                <div class = button1>
-                    <input type = "submit" id = "koushin" value="更新" name = "AddrButton" onclick="koushin1()" ><br>
-                    <input type = "button" id = "clear" value="クリア" onclick="clearInput()">
-                </div>
-            </div>
+                    <input type = "submit" class = "button1" value="更新" name = "AddrButton" onclick="koushin1()" ><br>
+                    <input type = "button" class = "button2" value="クリア" onclick="clearInput()">
         </form>
 
         <form  method="POST" action="InformationServlet" class="info2">
-            <div class = "group2">
             <h2>パスワード変更</h2>
                 <input type="password" class = "new_pw" name = "new_pw" placeholder=新規パスワード required/>
-                <input type="password" iclass = "co_pw" placeholder=パスワードをもう一度入力してください  required/>
-                <div class = button2>
-                    <input type = "submit" id = "addr_update" value="更新" name = "PwButton"  onclick="return check();">
-                    <input type = "button" id = "reset" value="クリア"onclick="clearInput2()">
-                </div>
-            </div>
+                <input type="password" class = "co_pw" placeholder=パスワードをもう一度入力してください  required/>
+                    <input type = "submit" class = "button1" value="更新" name = "PwButton"  onclick="return check();">
+                    <input type = "button" class = "button2" value="クリア" onclick="clearInput2()">
+
 
             <span id="output"></span>
 
