@@ -66,10 +66,9 @@ public class SecretServlet extends HttpServlet {
 
 	    }
 
-	   //addr欄とパスワード欄の入力で変える。。
-	    else if(request.getParameter("pwsubmit") != null) {
-	    	String useraddr = (String) request.getAttribute("D");
 
+	    else if(request.getParameter("pwsubmit") != null) {
+	        String useraddr = request.getParameter("user1addr");
 				uDao.seekPw(useraddr, new_pw);
 		        request.setAttribute("message", "update complete");
 		        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
