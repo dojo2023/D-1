@@ -1,38 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-<link rel = "stylesheet" href = "css/secret.css">
     <head>
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
         <!-- ページcss -->
         <link rel = "stylesheet" href = "css/information.css">
     </head>
+
     <body>
-        <header>
-            <div id = "head">
-                <a id = "logo" href = "CarendarServlet">
-                    <img class = "img" src = "logo.png" alt = "ロゴ">
-                </a>
-                <div id = "menu" onclick="menu()">
-                    <ul id = "menu_bar">
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                    </ul>
-                </div>
-                <div id = "box">
-                    <ul id = "menu_text"></ul>
-                </div>
-            </div>
-        </header>
+	<header>
+		<div id = "head">
+		<a id = "logo" href = "/mippy/CalendarServlet">
+		<img class = "img" src = "img/logo.png" alt = "ロゴ">
+		</a>
+			<div id = "menu" onclick="menu()">
+				<ul id = "menu_bar">
+				<li class = "bar"></li>
+				<li class = "bar"></li>
+				<li class = "bar"></li>
+				</ul>
+			</div>
+			<div id = "box">
+			</div>
+		</div>
+	</header>
 
 	    <title>個人情報変更</title>
         <form name="" method="POST" action="InformationServlet" class="info">
             <h2>メールアドレス変更</h2>
-                <input ,class = "u_addr" type = "text" name = "u_addr" placeholder="新規メールアドレス"required/>
-                    <input type = "submit" class = "button1" value="更新" name = "AddrButton" onclick="koushin1()" ><br>
+                <input class = "u_addr" type = "text" name = "u_addr" placeholder="新規メールアドレス"required/>
+                    <input type = "submit" class = "button1" value="更新" name = "AddrButton" onclick="koushin1()" >
                     <input type = "button" class = "button2" value="クリア" onclick="clearInput()">
         </form>
 

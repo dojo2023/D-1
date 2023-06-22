@@ -1,20 +1,13 @@
-     /* [登録]ボタンをクリックしたときの処理 */
-     function validateForm() {
-    var userAddr = document.forms[0].USER_ADDR.value;
-    var userPw = document.forms[0].USER_PW.value;
-    var confirmPw = document.getElementById('pass').value;
-    var userAnswer = document.forms[0].USER_ANSWER.value;
-	console.log(userAddr);
-    if (userAddr === '' || userPw === '' || confirmPw === '' || userAnswer === '') {
-      alert('全てのフィールドを入力してください');
-      return false;
-    }
+// パスワードの確認
+function validateForm() {
+	var password = document.getElementById("password").value;
+	var confirmpassword = document.getElementById("confirmpassword").value;
 
-    if (userPw !== confirmPw) {
-      alert('パスワードが一致しません');
-      return false;
-    }
+	if (password !== confirmpassword) {
+		document.getElementById("errorText").innerText = "パスワードが一致しません";
+		return false; // フォームの送信をキャンセル
+	}
 
-    return true;
-  }
-
+	// パスワードが一致した場合はフォームを送信
+	return true;
+}

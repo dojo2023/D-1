@@ -19,6 +19,7 @@ body {
 	background-color: #AEE2FF;
 	border-radius:20px;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	text-align: center;
 }
 
 .info2 {
@@ -30,6 +31,7 @@ body {
 	background-color: #AEE2FF;
 	border-radius:20px;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	text-align: center;
 }
 
 h2{
