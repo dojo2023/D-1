@@ -32,26 +32,34 @@
         </div>
     </header>
         <main>
-       	<p>平均カロリー：  kcal</p>
             <div class="graphArea">
-            	<input type = "month" id = "cal" value = "" onchange="onInput()">
-            	<div id = "selecter">
-            		<div class = "before" id = "before" onclick = "beforeMonth()"></div>
-                    <div class = "after" id = "after" onclick = "afterMonth()"></div>
-        		</div>
-                <canvas id="graph" width="1000" height="400"></canvas>
+       			<p>平均カロリー：  kcal</p>
+       			<div class = "back">
+       				<input type = "month" id = "cal" value = "" onchange="onInput()">
+	            	<div id = "selecter">
+	            		<div class = "before" id = "before" onclick = "beforeMonth()"></div>
+	                    <div class = "after" id = "after" onclick = "afterMonth()"></div>
+	        		</div>
+	                <canvas id="graph" width="1000" height="400"></canvas>
+       			</div>
             </div>
             <div class="goal">
             	<div class = "scor">
 		            <c:forEach var="e" items="${userList}" >
-		            	基礎代謝<br>
-		            	<input type="button" onclick="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})" value = "BMR">：<span id="result"></span><br>
-						目標体重<br>${e.user_goalw} kg<br>
-						目標まであと<br>${e.user_weight- e.user_goalw} kg<br>
+		            	<div class = "basal">
+		            		基礎代謝<br>
+			            	<input type="button" onclick="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})" value = "BMR">：<span id="result"></span><br>
+		            	</div>
+		            	<div class = "basal">
+		            		目標体重<br>${e.user_goalw} kg<br>
+		            	</div>
+		        		<div class = "basal">
+		        			目標まであと<br>${e.user_weight- e.user_goalw} kg<br>
+		        		</div>
 					</c:forEach>
-					<c:forEach var = "a" items = "${cardList }">
+					<%-- <c:forEach var = "a" items = "${cardList }">
 						${a.record_date}:${a.totalcal}<br>
-					</c:forEach>
+					</c:forEach> --%>
 				</div>
 				<div class = "rand">
 					<%!
