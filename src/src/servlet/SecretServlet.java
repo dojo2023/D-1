@@ -36,14 +36,13 @@ public class SecretServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		String session_now = request.getParameter("session_now");
+		String user_addr = request.getParameter("user_addr");
 		String new_pw = request.getParameter("new_pw");
-		String u_addr = request.getParameter("");
 		UserDao uDao = new UserDao();
 	    int counttrue = 0;
 	    int userSecret = 0;
 	    String userAnswer = null;
-	    List<User> userList = uDao.checkEmailExistence(session_now);
+	    List<User> userList = uDao.checkEmailExistence(user_addr);
 
 	   if(request.getParameter("secretsubmit") != null) {
 
@@ -52,29 +51,32 @@ public class SecretServlet extends HttpServlet {
 				counttrue = 1;
 				userSecret = user.getUser_secret();
 				userAnswer = user.getUser_answer();
-				request.setAttribute("session_now", session_now);
+				request.setAttribute("user_addr", user_addr);
 				request.setAttribute("counttrue", counttrue);
 				request.setAttribute("userSecret", userSecret);
 				request.setAttribute("userAnswer", userAnswer);
+
+
 		        request.setAttribute("message", "seeking");
 		        request.getRequestDispatcher("/WEB-INF/jsp/secret.jsp").forward(request, response);
-
-					if(request.getParameter("pwsubmit") != null) {
-						uDao.updateAddrPw2(u_addr, new_pw, session_now);
-				        request.setAttribute("message", "update complete");
-				        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
-
-					}
-
-			} else {
+			}
+		    else {
 				counttrue = 0;
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 				dispatcher.forward(request, response);
 					}
 
 	    }
 
+	    else if(request.getParameter("pwsubmit") != null) {
+				uDao.seekPw(user_addr, new_pw);
+		        request.setAttribute("message", "update complete");
+		        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
 
+			}
+	}
 }
 
-}
+
+
+
