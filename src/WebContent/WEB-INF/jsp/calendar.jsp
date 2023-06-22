@@ -226,7 +226,8 @@
         <!-- ページjs -->
         <script src = "js/calendar.js"></script>
         <script>
-
+        	food_cal();
+			function food_cal(){
 				const count_start = document.getElementsByClassName("cal");
 				for(let ex of count_start){
 				    <c:forEach var = "e" items = "${list}">
@@ -235,6 +236,7 @@
 				        }
 				    </c:forEach>
 				}
+			}
 		</script>
     </body>
 </html>

@@ -27,6 +27,8 @@ function onInput() {
 
 
 function beforeMonth(){
+	clean_cal();
+	food_cal();
     //カレンダーの月日を取得
     let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
@@ -56,6 +58,8 @@ function beforeMonth(){
 }
 
 function afterMonth(){
+	clean_cal();
+	food_cal();
     let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
     let display_first = new Date(display_year, display_month , 1).getDay();
@@ -347,4 +351,11 @@ function search_date(element, c_day){
             break;
     }
     return c_date;
+}
+
+function clean_cal(){
+	const count_start = document.getElementsByClassName("cal");
+	for(let ex of count_start){
+		ex.parentNode.childNodes[3].innerHTML= "0kcal";
+	}
 }
