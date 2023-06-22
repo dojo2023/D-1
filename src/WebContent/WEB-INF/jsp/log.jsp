@@ -71,7 +71,7 @@
 
             <!-- 食事を記録するフォーム -->
             <div id = "record_form">
-                <form action = "FoodLogServlet" method = "POST" id = "form">
+                <form action = "Log_Servlet" method = "POST" id = "form">
                     <div class = "record_input">
                         <p class = "item">日付</p>
                         <input type = "date" name = "record_category_date" id = "record_category_date" value ="${day}" required>

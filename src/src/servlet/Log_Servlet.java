@@ -21,6 +21,7 @@ import dao.UserDao;
 import model.Food;
 import model.Loggedin;
 import model.Record;
+import model.Register;
 
 @WebServlet("/Log_Servlet")
 public class Log_Servlet extends HttpServlet {
@@ -62,9 +63,7 @@ public class Log_Servlet extends HttpServlet {
 
 				//日程から登録した品目を取得する処理
 				List<Record> list = Rdao.select1(id);
-				System.out.println(day);
 				for (int i = 0 ; i < list.size() ; i++ ) {
-					System.out.println(list.get(i).getRecord_date());
 					if(list.get(i).getRecord_date().equals(day)) {
 						request.setAttribute("list", list.get(i));
 
@@ -80,8 +79,6 @@ public class Log_Servlet extends HttpServlet {
 						//その他
 						List<Food> dessert = Rdao.select2(day, id, 4);
 						request.setAttribute("dessert", dessert);
-
-
 					}
 				}
 
@@ -94,6 +91,27 @@ public class Log_Servlet extends HttpServlet {
 		        Date dateObj = calendar.getTime();
 		        String formattedDate = dtf.format(dateObj);
 		        request.setAttribute("day", formattedDate);
+
+		      //日程から登録した品目を取得する処理
+				List<Record> list = Rdao.select1(id);
+				for (int i = 0 ; i < list.size() ; i++ ) {
+					if(list.get(i).getRecord_date().equals(formattedDate)) {
+						request.setAttribute("list", list.get(i));
+
+						//朝
+						List<Food> breakfast = Rdao.select2(formattedDate, id, 1);
+						request.setAttribute("breakfast", breakfast);
+						//昼
+						List<Food> lunch = Rdao.select2(formattedDate, id, 2);
+						request.setAttribute("lunch", lunch);
+						//夜
+						List<Food> dinner = Rdao.select2(formattedDate, id, 3);
+						request.setAttribute("dinner", dinner);
+						//その他
+						List<Food> dessert = Rdao.select2(formattedDate, id, 4);
+						request.setAttribute("dessert", dessert);
+					}
+				}
 			}
 	        //画面へフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/log.jsp");
@@ -114,19 +132,62 @@ public class Log_Servlet extends HttpServlet {
 		UserDao UDao = new UserDao();
 		int id = UDao.getNum(user_addr);
 
+		//コンストラクト
 		RegisterDao Rdao = new RegisterDao();
+		Register register = new Register();
 		FoodDao Fdao = new FoodDao();
 		Food food = new Food();
+		RecordDao Redao = new RecordDao();
 
+		//HTMLから取得
+		request.setCharacterEncoding("UTF-8");
 		String date = request.getParameter("record_category_date");
 		int type = Integer.parseInt(request.getParameter("record_category_time"));
 		String category = request.getParameter("record_category");
 		String food_name = request.getParameter("record_item");
-		
+
+		System.out.println(category);
+		System.out.println(food_name);
+		//Food_numを取得
 		food.setFoods_category(category);
 		food.setFoods_name(food_name);
 		List<Food> get_foodnum = Fdao.search(food);
-		
+
+		//modelにセット
+		register.setFoods_num(get_foodnum.get(0).getFoods_num());
+		register.setRecord_date(date);
+		register.setRecord_type(type);
+		register.setUser_num(id);
+
+		if(Rdao.insert(register)) {
+			//カレンダーにセット
+			request.setAttribute("day", date);
+
+			//日程から登録した品目を取得する処理
+			List<Record> list = Redao.select1(id);
+			for (int i = 0 ; i < list.size() ; i++ ) {
+				if(list.get(i).getRecord_date().equals(date)) {
+					request.setAttribute("list", list.get(i));
+
+					//朝
+					List<Food> breakfast = Redao.select2(date, id, 1);
+					request.setAttribute("breakfast", breakfast);
+					//昼
+					List<Food> lunch = Redao.select2(date, id, 2);
+					request.setAttribute("lunch", lunch);
+					//夜
+					List<Food> dinner = Redao.select2(date, id, 3);
+					request.setAttribute("dinner", dinner);
+					//その他
+					List<Food> dessert = Redao.select2(date, id, 4);
+					request.setAttribute("dessert", dessert);
+				}
+			}
+		}
+
+		//画面へフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/log.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
