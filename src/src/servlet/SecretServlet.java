@@ -42,22 +42,25 @@ public class SecretServlet extends HttpServlet {
 	    int counttrue = 0;
 	    int userSecret = 0;
 	    String userAnswer = null;
-	    List<User> userList = uDao.checkEmailExistence(user_addr);
+	    int userNum = 0;
 
 	   if(request.getParameter("secretsubmit") != null) {
 
-			if (!userList.isEmpty()) {
-				User user = userList.get(0);
+		   List<User> userList = uDao.checkEmailExistence(user_addr);
+		   User user = userList.get(0);
+		   userNum = user.getUser_num();
+
+
+			if (userNum != 0) {
+				User user1 = userList.get(0);
 				counttrue = 1;
-				userSecret = user.getUser_secret();
-				userAnswer = user.getUser_answer();
+				userSecret = user1.getUser_secret();
+				userAnswer = user1.getUser_answer();
 				request.setAttribute("user_addr", user_addr);
 				request.setAttribute("counttrue", counttrue);
 				request.setAttribute("userSecret", userSecret);
 				request.setAttribute("userAnswer", userAnswer);
 
-
-		        request.setAttribute("message", "seeking");
 		        request.getRequestDispatcher("/WEB-INF/jsp/secret.jsp").forward(request, response);
 			}
 		    else {

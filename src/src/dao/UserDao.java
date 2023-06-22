@@ -444,7 +444,7 @@ public class UserDao {
 				pStmt.setString(1, user_pw);
 
 
-				pStmt.setString(2, (user_addr)); // session
+				pStmt.setString(2, user_addr); // session
 
 
 
@@ -603,21 +603,23 @@ public class UserDao {
 	    Connection conn = null;
 	    PreparedStatement stmt = null;
 	    ResultSet rs = null;
-	    List<User> cardList = new ArrayList<>();
+	    List<User> userList = new ArrayList<>();
+
 
 	    try {
 	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
-	        String query = "SELECT COUNT(*), USER_SECRET, USER_ANSWER FROM M_USER WHERE USER_ADDR = ?";
+	        String query = "SELECT COUNT(*), USER_NUM, USER_SECRET, USER_ANSWER FROM M_USER WHERE USER_ADDR = ?";
 	        stmt = conn.prepareStatement(query);
 	        stmt.setString(1, user_addr);
 	        rs = stmt.executeQuery();
 
 	        while (rs.next()) {
 	            User card = new User(
+	            	rs.getString("USER_NUM"),
 	                rs.getString("USER_SECRET"),
 	                rs.getString("USER_ANSWER")
 	            );
-	            cardList.add(card);
+	            userList.add(card);
 	        }
 
 	    } catch (SQLException e) {
@@ -633,6 +635,6 @@ public class UserDao {
 	        }
 	    }
 
-	    return cardList;
+	    return userList;
 	}
 	}

@@ -1,4 +1,7 @@
 package test;
+import java.util.List;
+
+import dao.UserDao;
 import model.User;
 
 public class UserdaoTest {
@@ -56,8 +59,8 @@ public class UserdaoTest {
 		}
 		*/
 		// update()のテスト
-		System.out.println("---------- update()のテスト ----------");
-		User upRec = new User(5/*USER_NUMが一致ないと更新できない*/, "ap@gmail.com", "password", "更新３", 131.4, 45.6, 2, 40.0, "20000101", "20230630", 3, "更新", 1, 3);
+		//System.out.println("---------- update()のテスト ----------");
+		//User upRec = new User(5/*USER_NUMが一致ないと更新できない*/, "ap@gmail.com", "password", "更新３", 131.4, 45.6, 2, 40.0, "20000101", "20230630", 3, "更新", 1, 3);
 		/*
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
@@ -102,5 +105,22 @@ public class UserdaoTest {
 
 		// delete()のテストなし
 		*/
+
+
+	UserDao dao = new UserDao();
+	System.out.println("---------- select()のテスト ----------");
+	String user_addr = "v@example.com";
+	List<User> cardList = dao.checkEmailExistence(user_addr);{
+	for (User card : cardList) {
+	    System.out.println("USER_NUM：" + card.getUser_num());
+	    System.out.println("USER_ADDR：" + card.getUser_addr());
+	    System.out.println("USER_PW：" + card.getUser_pw());
+	    System.out.println("USER_SECRET：" + card.getUser_secret());
+	    System.out.println("USER_ANSWER：" + card.getUser_answer());
+
+	    System.out.println();
+	}
+	}
+
 	}
 }
