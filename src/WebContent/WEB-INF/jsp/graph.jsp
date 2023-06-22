@@ -99,37 +99,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
     <script>
-		//今日の日付および月末までを判定
-		//month は　- 1 で表示される
-		const year = new Date().getYear() + 1900;
-		const month = new Date().getMonth() ;
-		const first = new Date(year, month, 1).getDay();
-		const last = new Date(year, month + 1, 0).getDate();
-
-		//カレンダーに表示している月を表示する
-		let cal_date = document.getElementById("cal");
-		cal_date.value = year + "-" + ('00' + (month+1)).slice( -2 );
-
 	    var rawData = [
     		<c:forEach var="a" items="${cardList}">
     			{ date: '${a.record_date}' + 'T00:00:00', total_calories: '${a.totalcal}' },
     		</c:forEach>
     	];
 
-	  //こっからファンクション--------------------------------------------------------------------------------------
+	    //こっからファンクション
 	    var display_year;
 	    var display_month;
 	    var display_first;
 	    var display_last;
 
+	    // こっからファンクション
 	    function onInput() {
 	        //カレンダーの月日を取得
 	        display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
 	        display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
 	        display_first = new Date(display_year, display_month, 1).getDate();
 	        display_last = new Date(display_year, display_month + 1, 0).getDate();
-
-	        define(display_year, display_month, display_first, display_last);
 	    }
 
 	    // 関数を呼び出す
@@ -138,116 +126,30 @@
 	    console.log(display_month);  // 表示された月
 	    console.log(display_first);  // 月の最初の日
 	    console.log(display_last);  // 月の最終日
-	    //ここまでファンクション--------------------------------------------------------------------------------------
+	    //ここまでファンクション
 
-	    //beforメソッド--------------------------------------------------------------------------------------------------
-	    var display_year1;
-	    var display_month1;
-	    var display_first1;
-	    var display_last1;
+	    var display_month1 = display_month + 1;
 
-	    function beforeMonth(){
-	        //カレンダーの月日を取得
-	        display_year1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-	        display_month1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-	        display_first1 = new Date(display_year, display_month , 1).getDate();
-	        display_last1 = new Date(display_year, display_month + 1 , 0).getDate();
-
-	        console.log("現在は" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
-	        if(display_month1 == 0){
-	            display_year1 -= 1;
-	            display_month1 = 11;
-	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
-	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
-
-		        define(display_year1, display_month1, display_first1, display_last1);
-	            cal_date.value = display_year1 + "-" + "12";
-	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
-	        }else{
-	            display_month1 -= 1;
-	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
-	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
-
-		        define(display_year1, display_month1, display_first1, display_last1);
-	            cal_date.value = display_year1 + "-" + ('00' + (display_month1 + 1)).slice( -2 );
-	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
-	        }
-	    }
-	    //beforメソッド--------------------------------------------------------------------------------------------------
-
-	    //afterメソッド--------------------------------------------------------------------------------------------------
-	    var display_year2;
-	    var display_month2;
-	    var display_first2;
-	    var display_last2;
-
-	    function afterMonth(){
-	        display_year2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-	        display_month2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-	        display_first2 = new Date(display_year2, display_month2 , 1).getDate();
-	        display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
-
-	        console.log("現在は" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
-
-	        if(display_month2 == 11){
-	            display_yea2r += 1;
-	            display_month2 = 0;
-	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
-	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
-
-		        define(display_year2, display_month2, display_first2, display_last2);
-	            cal_date.value = display_year2 + "-" + "01";
-	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
-	        }else{
-	            display_month2 += 1;
-	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
-	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
-
-		        define(display_year2, display_month2, display_first2, display_last2);
-	            cal_date.value = display_year2 + "-" + ('00' + (display_month2 + 1)).slice( -2 );
-	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
-	        }
-	    }
-	    //afterメソッド--------------------------------------------------------------------------------------------------
-
-	    //軸と紐づけ--------------------------------------------------------------------------------------------------
-	    var graphData;
-	    var display_first5;
-	    var display_last5;
-
-	    function define(display_year, display_month, display_first, display_last){
-	    	var display_month3 = display_month + 1;
-	    	display_first5 = display_first;
-	    	display_last5 = display_last;
-
-		    if (display_month3 < 10) {
-		    	var display_month4 = "0" + display_month3;
-		    } else {
-		    	var display_month4 = display_month3;
-		    }
-
-		    var inc = display_year + "-" + display_month4;
-		    console.log(inc);
-
-		    var filteredData = rawData.filter(data => data.date.includes(inc));
-		    var labels = filteredData.map(data => new Date(data.date));
-		    //データ挿入
-		    graphData = {
-		    	labels: labels/* filteredData.map(data => data.date) */,
-		    	datasets: [{
-		    		label: '合計摂取カロリー',
-		    		data: filteredData.map(data => data.total_calories),
-		    		borderColor: "rgba(255,0,0,1)",
-		    		backgroundColor: "rgba(0,0,0,0)"
-		    	}],
-		    };
+	    if (display_month1 < 10) {
+	    	var display_month2 = "0" + display_month1;
+	    } else {
+	    	var display_month2 = display_month1;
 	    }
 
-	    define();
-	    console.log(graphData);
-	    console.log(display_first5);
-	    console.log(display_last5);
-	    //ここまで紐づけ----------------------------------------------------------------------------------------------
+	    var inc = display_year + "-" + display_month2;
+	    console.log(inc);
+
+	    var filteredData = rawData.filter(data => data.date.includes(inc));
+	    var labels = filteredData.map(data => new Date(data.date));
+	    var graphData = {
+   			labels: labels/* filteredData.map(data => data.date) */,
+   			datasets: [{
+   				label: '合計摂取カロリー',
+   				data: filteredData.map(data => data.total_calories),
+   				borderColor: "rgba(255,0,0,1)",
+   				backgroundColor: "rgba(0,0,0,0)"
+   			}],
+   		};
 
 	    /* sample
 		    var graphData = {
