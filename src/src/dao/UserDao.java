@@ -599,6 +599,7 @@ public class UserDao {
 	    return userList;
 	}
 
+	//addr存在検出
 	public List<User> checkEmailExistence(String user_addr) {
 	    Connection conn = null;
 	    PreparedStatement stmt = null;
@@ -608,15 +609,15 @@ public class UserDao {
 
 	    try {
 	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
-	        String query = "SELECT COUNT(*), USER_NUM, USER_SECRET, USER_ANSWER FROM M_USER WHERE USER_ADDR = ?";
+	        String query = "SELECT COUNT(*) as ex, USER_NUM, USER_SECRET, USER_ANSWER FROM M_USER WHERE USER_ADDR = ?";
 	        stmt = conn.prepareStatement(query);
 	        stmt.setString(1, user_addr);
 	        rs = stmt.executeQuery();
 
 	        while (rs.next()) {
 	            User card = new User(
-	            	rs.getString("USER_NUM"),
-	                rs.getString("USER_SECRET"),
+	            	rs.getInt("ex"),
+	                rs.getInt("USER_SECRET"),
 	                rs.getString("USER_ANSWER")
 	            );
 	            userList.add(card);
