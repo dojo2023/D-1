@@ -1,16 +1,72 @@
 @charset "UTF-8";
 
 #before {
-  	width: 100px;
-  	height: 100px;
+  	width: 50px;
+  	height: 20px;
   	clip-path: polygon(100% 0%, 100% 100%, 0 50%);
   	background-color: red;
   	transform: scale(0.5);
 }
 #after {
-  	width: 100px;
-  	height: 100px;
+  	width: 50px;
+  	height: 20px;
   	clip-path: polygon(0 0, 0% 100%, 100% 50%);
   	background-color: blue;
   	transform: scale(0.5);
+}
+
+.before, .after{
+	float:left;
+}
+
+.box {
+  position: relative;
+  margin: 2em 0 2em 40px;
+  padding: 8px 15px;
+  background: #fff0c6;
+  border-radius: 30px;
+}
+
+.box::before{
+  font-family: "Font Awesome 5 Free";
+  content: "\f111";
+  font-weight: 900;
+  position: absolute;
+  font-size: 15px;
+  left: -45px;
+  bottom: 0;
+  color: #fff0c6;
+}
+
+.box::after{
+  font-family: "Font Awesome 5 Free";
+  content: "\f111";
+  font-weight: 900;
+  position: absolute;
+  font-size: 23px;
+  left: -28px;
+  bottom: 0;
+  color: #fff0c6;
+}
+
+.rand, .scor, .box, .pct{
+	float:left;
+}
+
+.pct{
+	width:100px;
+	height:100px;
+}
+
+.goal{
+	display: flex;
+    justify-content: center;
+	width: 100%;
+	margin: auto;
+	padding: 20px;
+	max-width: 800px;
+	height: 350px;
+	background-color: #AEE2FF;
+	border-radius:20px;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
