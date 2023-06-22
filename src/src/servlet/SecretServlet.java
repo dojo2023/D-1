@@ -38,8 +38,9 @@ public class SecretServlet extends HttpServlet {
 
 		String user_addr = request.getParameter("user_addr");
 		String new_pw = request.getParameter("new_pw");
+		int q = Integer.parseInt(request.getParameter("question"));
+		String a = request.getParameter("answer");
 		UserDao uDao = new UserDao();
-	    int counttrue = 0;
 	    int userSecret = 0;
 	    String userAnswer = null;
 	    int ex = 0;
@@ -50,22 +51,15 @@ public class SecretServlet extends HttpServlet {
 
 		   User user = userList.get(0);
 		   ex = user.getEx();
-
-
-			if (ex != 0) {
-				User user1 = userList.get(0);
-
-				userSecret = user1.getUser_secret();
-				userAnswer = user1.getUser_answer();
-
+			userSecret = user.getUser_secret();
+			userAnswer = user.getUser_answer();
+			if (ex != 0 && q == userSecret && a.equals(String.valueOf(userAnswer))) {
 				request.setAttribute("useraddr", user_addr);
-				request.setAttribute("counttrue", counttrue);
 				request.setAttribute("userSecret", userSecret);
 				request.setAttribute("userAnswer", userAnswer);
 		        request.getRequestDispatcher("/WEB-INF/jsp/secret.jsp").forward(request, response);
 			}
 		    else {
-				counttrue = 0;
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 				dispatcher.forward(request, response);
 					}
@@ -74,7 +68,7 @@ public class SecretServlet extends HttpServlet {
 
 	   //addr欄とパスワード欄の入力で変える。。
 	    else if(request.getParameter("pwsubmit") != null) {
-	    	String useraddr = (String) request.getAttribute("useraddr");
+	    	String useraddr = (String) request.getAttribute("D");
 
 				uDao.seekPw(useraddr, new_pw);
 		        request.setAttribute("message", "update complete");

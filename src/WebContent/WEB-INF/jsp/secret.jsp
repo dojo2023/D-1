@@ -74,7 +74,6 @@
                                 </div>
                             </div>
 		<div class = "hidden">
-<p id = "A">${counttrue}</p>
 <p id = "B">${userSecret}</p>
 <p id = "C">${userAnswer}</p>
 <p id = "D">${useraddr}</p>
