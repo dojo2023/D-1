@@ -77,7 +77,7 @@
 <p id = "A">${counttrue}</p>
 <p id = "B">${userSecret}</p>
 <p id = "C">${userAnswer}</p>
-<p id = "D">${user_addr}</p>
+<p id = "D">${useraddr}</p>
 		</div>
                     </form>
 ​

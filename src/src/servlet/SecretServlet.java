@@ -54,14 +54,14 @@ public class SecretServlet extends HttpServlet {
 
 			if (ex != 0) {
 				User user1 = userList.get(0);
-				counttrue = 1;
+
 				userSecret = user1.getUser_secret();
 				userAnswer = user1.getUser_answer();
-				request.setAttribute("user_addr", user_addr);
+
+				request.setAttribute("useraddr", user_addr);
 				request.setAttribute("counttrue", counttrue);
 				request.setAttribute("userSecret", userSecret);
 				request.setAttribute("userAnswer", userAnswer);
-
 		        request.getRequestDispatcher("/WEB-INF/jsp/secret.jsp").forward(request, response);
 			}
 		    else {
@@ -71,6 +71,16 @@ public class SecretServlet extends HttpServlet {
 					}
 
 	    }
+
+	   //addr欄とパスワード欄の入力で変える。。
+	    else if(request.getParameter("pwsubmit") != null) {
+	    	String useraddr = (String) request.getAttribute("useraddr");
+
+				uDao.seekPw(useraddr, new_pw);
+		        request.setAttribute("message", "update complete");
+		        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
+
+			}
 
 	}
 }
