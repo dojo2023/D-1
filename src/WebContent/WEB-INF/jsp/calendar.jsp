@@ -226,14 +226,15 @@
         <!-- ページjs -->
         <script src = "js/calendar.js"></script>
         <script>
-		const count_start = document.getElementsByClassName("cal");
-		for(let ex of count_start){
-		    <c:forEach var = "e" items = "${list}">
-		        if(ex.getAttribute("name") == '${e.record_date}'){
-		            ex.parentNode.childNodes[3].innerHTML= ${e.totalcal} + "kcal";
-		        }
-		    </c:forEach>
-		}
-</script>
+
+				const count_start = document.getElementsByClassName("cal");
+				for(let ex of count_start){
+				    <c:forEach var = "e" items = "${list}">
+				        if(ex.getAttribute("name") == '${e.record_date}'){
+				            ex.parentNode.childNodes[3].innerHTML= ${e.totalcal} + "kcal";
+				        }
+				    </c:forEach>
+				}
+		</script>
     </body>
 </html>

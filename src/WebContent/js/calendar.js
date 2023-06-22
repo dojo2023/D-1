@@ -265,7 +265,7 @@ Array.prototype.forEach.call(day, function(items){
                 if(result3 > 10 && result2 == 1){
                     result1 -= 1;
                     result2 = 12;
-                }else if(result > 10 ){
+                }else if(result3 > 10 ){
                     result2 -= 1;
                 }
                 break;
