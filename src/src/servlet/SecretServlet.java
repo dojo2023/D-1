@@ -36,12 +36,14 @@ public class SecretServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		String MAIL = request.getParameter("MAIL");
+		String session_now = request.getParameter("session_now");
+		String new_pw = request.getParameter("new_pw");
+		String u_addr = request.getParameter("");
 		UserDao uDao = new UserDao();
 	    int counttrue = 0;
 	    int userSecret = 0;
 	    String userAnswer = null;
-	    List<User> userList = uDao.checkEmailExistence(MAIL);
+	    List<User> userList = uDao.checkEmailExistence(session_now);
 
 	   if(request.getParameter("secretsubmit") != null) {
 
@@ -50,10 +52,19 @@ public class SecretServlet extends HttpServlet {
 				counttrue = 1;
 				userSecret = user.getUser_secret();
 				userAnswer = user.getUser_answer();
+				request.setAttribute("session_now", session_now);
 				request.setAttribute("counttrue", counttrue);
 				request.setAttribute("userSecret", userSecret);
 				request.setAttribute("userAnswer", userAnswer);
+		        request.setAttribute("message", "seeking");
+		        request.getRequestDispatcher("/WEB-INF/jsp/secret.jsp").forward(request, response);
 
+					if(request.getParameter("pwsubmit") != null) {
+						uDao.updateAddrPw2(u_addr, new_pw, session_now);
+				        request.setAttribute("message", "update complete");
+				        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
+
+					}
 
 			} else {
 				counttrue = 0;
@@ -62,6 +73,7 @@ public class SecretServlet extends HttpServlet {
 					}
 
 	    }
+
 
 }
 

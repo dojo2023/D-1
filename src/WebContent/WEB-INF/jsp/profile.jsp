@@ -66,21 +66,39 @@
 				<div class="avatars">
 					アバター<br>
 					<select id="avatar-select" name="USER_AVATAR" onchange="showAvatarImage()">
+
 						<option value="1" ${e.user_avatar == 1 ? 'selected' : ''}>アバター1</option>
 						<option value="2" ${e.user_avatar == 2 ? 'selected' : ''}>アバター2</option>
 						<option value="3" ${e.user_avatar == 3 ? 'selected' : ''}>アバター3</option>
+						<option value="4" ${e.user_avatar == 4 ? 'selected' : ''}>アバター4</option>
+						<option value="5" ${e.user_avatar == 5 ? 'selected' : ''}>アバター5</option>
+						<option value="6" ${e.user_avatar == 6 ? 'selected' : ''}>アバター6</option>
+						<option value="7" ${e.user_avatar == 7 ? 'selected' : ''}>アバター7</option>
+						<option value="8" ${e.user_avatar == 8 ? 'selected' : ''}>アバター8</option>
+						<option value="9" ${e.user_avatar == 9 ? 'selected' : ''}>アバター9</option>
+						<option value="10" ${e.user_avatar == 10 ? 'selected' : ''}>アバター10</option>
 					</select><br>
-					 背景色<br> <select id="color-select" name="USER_COLOR" onchange="changeBackgroundColor()">
-						<option value="1" ${e.user_color == 1 ? 'selected' : ''}>桃色</option>
-						<option value="2" ${e.user_color == 2 ? 'selected' : ''}>若草色</option>
-						<option value="3" ${e.user_color == 3 ? 'selected' : ''}>藤紫色</option>
+
+					 <!-- 背景色 --><br>
+					 <select id="color-select" name="USER_COLOR" onchange="changeBackgroundColor()" hidden >
+						<option value="1" ${e.user_color == 1 ? 'selected' : ''} >桃色</option>
+						<option value="2" ${e.user_color == 2 ? 'selected' : ''} >若草色</option>
+						<option value="3" ${e.user_color == 3 ? 'selected' : ''} >藤紫色</option>
 					</select><br>
+
 				</div>
 				<br><br>
 
 				<img id="avatar-image-1" class="avatar-image" src="img/mippy_1.gif">
   				<img id="avatar-image-2" class="avatar-image" src="img/mippy_2.gif">
   				<img id="avatar-image-3" class="avatar-image" src="img/mippy_3.gif">
+  				<img id="avatar-image-4" class="avatar-image" src="img/mippy_4.gif">
+  				<img id="avatar-image-5" class="avatar-image" src="img/mippy_5.gif">
+  				<img id="avatar-image-6" class="avatar-image" src="img/mippy_6.gif">
+  				<img id="avatar-image-7" class="avatar-image" src="img/mippy_7.gif">
+  				<img id="avatar-image-8" class="avatar-image" src="img/mippy_8.gif">
+  				<img id="avatar-image-9" class="avatar-image" src="img/mippy_9.gif">
+  				<img id="avatar-image-10" class="avatar-image" src="img/mippy_10.gif">
 
 				</c:forEach>
 				<input type="submit" class="button" name="update" value="更新">
