@@ -1,7 +1,7 @@
 'use strict'
 
 
-function beforeMonth(){
+/*function beforeMonth(){
     //カレンダーの月日を取得
     let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	})
 })
 //graphメソッド--------------------------------------------------------------------------------------------------
-
+*/
 /*体重か摂取カロリーの変更プルダウン
 var dropDown = document.getElementById("");
 dropDown.onchange = function() {
