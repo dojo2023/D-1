@@ -548,5 +548,40 @@ public class UserDao {
 	    return userList;
 	}
 
+	public List<User> checkEmailExistence(String user_addr) {
+	    Connection conn = null;
+	    PreparedStatement stmt = null;
+	    ResultSet rs = null;
+	    List<User> cardList = new ArrayList<>();
 
-}
+	    try {
+	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+	        String query = "SELECT COUNT(*), USER_SECRET, USER_ANSWER FROM M_USER WHERE USER_ADDR = ?";
+	        stmt = conn.prepareStatement(query);
+	        stmt.setString(1, user_addr);
+	        rs = stmt.executeQuery();
+
+	        while (rs.next()) {
+	            User card = new User(
+	                rs.getString("USER_SECRET"),
+	                rs.getString("USER_ANSWER")
+	            );
+	            cardList.add(card);
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        // 데이터베이스 연결 해제
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	    return cardList;
+	}
+	}

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.FoodDao;
 import dao.RecordDao;
+import dao.RegisterDao;
 import dao.UserDao;
 import model.Food;
 import model.Loggedin;
@@ -105,8 +106,27 @@ public class Log_Servlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//sessionを取得
+		HttpSession session = request.getSession();
+		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
+
+		//user_numを取得
+		UserDao UDao = new UserDao();
+		int id = UDao.getNum(user_addr);
+
+		RegisterDao Rdao = new RegisterDao();
+		FoodDao Fdao = new FoodDao();
+		Food food = new Food();
+
+		String date = request.getParameter("record_category_date");
+		int type = Integer.parseInt(request.getParameter("record_category_time"));
+		String category = request.getParameter("record_category");
+		String food_name = request.getParameter("record_item");
+		
+		food.setFoods_category(category);
+		food.setFoods_name(food_name);
+		List<Food> get_foodnum = Fdao.search(food);
+		
 	}
 
 }

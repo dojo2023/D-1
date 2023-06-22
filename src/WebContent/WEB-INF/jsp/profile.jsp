@@ -7,10 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>プロフィール設定画面</title>
-<!-- ページcss -->
-<link rel="stylesheet" href="css/profile.css">
+
 <!-- 共通css -->
 <link rel="stylesheet" href="css/common.css">
+<!-- ページcss -->
+<link rel="stylesheet" href="css/profile.css">
+
 </head>
 <body>
 
@@ -31,10 +33,11 @@
 		</div>
 
 	</header>
-	<div id="date"></div>
+
 	<main>
-		<div id="date"></div>
+
 		<div class="profile">
+				<div id="date"></div>
 			<form method="POST" action="/mippy/ProfileServlet">
 				<c:forEach var="e" items="${cardList }">
 				ニックネーム<br>
@@ -61,16 +64,24 @@
 					<input type="date" name="USER_LIMIT" value="${e.user_limit}">まで！<br>
 
 				<div class="avatars">
-					アバター<br> <select name="USER_AVATAR">
+					アバター<br>
+					<select id="avatar-select" name="USER_AVATAR" onchange="showAvatarImage()">
 						<option value="1" ${e.user_avatar == 1 ? 'selected' : ''}>アバター1</option>
 						<option value="2" ${e.user_avatar == 2 ? 'selected' : ''}>アバター2</option>
 						<option value="3" ${e.user_avatar == 3 ? 'selected' : ''}>アバター3</option>
-					</select><br> アバターカラー<br> <select name="USER_COLOR">
-						<option value="1" ${e.user_color == 1 ? 'selected' : ''}>カラー1</option>
-						<option value="2" ${e.user_color == 2 ? 'selected' : ''}>カラー2</option>
-						<option value="3" ${e.user_color == 3 ? 'selected' : ''}>カラー3</option>
+					</select><br>
+					 背景色<br> <select id="color-select" name="USER_COLOR" onchange="changeBackgroundColor()">
+						<option value="1" ${e.user_color == 1 ? 'selected' : ''}>桃色</option>
+						<option value="2" ${e.user_color == 2 ? 'selected' : ''}>若草色</option>
+						<option value="3" ${e.user_color == 3 ? 'selected' : ''}>藤紫色</option>
 					</select><br>
 				</div>
+				<br><br>
+
+				<img id="avatar-image-1" class="avatar-image" src="img/mippy_1.gif">
+  				<img id="avatar-image-2" class="avatar-image" src="img/mippy_2.gif">
+  				<img id="avatar-image-3" class="avatar-image" src="img/mippy_3.gif">
+
 				</c:forEach>
 				<input type="submit" class="button" name="update" value="更新">
 				<input type="button" class="button" onclick="window.location.href='/mippy/InformationServlet';" value="個人情報変更">

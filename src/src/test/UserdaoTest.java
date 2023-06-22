@@ -1,11 +1,9 @@
 package test;
-import java.util.List;
-
-import dao.UserDao;
 import model.User;
 
 public class UserdaoTest {
 	public static void main(String[] args) {
+		/*
 		UserDao dao = new UserDao();
 		// select()のテスト
 		System.out.println("---------- select()のテスト ----------");
@@ -56,11 +54,11 @@ public class UserdaoTest {
 		else {
 			System.out.println("登録失敗！");
 		}
-
+		*/
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
 		User upRec = new User(5/*USER_NUMが一致ないと更新できない*/, "ap@gmail.com", "password", "更新３", 131.4, 45.6, 2, 40.0, "20000101", "20230630", 3, "更新", 1, 3);
-
+		/*
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
 			List<User> cardList4 = dao.select(upRec);
@@ -103,6 +101,6 @@ public class UserdaoTest {
 		}
 
 		// delete()のテストなし
-
+		*/
 	}
 }

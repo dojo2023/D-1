@@ -12,8 +12,8 @@
     <body>
 	<header>
 		<div id = "head">
-		<a id = "logo" href = "カレンダーサーブレット">
-		<img class = "img" src = "logo.png" alt = "ロゴ">
+		<a id = "logo" href = "/mippy/CalendarServlet">
+		<img class = "img" src = "img/logo.png" alt = "ロゴ">
 		</a>
 			<div id = "menu" onclick="menu()">
 				<ul id = "menu_bar">
@@ -29,6 +29,7 @@
         <main>
         	<div id = "calendar">
         		<div id = "selecter">
+        		<p id = "Month" ></p>
                     <div id = "before" onclick = "beforeMonth()"></div>
                     <div id = "after" onclick = "afterMonth()"></div>
                     <input type = "month" id = "cal" value = "" oninput="onInput()">

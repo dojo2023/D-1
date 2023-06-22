@@ -2,17 +2,30 @@
 
 body {
 	background-color: #ffffff;
-	font: "";
+	/* font-family:"Yusei Magic"; */
 }
 
 .login-wrap {
 	width: 100%;
 	margin: auto;
 	max-width: 525px;
-	height: 400px;
+	height: 450px;
 	position: relative;
 	background-color: #AEE2FF;
+	border-radius:20px;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+
+.input {
+  width:80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background:#f5f5f5;
+  border:0;
+  padding:20px;
+  border-radius:6px;
+  margin-bottom:10px;
+  border:1px solid #eee;
 }
 
 .button1 {

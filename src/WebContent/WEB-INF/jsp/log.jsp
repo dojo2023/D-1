@@ -13,8 +13,8 @@
 
         <header>
             <div id = "head">
-                <a id = "logo" href = "カレンダーサーブレット">
-                    <img class = "img" src = "logo.png" alt = "ロゴ">
+                <a id = "logo" href = "/mippy/CalendarServlet">
+                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
                 </a>
                 <div id = "menu" onclick="menu()">
                     <ul id = "menu_bar">
@@ -81,10 +81,10 @@
                         <p class = "item">朝昼夜その他</p>
                         <select name = "record_category_time" id = "record_category_time" value = "時間" required>
                             <option value = "" selected hidden>選択</option>
-                            <option value = "time1">朝</option>
-                            <option value = "time2">昼</option>
-                            <option value = "time3">夜</option>
-                            <option value = "time4">その他</option>
+                            <option value = "1">朝</option>
+                            <option value = "2">昼</option>
+                            <option value = "3">夜</option>
+                            <option value = "4">その他</option>
                         </select>
 
                     </div>
@@ -106,7 +106,7 @@
                     </div><br>
 
                     <div class = "foot-link">
-                        <a href = /mippy/Food_register>該当がなければこちら</a>
+                        <a href = /mippy/Food_registerServlet>該当がなければこちら</a>
                     </div><br>
 
                     <input type = "submit" value = "登録" name = "record_submit" id = "button" disabled>

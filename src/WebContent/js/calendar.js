@@ -5,8 +5,7 @@ const year = new Date().getYear() + 1900;
 const month = new Date().getMonth() ;
 const first = new Date(year, month, 1).getDay();
 const last = new Date(year, month + 1, 0).getDate();
-
-console.log(new Date(year, 11).getMonth());
+console.log(year + "+" + month+ "+" + first + "+" + last);
 //カレンダーに表示している月を表示する
 let cal_date = document.getElementById("cal");
 cal_date.value = year + "-" + ('00' + (month+1)).slice( -2 );
@@ -29,39 +28,58 @@ function onInput() {
 
 function beforeMonth(){
     //カレンダーの月日を取得
-    const display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-    const display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-    let display_first = new Date(display_year, display_month -1, 1).getDay();
-    const display_last = new Date(display_year, display_month, 0).getDate();
+    let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+    let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+    let display_first = new Date(display_year, display_month , 1).getDay();
+    let display_last = new Date(display_year, display_month + 1 , 0).getDate();
 
-    const judge = new Date(display_year, 1).getMonth();
+    console.log("現在は" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
+    if(display_month == 0){
+        display_year -= 1;
+        display_month = 11;
+        display_first = new Date(display_year, display_month , 1).getDay();
+        display_last = new Date(display_year, display_month + 1 , 0).getDate();
 
-    if((display_month+1) > judge){
         show_cal(display_year, display_month, display_first, display_last);
-        cal_date.value = display_year + "-" + ('00' + (display_month)).slice( -2 );
-    }else {
-        display_first = new Date(display_year-1, 12, 1).getDay();
-        show_cal(display_year-1, 12, display_first, display_last);
-        cal_date.value = display_year-1 + "-" + "12";
+        cal_date.value = display_year + "-" + "12";
+        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
+    }else{
+        display_month -= 1;
+        display_first = new Date(display_year, display_month , 1).getDay();
+        display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
+        show_cal(display_year, display_month, display_first, display_last);
+        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
+        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     }
 
 }
 
 function afterMonth(){
-    const display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-    const display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-    let display_first = new Date(display_year, display_month + 1, 1).getDay();
-    const display_last = new Date(display_year, display_month + 2 , 0).getDate();
+    let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+    let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+    let display_first = new Date(display_year, display_month , 1).getDay();
+    let display_last = new Date(display_year, display_month + 1 , 0).getDate();
 
-    const judge = new Date(display_year, 11).getMonth();
+    console.log("現在は" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
 
-    if((display_month+1) < judge){
+    if(display_month == 11){
+        display_year += 1;
+        display_month = 0;
+        display_first = new Date(display_year, display_month , 1).getDay();
+        display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
         show_cal(display_year, display_month, display_first, display_last);
-        cal_date.value = display_year + "-" + ('00' + (display_month+2)).slice( -2 );
-    }else {
-        display_first = new Date(display_year+1, 1, 1).getDay();
-        show_cal(display_year+1, 1, display_first, display_last);
-        cal_date.value = display_year +1  + "-" + "01";
+        cal_date.value = display_year + "-" + "01";
+        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
+    }else{
+        display_month += 1;
+        display_first = new Date(display_year, display_month , 1).getDay();
+        display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
+        show_cal(display_year, display_month, display_first, display_last);
+        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
+        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     }
 }
 
@@ -83,11 +101,16 @@ function show_cal(year, month, first, last){
     let thr = document.getElementById("Weekthree");
     let fou = document.getElementById("Weekfour");
     let fiv = document.getElementById("Weekfive");
+    let six = document.getElementById("Weeksix");
 
     //中央の曜日を判定
     //1 = 月 …　7 = 日
     let center = 0;
     switch (first) {
+        case 0:
+            center = sun;
+            break;
+
         case 1:
             center = mon;
             break;
@@ -112,9 +135,6 @@ function show_cal(year, month, first, last){
             center = sat;
             break;
 
-        case 7:
-            center = sun;
-            break;
     }
 
     //中央の曜日の差分で日付を判定する
@@ -125,6 +145,7 @@ function show_cal(year, month, first, last){
         }else{
             one.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (1 + (l - center)/2)).getDate();
         }
+
 
         if((8 + (l - center)/2) > 0 && last >= (8 + (l - center)/2)){
             two.childNodes[l].childNodes[1].innerHTML = (8 + (l - center)/2);
@@ -149,6 +170,12 @@ function show_cal(year, month, first, last){
         }else{
             fiv.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (29 + (l - center)/2)).getDate();
         }
+
+        if((36 + (l - center)/2) > 0 && last >= (36 + (l - center)/2)){
+            six.childNodes[l].childNodes[1].innerHTML = (36 + (l - center)/2);
+        }else{
+            six.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (36 + (l - center)/2)).getDate();
+        }
     }
 }
 
@@ -163,7 +190,7 @@ const seventhDay = document.getElementsByClassName("SeventhDay");
 let c_day;
 let c_week = 0;
 
-for (let i = 0 ; i < 5; i++){
+for (let i = 0 ; i < 6; i++){
     firstDay[i].addEventListener('click',function(){
         c_day = 1;
         c_week = i + 1;
@@ -208,41 +235,69 @@ Array.prototype.forEach.call(day, function(items){
     items.onclick = function() {
         console.log(c_week);
         console.log(c_day);
-        const result1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-        const result2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5)), 1).getMonth();
+        let result1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+        let result2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
         let one = document.getElementById("Weekone");
         let two = document.getElementById("Weektwo");
         let thr = document.getElementById("Weekthree");
         let fou = document.getElementById("Weekfour");
         let fiv = document.getElementById("Weekfive");
+        let six = document.getElementById("Weeksix");
 
-        let result;
+        let result3;
 
         switch (c_week) {
             case 1:
-                result = search_date(one, c_day);
+                result3 = search_date(one, c_day);
+                result2 += 1;
+                if(result3 > 10 && result2 == 1){
+                    result1 -= 1;
+                    result2 = 12;
+                }else if(result3 > 10 ){
+                    result2 -= 1;
+                }
                 break;
             case 2:
-                result = search_date(two, c_day);
+                result3 = search_date(two, c_day);
+                result2 += 1;
                 break;
             case 3:
-                result = search_date(thr, c_day);
+                result3 = search_date(thr, c_day);
+                result2 += 1;
                 break;
             case 4:
-                result = search_date(fou, c_day);
+                result3 = search_date(fou, c_day);
+                result2 += 1;
                 break;
             case 5:
-                result = search_date(fiv, c_day);
+                result3 = search_date(fiv, c_day);
+                result2 += 1;
+                if(result3 < 10 && result2 == 12){
+                    result1 += 1;
+                    result2 = 1;
+                }else if(result3 < 10 ){
+                    result2 += 1;
+                }
                 break;
+            case 6:
+                result3 = search_date(six, c_day);
+                result2 += 1;
+                if(result3 < 10 && result2 == 12){
+                    result1 += 1;
+                    result2 = 1;
+                }else if(result3 < 10 ){
+                    result2 += 1;
+                }
+                break;
+
         }
 
         const elements = document.getElementsByClassName("Day");
-
         const form =  `<form id = "javaGET" action = "Log_Servlet" method = "GET"> </form>`;
         document.getElementById("selecter").insertAdjacentHTML("beforeend", form);
         const textbox = `<input type = "hidden" value = "`+ result1 +`" name = "GETyear">`;
         const textbox1 = `<input type = "hidden" value = "`+ result2 +`" name = "GETmonth">`;
-        const textbox2 = `<input type = "hidden" value = "`+ result +`" name = "GETdate">`;
+        const textbox2 = `<input type = "hidden" value = "`+ result3 +`" name = "GETdate">`;
         document.getElementById("javaGET").insertAdjacentHTML("beforeend", textbox);
         document.getElementById("javaGET").insertAdjacentHTML("beforeend", textbox1);
         document.getElementById("javaGET").insertAdjacentHTML("beforeend", textbox2);

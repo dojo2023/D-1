@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
     <link rel = "stylesheet" href = "css/secret.css">
     <head>
@@ -32,19 +32,7 @@
         </header>
        <body>
 		<form name="SecretServlet" method="POST" action="" id="secret">
-		<div class = "hidden">
-				<!-- sevletからのデータ受け取る
-										1. 一致するメールアドレスがあるか　0か１で？
-										2. 一致するメールアドレスがある場合、そのメールアドレスの
-											秘密の質問（Q)、答え(ANS)
-				-->
-			<%
-        		int addr_js = (int) request.getAttribute("addrjs");
-			int question_js = (int) request.getAttribute("questionjs");
-			String answer_js = (String) request.getAttribute("answerjs");
 
-    		%>
-		</div>
                             <div class = "form">
 
                                <div class = "form1">
@@ -67,7 +55,7 @@
                                     <input type = "submit" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
 								</div>
 
-							<div class = "popup">
+							<div class = "popup" id = "popup" style="display: none;">
 								<h2>パスワード変更</h2>
                                     <div class = "group">
                                     <label class = "label">新規パスワード</label><br>
@@ -78,15 +66,18 @@
                                         <input id = "u_pw" type = "password" class = "input" name = "co_pw" placeholder="もう一度パスワードを入力">
                                     </div>
 
-								</div>
                                 <div class ="info2">
                                     <input type = "submit" class = "update" value="更新" name = "pwsubmit" onclick="pwcheck()" >
                                     <input type = "reset" class = "reset" value="クリア"><br><br>
-
                                 </div>
                                 <span id="output"></span><br>
+                                </div>
                             </div>
-
+		<div class = "hidden">
+<p id = "A">${counttrue}</p>
+<p id = "A">${userSecret}</p>
+<p id = "A">${userAnswer}</p>
+		</div>
                     </form>
 ​
     <!-- 共通js -->

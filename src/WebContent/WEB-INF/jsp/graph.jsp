@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>mippy</title>
-	<link rel="icon" href="/mippy/img/mippy1号.gif">
+	<link rel="icon" href="img/mippy1号.gif">
 
     <!-- 共通css -->
 	<link rel="stylesheet" type="text/css" href="css/common.css">
@@ -34,6 +34,11 @@
         <main>
        	<p>平均カロリー：  kcal</p>
             <div class="graphArea">
+            	<div id = "selecter">
+            		<div id = "before" onclick = "beforeMonth()"></div>
+                    <div id = "after" onclick = "afterMonth()"></div>
+                    <input type = "month" id = "cal" value = "" onchange="onInput()">
+        		</div>
                 <canvas id="graph" width="1000" height="400"></canvas>
             </div>
             <div class="goal">
@@ -84,14 +89,48 @@
     <script>
 	    var rawData = [
     		<c:forEach var="a" items="${cardList}">
-    			{ date: '${a.record_date}'+ 'T00:00:00', total_calories: '${a.totalcal}' },
+    			{ date: '${a.record_date}' + 'T00:00:00', total_calories: '${a.totalcal}' },
     		</c:forEach>
     	];
-	    var filteredData = rawData.filter(data => data.date.includes("2023-06"));
-	    let test1 = filteredData.map(data => data.date);
-	    let test2 = filteredData.map(data => data.total_calories);
+
+	    //こっからファンクション
+	    var display_year;
+	    var display_month;
+	    var display_first;
+	    var display_last;
+
+	    // こっからファンクション
+	    function onInput() {
+	        //カレンダーの月日を取得
+	        display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+	        display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+	        display_first = new Date(display_year, display_month, 1).getDate();
+	        display_last = new Date(display_year, display_month + 1, 0).getDate();
+	    }
+
+	    // 関数を呼び出す
+	    onInput();
+	    console.log(display_year);  // 表示された年
+	    console.log(display_month);  // 表示された月
+	    console.log(display_first);  // 月の最初の日
+	    console.log(display_last);  // 月の最終日
+	    //ここまでファンクション
+
+	    var display_month1 = display_month + 1;
+
+	    if (display_month1 < 10) {
+	    	var display_month2 = "0" + display_month1;
+	    } else {
+	    	var display_month2 = display_month1;
+	    }
+
+	    var inc = display_year + "-" + display_month2;
+	    console.log(inc);
+
+	    var filteredData = rawData.filter(data => data.date.includes(inc));
+	    var labels = filteredData.map(data => new Date(data.date));
 	    var graphData = {
-   			labels: filteredData.map(data => data.date),
+   			labels: labels/* filteredData.map(data => data.date) */,
    			datasets: [{
    				label: '合計摂取カロリー',
    				data: filteredData.map(data => data.total_calories),
