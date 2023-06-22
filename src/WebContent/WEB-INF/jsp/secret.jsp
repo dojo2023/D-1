@@ -39,7 +39,7 @@
                                 <h1>本人確認</h1>
                                     <div class = "group">
                                     <label  class = "label">メールアドレス</label><br>
-                                    <input id = "u_addr" type = "text" class = "q_addr" name = "MAIL" placeholder="メールアドレスを入力">
+                                    <input id = "u_addr" type = "text" class = "q_addr" name = "session_now" placeholder="メールアドレスを入力">
                                     </div>
                                     <select name="question">
 				                        <option value="1">好きな食べ物は？</option>
@@ -55,7 +55,7 @@
                                     <input type = "submit" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
 								</div>
 
-							<div class = "popup" id = "popup" style="display: none;">
+							<div class = "popup" id = "popup" >
 								<h2>パスワード変更</h2>
                                     <div class = "group">
                                     <label class = "label">新規パスワード</label><br>
@@ -75,8 +75,9 @@
                             </div>
 		<div class = "hidden">
 <p id = "A">${counttrue}</p>
-<p id = "A">${userSecret}</p>
-<p id = "A">${userAnswer}</p>
+<p id = "B">${userSecret}</p>
+<p id = "C">${userAnswer}</p>
+<p id = "D">${session_now}</p>
 		</div>
                     </form>
 ​
