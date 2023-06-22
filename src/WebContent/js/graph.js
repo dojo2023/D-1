@@ -1,14 +1,5 @@
 'use strict'
-//今日の日付および月末までを判定
-//month は　- 1 で表示される
-const year = new Date().getYear() + 1900;
-const month = new Date().getMonth() ;
-const first = new Date(year, month, 1).getDay();
-const last = new Date(year, month + 1, 0).getDate();
 
-//カレンダーに表示している月を表示する
-let cal_date = document.getElementById("cal");
-cal_date.value = year + "-" + ('00' + (month+1)).slice( -2 );
 
 function beforeMonth(){
     //カレンダーの月日を取得
@@ -58,8 +49,9 @@ function afterMonth(){
         console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     }
 }
+
 //guraphメソッド--------------------------------------------------------------------------------------------------
-function generateChart() {
+document.addEventListener("DOMContentLoaded", function() {
 	let context = document.querySelector("#graph").getContext('2d')
 	new Chart(context, {
 		type: 'line',
@@ -172,9 +164,7 @@ function generateChart() {
 			},
 		},
 	})
-}
-
-document.addEventListener("DOMContentLoaded", generateChart);
+})
 //graphメソッド--------------------------------------------------------------------------------------------------
 
 /*体重か摂取カロリーの変更プルダウン
