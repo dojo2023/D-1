@@ -33,6 +33,7 @@
                     <div id = "before" onclick = "beforeMonth()"></div>
                     <div id = "after" onclick = "afterMonth()"></div>
                     <input type = "month" id = "cal" value = "" oninput="onInput()">
+                    <p id = "day_of_week">
         		</div>
         		<div id = "Weekone">
                     <div class = "FirstDay Day">
