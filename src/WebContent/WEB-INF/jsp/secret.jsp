@@ -39,7 +39,7 @@
                                 <h1>本人確認</h1>
                                     <div class = "group">
                                     <label  class = "label">メールアドレス</label><br>
-                                    <input id = "u_addr" type = "text" class = "q_addr" name = "session_now" placeholder="メールアドレスを入力">
+                                    <input id = "u_addr" type = "text" class = "q_addr" name = "user_addr" placeholder="メールアドレスを入力">
                                     </div>
                                     <select name="question">
 				                        <option value="1">好きな食べ物は？</option>
@@ -74,10 +74,9 @@
                                 </div>
                             </div>
 		<div class = "hidden">
-<p id = "A">${counttrue}</p>
 <p id = "B">${userSecret}</p>
 <p id = "C">${userAnswer}</p>
-<p id = "D">${session_now}</p>
+<p id = "D">${useraddr}</p>
 		</div>
                     </form>
 ​

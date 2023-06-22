@@ -424,6 +424,57 @@ public class UserDao {
 		return result;
 	}
 
+	public boolean seekPw(String user_addr,String user_pw) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+			// Addr, Pwの変更
+			String sql = "update M_USER set user_pw = ?  where USER_ADDR=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+				pStmt.setString(1, user_pw);
+
+
+				pStmt.setString(2, user_addr); // session
+
+
+
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
 
 	//delete文いらない？
 	//↑たぶん
@@ -548,25 +599,28 @@ public class UserDao {
 	    return userList;
 	}
 
+	//addr存在検出
 	public List<User> checkEmailExistence(String user_addr) {
 	    Connection conn = null;
 	    PreparedStatement stmt = null;
 	    ResultSet rs = null;
-	    List<User> cardList = new ArrayList<>();
+	    List<User> userList = new ArrayList<>();
+
 
 	    try {
 	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
-	        String query = "SELECT COUNT(*), USER_SECRET, USER_ANSWER FROM M_USER WHERE USER_ADDR = ?";
+	        String query = "SELECT COUNT(*) as ex, USER_NUM, USER_SECRET, USER_ANSWER FROM M_USER WHERE USER_ADDR = ?";
 	        stmt = conn.prepareStatement(query);
 	        stmt.setString(1, user_addr);
 	        rs = stmt.executeQuery();
 
 	        while (rs.next()) {
 	            User card = new User(
-	                rs.getString("USER_SECRET"),
+	            	rs.getInt("ex"),
+	                rs.getInt("USER_SECRET"),
 	                rs.getString("USER_ANSWER")
 	            );
-	            cardList.add(card);
+	            userList.add(card);
 	        }
 
 	    } catch (SQLException e) {
@@ -582,6 +636,6 @@ public class UserDao {
 	        }
 	    }
 
-	    return cardList;
+	    return userList;
 	}
 	}

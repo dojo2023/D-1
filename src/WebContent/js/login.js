@@ -19,3 +19,18 @@ function check() {
 		form.submit();
 	}
 }
+
+// エンターキーでログイン
+function checkLogin() {
+  // Enterキーが押された場合にログイン処理を実行
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      // ログイン処理を実行するためのコードを記述
+      // ここでは、check() 関数を呼び出す例としています
+      return check();
+    }
+  });
+
+  // フォームが送信される前に false を返すことで、デフォルトのフォーム送信をキャンセルします
+  return false;
+}

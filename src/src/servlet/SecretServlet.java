@@ -36,45 +36,49 @@ public class SecretServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		String session_now = request.getParameter("session_now");
+		String user_addr = request.getParameter("user_addr");
 		String new_pw = request.getParameter("new_pw");
-		String u_addr = request.getParameter("");
+		int q = Integer.parseInt(request.getParameter("question"));
+		String a = request.getParameter("answer");
 		UserDao uDao = new UserDao();
-	    int counttrue = 0;
 	    int userSecret = 0;
 	    String userAnswer = null;
-	    List<User> userList = uDao.checkEmailExistence(session_now);
+	    int ex = 0;
 
 	   if(request.getParameter("secretsubmit") != null) {
 
-			if (!userList.isEmpty()) {
-				User user = userList.get(0);
-				counttrue = 1;
-				userSecret = user.getUser_secret();
-				userAnswer = user.getUser_answer();
-				request.setAttribute("session_now", session_now);
-				request.setAttribute("counttrue", counttrue);
+		   List<User> userList = uDao.checkEmailExistence(user_addr);
+
+		   User user = userList.get(0);
+		   ex = user.getEx();
+			userSecret = user.getUser_secret();
+			userAnswer = user.getUser_answer();
+			if (ex != 0 && q == userSecret && a.equals(String.valueOf(userAnswer))) {
+				request.setAttribute("useraddr", user_addr);
 				request.setAttribute("userSecret", userSecret);
 				request.setAttribute("userAnswer", userAnswer);
-		        request.setAttribute("message", "seeking");
 		        request.getRequestDispatcher("/WEB-INF/jsp/secret.jsp").forward(request, response);
-
-					if(request.getParameter("pwsubmit") != null) {
-						uDao.updateAddrPw2(u_addr, new_pw, session_now);
-				        request.setAttribute("message", "update complete");
-				        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
-
-					}
-
-			} else {
-				counttrue = 0;
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+			}
+		    else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 				dispatcher.forward(request, response);
 					}
 
 	    }
 
+	   //addr欄とパスワード欄の入力で変える。。
+	    else if(request.getParameter("pwsubmit") != null) {
+	    	String useraddr = (String) request.getAttribute("D");
 
+				uDao.seekPw(useraddr, new_pw);
+		        request.setAttribute("message", "update complete");
+		        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
+
+			}
+
+	}
 }
 
-}
+
+
+
