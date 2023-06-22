@@ -73,10 +73,10 @@
                                 <span id="output"></span><br>
                                 </div>
                             </div>
-		<div class = "hidden">
-<p id = "B">${userSecret}</p>
-<p id = "C">${userAnswer}</p>
-<p id = "D">${useraddr}</p>
+		<div  class = "hidden">
+    <input type="hidden" name="user1Secret" value="${userSecret}" />
+    <input type="hidden" name="user1Answer" value="${userAnswer}" />
+    <input type="hidden" name="user1addr" value="${useraddr}" />
 		</div>
                     </form>
 ​

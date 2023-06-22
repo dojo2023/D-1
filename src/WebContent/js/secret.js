@@ -2,14 +2,10 @@
 const btn = document.getElementById('btn');
 
 function addrsecretcheck() {
-    var counttrue = "<%= counttrue %>";
     var question_js = "<%= userSecret %>";
     var answer_js = "<%= userAnswer %>";
 
-    if (counttrue === "0") {
-        alert("メールアドレスが存在しません");
-        return false;
-    } else if (question_js !== question) {
+      if (question_js !== question) {
         alert("質問が一致しません");
         return false;
     } else if (answer_js !== answer) {
