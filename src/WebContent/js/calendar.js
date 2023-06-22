@@ -137,44 +137,58 @@ function show_cal(year, month, first, last){
 
     }
 
+    document.getElementById("show_month").textContent = (month + 1);
+
     //中央の曜日の差分で日付を判定する
     //翌月や先月にも対応
     for (const l of list){
         if((1 + (l - center)/2) > 0 && last >= (1 + (l - center)/2)){
             one.childNodes[l].childNodes[1].innerHTML = (1 + (l - center)/2);
+            one.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (1 + (l - center)/2));
         }else{
             one.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (1 + (l - center)/2)).getDate();
+            one.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (1 + (l - center)/2)).getDate());
         }
 
 
         if((8 + (l - center)/2) > 0 && last >= (8 + (l - center)/2)){
             two.childNodes[l].childNodes[1].innerHTML = (8 + (l - center)/2);
+            two.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (8 + (l - center)/2));
         }else{
             two.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (8 + (l - center)/2)).getDate();
+            two.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (8 + (l - center)/2)).getDate());
         }
 
         if((15 + (l - center)/2) > 0 && last >= (15 + (l - center)/2)){
             thr.childNodes[l].childNodes[1].innerHTML = (15 + (l - center)/2);
+            thr.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (15 + (l - center)/2));
         }else{
             thr.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (15 + (l - center)/2)).getDate();
+            thr.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (15 + (l - center)/2)).getDate());
         }
 
         if((22 + (l - center)/2) > 0 && last >= (22 + (l - center)/2)){
             fou.childNodes[l].childNodes[1].innerHTML = (22 + (l - center)/2);
+            fou.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (22 + (l - center)/2));
         }else{
             fou.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (22 + (l - center)/2)).getDate();
+            fou.childNodes[l].childNodes[3].setAttribute("name", year + "-" + month + "-" + new Date(year, month, (22 + (l - center)/2)).getDate());
         }
 
         if((29 + (l - center)/2) > 0 && last >= (29 + (l - center)/2)){
             fiv.childNodes[l].childNodes[1].innerHTML = (29 + (l - center)/2);
+            fiv.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (29 + (l - center)/2));
         }else{
             fiv.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (29 + (l - center)/2)).getDate();
+            fiv.childNodes[l].childNodes[3].setAttribute("name", year + "-" + (month + 2) + "-" + new Date(year, month, (29 + (l - center)/2)).getDate());
         }
 
         if((36 + (l - center)/2) > 0 && last >= (36 + (l - center)/2)){
             six.childNodes[l].childNodes[1].innerHTML = (36 + (l - center)/2);
+            six.childNodes[l].childNodes[1].setAttribute("name", year + "-" + (month+1) + "-" + (36 + (l - center)/2));
         }else{
             six.childNodes[l].childNodes[1].innerHTML = new Date(year, month, (36 + (l - center)/2)).getDate();
+            six.childNodes[l].childNodes[3].setAttribute("name", year + "-" + (month + 2) + "-" + new Date(year, month, (36 + (l - center)/2)).getDate());
         }
     }
 }
@@ -253,7 +267,7 @@ Array.prototype.forEach.call(day, function(items){
                 if(result3 > 10 && result2 == 1){
                     result1 -= 1;
                     result2 = 12;
-                }else if(result3 > 10 ){
+                }else if(result > 10 ){
                     result2 -= 1;
                 }
                 break;

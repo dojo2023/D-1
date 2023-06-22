@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.RecordDao;
 import model.Loggedin;
+import model.Record;
 
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
@@ -22,8 +25,9 @@ public class CalendarServlet extends HttpServlet {
 		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
 
 		if (user_addr != null) {
-			
 
+			RecordDao Redao = new RecordDao();
+			List<Record> list = Redao.select(user_addr.getId());
 	        //画面へフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
 			dispatcher.forward(request, response);
