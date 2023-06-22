@@ -26,7 +26,7 @@
                     <ul id = "menu_text"></ul>
                 </div>
             </div>
-	<meta charset="UTF-8">
+
 	<title>個人情報変更</title>
 	</header>
 	<body>

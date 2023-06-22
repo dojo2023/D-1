@@ -9,7 +9,7 @@ body {
     font-family:"Yusei Magic";
 }
 
-addr_update {
+submit {
 	width:180px;
 	height: 40px;
 	background-color: #E6FFFD;
@@ -17,7 +17,7 @@ addr_update {
 	border: none;
 	margin-top: 40px;
 }
-reset {
+button {
 	width:180px;
 	height: 40px;
 	background-color: #E6FFFD;
