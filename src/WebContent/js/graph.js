@@ -1,64 +1,6 @@
 'use strict'
-//今日の日付および月末までを判定
-//month は　- 1 で表示される
-const year = new Date().getYear() + 1900;
-const month = new Date().getMonth() ;
-const first = new Date(year, month, 1).getDay();
-const last = new Date(year, month + 1, 0).getDate();
 
-//カレンダーに表示している月を表示する
-let cal_date = document.getElementById("cal");
-cal_date.value = year + "-" + ('00' + (month+1)).slice( -2 );
-
-function beforeMonth(){
-    //カレンダーの月日を取得
-    let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-    let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-    let display_first = new Date(display_year, display_month , 1).getDay();
-    let display_last = new Date(display_year, display_month + 1 , 0).getDate();
-
-    console.log("現在は" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
-    if(display_month == 0){
-        display_year -= 1;
-        display_month = 11;
-        display_first = new Date(display_year, display_month , 1).getDay();
-        display_last = new Date(display_year, display_month + 1 , 0).getDate();
-        cal_date.value = display_year + "-" + "12";
-        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
-    }else{
-        display_month -= 1;
-        display_first = new Date(display_year, display_month , 1).getDay();
-        display_last = new Date(display_year, display_month + 1 , 0).getDate();
-        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
-        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
-    }
-
-}
-
-function afterMonth(){
-    let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-    let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-    let display_first = new Date(display_year, display_month , 1).getDay();
-    let display_last = new Date(display_year, display_month + 1 , 0).getDate();
-
-    console.log("現在は" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
-
-    if(display_month == 11){
-        display_year += 1;
-        display_month = 0;
-        display_first = new Date(display_year, display_month , 1).getDay();
-        display_last = new Date(display_year, display_month + 1 , 0).getDate();
-        cal_date.value = display_year + "-" + "01";
-        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
-    }else{
-        display_month += 1;
-        display_first = new Date(display_year, display_month , 1).getDay();
-        display_last = new Date(display_year, display_month + 1 , 0).getDate();
-        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
-        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
-    }
-}
-
+//guraphメソッド--------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
 	let context = document.querySelector("#graph").getContext('2d')
 	new Chart(context, {
@@ -173,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		},
 	})
 })
+//graphメソッド--------------------------------------------------------------------------------------------------
 
 /*体重か摂取カロリーの変更プルダウン
 var dropDown = document.getElementById("");

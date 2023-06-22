@@ -26,7 +26,7 @@
                     <ul id = "menu_text"></ul>
                 </div>
             </div>
-	<meta charset="UTF-8">
+
 	<title>個人情報変更</title>
 	</header>
 	<body>
@@ -40,10 +40,10 @@
 										document.getElementById('u_addr').value = '';
 									}
 									</script>
-                                    <input type = "submit" class = "addr_update" value="更新" name = "AddrButton" onclick="koushin1()" >
-                                    <h3 id="heading_A"></h3>
-                                    <input type = "button" class = "reset" value="クリア" onclick="clearInput()"><br><br>
-
+									<div class ="big-button1">
+                                    <input type = "submit" id = "addr_update" value="更新" name = "AddrButton" onclick="koushin1()" >
+                                    <input type = "button" id = "reset" value="クリア" onclick="clearInput()"><br><br>
+									</div>
 									</div>
   </form>
   <form  method="POST" action="InformationServlet" id="info2">

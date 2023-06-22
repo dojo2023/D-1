@@ -65,20 +65,13 @@ public class InformationServlet extends HttpServlet {
 			//追加ボタンを押された
 			}else if (request.getParameter("PwButton") != null) {
 
-				try {
+
 					uDao.updateAddrPw2(u_addr, new_pw, session_now);
 			        session.setAttribute("user_addr", new Loggedin(u_addr));
 
 					//画面に戻る
 			        request.setAttribute("message", "update complete");
 			        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
-				}catch(Exception e) {
-
-				}finally {
-					//画面にフォワードする
-					response.sendRedirect("/mippy/Food_registerServlet");
-				}
-
 			}
 
 
