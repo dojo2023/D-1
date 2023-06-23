@@ -19,11 +19,11 @@ h1 {
     margin-right: 0.5%;
     margin-left: 2.0%;
     float: left;
-
     background-color: #AEE2FF;
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
     font-size: 30px;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 
 #food_list {
@@ -69,9 +69,9 @@ h1 {
     margin-right: 2%;
     margin-left: 0.5%;
     float: right;
-
     background-color: #AEE2FF;
     border-radius: 10px;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 
 #record_category_date, #record_category_time, #record_category,#record_item {

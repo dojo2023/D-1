@@ -64,6 +64,10 @@ h2{
 	margin-top: 40px;
 }
 
+.button1:hover {
+	background-color: #93A4E5;
+}
+
 .button2 {
 	width:180px;
 	height: 40px;
@@ -73,6 +77,9 @@ h2{
 	margin-top: 40px;
 }
 
+.button2:hover {
+	background-color: #DDF3F0;
+}
 
 #output {
 	color:red;

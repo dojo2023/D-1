@@ -71,11 +71,11 @@ public class ProfileServlet extends HttpServlet {
 	    if(request.getParameter("update").equals("更新")) {
 			if(uDao.update(new User(addr, nickname, height, weight, gender, goalw, birth, limit, avatar, color))){
 				System.out.println("更新");
-			    request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
+			    request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp").forward(request, response);
 
 			}else {
 				System.out.println("失敗");
-			    request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp").forward(request, response);
+			    request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
 
 			}}
 	}

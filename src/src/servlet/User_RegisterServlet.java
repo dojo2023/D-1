@@ -50,9 +50,9 @@ public class User_RegisterServlet extends HttpServlet {
         uDao.insert(user);
 
 
-        //レスポンスを設定
-        request.setAttribute("message", "登録が完了しました");
-        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
+		 //レスポンスを設定
+		request.setAttribute("message", "登録が完了しました");
+		request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
 
     }
 

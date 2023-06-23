@@ -7,11 +7,13 @@
 <title>メッセージ</title>
 </head>
 <body>
+<div>
 <p>${message}</p>
+</div>
 <script>
 	//2秒後にリダイレクトする処理
 	setTimeout(function() {
-		location.href = "/mippy/CalendarServlet";
+		location.href = "/mippy/LoginServlet";
 	}, 2000);
 </script>
 </body>

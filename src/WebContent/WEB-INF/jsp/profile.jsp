@@ -115,8 +115,8 @@
 				</c:forEach>
 
 				<div class="button-container">
-				<input type="submit" class="button" name="update" value="更新">
-				<input type="button" class="button" onclick="window.location.href='/mippy/InformationServlet';" value="個人情報変更">
+				<input type="submit" class="button1" name="update" value="更新">
+				<input type="button" class="button2" onclick="window.location.href='/mippy/InformationServlet';" value="個人情報変更">
 				</div>
 				 <!-- 背景色 --><br>
 					 <select id="color-select" name="USER_COLOR" onchange="changeBackgroundColor()" hidden >
