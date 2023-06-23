@@ -4,7 +4,10 @@
 	padding:0px;
 	box-sizing:border-box;
 }
-
+foot-link{
+	margin-bottom:30px;
+	margin-left:30px;
+}
 body {
     background-color: #ffffff;
     font-family:"Yusei Magic";
@@ -80,7 +83,11 @@ h2{
 .button2:hover {
 	background-color: #DDF3F0;
 }
-
+.big-button2 {
+	position: relative;
+	width: 70%;
+	margin-left: 15%;
+}
 #output {
 	color:red;
 }
