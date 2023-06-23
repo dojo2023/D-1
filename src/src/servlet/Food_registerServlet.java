@@ -31,6 +31,7 @@ public class Food_registerServlet extends HttpServlet {
 
 		//情報をセットしておく
 		request.setAttribute("f_category", f_category);
+		System.out.println("いい");
 
 		//画面にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/food_register.jsp");
@@ -47,9 +48,14 @@ public class Food_registerServlet extends HttpServlet {
 		double cal;
 		Food food = new Food();
 		FoodDao Fdao = new FoodDao();
+		List<Food> f_category = Fdao.cat_select();
+
+		//情報をセットしておく
+		request.setAttribute("f_category", f_category);
 
 		//検索ボタンを押された
 		if (request.getParameter("s_submit") != null) {
+			System.out.println("やっぱ成功");
 
 			//HTMLから取得
 			category = request.getParameter("s_category");
@@ -64,13 +70,14 @@ public class Food_registerServlet extends HttpServlet {
 			request.setAttribute("search_list", search_list);
 
 			//画面に戻る
-			RequestDispatcher dispatcher = request.getRequestDispatcher("Food_registerServlet");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/food_register.jsp");
 			dispatcher.forward(request, response);
 
 			System.out.println("成功");
 
 		//追加ボタンを押された
 		}else if (request.getParameter("a_submit") != null) {
+			System.out.println("失敗");
 
 			try {
 				//HTMLから取得

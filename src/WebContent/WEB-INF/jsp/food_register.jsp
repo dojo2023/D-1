@@ -47,9 +47,14 @@
 					<input type = "submit" name = "s_submit" id = "s_submit" class = "search_input" value = "検索">
 				</form>
 				<ul id = "s_result">
-					<c:forEach var = "e" items = "${search_list}">
-						<li class = "list"><span class = "left">${e.foods_name}</span><span class = "right">${e.foods_cal}kcal</span></li>
-					</c:forEach>
+						<c:if test="${empty search_list}">
+							<p>一致するデータはありません</p>
+						</c:if>
+						<c:forEach var = "e" items = "${search_list}">
+							<li class = "list">
+								<span class = "left">${e.foods_name}</span><span class = "right">${e.foods_cal}kcal</span>
+							</li>
+						</c:forEach>
 				</ul>
 			</div>
 
