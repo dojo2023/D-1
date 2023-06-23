@@ -23,7 +23,7 @@
         <main>
             <div class = "login-wrap">
                 <div class = "login-html">
-                    <div class ="big-button1"><br>
+                    <div class ="big-button1">
                         <button type = "button" class = "button1">ログイン</button>
                         <input type="button" class = "button1" onclick="location.href='/mippy/User_RegisterServlet'" value="新規登録">
                     </div>
