@@ -17,6 +17,9 @@ background-color: #ACBCFF;
 border-radius:30px;
 border: none;
 margin-top: 40px;
+ボタンの上にカーソルが乗った時
+:hover{background-color: #93A4E5;}
+
 または
 width:180px;
 height: 40px;
@@ -24,6 +27,8 @@ background-color: #E6FFFD;
 border-radius:30px;
 border: none;
 margin-top: 40px;
+ボタンの上にカーソルが乗った時
+:hover {background-color: #DDF3F0;}
 
 【テキストボックス】
 width:80%;

@@ -37,6 +37,10 @@ body {
 	margin-top: 40px;
 }
 
+.button1:hover {
+	background-color: #93A4E5;
+}
+
 .login-html {
 	text-align: center;
 }
@@ -52,6 +56,10 @@ body {
 	border-radius:30px;
 	border: none;
 	margin-top: 40px;
+}
+
+.button2:hover {
+	background-color: #DDF3F0;
 }
 
 .foot-link {
