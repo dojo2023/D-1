@@ -28,29 +28,26 @@
                         <input type="button" class = "button1" onclick="location.href='/mippy/User_RegisterServlet'" value="新規登録">
                     </div>
 
-                    <form name="LoginServlet" method="POST" action="" id="login">
+                    <form name="LoginServlet" method="POST" action="/mippy/LoginServlet" id="login">
                         <div class = "login-form">
                             <div class = "sign-in-html">
-
                                 <div class = "big-group">
                                     <div class = "group">
                                         <input id = "user_addr" type = "text" class = "input" name = "user_addr" placeholder= "メールアドレス">
                                     </div>
-
                                     <div class = "group">
                                         <input id = "user_pw" type = "password" class = "input" name = "user_pw" placeholder= "パスワード">
                                     </div>
                                 </div>
-
                                 <div class ="big-button2">
-                                    <input type = "button" class = "button2" value="ログイン" onClick = "return check();" >
+                                    <input type = "submit" class = "button2" value="ログイン" onclick = "return check();">
                                     <input type = "reset" class = "button2"><br><br>
-
                                 </div>
                                 <span id="output"></span><br>
                             </div>
                         </div>
                     </form>
+
                     <div class  = "foot-link">
                         <a href = /mippy/SecretServlet>パスワードを忘れた方はこちら</a>
                     </div>
