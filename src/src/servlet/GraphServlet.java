@@ -29,6 +29,10 @@ public class GraphServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
+		if(session.getAttribute("user_addr")==null) {
+			response.sendRedirect("/mippy/LoginServlet");
+			return;
+		}
 
 		Loggedin user_addr = (Loggedin) session.getAttribute("user_addr");
 		String id = user_addr.getId();

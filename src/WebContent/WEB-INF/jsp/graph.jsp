@@ -33,8 +33,19 @@
     </header>
         <main>
             <div class="graphArea">
-       			<p>平均カロリー：  kcal</p>
-       			<div class = "back">
+			<p>
+				<c:set var="sum" value="0" />
+				<c:set var="count" value="0" />
+
+				<c:forEach var="a" items="${cardList}">
+					<c:set var="sum" value="${sum + a.totalcal}" />
+					<c:set var="count" value="${count + 1}" />
+				</c:forEach>
+
+				<c:set var="average" value="${sum / count}" />
+				平均カロリー： ${average} kcal
+			</p>
+			<div class = "back">
        				<input type = "month" id = "cal" value = "" onchange="onInput()">
 	            	<div id = "selecter">
 	            		<div class = "before" id = "before" onclick = "beforeMonth()"></div>
@@ -250,7 +261,166 @@
 	    console.log(display_first5);
 	    console.log(display_last5);
 	    //ここまで紐づけ----------------------------------------------------------------------------------------------
+
 	    //guraphメソッド--------------------------------------------------------------------------------------------------
+		document.addEventListener("DOMContentLoaded", function() {
+			const context = document.querySelector("#graph").getContext('2d')
+			const config = {
+					type: 'line',
+					data: graphData,
+					options: {
+						plugins: {
+							// グラフタイトル
+							title: {
+								display: true,
+								text: '摂取カロリー',
+								color: 'black',
+								padding: { top: 5, bottom: 5 },
+								font: {
+									family: '"Arial", "Times New Roman"',
+									size: 12,
+								},
+							},
+							// 凡例
+							legend: {
+								position: 'bottom',
+								align: 'end',
+								// 凡例ラベル
+								labels: {
+									boxWidth: 20,
+									boxHeight: 8,
+								},
+								// 凡例タイトル
+								title: {
+									display: true,
+									text: '日付',
+									padding: { top: 20 },
+								},
+							},
+							// ツールチップ
+							tooltip: {
+								backgroundColor: '#933',
+							},
+						},
+						scales: {
+							y: {
+								// 最小値・最大値
+								min: 0,
+								max: 2500,
+								// 軸タイトル
+								title: {
+									display: true,
+									text: '摂取カロリー',
+									color: 'black',
+								},
+								// 目盛ラベル
+								ticks: {
+									color: 'blue',
+									stepSize: 20,
+									showLabelBackdrop: true,
+									backdropColor: '#ddf',
+									backdropPadding: { x: 4, y: 2 },
+									major: {
+										enabled: true,
+									},
+									align: 'end',
+									crossAlign: 'center',
+									sampleSize: 4,
+								},
+								grid: {
+									// 軸線
+									borderColor: 'orange',
+									borderWidth: 2,
+									drawBorder: true,
+									// 目盛線＆グリッド線
+									color: '#080',
+									display: true,
+									// グリッド線
+									borderDash: [3, 3],
+									borderDashOffset: 0,
+									// 目盛線
+									drawTicks: true,
+									tickColor: 'blue',
+									tickLength: 10,
+									tickWidth: 2,
+									tickBorderDash: [2, 2],
+									tickBorderDashOffset: 0,
+								},
+							},
+							x: {
+								min: '1',
+								max: '30',
+								scaleLabel: {
+									display: true,
+								},
+								type: 'time',
+								time: {
+									parser: 'D',
+									unit: 'day',
+									//stepSize: 1,
+									displayFormats: {
+										'day': 'D'
+									}
+								},
+								ticks: {
+									autoSkip: false,  // ラベルの自動スキップを無効化
+									maxRotation: 0,   // ラベルの最大回転角度を0度に設定
+									minRotation: 0
+								},
+								grid: {
+									borderColor: 'orange',
+									borderWidth: 2,
+									sampleSize: 31
+								},
+							},
+						},
+					},
+				}
+			const myLineChart = new Chart(context, config);
+			//myLineChart.destroy();
+
+		})
+		//graphメソッド--------------------------------------------------------------------------------------------------
+
+		//軸と紐づけ--------------------------------------------------------------------------------------------------
+	    var graphData;
+	    var display_first5;
+	    var display_last5;
+
+	    function define(display_year, display_month, display_first, display_last){
+	    	var display_month3 = display_month + 1;
+	    	display_first5 = display_first;
+	    	display_last5 = display_last;
+	    	console.log(display_year);
+
+		    if (display_month3 < 10) {
+		    	var display_month4 = "0" + display_month3;
+		    } else {
+		    	var display_month4 = display_month3;
+		    }
+
+		    var inc = display_year + "-" + display_month4;
+		    console.log(inc);
+
+		    var filteredData = rawData.filter(data => data.date.includes(inc));
+		    var labels = filteredData.map(data => new Date(data.date));
+		    //データ挿入
+		    graphData = {
+		    	labels: labels/* filteredData.map(data => data.date) */,
+		    	datasets: [{
+		    		label: '合計摂取カロリー',
+		    		data: filteredData.map(data => data.total_calories),
+		    		borderColor: "rgba(255,0,0,1)",
+		    		backgroundColor: "rgba(0,0,0,0)"
+		    	}],
+		    };
+	    }
+
+	    console.log(graphData);
+	    console.log(display_first5);
+	    console.log(display_last5);
+	    //ここまで紐づけ----------------------------------------------------------------------------------------------
+/* 	    //guraphメソッド--------------------------------------------------------------------------------------------------
 		document.addEventListener("DOMContentLoaded", function() {
 			let context = document.querySelector("#graph").getContext('2d')
 			let myLineChart = new Chart(context, {
@@ -365,8 +535,7 @@
 				},
 			})
 		})
-		//graphメソッド--------------------------------------------------------------------------------------------------
-		myLineChart.destroy();
+		//graphメソッド-------------------------------------------------------------------------------------------------- */
 
 		/* sample
 		    var graphData = {
