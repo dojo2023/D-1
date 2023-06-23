@@ -38,19 +38,19 @@
                                <div class = "form1">
                                 <h1>本人確認</h1>
                                     <div class = "group">
-                                    <label  class = "label">メールアドレス</label><br>
-                                    <input id = "u_addr" type = "text" class = "q_addr" name = "user_addr" placeholder="メールアドレスを入力">
+                                    <input id = "u_addr" type = "text" class = "q_addr" name = "user_addr" placeholder="メールアドレス">
                                     </div>
-                                    <select name="question">
-				                        <option value="1">好きな食べ物は？</option>
-				                        <option value="2">ペットの名前は？</option>
-				                        <option value="3">小学校の名前は？</option>
-				                        <option value="4">母親の旧姓は？</option>
-				                        <option value="5">一番最初にデートした場所は？</option>
-				                        <option value="6">初恋の相手の名前は？</option>
-				                        <option value="7">好きなお寿司のネタは？</option>
-				                        <option value="8">好きなキャラクターは？</option>
-                     				</select><br>
+                                    <select name="USER_SECRET" class="input2" required>
+                                    	<option value="" selected hidden>秘密の質問</option>
+                                    	<option value="1">好きな食べ物は？</option>
+										<option value="2">ペットの名前は？</option>
+										<option value="3">小学校の名前は？</option>
+										<option value="4">母親の旧姓は？</option>
+										<option value="5">一番最初にデートした場所は？</option>
+										<option value="6">初恋の相手の名前は？</option>
+										<option value="7">好きなお寿司のネタは？</option>
+										<option value="8">好きなキャラクターは？</option>
+									</select><br>
                      				<input placeholder="秘密の質問答え" type="text" name="answer"><br>
                                     <input type = "submit" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
 								</div>
@@ -58,12 +58,12 @@
 							<div class = "popup" id = "popup" >
 								<h2>パスワード変更</h2>
                                     <div class = "group">
-                                    <label class = "label">新規パスワード</label><br>
-                                        <input id = "new_pw" type = "password" class = "input" name = "new_pw" placeholder="新しいパスワードを入力">
+
+                                        <input id = "new_pw" type = "password" class = "input" name = "new_pw" placeholder="新規パスワード">
                                     </div>
                                     <div class = "group">
-                                    <label class = "label">確認</label><br>
-                                        <input id = "u_pw" type = "password" class = "input" name = "co_pw" placeholder="もう一度パスワードを入力">
+
+                                        <input id = "u_pw" type = "password" class = "input" name = "co_pw" placeholder="パスワードをもう一度入力">
                                     </div>
 
                                 <div class ="info2">
