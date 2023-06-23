@@ -38,7 +38,7 @@ public class SecretServlet extends HttpServlet {
 
 		String user_addr = request.getParameter("user_addr");
 		String new_pw = request.getParameter("new_pw");
-		int q = Integer.parseInt(request.getParameter("question"));
+		int q = Integer.parseInt(request.getParameter("USER_SECRET"));
 		String a = request.getParameter("answer");
 		UserDao uDao = new UserDao();
 	    int userSecret = 0;

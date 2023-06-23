@@ -41,7 +41,7 @@
                                     <input id = "u_addr" type = "text" class = "q_addr" name = "user_addr" placeholder="メールアドレス">
                                     </div>
                                     <select name="USER_SECRET" class="input2" required>
-                                    	<option value="" selected hidden>秘密の質問</option>
+                                    	<option value="0" selected hidden>秘密の質問</option>
                                     	<option value="1">好きな食べ物は？</option>
 										<option value="2">ペットの名前は？</option>
 										<option value="3">小学校の名前は？</option>
