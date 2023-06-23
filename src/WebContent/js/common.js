@@ -11,7 +11,7 @@ function menu(){
         //メニューの背景を表示する
         const box = document.getElementById("box");
         const css ="width: 200px;" +
-                   "height: 280px;"+
+                   "height: 160px;"+
                    "background-color: #DBFFFF;"+
                    "position: absolute;"+
                    "top: 8%;"+
