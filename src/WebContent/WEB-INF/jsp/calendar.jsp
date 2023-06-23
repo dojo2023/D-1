@@ -39,6 +39,7 @@
                     	<div id ="right_tri"></div>
                     </div>
         		</div>
+        		<div id = "sq">
         		<div id = "dayof">
                 	<div class = "FirstDay Dayof"><p>日</p></div>
                 	<div class = "Dayof"><p>月</p></div>
@@ -231,6 +232,7 @@
                         <span>0kcal</span>
                     </div>
                 </div>
+               	</div>
         	</div>
         </main>
         <!-- 共通js -->

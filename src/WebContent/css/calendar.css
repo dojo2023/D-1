@@ -24,7 +24,7 @@ body {
     margin: 0;
     width: 7%;
     height: 0;
-    border: solid 2px;
+    border: solid 1px;
 	display: inline-grid
 }
 
@@ -89,7 +89,7 @@ span {
 }
 
 #after {
-	margin-left: 5vw;
+	margin-left: 7vw;
 	margin-top: 0.5vw;
 }
 
