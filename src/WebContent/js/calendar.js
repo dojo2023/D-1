@@ -141,7 +141,7 @@ function show_cal(year, month, first, last){
 
     }
 
-    document.getElementById("show_month").textContent = (month + 1);
+    document.getElementById("show_month").textContent = (month + 1) + "月";
 
     //中央の曜日の差分で日付を判定する
     //翌月や先月にも対応

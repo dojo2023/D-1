@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>mippy</title>
+
     <head>
         <meta charset="UTF-8">
        <title>個人情報変更</title>

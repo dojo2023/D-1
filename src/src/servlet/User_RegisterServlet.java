@@ -23,7 +23,7 @@ public class User_RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//login forward
+		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_register.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -33,6 +33,8 @@ public class User_RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
         // リクエストパラメータからフォームデータを取得
         String email = request.getParameter("USER_ADDR");
         String password = request.getParameter("USER_PW");

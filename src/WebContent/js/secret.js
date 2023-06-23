@@ -1,34 +1,19 @@
 'use strict';
 const btn = document.getElementById('btn');
 
-function addrsecretcheck() {
-    var question_js = "<%= userSecret %>";
-    var answer_js = "<%= userAnswer %>";
+  var target = document.querySelectorAll('.btn_open');
+  var targetID;
 
-      if (question_js !== question) {
-        alert("質問が一致しません");
-        return false;
-    } else if (answer_js !== answer) {
-        alert("答えが一致しません");
-        return false;
-
-    } else {
-        openPopup();
-        return true;
-    }
-}
-
-function openPopup() {
-    var popup = document.getElementById('popup');
-    popup.style.display = 'block';
-}
-
-function closePopup() {
-    popup.style.display = 'none';
-}
+  // openpopup
+  for(var i = 0; i < target.length; i++){
+    target[i].addEventListener('click', function(){
+      targetID = this.getAttribute('href');
+      document.querySelector(targetID).style.display = 'block';
+    });
+  }
 
 function pwcheck(){
-    var newPassword = document.getElementById('u_pw').value;
+    var newPassword = document.getElementById('new_pw').value;
     var confirmPassword = document.getElementById('co_pw').value;
 
                 if (newPassword != confirmPassword){
@@ -41,19 +26,6 @@ function pwcheck(){
                 }
             }
 
-let addr = document.getElementById("q_addr");
 
-//送信押ししたらデータ参照する.
-function execute() {
-  location.href = "/BlogApplication/secret"
-}
-
-
-
- type="text/javascript"
-        // サーブレットにリクエストを投げる
-        function execute() {
-            location.href = "/BlogApplication/secret"
-        }
 
 

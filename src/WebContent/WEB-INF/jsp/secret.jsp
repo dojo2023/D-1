@@ -3,18 +3,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>mippy</title>
+
     <link rel = "stylesheet" href = "css/secret.css">
     <head>
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
         <!-- ページcss -->
         <link rel = "stylesheet" href = "css/secret.css">
+        <style>
+			.btn_open{font-weight:bold; margin:5px; padding:4px 6px; background:#000; color:#fff;}
+			.pop_wrap{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); font-size:0; text-align:center;}
+			.pop_wrap:after{display:inline-block; height:100%; vertical-align:middle; content:'';}
+			.pop_wrap .pop_inner{display:inline-block; padding:20px 30px; background:#fff; width:200px; vertical-align:middle; font-size:15px;}
+		</style>
     </head>
     <body>
         <header>
             <div id = "head">
-                <a id = "logo" href = "カレンダーサーブレット">
-                    <img class = "img" src = "logo.png" alt = "ロゴ">
+                <a id = "logo" href = "/mippy/LoginServlet">
+                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
                 </a>
                 <div id = "menu" onclick="menu()">
                     <ul id = "menu_bar">
@@ -52,11 +62,13 @@
 										<option value="8">好きなキャラクターは？</option>
 									</select><br>
                      				<input placeholder="秘密の質問答え" type="text" name="answer"><br>
-                                    <input type = "button" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
+                                    <input type = "submit" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
 								</div>
 
 							<div class = "popup" id = "popup" >
-								<h2>パスワード変更</h2>
+								<a href="#pop_info_1" class="btn_open">パスワード変更</a>
+								<div  id="pop_info_1" class="pop_wrap" style="display:none;">
+								<div class="pop_inner">
                                     <div class = "group">
 
                                         <input id = "new_pw" type = "password" class = "input" name = "new_pw" placeholder="新規パスワード">
@@ -67,11 +79,11 @@
                                     </div>
 
                                 <div class ="info2">
-                                    <input type = "submit" class = "button1" value="更新" name = "PwButton"  onclick="return check();">
-                                    <input type = "button" class = "button2" value="クリア" onclick="clearInput2()">
-
+                                    <input type = "submit" class = "button1" value="更新" name = "PwButton"  onclick="pwcheck()">
+                                    <input type = "reset" class = "button2" value="クリア" onclick="clearInput2()">
                                 </div>
                                 <span id="output"></span><br>
+                                </div>
                                 </div>
                             </div>
 		<div  class = "hidden">
@@ -82,7 +94,7 @@
                     </form>
 ​
     <!-- 共通js -->
-   <script src = "/mippy/js/common.js"></script>
-   <script src = "/mippy/js/secret.js"></script>
+   <script src = "js/common.js"></script>
+   <script src = "js/secret.js"></script>
 </body>
 </html>
