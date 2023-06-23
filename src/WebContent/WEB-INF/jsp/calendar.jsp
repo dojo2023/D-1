@@ -14,7 +14,7 @@
 	<header>
 		<div id = "head">
 		<a id = "logo" href = "/mippy/CalendarServlet">
-		<img class = "img" src = "img/logo.png" alt = "ロゴ">
+		<img class = "img" src = "img/mippy_logo.png" alt = "ロゴ">
 		</a>
 			<div id = "menu" onclick="menu()">
 				<ul id = "menu_bar">
@@ -39,7 +39,6 @@
                     	<div id ="right_tri"></div>
                     </div>
         		</div>
-        		<div id = "sq">
         		<div id = "dayof">
                 	<div class = "FirstDay Dayof"><p>日</p></div>
                 	<div class = "Dayof"><p>月</p></div>
@@ -232,7 +231,7 @@
                         <span>0kcal</span>
                     </div>
                 </div>
-               	</div>
+               	<div id = "sq"></div>
         	</div>
         </main>
         <!-- 共通js -->
