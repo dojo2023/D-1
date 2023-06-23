@@ -34,6 +34,7 @@
         <main>
             <div class="graphArea">
 			<p>
+				<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 				<c:set var="sum" value="0" />
 				<c:set var="count" value="0" />
 
@@ -43,7 +44,7 @@
 				</c:forEach>
 
 				<c:set var="average" value="${sum / count}" />
-				平均カロリー： ${average} kcal
+				平均カロリー： <fmt:formatNumber value="${average}" pattern="#.00" /> kcal
 			</p>
 			<div class = "back">
        				<input type = "month" id = "cal" value = "" onchange="onInput()">
