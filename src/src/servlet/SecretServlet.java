@@ -38,6 +38,7 @@ public class SecretServlet extends HttpServlet {
 
 		String user_addr = request.getParameter("user_addr");
 		String new_pw = request.getParameter("new_pw");
+		String co_pw = request.getParameter("co_pw");
 		int q = Integer.parseInt(request.getParameter("USER_SECRET"));
 		String a = request.getParameter("answer");
 		UserDao uDao = new UserDao();
@@ -67,12 +68,17 @@ public class SecretServlet extends HttpServlet {
 	    }
 
 
-	    else if(request.getParameter("pwsubmit") != null) {
+	    else if(request.getParameter("PwButton") != null) {
+	    	if(new_pw == co_pw) {
 	        String useraddr = request.getParameter("user1addr");
 				uDao.seekPw(useraddr, new_pw);
 		        request.setAttribute("message", "update complete");
 		        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
-
+	    	     }
+	    	else {
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+				dispatcher.forward(request, response);
+	    	}
 			}
 
 	}
