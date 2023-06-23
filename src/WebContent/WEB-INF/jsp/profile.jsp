@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>プロフィール設定画面</title>
+<title>mippy</title>
 
 <!-- 共通css -->
 <link rel="stylesheet" href="css/common.css">
@@ -18,7 +18,7 @@
 
 	<header>
 		<div id="head">
-			<a id="logo" href="カレンダーサーブレット"> <img class="img"
+			<a id="logo" href="/mippy/CarendarServlet"> <img class="img"
 				src="img/logo.png" alt="ロゴ">
 			</a>
 			<div id="menu" onclick="menu()">

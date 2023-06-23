@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>mippy</title>
+
     <head>
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
