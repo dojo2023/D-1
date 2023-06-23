@@ -76,7 +76,7 @@
 
                                 <div class ="info2">
                                     <input type = "submit" class = "button1" value="更新" name = "PwButton"  onclick="pwcheck()">
-                                    <input type = "button" class = "button2" value="クリア" onclick="clearInput2()">
+                                    <input type = "reset" class = "button2" value="クリア" onclick="clearInput2()">
                                 </div>
                                 <span id="output"></span><br>
                                 </div>
