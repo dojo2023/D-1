@@ -30,12 +30,24 @@
         <main>
         	<div id = "calendar">
         		<div id = "selecter">
+                    <div id = "before" onclick = "beforeMonth()">
+                    	<div id ="left_tri"></div>
+                    </div>
                     <p id = "show_month"></p>
-                    <div id = "before" onclick = "beforeMonth()"></div>
-                    <div id = "after" onclick = "afterMonth()"></div>
                     <input type = "month" id = "cal" value = "" oninput="onInput()">
-                    <p id = "day_of_week">
+                    <div id = "after" onclick = "afterMonth()">
+                    	<div id ="right_tri"></div>
+                    </div>
         		</div>
+        		<div id = "dayof">
+                	<div class = "FirstDay Dayof"><p>日</p></div>
+                	<div class = "Dayof"><p>月</p></div>
+					<div class = "Dayof"><p>火</p></div>
+					<div class = "Dayof"><p>水</p></div>
+					<div class = "Dayof"><p>木</p></div>
+					<div class = "Dayof"><p>金</p></div>
+					<div class = "Dayof"><p>土</p></div>
+                </div>
         		<div id = "Weekone">
                     <div class = "FirstDay Day">
                         <span class = "cal"></span>
