@@ -34,9 +34,9 @@
 
 				<form method="POST" action="/mippy/User_RegisterServlet" onsubmit="return validateForm();">
 					<div class="big-group"><br>
-						<input type="text" name="USER_ADDR" class="input" placeholder="メールアドレス" required> <br>
-						<input type="text" name="USER_PW" id="password" class="input" placeholder="パスワード" required> <br>
-						<input type="text" id="confirmpassword" class="input" placeholder="パスワードをもう一度入力してください" required><br>
+						<input type="email" name="USER_ADDR" class="input" placeholder="メールアドレス"  required> <br>
+						<input type="password" name="USER_PW" id="password" class="input" placeholder="パスワード" required> <br>
+						<input type="password" id="confirmpassword" class="input" placeholder="パスワードをもう一度入力してください" required><br>
 					</div>
 
 
