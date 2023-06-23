@@ -51,7 +51,7 @@ public class InformationServlet extends HttpServlet {
 			String session_now = old_addr;
 			UserDao uDao = new UserDao();
 
-			if (request.getParameter("AddrButton") != null) {
+			if (request.getParameter("addr_update") != null) {
 
 
 				uDao.updateAddrPw1(u_addr, new_pw, session_now);
@@ -63,7 +63,7 @@ public class InformationServlet extends HttpServlet {
 
 
 			//追加ボタンを押された
-			}else if (request.getParameter("PwButton") != null) {
+			}else if (request.getParameter("pw_update") != null) {
 
 
 					uDao.updateAddrPw2(u_addr, new_pw, session_now);

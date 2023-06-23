@@ -12,10 +12,11 @@ function menu(){
         const box = document.getElementById("box");
         const css ="width: 200px;" +
                    "height: 280px;"+
-                   "background-color: #f5deb3;"+
+                   "background-color: #DBFFFF;"+
                    "position: absolute;"+
-                   "top: 2.8%;"+
+                   "top: 8%;"+
                    "right: 4%;"+
+                   "z-index: 10;"+
                    "border-radius: 7px 19px 7px 7px;";
         box.style.cssText = css;
 

@@ -27,7 +27,7 @@ body {
 
 .info2 {
 	width: 100%;
-	margin: 20px 369.833px;
+	margin: auto;
 	max-width: 525px;
 	height: 350px;
 	position: relative;
@@ -83,11 +83,7 @@ h2{
 .button2:hover {
 	background-color: #DDF3F0;
 }
-.big-button2 {
-	position: relative;
-	width: 70%;
-	margin-left: 15%;
-}
+
 #output {
 	color:red;
 }

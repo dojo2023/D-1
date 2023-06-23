@@ -33,13 +33,13 @@
 
         <form  method="POST" action="InformationServlet" class="info2" onsubmit="return validateForm();">
             <h2>パスワード変更</h2>
-                <input type="password" id = "new_pw" class = "new_pw"  placeholder=新規パスワード required/>
+                <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder=新規パスワード required/>
                 <input type="password" id = "co_pw" class = "co_pw"  placeholder=パスワードをもう一度入力してください  required/><br>
                 <span id="errorText" style="color: red;"></span>
-                <div class="big-button2">
-	                <input type="submit"  class="button2"name="addr_update"  value="更新">
+
+	                <input type="submit"  class="button2"name="pw_update"  value="更新">
 					<input type="reset" class="button2" name="reset" value="リセット">
-				</div>
+
 
 
         </form>
