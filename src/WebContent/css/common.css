@@ -41,7 +41,12 @@ a{
     list-style-type: none;
 }
 
+#menu_text:hover {
+	color: red;
+}
+
 .m_text {
     user-select: none;
+    color: red;
 }
 

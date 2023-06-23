@@ -19,7 +19,7 @@ h1 {
     float: left;
 
     background-color: #AEE2FF;
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
     font-size: 30px;
 }
@@ -101,7 +101,7 @@ h1 {
     float: right;
 
     background-color: #AEE2FF;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 #a_category, #a_name, #a_cal {
