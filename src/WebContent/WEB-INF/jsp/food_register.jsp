@@ -63,7 +63,7 @@
 				<form action = "Food_registerServlet" method = "POST">
 					<div class = "register_input">
 						<p>カテゴリー</p>
-						<select name = "a_category" id = "a_category">
+						<select name = "a_category" id = "a_category" required>
 							<option value = "" selected hidden>カテゴリーを選択</option>
 							<!-- サーブレットからリストを受け取る -->
 							<c:forEach var = "e" items = "${f_category}">
@@ -74,12 +74,12 @@
 
 					<div class = "register_input">
 						<p>品目名</p>
-						<input type = "text" name = "a_name" id = "a_name">
+						<input type = "text" name = "a_name" id = "a_name" required>
 					</div>
 
 					<div class = "register_input">
 						<p>カロリー</p>
-						<input type = "number" step = "0.1" min ="0" name = "a_cal" id = "a_cal">
+						<input type = "number" step = "0.1" min ="0" name = "a_cal" id = "a_cal" required>
 					</div>
 					<input type = "submit" value = "登録" name = "a_submit" id = "a_submit">
 				</form>
