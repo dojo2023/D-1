@@ -36,18 +36,15 @@ public class SecretServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		String user_addr = request.getParameter("user_addr");
-		String new_pw = request.getParameter("new_pw");
-		String co_pw = request.getParameter("co_pw");
-		int q = Integer.parseInt(request.getParameter("USER_SECRET"));
-		String a = request.getParameter("answer");
 		UserDao uDao = new UserDao();
 	    int userSecret = 0;
 	    String userAnswer = null;
 	    int ex = 0;
 
 	   if(request.getParameter("secretsubmit") != null) {
-
+		   String a = request.getParameter("answer");
+		   String user_addr = request.getParameter("user_addr");
+		   int q = Integer.parseInt(request.getParameter("USER_SECRET"));
 		   List<User> userList = uDao.checkEmailExistence(user_addr);
 		   User user = userList.get(0);
 		   ex = user.getEx();
@@ -68,14 +65,16 @@ public class SecretServlet extends HttpServlet {
 
 
 	    else if(request.getParameter("pw_update") != null) {
-	    	if(new_pw == co_pw) {
+			String new_pw = request.getParameter("new_pw");
+			String co_pw = request.getParameter("co_pw");
+	    	if(new_pw.equals(co_pw)) {
 	        String useraddr = request.getParameter("user1addr");
 				uDao.seekPw(useraddr, new_pw);
 		        request.setAttribute("message", "update complete");
-		        request.getRequestDispatcher("/WEB-INF/jsp/top.jsp").forward(request, response);
+		        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 	    	     }
 	    	else {
-	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 				dispatcher.forward(request, response);
 	    	}
 			}
