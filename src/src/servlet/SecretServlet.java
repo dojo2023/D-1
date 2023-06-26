@@ -49,7 +49,6 @@ public class SecretServlet extends HttpServlet {
 	   if(request.getParameter("secretsubmit") != null) {
 
 		   List<User> userList = uDao.checkEmailExistence(user_addr);
-
 		   User user = userList.get(0);
 		   ex = user.getEx();
 			userSecret = user.getUser_secret();
