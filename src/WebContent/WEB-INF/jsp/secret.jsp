@@ -63,11 +63,11 @@
 									<div class="pop_inner">
 
 		                                    <h2>パスワード変更</h2>
-							                <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder=新規パスワード required/>
-							                <input type="password" id = "co_pw" class = "co_pw" name="co_pw"  placeholder=パスワードをもう一度入力してください  required/><br>
+							                <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder= "新規パスワード" required/>
+							                <input type="password" id = "co_pw" class = "co_pw" name="co_pw"  placeholder= "パスワードをもう一度入力してください"  required/><br>
 							                <span id="errorText" style="color: red;"></span>
 
-							                <input type="submit"  class="button2"name="pw_update"  value="更新">
+							                <input type="submit"  class="button2" name="pw_update"  value="更新">
 											<input type="reset" class="button2" name="reset" value="リセット">
 
 	                                </div>
