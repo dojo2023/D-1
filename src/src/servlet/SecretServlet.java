@@ -68,7 +68,7 @@ public class SecretServlet extends HttpServlet {
 	    }
 
 
-	    else if(request.getParameter("PwButton") != null) {
+	    else if(request.getParameter("pw_update") != null) {
 	    	if(new_pw == co_pw) {
 	        String useraddr = request.getParameter("user1addr");
 				uDao.seekPw(useraddr, new_pw);
