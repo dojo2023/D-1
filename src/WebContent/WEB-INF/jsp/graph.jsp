@@ -119,7 +119,6 @@
 		const month = new Date().getMonth() ;
 		const first = new Date(year, month, 1).getDay();
 		const last = new Date(year, month + 1, 0).getDate();
-		let define;
 
 		//カレンダーに表示している月を表示する
 		let cal_date = document.getElementById("cal");
