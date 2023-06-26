@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,8 +42,22 @@ public class User_RegisterServlet extends HttpServlet {
         int secretQuestion = Integer.parseInt(request.getParameter("USER_SECRET"));
         String secretAnswer = request.getParameter("USER_ANSWER");
 
-        // データベースへの登録 email
+        // データベースへの登録前にメールアドレスの重複を確認
         UserDao uDao = new UserDao();
+
+        // メールアドレスが既に存在するかを検索
+        User existingUser = uDao.findByEmail(email);
+
+        if (existingUser != null) {
+        	response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script type='text/javascript'>");
+            out.println("alert('このメールアドレスは既に登録済みです。');");
+            out.println("window.location.href = '/mippy/User_RegisterServlet';");  // リダイレクト先のURLを指定
+            out.println("</script>");
+        } else {
+
+        // データベースへの登録 email
         User user = new User();
         user.setUser_addr(email);
         user.setUser_pw(password);
@@ -59,4 +74,4 @@ public class User_RegisterServlet extends HttpServlet {
     }
 
 }
-
+}

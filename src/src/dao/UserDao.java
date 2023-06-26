@@ -638,4 +638,35 @@ public class UserDao {
 
 	    return userList;
 	}
-	}
+
+	// 既にメールアドレスが登録されているか
+	public User findByEmail(String email) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		User user = null;
+
+		try {
+	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+	        String sql = "SELECT * FROM m_user WHERE USER_ADDR = ?";
+	        stmt = conn.prepareStatement(sql);
+	        stmt.setString(1, email);
+	        rs = stmt.executeQuery();
+
+	        if (rs.next()) {
+	            // ユーザーが見つかった場合ユーザーアドレスを取得
+	            user = new User();
+	            user.setUser_addr(rs.getString("USER_ADDR"));
+
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        // エラーハンドリング
+	    } finally {
+	        // リソースのクローズ処理
+	    }
+
+    return user;
+}
+}
