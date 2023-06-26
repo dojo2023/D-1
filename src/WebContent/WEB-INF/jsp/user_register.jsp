@@ -53,12 +53,12 @@
 						<option value="8">好きなキャラクターは？</option>
 					</select><br>
 
-					<input type="text" name="USER_ANSWER" class="input"placeholder="秘密の質問の答え" required><br>
-					<span id="errorText" style="color: red;"></span> <!-- エラーメッセージを表示する場所 -->
+					<input type="text" name="USER_ANSWER" class="input"placeholder="秘密の質問の答え" required><br><br>
+					<span id="errorText" style="color: red;"></span> <!-- エラーメッセージを表示する場所 --><br><br>
 
 					<div class="big-button2">
 						<input type="submit" class="button2" name="register" value="登録">
-						<input type="reset" class="button2" name="reset" value="リセット">
+						<input type="reset" class="button2" name="reset" value="リセット" id="resetbutton">
 					</div>
 				</form>
 			</div>

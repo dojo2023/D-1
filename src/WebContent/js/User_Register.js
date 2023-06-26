@@ -24,3 +24,8 @@ function validatePassword(input) {
     input.setCustomValidity("");
   }
 }*/
+
+document.getElementById("resetbutton").addEventListener("click",function() {
+var errorText = document.getElementById("errorText");
+errorText.innerText = "";
+});
