@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>mippy</title>
-	<link rel="icon" href="img/mippy1号.gif">
+	<!-- <link rel="icon" href="img/mippy1号.gif"> -->
 
     <!-- 共通css -->
 	<link rel="stylesheet" type="text/css" href="css/common.css">
@@ -385,7 +385,7 @@
 		})
 		//graphメソッド--------------------------------------------------------------------------------------------------
 
-		//軸と紐づけ--------------------------------------------------------------------------------------------------
+/* 		//軸と紐づけ--------------------------------------------------------------------------------------------------
 	    var graphData;
 	    var display_first5;
 	    var display_last5;
@@ -409,7 +409,7 @@
 		    var labels = filteredData.map(data => new Date(data.date));
 		    //データ挿入
 		    graphData = {
-		    	labels: labels/* filteredData.map(data => data.date) */,
+		    	labels: labels,
 		    	datasets: [{
 		    		label: '合計摂取カロリー',
 		    		data: filteredData.map(data => data.total_calories),
@@ -422,7 +422,7 @@
 	    console.log(graphData);
 	    console.log(display_first5);
 	    console.log(display_last5);
-	    //ここまで紐づけ----------------------------------------------------------------------------------------------
+	    //ここまで紐づけ---------------------------------------------------------------------------------------------- */
 /* 	    //guraphメソッド--------------------------------------------------------------------------------------------------
 		document.addEventListener("DOMContentLoaded", function() {
 			let context = document.querySelector("#graph").getContext('2d')
