@@ -51,8 +51,8 @@
 			<div class = "back">
        				<input type = "month" id = "cal" value = "" onchange="onInput()">
 	            	<div id = "selecter">
-	            		<div class = "before" id = "before" onclick = "beforeMonth()"></div>
-	                    <div class = "after" id = "after" onclick = "afterMonth()"></div>
+	            		<div class = "before" id = "before"></div>
+	                    <div class = "after" id = "after"></div>
 	        		</div>
 	                <canvas id="graph" width="1000" height="400"></canvas>
        			</div>
@@ -130,19 +130,20 @@
     		</c:forEach>
     	];
 
-	    define(year, month, first, last);
-	    console.log(define(year, month, first, last));
+	    let data = define(year, month, first, last);
+	    console.log(data);
 	    //こっからファンクション--------------------------------------------------------------------------------------
 	    function onInput() {
-	        //カレンダーの月日を取得
-	        let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-	        let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-	        let display_first = new Date(display_year, display_month, 1).getDate();
-	        let display_last = new Date(display_year, display_month + 1, 0).getDate();
+		        //カレンダーの月日を取得
+		        let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+		        let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+		        let display_first = new Date(display_year, display_month, 1).getDate();
+		        let display_last = new Date(display_year, display_month + 1, 0).getDate();
 
-	        define(display_year, display_month, display_first, display_last);
-	        console.log(define(display_year, display_month, display_first, display_last));
-	    }
+		        data = define(display_year, display_month, display_first, display_last);
+		        console.log(define(display_year, display_month, display_first, display_last));
+		    }
+
 
 /* 	    // 関数を呼び出す
 	    onInput();
@@ -167,8 +168,8 @@
 	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
 	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
 
-		        define(display_year1, display_month1, display_first1, display_last1);
-		        console.log(define(display_year1, display_month1, display_first1, display_last1));
+		        data = define(display_year1, display_month1, display_first1, display_last1);
+		        console.log(data);
 	            cal_date.value = display_year1 + "-" + "12";
 	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
 	        }else{
@@ -176,8 +177,8 @@
 	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
 	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
 
-		        define(display_year1, display_month1, display_first1, display_last1);
-		        console.log(define(display_year1, display_month1, display_first1, display_last1));
+	            data = define(display_year1, display_month1, display_first1, display_last1);
+		        console.log(data);
 	            cal_date.value = display_year1 + "-" + ('00' + (display_month1 + 1)).slice( -2 );
 	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
 	        }
@@ -195,13 +196,13 @@
 	        console.log("現在は" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
 
 	        if(display_month2 == 11){
-	            display_yea2r += 1;
+	            display_year2 += 1;
 	            display_month2 = 0;
 	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
 	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
 
-		        define(display_year2, display_month2, display_first2, display_last2);
-		        console.log(define(display_year2, display_month2, display_first2, display_last2));
+	            data = define(display_year2, display_month2, display_first2, display_last2);
+		        console.log(data);
 	            cal_date.value = display_year2 + "-" + "01";
 	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
 	        }else{
@@ -209,8 +210,8 @@
 	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
 	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
 
-		        define(display_year2, display_month2, display_first2, display_last2);
-		        console.log(define(display_year2, display_month2, display_first2, display_last2));
+	            data = define(display_year2, display_month2, display_first2, display_last2);
+		        console.log(data);
 	            cal_date.value = display_year2 + "-" + ('00' + (display_month2 + 1)).slice( -2 );
 	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
 	        }
@@ -256,7 +257,7 @@
 	    //guraphメソッド--------------------------------------------------------------------------------------------------
 		document.addEventListener("DOMContentLoaded", function() {
 			const context = document.querySelector("#graph").getContext('2d')
-			const config = {
+			let config = {
 					type: 'line',
 					data: graphData,
 					options: {
@@ -367,9 +368,39 @@
 						},
 					},
 				}
-			const myLineChart = new Chart(context, config);
-			//myLineChart.destroy();
+			let chart = new Chart(context, config);
+			console.log(chart.data);
 
+			//更新
+			const updateButton = document.getElementById("cal");
+			updateButton.addEventListener("change", function() {
+			    onInput();
+			    updateGraph();
+			});
+
+			//before
+			//更新
+			const beforeButton = document.getElementById("before");
+			beforeButton.addEventListener("click", function() {
+			    beforeMonth();
+			    updateGraph();
+			});
+
+			//after
+			//更新
+			const afterButton = document.getElementById("after");
+			afterButton.addEventListener("click", function() {
+			    afterMonth();
+			    updateGraph();
+			});
+
+			function updateGraph() {
+			    // グラフを更新する
+			    chart.destroy(); // 現在のグラフを破棄
+			    chart.data = data;
+			    console.log(chart.data);
+			    chart = new Chart(context, config); // 新しいグラフを描画
+			}
 		})
 		//graphメソッド--------------------------------------------------------------------------------------------------
 
