@@ -18,9 +18,9 @@
 
 	<header>
 		<div id="head">
-			<a id="logo" href="/mippy/CarendarServlet"> <img class="img"
-				src="img/logo.png" alt="ロゴ">
-			</a>
+				<a id = "logo" href = "/mippy/CalendarServlet">
+				<img class = "img" src = "img/mippy_logo.png" alt = "ロゴ">
+				</a>
 			<div id="menu" onclick="menu()">
 				<ul id="menu_bar">
 					<li class="bar"></li>
@@ -28,7 +28,6 @@
 					<li class="bar"></li>
 				</ul>
 			</div>
-
 			<div id="box"></div>
 		</div>
 

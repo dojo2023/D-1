@@ -23,19 +23,9 @@
     <body>
         <header>
             <div id = "head">
-                <a id = "logo" href = "/mippy/LoginServlet">
-                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
-                </a>
-                <div id = "menu" onclick="menu()">
-                    <ul id = "menu_bar">
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                        <li class = "bar"></li>
-                    </ul>
-                </div>
-                <div id = "box">
-                    <ul id = "menu_text"></ul>
-                </div>
+				<a id = "logo" href = "/mippy/CalendarServlet">
+				<img class = "img" src = "img/mippy_logo.png" alt = "ロゴ">
+				</a>
             </div>
             <meta charset="UTF-8">
             <title>秘密の質問</title>

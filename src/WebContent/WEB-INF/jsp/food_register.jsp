@@ -16,8 +16,8 @@
     <body>
         <header>
             <div id = "head">
-                <a id = "logo" href = "/mippy/CalendarServlet">
-                    <img class = "img" src = "img/logo.png" alt = "ロゴ">
+				<a id = "logo" href = "/mippy/CalendarServlet">
+				<img class = "img" src = "img/mippy_logo.png" alt = "ロゴ">
                 </a>
                 <div id = "menu" onclick="menu()">
                     <ul id = "menu_bar">

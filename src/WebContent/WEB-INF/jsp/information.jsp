@@ -19,7 +19,7 @@
 	<header>
 		<div id = "head">
 			<a id = "logo" href = "/mippy/CalendarServlet">
-				<img class = "img" src = "img/logo.png" alt = "ロゴ">
+			<img class = "img" src = "img/mippy_logo.png" alt = "ロゴ">
 			</a>
 		</div>
 	</header>
