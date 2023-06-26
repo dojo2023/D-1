@@ -49,7 +49,6 @@ public class SecretServlet extends HttpServlet {
 	   if(request.getParameter("secretsubmit") != null) {
 
 		   List<User> userList = uDao.checkEmailExistence(user_addr);
-
 		   User user = userList.get(0);
 		   ex = user.getEx();
 			userSecret = user.getUser_secret();
@@ -68,7 +67,7 @@ public class SecretServlet extends HttpServlet {
 	    }
 
 
-	    else if(request.getParameter("PwButton") != null) {
+	    else if(request.getParameter("pw_update") != null) {
 	    	if(new_pw == co_pw) {
 	        String useraddr = request.getParameter("user1addr");
 				uDao.seekPw(useraddr, new_pw);
