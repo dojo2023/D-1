@@ -341,8 +341,8 @@
 								},
 							},
 							x: {
-								min: '1',
-								max: '31',
+								/* min: '1',
+								max: '31', */
 								scaleLabel: {
 									display: true,
 								},
