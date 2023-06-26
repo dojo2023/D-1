@@ -72,3 +72,4 @@ var messages = [
 window.onload = function() {
 	showAvatarImage();
 };
+

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
 <title>mippy</title>
 <!-- 共通css -->
 <link rel="stylesheet" href="css/common.css">
