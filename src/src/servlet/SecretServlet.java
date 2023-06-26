@@ -67,11 +67,12 @@ public class SecretServlet extends HttpServlet {
 	    else if(request.getParameter("pw_update") != null) {
 			String new_pw = request.getParameter("new_pw");
 			String co_pw = request.getParameter("co_pw");
+			String useraddr = request.getParameter("user1addr");
 	    	if(new_pw.equals(co_pw)) {
-	        String useraddr = request.getParameter("user1addr");
 				uDao.seekPw(useraddr, new_pw);
 		        request.setAttribute("message", "update complete");
 		        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+
 	    	     }
 	    	else {
 	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");

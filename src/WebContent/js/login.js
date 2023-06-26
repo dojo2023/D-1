@@ -18,6 +18,15 @@ function check() {
 		return true;
 	}
 }
+
+//リセットボタンをクリックした時の処理
+document.getElementById("resetbutton").addEventListener("click",function() {
+//エラーメッセージの要素を取得
+var output = document.getElementById("output");
+//エラーメッセージをクリアする
+output.textContent = "";
+});
+
 // エンターキーでログイン
 function checkLogin() {
 /*  // Enterキーが押された場合にログイン処理を実行

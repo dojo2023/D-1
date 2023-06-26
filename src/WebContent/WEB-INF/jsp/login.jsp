@@ -41,7 +41,7 @@
                                 </div>
                                 <div class ="big-button2">
                                     <input type = "submit" class = "button2" value="ログイン" onclick = "return check();">
-                                    <input type = "reset" class = "button2"><br><br>
+                                    <input type = "reset" class = "button2" id = "resetbutton"><br><br>
                                 </div>
                                 <span id="output"></span><br>
                             </div>
