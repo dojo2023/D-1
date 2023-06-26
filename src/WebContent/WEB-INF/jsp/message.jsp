@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
 <title>メッセージ</title>
 </head>

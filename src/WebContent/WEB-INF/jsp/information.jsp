@@ -8,6 +8,7 @@
 
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" href="img/favicon.png" type="image/x-icon">
        <title>個人情報変更</title>
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">

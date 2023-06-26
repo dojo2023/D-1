@@ -9,6 +9,7 @@
 
     <link rel = "stylesheet" href = "css/secret.css">
     <head>
+    	<link rel="icon" href="img/favicon.png" type="image/x-icon">
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
         <!-- ページcss -->
