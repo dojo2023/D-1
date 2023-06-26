@@ -42,12 +42,8 @@ public class Log_Servlet extends HttpServlet {
 			// レコードDao
 			RecordDao Rdao = new RecordDao();
 
-			//カテゴリーを取得
-			FoodDao Fdao = new FoodDao();
-			List<Food> f_category = Fdao.cat_select();
-
 			//情報をセットしておく
-			request.setAttribute("f_category", f_category);
+			request.setAttribute("f_category", food_category_show());
 
 			//カレンダーから押された時の処理
 			request.setCharacterEncoding("UTF-8");
@@ -124,6 +120,9 @@ public class Log_Servlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//情報をセットしておく
+		request.setAttribute("f_category", food_category_show());
+
 		//sessionを取得
 		HttpSession session = request.getSession();
 		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
@@ -139,30 +138,56 @@ public class Log_Servlet extends HttpServlet {
 		Food food = new Food();
 		RecordDao Redao = new RecordDao();
 
-		//HTMLから取得
-		request.setCharacterEncoding("UTF-8");
-		String date = request.getParameter("record_category_date");
-		int type = Integer.parseInt(request.getParameter("record_category_time"));
-		String category = request.getParameter("record_category");
-		String food_name = request.getParameter("record_item");
+		try {
+			//HTMLから取得
+			request.setCharacterEncoding("UTF-8");
+			String date = request.getParameter("record_category_date");
+			int type = Integer.parseInt(request.getParameter("record_category_time"));
+			String category = request.getParameter("record_category");
+			String food_name = request.getParameter("record_item");
 
-		System.out.println(category);
-		System.out.println(food_name);
-		//Food_numを取得
-		food.setFoods_category(category);
-		food.setFoods_name(food_name);
-		List<Food> get_foodnum = Fdao.search(food);
+			System.out.println(category);
+			System.out.println(food_name);
+			//Food_numを取得
+			food.setFoods_category(category);
+			food.setFoods_name(food_name);
+			List<Food> get_foodnum = Fdao.search(food);
 
-		//modelにセット
-		register.setFoods_num(get_foodnum.get(0).getFoods_num());
-		register.setRecord_date(date);
-		register.setRecord_type(type);
-		register.setUser_num(id);
+			//modelにセット
+			register.setFoods_num(get_foodnum.get(0).getFoods_num());
+			register.setRecord_date(date);
+			register.setRecord_type(type);
+			register.setUser_num(id);
 
-		if(Rdao.insert(register)) {
-			//カレンダーにセット
+			if(Rdao.insert(register)) {
+				//カレンダーにセット
+				request.setAttribute("day", date);
+
+				//日程から登録した品目を取得する処理
+				List<Record> list = Redao.select1(id);
+				for (int i = 0 ; i < list.size() ; i++ ) {
+					if(list.get(i).getRecord_date().equals(date)) {
+						request.setAttribute("list", list.get(i));
+
+						//朝
+						List<Food> breakfast = Redao.select2(date, id, 1);
+						request.setAttribute("breakfast", breakfast);
+						//昼
+						List<Food> lunch = Redao.select2(date, id, 2);
+						request.setAttribute("lunch", lunch);
+						//夜
+						List<Food> dinner = Redao.select2(date, id, 3);
+						request.setAttribute("dinner", dinner);
+						//その他
+						List<Food> dessert = Redao.select2(date, id, 4);
+						request.setAttribute("dessert", dessert);
+					}
+				}
+			}
+		}catch(NumberFormatException e) {
+			String date = request.getParameter("record_category_date");
 			request.setAttribute("day", date);
-
+			e.printStackTrace();
 			//日程から登録した品目を取得する処理
 			List<Record> list = Redao.select1(id);
 			for (int i = 0 ; i < list.size() ; i++ ) {
@@ -183,11 +208,21 @@ public class Log_Servlet extends HttpServlet {
 					request.setAttribute("dessert", dessert);
 				}
 			}
-		}
 
-		//画面へフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/log.jsp");
-		dispatcher.forward(request, response);
+		}catch(IndexOutOfBoundsException e) {
+			request.setAttribute("error", "一致する品目がありませんでした");
+		}finally {
+			//画面へフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/log.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
+
+	public List<Food> food_category_show () {
+		//カテゴリーを取得
+		FoodDao Fdao = new FoodDao();
+		List<Food> list = Fdao.cat_select();
+		return list;
 	}
 
 }
