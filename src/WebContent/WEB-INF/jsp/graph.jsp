@@ -341,7 +341,7 @@
 							},
 							x: {
 								min: '1',
-								max: '30',
+								max: '31',
 								scaleLabel: {
 									display: true,
 								},
