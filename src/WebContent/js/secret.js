@@ -12,20 +12,17 @@ const btn = document.getElementById('btn');
     });
   }
 
-function pwcheck(){
-    var newPassword = document.getElementById('new_pw').value;
-    var confirmPassword = document.getElementById('co_pw').value;
+function validateForm() {
+	var password = document.getElementById("new_pw").value;
+	var confirmpassword = document.getElementById("co_pw").value;
 
-                if (newPassword != confirmPassword){
-                    //条件に一致しない場合
-                    alert("パスワードが一致しません。");//エラーメッセージを出力
-                    return false;    //送信ボタン本来の動作をキャンセルします
-                }else{
-                    //条件に一致する場合
-                    return true;    //送信ボタン本来の動作を実行します
-                }
-            }
+	if (password !== confirmpassword) {
+		document.getElementById("errorText").innerText = "パスワードが一致しません";
+		return false; // フォームの送信をキャンセル
+	}
 
-
+	// パスワードが一致した場合はフォームを送信
+	return true;
+}
 
 
