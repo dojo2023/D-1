@@ -16,7 +16,7 @@
 <body>
 	<header>
 		<div id="head">
-			<a id="logo" href="/servlet/TopServlet"><img class="img" src="img/logo.png" alt="ロゴ"></a>
+			<a id="logo" href="/mippy/TopServlet"><img class="img" src="img/mippy_logo.png" alt="ロゴ"></a>
 		</div>
 	</header>​
 	<form name="Top" method="POST" action="/mippy/Top">
