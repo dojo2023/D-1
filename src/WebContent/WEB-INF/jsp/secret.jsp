@@ -31,14 +31,14 @@
             <title>秘密の質問</title>
         </header>
        <body>
-		<form name="SecretServlet" method="POST" action="" id="secret">
+		<form name="SecretServlet" method="POST" action="SecretServlet" id="secret">
 
                                <div class = "form">
                                 <h1>本人確認</h1>
                                     <div class = "group">
                                     <input id = "u_addr" type = "text" class = "q_addr" name = "user_addr" placeholder="メールアドレス">
                                     </div>
-                                    <select name="USER_SECRET" class="input2" required>
+                                    <select name="USER_SECRET" class="input2">
                                     	<option value="0" selected hidden>秘密の質問</option>
                                     	<option value="1">好きな食べ物は？</option>
 										<option value="2">ペットの名前は？</option>
@@ -52,6 +52,10 @@
                      				<input placeholder="秘密の質問答え" type="text" name="answer"><br>
                                     <input type = "submit" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
 								</div>
+
+
+		</form>
+
 		<form  method="POST" action="SecretServlet" class="info2" onsubmit="return validateForm();">
 							<div class = "popup" id = "popup" >
 								<a href="#pop_info_1" class="btn_open"  >パスワード変更</a>
@@ -60,7 +64,7 @@
 
 		                                    <h2>パスワード変更</h2>
 							                <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder=新規パスワード required/>
-							                <input type="password" id = "co_pw" class = "co_pw"  placeholder=パスワードをもう一度入力してください  required/><br>
+							                <input type="password" id = "co_pw" class = "co_pw" name="co_pw"  placeholder=パスワードをもう一度入力してください  required/><br>
 							                <span id="errorText" style="color: red;"></span>
 
 							                <input type="submit"  class="button2"name="pw_update"  value="更新">
@@ -75,7 +79,7 @@
     <input type="hidden" name="user1Answer" value="${userAnswer}" />
     <input type="hidden" name="user1addr" value="${useraddr}" />
 		</div>
-                    </form>
+
 ​
     <!-- 共通js -->
    <script src = "js/common.js"></script>
