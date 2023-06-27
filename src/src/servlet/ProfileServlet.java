@@ -26,19 +26,31 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
+
 		request.setCharacterEncoding("UTF-8");
-		Loggedin user_addr = (Loggedin) session.getAttribute("user_addr");
-		String addr = user_addr.getId();
 
+		//sessionを取得
+		HttpSession session = request.getSession();
+		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
 
-		// データベースから値を取得する処理
-		UserDao uDao = new UserDao();
-		List<User> cardList = uDao.select(addr);
-		request.setAttribute("cardList",cardList);
+		//user_addrがあるのか判定
+		 if (user_addr != null) {
 
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
-		dispatcher.forward(request, response);
+				String addr = user_addr.getId();
+				// データベースから値を取得する処理
+				UserDao uDao = new UserDao();
+				List<User> cardList = uDao.select(addr);
+				request.setAttribute("cardList",cardList);
+
+		        RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+				dispatcher.forward(request, response);
+
+		 }
+		 else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+				dispatcher.forward(request, response);
+		 }
+
 	}
 
 	/**
