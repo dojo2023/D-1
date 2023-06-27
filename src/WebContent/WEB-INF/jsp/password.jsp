@@ -23,18 +23,17 @@
 		</div>
 	</header>
 	<main>
-		<h2>パスワード変更</h2>
+
 		<div class="group">
 			<div class="password">
-				<input type="password" id="new_pw" class="new_pw" name="new_pw"
-					placeholder=新規パスワード required /><br> <input type="password"
-					id="co_pw" class="co_pw" placeholder=パスワードをもう一度入力してください required /><br>
+				<h2>パスワード変更</h2>
+				<input type="password" id="new_pw" class="new_pw" name="new_pw"placeholder=新規パスワード required /><br>
+				<input type="password"id="co_pw" class="co_pw" placeholder=パスワードをもう一度入力してください required /><br>
 			</div>
 			<br> <span id="errorText" style="color: red;"></span><br>
 			<div class=bigbutton>
 				<input type="submit" class="button2" name="pw_update" value="更新">
-				<input type="reset" class="button2" name="reset" value="リセット"
-					id="resetbutton">
+				<input type="reset" class="button2" name="reset" value="リセット" id="resetbutton">
 			</div>
 		</div>
 
