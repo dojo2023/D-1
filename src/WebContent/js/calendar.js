@@ -6,12 +6,14 @@ const month = new Date().getMonth() ;
 const first = new Date(year, month, 1).getDay();
 const last = new Date(year, month + 1, 0).getDate();
 console.log(year + "+" + month+ "+" + first + "+" + last);
+
 //カレンダーに表示している月を表示する
 let cal_date = document.getElementById("cal");
 cal_date.value = year + "-" + ('00' + (month+1)).slice( -2 );
 
 //表示
 show_cal(year, month, first, last);
+accent(0);
 
 //カレンダーの月日を変えた時に更新
 function onInput() {
@@ -20,11 +22,12 @@ function onInput() {
     const display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
     const display_first = new Date(display_year, display_month, 1).getDay();
     const display_last = new Date(display_year, display_month + 1, 0).getDate();
-
+	accent(1);
     //表示
     show_cal(display_year, display_month, display_first, display_last);
     clean_cal();
     food_cal();
+    accent(0);
 }
 
 
@@ -34,7 +37,7 @@ function beforeMonth(){
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
     let display_first = new Date(display_year, display_month , 1).getDay();
     let display_last = new Date(display_year, display_month + 1 , 0).getDate();
-
+	accent(1);
     console.log("現在は" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     if(display_month == 0){
         display_year -= 1;
@@ -56,6 +59,7 @@ function beforeMonth(){
     }
    	clean_cal();
 	food_cal();
+	accent(0);
 }
 
 
@@ -64,9 +68,8 @@ function afterMonth(){
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
     let display_first = new Date(display_year, display_month , 1).getDay();
     let display_last = new Date(display_year, display_month + 1 , 0).getDate();
-
     console.log("現在は" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
-
+	accent(1);
     if(display_month == 11){
         display_year += 1;
         display_month = 0;
@@ -87,6 +90,7 @@ function afterMonth(){
     }
     clean_cal();
 	food_cal();
+	accent(0);
 }
 
 
@@ -329,3 +333,23 @@ function clean_cal(){
 		ex.parentNode.childNodes[3].innerHTML= "0kcal";
 	}
 }
+
+function accent(num){
+	let y = new Date().getYear() + 1900;
+	let m = new Date().getMonth() ;
+	let d = new Date().getDate();
+	let toDAY = y + "-" + ('00' + (m + 1)).slice( -2 ) + "-" + ('00' + d).slice( -2 );
+	let getName  = document.getElementsByName(toDAY);
+	console.log(getName[0]);
+	try{
+		if(num == 0){
+		getName[0].parentNode.style.cssText = "background-color: green";
+		}
+		if(num == 1){
+		getName[0].parentNode.style.cssText = "";
+		}
+	}catch(e){
+	}
+}
+
+
