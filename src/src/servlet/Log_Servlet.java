@@ -47,13 +47,10 @@ public class Log_Servlet extends HttpServlet {
 
 			//カレンダーから押された時の処理
 			request.setCharacterEncoding("UTF-8");
-			if(request.getParameter("GETmonth") != null) {
+			if(request.getParameter("GETdate") != null) {
 
 				//カレンダーに押された日程を入れる処理
-				String year = request.getParameter("GETyear");
-				String month = String.format("%02d",Integer.parseInt(request.getParameter("GETmonth")));
-				String date = String.format("%02d",Integer.parseInt(request.getParameter("GETdate")));
-				String day = year + "-" + month + "-" + date;
+				String day = request.getParameter("GETdate");
 
 				request.setAttribute("day", day);
 
