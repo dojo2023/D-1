@@ -9,7 +9,6 @@
     <head>
         <meta charset="UTF-8">
         <link rel="icon" href="img/favicon.png" type="image/x-icon">
-       <title>パスワード変更</title>
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
         <!-- ページcss -->
@@ -25,7 +24,8 @@
 		</div>
 	</header>
 <main>
-    <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder=新規パスワード required/>
+	<h2>パスワード変更</h2>
+    <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder=新規パスワード required/><br>
                 <input type="password" id = "co_pw" class = "co_pw"  placeholder=パスワードをもう一度入力してください  required/><br><br>
                 <span id="errorText" style="color: red;"></span><br>
                    <div class = bigbutton>
