@@ -23,19 +23,23 @@
 		</div>
 	</header>
 	<main>
-
-		<div class="group">
-			<div class="password">
-				<h2>パスワード変更</h2>
-				<input type="password" id="new_pw" class="new_pw" name="new_pw"placeholder=新規パスワード required /><br>
-				<input type="password"id="co_pw" class="co_pw" placeholder=パスワードをもう一度入力してください required /><br>
+		<form action="LoginServlet" method="POST"
+			onsubmit="return validateForm();">
+			<div class="group">
+				<div class="password">
+					<h2>パスワード変更</h2>
+					<input type="password" id="new_pw" class="new_pw" name="new_pw"
+						placeholder="新規パスワード" required /><br> <input type="password"
+						id="co_pw" class="co_pw" placeholder="パスワードをもう一度入力してください" required /><br>
+				</div>
+				<br> <span id="errorText" style="color: red;"></span><br>
+				<div class="bigbutton">
+					<input type="submit" class="button2" name="pw_update" value="更新"
+						id="updateButton"> <input type="reset" class="button2"
+						name="reset" value="リセット" id="resetButton">
+				</div>
 			</div>
-			<br> <span id="errorText" style="color: red;"></span><br>
-			<div class=bigbutton>
-				<input type="submit" class="button2" name="pw_update" value="更新">
-				<input type="reset" class="button2" name="reset" value="リセット" id="resetbutton">
-			</div>
-		</div>
+		</form>
 
 	</main>
 	<script src="/mippy/js/common.js"></script>
