@@ -264,7 +264,8 @@
 		        display_first = new Date(display_year, display_month , 1).getDay();
 		        display_last = new Date(display_year, display_month + 1 , 0).getDate();
 
-		        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );		        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
+		        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
+		        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
 		    }
 		    myLineChart.destroy();
 		    define(display_year, display_month, display_first, display_last);

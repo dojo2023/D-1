@@ -3,6 +3,14 @@
   font-family: "Yusei Magic";
   src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
 }
+
+button{
+	font-family: "Yusei Magic";
+}
+
+input{
+	font-family: "Yusei Magic";
+}
 body {
 	margin: none;
 	font-family:"Yusei Magic";
