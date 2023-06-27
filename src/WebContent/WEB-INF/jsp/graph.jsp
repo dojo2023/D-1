@@ -5,7 +5,6 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="icon" href="img/favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>mippy</title>
 	<!-- <link rel="icon" href="img/mippy1号.gif"> -->
@@ -47,13 +46,13 @@
 				</c:forEach>
 
 				<c:set var="average" value="${sum / count}" />
-				平均カロリー： <fmt:formatNumber value="${average}" pattern="#.00" /> kcal
+				平均カロリー： <p id = "ave"> </p>kcal
 			</p>
 			<div class = "back">
        				<input type = "month" id = "cal" value = "" onchange="onInput()">
 	            	<div id = "selecter">
-	            		<div class = "before" id = "before"></div>
-	                    <div class = "after" id = "after"></div>
+	            		<div class = "before" id = "before" onclick = "beforeMonth()"></div>
+	                    <div class = "after" id = "after" onclick = "afterMonth()"></div>
 	        		</div>
 	                <canvas id="graph" width="1000" height="400"></canvas>
        			</div>
@@ -107,15 +106,14 @@
 	<!-- 共通js -->
     <script src="js/common.js"></script>
     <!-- top用js -->
-    <script src="js/graph.js"></script>
+    <script src="js/graph."></script>
     <!-- guraph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ja.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
     <script>
-		//今日の日付および月末までを判定
-		//month は　- 1 で表示される
+		//今日の現在の日付のデータを取得
 		const year = new Date().getYear() + 1900;
 		const month = new Date().getMonth() ;
 		const first = new Date(year, month, 1).getDay();
@@ -125,119 +123,49 @@
 		let cal_date = document.getElementById("cal");
 		cal_date.value = year + "-" + ('00' + (month + 1)).slice( -2 );
 
+		//サーブレットから記録した日と総カロリーを取得
 	    var rawData = [
     		<c:forEach var="a" items="${cardList}">
     			{ date: '${a.record_date}' + 'T00:00:00', total_calories: '${a.totalcal}' },
     		</c:forEach>
     	];
 
-	    let data = define(year, month, first, last);
-	    console.log(data);
+		//引数をもとにグラフデータを取得
+		let context = document.querySelector("#graph").getContext('2d');
+		let myLineChart;
+
+		//グラフデータを取得し描写する
+	    define(year, month, first, last);
+		myLineChart = new Chart(context, showGraph(year, month));
+
+
+
 	    //こっからファンクション--------------------------------------------------------------------------------------
-	    function onInput() {
-		        //カレンダーの月日を取得
-		        let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-		        let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-		        let display_first = new Date(display_year, display_month, 1).getDate();
-		        let display_last = new Date(display_year, display_month + 1, 0).getDate();
+		function define(display_year, display_month, display_first, display_last){
+	    	var display_month3 = display_month + 1;
+	    	var display_first5 = display_first;
+	    	var display_last5 = display_last;
 
-		        data = define(display_year, display_month, display_first, display_last);
-		        console.log(define(display_year, display_month, display_first, display_last));
-		    }
-
-
-/* 	    // 関数を呼び出す
-	    onInput();
-	    console.log(display_year);  // 表示された年
-	    console.log(display_month);  // 表示された月
-	    console.log(display_first);  // 月の最初の日
-	    console.log(display_last);  // 月の最終日 */
-	    //ここまでファンクション--------------------------------------------------------------------------------------
-
-	    //beforメソッド--------------------------------------------------------------------------------------------------
-	    function beforeMonth(){
-	        //カレンダーの月日を取得
-	        let display_year1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-	        let display_month1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-	        let display_first1 = new Date(display_year1, display_month1 , 1).getDate();
-	        let display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
-
-	        console.log("現在は" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
-	        if(display_month1 == 0){
-	            display_year1 -= 1;
-	            display_month1 = 11;
-	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
-	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
-
-		        data = define(display_year1, display_month1, display_first1, display_last1);
-		        console.log(data);
-	            cal_date.value = display_year1 + "-" + "12";
-	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
-	        }else{
-	            display_month1 -= 1;
-	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
-	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
-
-	            data = define(display_year1, display_month1, display_first1, display_last1);
-		        console.log(data);
-	            cal_date.value = display_year1 + "-" + ('00' + (display_month1 + 1)).slice( -2 );
-	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
-	        }
-	    }
-	    //beforeMonth();
-	    //beforメソッド--------------------------------------------------------------------------------------------------
-
-	    //afterメソッド--------------------------------------------------------------------------------------------------
-	    function afterMonth(){
-	    	let display_year2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-	    	let display_month2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-	    	let display_first2 = new Date(display_year2, display_month2 , 1).getDate();
-	    	let display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
-
-	        console.log("現在は" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
-
-	        if(display_month2 == 11){
-	            display_year2 += 1;
-	            display_month2 = 0;
-	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
-	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
-
-	            data = define(display_year2, display_month2, display_first2, display_last2);
-		        console.log(data);
-	            cal_date.value = display_year2 + "-" + "01";
-	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
-	        }else{
-	            display_month2 += 1;
-	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
-	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
-
-	            data = define(display_year2, display_month2, display_first2, display_last2);
-		        console.log(data);
-	            cal_date.value = display_year2 + "-" + ('00' + (display_month2 + 1)).slice( -2 );
-	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
-	        }
-	    }
-	    //afterMonth();
-	    //afterメソッド--------------------------------------------------------------------------------------------------
-
-	    //軸と紐づけ--------------------------------------------------------------------------------------------------
-	    function define(year, month, first, last){
-	    	var month3 = month + 1;
-	    	var first5 = first;
-	    	var last5 = last;
-	    	console.log(year);
-
-		    if (month3 < 10) {
-		    	var month4 = "0" + month3;
+		    if (display_month3 < 10) {
+		    	var display_month4 = "0" + display_month3;
 		    } else {
-		    	var month4 = month3;
+		    	var display_month4 = display_month3;
 		    }
 
-		    var inc = year + "-" + month4;
-		    console.log(inc);
-
+		    var inc = display_year + "-" + display_month4;
 		    var filteredData = rawData.filter(data => data.date.includes(inc));
 		    var labels = filteredData.map(data => new Date(data.date));
+
+		    var ave = 0;
+		   	for(let i = 0 ; i < filteredData.map(data => data.total_calories).length; i++){
+		   		ave += parseInt(filteredData.map(data => data.total_calories)[i]);
+		   	}
+		   	if(ave > 0) {
+		   		document.getElementById("ave").textContent = ave / (filteredData.map(data => data.total_calories).length);
+		   	}else {
+		   		document.getElementById("ave").textContent = 0;
+		   	}
+
 		    //データ挿入
 		    return graphData = {
 		    	labels: labels/* filteredData.map(data => data.date) */,
@@ -250,326 +178,101 @@
 		    };
 	    }
 
-/* 	    console.log(graphData);
-	    console.log(display_first5);
-	    console.log(display_last5); */
-	    //ここまで紐づけ----------------------------------------------------------------------------------------------
-
-	    //guraphメソッド--------------------------------------------------------------------------------------------------
-		document.addEventListener("DOMContentLoaded", function() {
-			const context = document.querySelector("#graph").getContext('2d')
+		function showGraph(year, month){
 			let config = {
 					type: 'line',
 					data: graphData,
 					options: {
-						plugins: {
-							// グラフタイトル
-							title: {
-								display: true,
-								text: '摂取カロリー',
-								color: 'black',
-								padding: { top: 5, bottom: 5 },
-								font: {
-									family: '"Arial", "Times New Roman"',
-									size: 12,
-								},
-							},
-							// 凡例
-							legend: {
-								position: 'bottom',
-								align: 'end',
-								// 凡例ラベル
-								labels: {
-									boxWidth: 20,
-									boxHeight: 8,
-								},
-								// 凡例タイトル
-								title: {
-									display: true,
-									text: '日付',
-									padding: { top: 20 },
-								},
-							},
-							// ツールチップ
-							tooltip: {
-								backgroundColor: '#933',
-							},
-						},
 						scales: {
 							y: {
 								// 最小値・最大値
-								min: 0,
-								max: 2500,
-								// 軸タイトル
-								title: {
-									display: true,
-									text: '摂取カロリー',
-									color: 'black',
-								},
-								// 目盛ラベル
-								ticks: {
-									color: 'blue',
-									stepSize: 20,
-									showLabelBackdrop: true,
-									backdropColor: '#ddf',
-									backdropPadding: { x: 4, y: 2 },
-									major: {
-										enabled: true,
-									},
-									align: 'end',
-									crossAlign: 'center',
-									sampleSize: 4,
-								},
-								grid: {
-									// 軸線
-									borderColor: 'orange',
-									borderWidth: 2,
-									drawBorder: true,
-									// 目盛線＆グリッド線
-									color: '#080',
-									display: true,
-									// グリッド線
-									borderDash: [3, 3],
-									borderDashOffset: 0,
-									// 目盛線
-									drawTicks: true,
-									tickColor: 'blue',
-									tickLength: 10,
-									tickWidth: 2,
-									tickBorderDash: [2, 2],
-									tickBorderDashOffset: 0,
-								},
+								suggestedMin: 0,
+       							suggestedMax: 2500,
 							},
 							x: {
-								/* min: new Date(year, month, 1),
-								max: new Date(year, (month+1), 0), */
-								scaleLabel: {
-									display: true,
-								},
+								// 最小値・最大値
+								min: new Date(year, month, 1),
+								max: new Date(year, (month+1), 0),
 								type: 'time',
 								time: {
 									parser: 'D',
 									unit: 'day',
-									//stepSize: 1,
+									unitstepSize: 1,
 									displayFormats: {
 										'day': 'D'
 									}
 								},
-								ticks: {
-									autoSkip: false,  // ラベルの自動スキップを無効化
-									maxRotation: 0,   // ラベルの最大回転角度を0度に設定
-									minRotation: 0
-								},
-								grid: {
-									borderColor: 'orange',
-									borderWidth: 2,
-									sampleSize: 31
-								},
 							},
 						},
 					},
-				}
-			let chart = new Chart(context, config);
-			console.log(chart.data);
+				};
+			return config;
+		}
 
-			//更新
-			const updateButton = document.getElementById("cal");
-			updateButton.addEventListener("change", function() {
-			    onInput();
-			    updateGraph();
-			});
-
-			//before
-			//更新
-			const beforeButton = document.getElementById("before");
-			beforeButton.addEventListener("click", function() {
-			    beforeMonth();
-			    updateGraph();
-			});
-
-			//after
-			//更新
-			const afterButton = document.getElementById("after");
-			afterButton.addEventListener("click", function() {
-			    afterMonth();
-			    updateGraph();
-			});
-
-			function updateGraph() {
-			    // グラフを更新する
-			    chart.destroy(); // 現在のグラフを破棄
-			    chart.data = data;
-			    console.log(chart.data);
-			    chart = new Chart(context, config); // 新しいグラフを描画
-			}
-		})
-		//graphメソッド--------------------------------------------------------------------------------------------------
-
-/* 		//軸と紐づけ--------------------------------------------------------------------------------------------------
-	    var graphData;
-	    var display_first5;
-	    var display_last5;
-
-	    function define(display_year, display_month, display_first, display_last){
-	    	var display_month3 = display_month + 1;
-	    	display_first5 = display_first;
-	    	display_last5 = display_last;
-	    	console.log(display_year);
-
-		    if (display_month3 < 10) {
-		    	var display_month4 = "0" + display_month3;
-		    } else {
-		    	var display_month4 = display_month3;
-		    }
-
-		    var inc = display_year + "-" + display_month4;
-		    console.log(inc);
-
-		    var filteredData = rawData.filter(data => data.date.includes(inc));
-		    var labels = filteredData.map(data => new Date(data.date));
-		    //データ挿入
-		    graphData = {
-		    	labels: labels,
-		    	datasets: [{
-		    		label: '合計摂取カロリー',
-		    		data: filteredData.map(data => data.total_calories),
-		    		borderColor: "rgba(255,0,0,1)",
-		    		backgroundColor: "rgba(0,0,0,0)"
-		    	}],
-		    };
+		function onInput() {
+	        //カレンダーの月日を取得
+	        let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+	        let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+	        let display_first = new Date(display_year, display_month, 1).getDate();
+	        let display_last = new Date(display_year, display_month + 1, 0).getDate();
+	        myLineChart.destroy();
+	        define(display_year, display_month, display_first, display_last);
+	        myLineChart = new Chart(context, showGraph(display_year, display_month));
 	    }
 
-	    console.log(graphData);
-	    console.log(display_first5);
-	    console.log(display_last5);
-	    //ここまで紐づけ---------------------------------------------------------------------------------------------- */
-/* 	    //guraphメソッド--------------------------------------------------------------------------------------------------
-		document.addEventListener("DOMContentLoaded", function() {
-			let context = document.querySelector("#graph").getContext('2d')
-			let myLineChart = new Chart(context, {
-				type: 'line',
-				data: graphData,
-				options: {
-					plugins: {
-						// グラフタイトル
-						title: {
-							display: true,
-							text: '摂取カロリー',
-							color: 'black',
-							padding: { top: 5, bottom: 5 },
-							font: {
-								family: '"Arial", "Times New Roman"',
-								size: 12,
-							},
-						},
-						// 凡例
-						legend: {
-							position: 'bottom',
-							align: 'end',
-							// 凡例ラベル
-							labels: {
-								boxWidth: 20,
-								boxHeight: 8,
-							},
-							// 凡例タイトル
-							title: {
-								display: true,
-								text: '日付',
-								padding: { top: 20 },
-							},
-						},
-						// ツールチップ
-						tooltip: {
-							backgroundColor: '#933',
-						},
-					},
-					scales: {
-						y: {
-							// 最小値・最大値
-							min: 0,
-							max: 2500,
-							// 軸タイトル
-							title: {
-								display: true,
-								text: '摂取カロリー',
-								color: 'black',
-							},
-							// 目盛ラベル
-							ticks: {
-								color: 'blue',
-								stepSize: 20,
-								showLabelBackdrop: true,
-								backdropColor: '#ddf',
-								backdropPadding: { x: 4, y: 2 },
-								major: {
-									enabled: true,
-								},
-								align: 'end',
-								crossAlign: 'center',
-								sampleSize: 4,
-							},
-							grid: {
-								// 軸線
-								borderColor: 'orange',
-								borderWidth: 2,
-								drawBorder: true,
-								// 目盛線＆グリッド線
-								color: '#080',
-								display: true,
-								// グリッド線
-								borderDash: [3, 3],
-								borderDashOffset: 0,
-								// 目盛線
-								drawTicks: true,
-								tickColor: 'blue',
-								tickLength: 10,
-								tickWidth: 2,
-								tickBorderDash: [2, 2],
-								tickBorderDashOffset: 0,
-							},
-						},
-						x: {
-							min: '1',
-							max: '30',
-							scaleLabel: {
-								display: true,
-							},
-							type: 'time',
-							time: {
-								parser: 'D',
-								unit: 'day',
-								//stepSize: 1,
-								displayFormats: {
-									'day': 'D'
-								}
-							},
-							ticks: {
-								autoSkip: false,  // ラベルの自動スキップを無効化
-								maxRotation: 0,   // ラベルの最大回転角度を0度に設定
-								minRotation: 0
-							},
-							grid: {
-								borderColor: 'orange',
-								borderWidth: 2,
-								sampleSize: 31
-							},
-						},
-					},
-				},
-			})
-		})
-		//graphメソッド-------------------------------------------------------------------------------------------------- */
+		function beforeMonth() {
+		    //カレンダーの月日を取得
+		    let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+		    let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+		    let display_first = new Date(display_year, display_month , 1).getDay();
+		    let display_last = new Date(display_year, display_month + 1 , 0).getDate();
 
-		/* sample
-		    var graphData = {
-			labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
-			datasets: [{
-				label: '合計摂取カロリー',
-				data: [1639, 873, 536, 596, 1851, 1028, 1127, 1613, 1333, 1165, 1303, 752, 622, 1230, 1572, 1579, 617, 68, 1296, 1270, 1945, 1853, 1592, 864, 1106, 1667, 1332, 392, 1761, 336, 1024],
-				borderColor: "rgba(255,0,0,1)",
-				backgroundColor: "rgba(0,0,0,0)"
-			}],
-		}; */
+		    if(display_month == 0){
+		        display_year -= 1;
+		        display_month = 11;
+		        display_first = new Date(display_year, display_month , 1).getDay();
+		        display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
+		        cal_date.value = display_year + "-" + "12";
+		    }else{
+		        display_month -= 1;
+		        display_first = new Date(display_year, display_month , 1).getDay();
+		        display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
+		        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
+		    }
+		    myLineChart.destroy();
+		    define(display_year, display_month, display_first, display_last);
+			myLineChart = new Chart(context, showGraph(display_year, display_month));
+		}
+
+		function afterMonth(){
+		    let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+		    let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+		    let display_first = new Date(display_year, display_month , 1).getDay();
+		    let display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
+		    if(display_month == 11){
+		        display_year += 1;
+		        display_month = 0;
+		        display_first = new Date(display_year, display_month , 1).getDay();
+		        display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
+		        cal_date.value = display_year + "-" + "01";
+		    }else{
+		        display_month += 1;
+		        display_first = new Date(display_year, display_month , 1).getDay();
+		        display_last = new Date(display_year, display_month + 1 , 0).getDate();
+
+		        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );		        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
+		    }
+		    myLineChart.destroy();
+		    define(display_year, display_month, display_first, display_last);
+			myLineChart = new Chart(context, showGraph(display_year, display_month));
+
+		}
+
+
     </script>
 </body>
 </html>
