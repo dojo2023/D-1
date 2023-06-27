@@ -343,7 +343,7 @@ function accent(num){
 	console.log(getName[0]);
 	try{
 		if(num == 0){
-		getName[0].parentNode.style.cssText = "background-color: #bfffb8";
+		getName[0].parentNode.style.cssText = "box-shadow: inset 0 0 0 5px #ffa1f1;";
 		}
 		if(num == 1){
 		getName[0].parentNode.style.cssText = "";

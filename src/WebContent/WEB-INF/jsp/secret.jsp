@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mippy</title>
+<title>秘密の質問</title>
 
 <link rel="stylesheet" href="css/secret.css">
 <head>
@@ -14,42 +14,7 @@
 <link rel="stylesheet" href="css/common.css">
 <!-- ページcss -->
 <link rel="stylesheet" href="css/secret.css">
-<style>
-.btn_open {
-	font-weight: bold;
-	margin: 5px;
-	padding: 4px 6px;
-	background: #000;
-	color: #fff;
-}
 
-.pop_wrap {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, .5);
-	font-size: 0;
-	text-align: center;
-}
-
-.pop_wrap:after {
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;
-	content: '';
-}
-
-.pop_wrap .pop_inner {
-	display: inline-block;
-	padding: 20px 30px;
-	background: #fff;
-	width: 200px;
-	vertical-align: middle;
-	font-size: 15px;
-}
-</style>
 </head>
 <body>
 	<header>
@@ -58,19 +23,16 @@
 				src="img/mippy_logo.png" alt="ロゴ">
 			</a>
 		</div>
-		<meta charset="UTF-8">
-		<title>秘密の質問</title>
 	</header>
 <body>
-<form name="SecretServlet" method="POST" action="PasswordServlet">
+	<form name="SecretServlet" method="POST" action="PasswordServlet">
 		<div class="form">
 			<h1>本人確認</h1>
 			<div class="group">
-				<input id="u_addr" type="email" class="q_addr" name="user_addr"
-					placeholder="メールアドレス">
+				<input id="u_addr" type="email" class="q_addr" name="user_addr"placeholder="メールアドレス" required>
 			</div>
 			<select name="USER_SECRET" class="input2">
-				<option value="0" selected hidden>秘密の質問</option>
+				<option value="0" selected>秘密の質問</option>
 				<option value="1">好きな食べ物は？</option>
 				<option value="2">ペットの名前は？</option>
 				<option value="3">小学校の名前は？</option>
@@ -79,20 +41,11 @@
 				<option value="6">初恋の相手の名前は？</option>
 				<option value="7">好きなお寿司のネタは？</option>
 				<option value="8">好きなキャラクターは？</option>
-			</select><br> <input placeholder="秘密の質問答え" type="text" name="answer"
-				class="s_answer"><br> <input type="submit"
-				class="q_submit" value="送信" name="secretsubmit"
-				onclick="addrsecretcheck()">
+			</select><br>
+			<input placeholder="秘密の質問答え" type="text" name="answer" class="s_answer" required><br>
+				<input type="submit" class="q_submit" value="送信" name="secretsubmit"onclick="addrsecretcheck()" >
 		</div>
 	</form>
-
-
-	<div class="hidden">
-		<input type="hidden" name="user1Secret" value="${userSecret}" /> <input
-			type="hidden" name="user1Answer" value="${userAnswer}" /> <input
-			type="hidden" name="user1addr" value="${useraddr}" />
-	</div>
-
 	​
 	<!-- 共通js -->
 	<script src="js/common.js"></script>

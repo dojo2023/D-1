@@ -1,8 +1,13 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Yusei Magic";
+  src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
 
 body {
     margin: 0;
     width: 98vw;
+    font-family:"Yusei Magic";
 }
 
 main {
@@ -81,7 +86,7 @@ h1 {
     margin-left: 0.5%;
     float: right;
     background-color: #AEE2FF;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 
@@ -92,6 +97,7 @@ h1 {
     margin-left: 10%;
     border-radius: 5px;
     outline: none;
+    font-family:"Yusei Magic";
 }
 
 #button {
@@ -133,6 +139,7 @@ h1 {
     padding-left: 1em;
     height: 15%;
     text-indent: 10%;
+
 }
 
 p.item {

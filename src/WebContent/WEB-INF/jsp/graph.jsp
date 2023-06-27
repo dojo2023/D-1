@@ -46,7 +46,7 @@
 				</c:forEach>
 
 				<c:set var="average" value="${sum / count}" />
-				平均カロリー： <p id = "ave"> </p>kcal
+				平均カロリー： <span id = "ave"></span>
 			</p>
 			<div class = "back">
        				<input type = "month" id = "cal" value = "" onchange="onInput()">
@@ -106,7 +106,7 @@
 	<!-- 共通js -->
     <script src="js/common.js"></script>
     <!-- top用js -->
-    <script src="js/graph."></script>
+    <script src="js/graph.js"></script>
     <!-- guraph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
@@ -138,8 +138,6 @@
 	    define(year, month, first, last);
 		myLineChart = new Chart(context, showGraph(year, month));
 
-
-
 	    //こっからファンクション--------------------------------------------------------------------------------------
 		function define(display_year, display_month, display_first, display_last){
 	    	var display_month3 = display_month + 1;
@@ -161,7 +159,9 @@
 		   		ave += parseInt(filteredData.map(data => data.total_calories)[i]);
 		   	}
 		   	if(ave > 0) {
-		   		document.getElementById("ave").textContent = ave / (filteredData.map(data => data.total_calories).length);
+		   		let ave1 = ave / (filteredData.map(data => data.total_calories).length);
+		   		let aveFormatted = ave1.toFixed(2);
+		   		document.getElementById("ave").textContent = aveFormatted + " kcal";
 		   	}else {
 		   		document.getElementById("ave").textContent = 0;
 		   	}
@@ -183,16 +183,90 @@
 					type: 'line',
 					data: graphData,
 					options: {
+						plugins: {
+							// グラフタイトル
+							title: {
+								display: true,
+								text: '摂取カロリー',
+								color: 'black',
+								padding: { top: 5, bottom: 5 },
+								font: {
+									family: '"Arial", "Times New Roman"',
+									size: 12,
+								},
+							},
+							// 凡例
+							legend: {
+								position: 'bottom',
+								align: 'end',
+								// 凡例ラベル
+								labels: {
+									boxWidth: 20,
+									boxHeight: 8,
+								},
+								// 凡例タイトル
+								title: {
+									display: true,
+									text: '日付',
+									padding: { top: 20 },
+								},
+							},
+							// ツールチップ
+							tooltip: {
+								backgroundColor: '#933',
+							},
+						},
 						scales: {
 							y: {
 								// 最小値・最大値
 								suggestedMin: 0,
        							suggestedMax: 2500,
+       							title: {
+									display: true,
+									text: '摂取カロリー',
+									color: 'black',
+								},
+								// 目盛ラベル
+								ticks: {
+									color: 'blue',
+									stepSize: 20,
+									showLabelBackdrop: true,
+									/* backdropColor: '#ddf',
+									backdropPadding: { x: 4, y: 2 }, */
+									major: {
+										enabled: true,
+									},
+									align: 'end',
+									crossAlign: 'center',
+									sampleSize: 4,
+								},
+								grid: {
+									// 軸線
+									borderColor: 'orange',
+									borderWidth: 2,
+									drawBorder: true,
+									// 目盛線＆グリッド線
+									color: '#080',
+									display: true,
+									// グリッド線
+									borderDash: [3, 3],
+									borderDashOffset: 0,
+									// 目盛線
+									drawTicks: true,
+									tickColor: 'blue',
+									tickLength: 10,
+									tickWidth: 2,
+									tickBorderDash: [2, 2],
+									tickBorderDashOffset: 0,
+								},
 							},
 							x: {
 								// 最小値・最大値
 								min: new Date(year, month, 1),
 								max: new Date(year, (month+1), 0),
+								scaleLabel: {
+									display: true,
+								},
 								type: 'time',
 								time: {
 									parser: 'D',
@@ -201,6 +275,16 @@
 									displayFormats: {
 										'day': 'D'
 									}
+								},
+								ticks: {
+									autoSkip: false,  // ラベルの自動スキップを無効化
+									maxRotation: 0,   // ラベルの最大回転角度を0度に設定
+									minRotation: 0
+								},
+								grid: {
+									borderColor: 'orange',
+									borderWidth: 2,
+									sampleSize: 31
 								},
 							},
 						},
@@ -264,15 +348,13 @@
 		        display_first = new Date(display_year, display_month , 1).getDay();
 		        display_last = new Date(display_year, display_month + 1 , 0).getDate();
 
-		        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );		        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
+		        cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
+		        console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
 		    }
 		    myLineChart.destroy();
 		    define(display_year, display_month, display_first, display_last);
 			myLineChart = new Chart(context, showGraph(display_year, display_month));
-
 		}
-
-
     </script>
 </body>
 </html>

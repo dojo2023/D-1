@@ -1,9 +1,11 @@
 @charset "utf-8";
-
+@font-face {
+  font-family: "Yusei Magic";
+  src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
 
 p, h3 {
     text-align: center;
-    font-family:  serif;
     letter-spacing: 0.2rem;
 }
 
@@ -18,7 +20,6 @@ input {
     display: block;
     font-size: 20px;
     background-color: white;
-    font-family: serif;
     border-radius: 10px;
 }
 
