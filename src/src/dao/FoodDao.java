@@ -187,7 +187,6 @@ public class FoodDao {
 				card.setFoods_cal(rs.getDouble("FOODS_CAL"));
 				cardList.add(card);
 			}
-			System.out.println(cardList.get(0).getFoods_num());
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
