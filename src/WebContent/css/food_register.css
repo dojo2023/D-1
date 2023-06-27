@@ -112,7 +112,14 @@ h1 {
     border-radius: 5px;
     outline: none;
 }
-
+.loog-link {
+    margin-top: 0px;
+    text-align: right;
+	text-decoration: underline;
+	color: black;
+    text-decoration: underline;
+    margin-bottom:10px;
+}
 #a_submit {
 	width: 30%;
     height: 8%;

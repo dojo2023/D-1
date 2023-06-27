@@ -43,7 +43,7 @@
                                 ＜朝＞${list.getBreakfast()}kcal<br>
 								<c:forEach var = "a" items = "${breakfast}">
 									<p><span>${a.foods_name}</span>
-									   <span>${a.foods_cal} kcal</span></p>
+									   <span id = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>
@@ -51,7 +51,7 @@
                             <li id = "list_2">
                                 ＜昼＞${list.getLunch()}kcal<br>
 								<c:forEach var = "a" items = "${lunch}">
-									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+									<p><span>${a.foods_name}</span><span class = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>
@@ -59,7 +59,7 @@
                             <li id = "list_3">
                                 ＜夜＞${list.getDinner()}kcal<br>
 								<c:forEach var = "a" items = "${dinner}">
-									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+									<p><span>${a.foods_name}</span><span class = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>
@@ -67,7 +67,7 @@
                             <li id = "list_4">
                                 ＜その他＞${list.getDessert()}kcal<br>
 								<c:forEach var = "a" items = "${dessert}">
-									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+									<p><span>${a.foods_name}</span><span class = "kal" >${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>

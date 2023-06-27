@@ -47,6 +47,7 @@
 					</select>
 					<input type = "text" name = "s_name" id = "s_name" class = "search_input">
 					<input type = "submit" name = "s_submit" id = "s_submit" class = "search_input" value = "検索">
+
 				</form>
 				<ul id = "s_result">
 						<c:if test="${empty search_list}">
@@ -84,7 +85,11 @@
 						<input type = "number" step = "0.1" min ="0" name = "a_cal" id = "a_cal" required>
 					</div>
 					<input type = "submit" value = "登録" name = "a_submit" id = "a_submit">
+
 				</form>
+				<div class = "loog-link">
+	                    <a href = /mippy/Log_Servlet>食事ログに戻る</a>
+	                </div>
 			</div>
 		</main>
 
