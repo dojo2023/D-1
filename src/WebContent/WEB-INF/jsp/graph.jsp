@@ -228,7 +228,7 @@
 								},
 								// 目盛ラベル
 								ticks: {
-									color: 'blue',
+									//color: 'blue',
 									stepSize: 20,
 									showLabelBackdrop: true,
 									/* backdropColor: '#ddf',
@@ -246,14 +246,14 @@
 									borderWidth: 2,
 									drawBorder: true,
 									// 目盛線＆グリッド線
-									color: '#080',
+									//color: '#080',
 									display: true,
 									// グリッド線
 									borderDash: [3, 3],
 									borderDashOffset: 0,
 									// 目盛線
 									drawTicks: true,
-									tickColor: 'blue',
+									//tickColor: 'blue',
 									tickLength: 10,
 									tickWidth: 2,
 									tickBorderDash: [2, 2],
@@ -277,6 +277,7 @@
 									}
 								},
 								ticks: {
+									//color: 'blue',
 									autoSkip: false,  // ラベルの自動スキップを無効化
 									maxRotation: 0,   // ラベルの最大回転角度を0度に設定
 									minRotation: 0
