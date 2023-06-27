@@ -4,11 +4,7 @@
   src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
 }
 
-body{
-	background-image: url('img/4.jpg');
-	background-size: cover;
-	background-position: center;
-}
+
 
 p, h3 {
     text-align: center;
