@@ -1,16 +1,4 @@
 'use strict';
-const btn = document.getElementById('btn');
-
-  var target = document.querySelectorAll('.btn_open');
-  var targetID;
-
-  // openpopup
-  for(var i = 0; i < target.length; i++){
-    target[i].addEventListener('click', function(){
-      targetID = this.getAttribute('href');
-      document.querySelector(targetID).style.display = 'block';
-    });
-  }
 
 function validateForm() {
 	var password = document.getElementById("new_pw").value;
@@ -26,11 +14,11 @@ function validateForm() {
 }
 
 //リセットボタンをクリックした時の処理
-document.getElementById("resetbutton").addEventListener("click",function() {
-//エラーメッセージの要素を取得
-var output = document.getElementById("errorText");
-//エラーメッセージをクリアする
-output.textContent = "";
+document.getElementById("resetbutton").addEventListener("click", function() {
+	//エラーメッセージの要素を取得
+	var output = document.getElementById("errorText");
+	//エラーメッセージをクリアする
+	output.textContent = "";
 });
 
 
