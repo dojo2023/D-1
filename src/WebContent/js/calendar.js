@@ -23,12 +23,12 @@ function onInput() {
 
     //表示
     show_cal(display_year, display_month, display_first, display_last);
+    clean_cal();
+    food_cal();
 }
 
 
 function beforeMonth(){
-	clean_cal();
-	food_cal();
     //カレンダーの月日を取得
     let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
@@ -54,12 +54,12 @@ function beforeMonth(){
         cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
         console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     }
-
+   	clean_cal();
+	food_cal();
 }
 
+
 function afterMonth(){
-	clean_cal();
-	food_cal();
     let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
     let display_first = new Date(display_year, display_month , 1).getDay();
@@ -85,6 +85,8 @@ function afterMonth(){
         cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
         console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     }
+    clean_cal();
+	food_cal();
 }
 
 
@@ -206,12 +208,14 @@ const seventhDay = document.getElementsByClassName("SeventhDay");
 let c_day;
 let c_week = 0;
 
-for (let i = 0 ; i < 6; i++){
+for (let i = 0 ; i < 7; i++){
     firstDay[i].addEventListener('click',function(){
         c_day = 1;
-        c_week = i + 1;
+        c_week = i;
+        console.log(i);
     });
-
+}
+for (let i = 0 ; i < 6; i++){
     secondDay[i].addEventListener('click',function(){
         c_day = 2;
         c_week = i + 1;
@@ -249,10 +253,6 @@ Array.prototype.forEach.call(day, function(items){
     // itemを利用した処理
 
     items.onclick = function() {
-        console.log(c_week);
-        console.log(c_day);
-        let result1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-        let result2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
         let one = document.getElementById("Weekone");
         let two = document.getElementById("Weektwo");
         let thr = document.getElementById("Weekthree");
@@ -265,45 +265,21 @@ Array.prototype.forEach.call(day, function(items){
         switch (c_week) {
             case 1:
                 result3 = search_date(one, c_day);
-                result2 += 1;
-                if(result3 > 10 && result2 == 1){
-                    result1 -= 1;
-                    result2 = 12;
-                }else if(result3 > 10 ){
-                    result2 -= 1;
-                }
                 break;
             case 2:
                 result3 = search_date(two, c_day);
-                result2 += 1;
                 break;
             case 3:
                 result3 = search_date(thr, c_day);
-                result2 += 1;
                 break;
             case 4:
                 result3 = search_date(fou, c_day);
-                result2 += 1;
                 break;
             case 5:
                 result3 = search_date(fiv, c_day);
-                result2 += 1;
-                if(result3 < 10 && result2 == 12){
-                    result1 += 1;
-                    result2 = 1;
-                }else if(result3 < 10 ){
-                    result2 += 1;
-                }
                 break;
             case 6:
                 result3 = search_date(six, c_day);
-                result2 += 1;
-                if(result3 < 10 && result2 == 12){
-                    result1 += 1;
-                    result2 = 1;
-                }else if(result3 < 10 ){
-                    result2 += 1;
-                }
                 break;
 
         }
@@ -311,43 +287,37 @@ Array.prototype.forEach.call(day, function(items){
         const elements = document.getElementsByClassName("Day");
         const form =  `<form id = "javaGET" action = "Log_Servlet" method = "GET"> </form>`;
         document.getElementById("selecter").insertAdjacentHTML("beforeend", form);
-        const textbox = `<input type = "hidden" value = "`+ result1 +`" name = "GETyear">`;
-        const textbox1 = `<input type = "hidden" value = "`+ result2 +`" name = "GETmonth">`;
-        const textbox2 = `<input type = "hidden" value = "`+ result3 +`" name = "GETdate">`;
+        const textbox = `<input type = "hidden" value = "`+ result3 +`" name = "GETdate">`;
         document.getElementById("javaGET").insertAdjacentHTML("beforeend", textbox);
-        document.getElementById("javaGET").insertAdjacentHTML("beforeend", textbox1);
-        document.getElementById("javaGET").insertAdjacentHTML("beforeend", textbox2);
 
         document.getElementById("javaGET").submit();
 
     }
 })
 
-
-
 function search_date(element, c_day){
     let c_date;
     switch(c_day){
         case 1:
-            c_date = element.childNodes[1].childNodes[1].textContent;
+            c_date = element.childNodes[1].childNodes[1].getAttribute("name");
             break;
         case 2:
-            c_date = element.childNodes[3].childNodes[1].textContent;
+            c_date = element.childNodes[3].childNodes[1].getAttribute("name");
             break;
         case 3:
-            c_date = element.childNodes[5].childNodes[1].textContent;
+            c_date = element.childNodes[5].childNodes[1].getAttribute("name");
             break;
         case 4:
-            c_date = element.childNodes[7].childNodes[1].textContent;
+            c_date = element.childNodes[7].childNodes[1].getAttribute("name");
             break;
         case 5:
-            c_date = element.childNodes[9].childNodes[1].textContent;
+            c_date = element.childNodes[9].childNodes[1].getAttribute("name");
             break;
         case 6:
-            c_date = element.childNodes[11].childNodes[1].textContent;
+            c_date = element.childNodes[11].childNodes[1].getAttribute("name");
             break;
         case 7:
-            c_date = element.childNodes[13].childNodes[1].textContent;
+            c_date = element.childNodes[13].childNodes[1].getAttribute("name");
             break;
     }
     return c_date;
