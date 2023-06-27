@@ -49,18 +49,21 @@ boby{
 	border-radius: 6px;
 	margin-bottom: 10px;
 	border: 1px solid #eee;
+	font-family:"Yusei Magic";
 }
 
 .same {
 	width: 100%; /* 入力フィールドと選択ボックスを含む要素の横幅を100%に設定 */
 	justify-content: center;
 	align-items: center;
+
 }
 
 .sei {
 	width: 112%; /* 入力フィールドと選択ボックスを含む要素の横幅を100%に設定 */
 	justify-content: center;
 	align-items: center;
+
 }
 
 .ni {
@@ -90,10 +93,11 @@ boby{
 
 #avatar-message {
 	text-align: center;
-	font-family: "Cute Font", cursive; /* かわいらしいフォントを指定 */
+
 	color: green; /* テキストの色を指定 */
 	font-size: 20px; /* テキストのサイズを指定 */
 	text-decoration: underline; /* 下線を追加 */
+	font-family:"Yusei Magic";
 }
 
 .te {
