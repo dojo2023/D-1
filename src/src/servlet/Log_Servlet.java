@@ -44,6 +44,7 @@ public class Log_Servlet extends HttpServlet {
 
 			//情報をセットしておく
 			request.setAttribute("f_category", food_category_show());
+			request.setAttribute("f_name", food_name_show());
 
 			//カレンダーから押された時の処理
 			request.setCharacterEncoding("UTF-8");
@@ -217,6 +218,13 @@ public class Log_Servlet extends HttpServlet {
 		//カテゴリーを取得
 		FoodDao Fdao = new FoodDao();
 		List<Food> list = Fdao.cat_select();
+		return list;
+	}
+
+	public List<Food> food_name_show(){
+		//カテゴリーを取得
+		FoodDao Fdao = new FoodDao();
+		List<Food> list = Fdao.name_select();
 		return list;
 	}
 

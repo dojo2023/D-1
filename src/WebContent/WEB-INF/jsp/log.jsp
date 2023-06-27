@@ -115,7 +115,8 @@
 
                     <div class = "record_input">
                         <p class = "item">品目</p>
-                        <input type = "text" name = "record_item" id = "record_item" placeholder = "品目"  required>
+                        <input type = "text" name = "record_item" id = "record_item" placeholder = "品目"  onkeyup="keyDown()" required>
+                    	<div id = "suje"></div>
                     </div><br>
 	                <div class = "foot-link">
 	                    <a href = /mippy/Food_registerServlet>該当がなければこちら</a>
@@ -132,6 +133,38 @@
         <script src = "/mippy/js/common.js"></script>
         <!-- ページjs -->
         <script src = "/mippy/js/log.js"></script>
+
+        <script>
+        let text ;
+        function keyDown(){
+        	if(document.getElementsByClassName("sj") != null){
+        		let sj = document.getElementsByClassName("sj");
+        		for (let i = 0 ; i < sj.length; i++){
+        			sj[i].remove();
+        		}
+        	}
+
+			text = document.getElementById("record_item").value;
+			let food
+			let list = [];
+			<c:forEach var = "e" items = "${f_name}">
+				food = String('${e.foods_name}');
+				if(text === food){
+					console.log("完全一意:" + food);
+				}else if(!food.indexOf(text)){
+					console.log("前方一致:" + food);
+					list.push(food);
+				}
+			</c:forEach>
+			console.log("検索終わり");
+			for (let i = 0 ; i < list.length; i++){
+				let li = '<p class = "sj">'+ list[i] + '</p> ';
+				document.getElementById("suje").insertAdjacentHTML("beforeend", li);
+			}
+
+
+        }
+        </script>
     </body>
 </html>
 

@@ -261,5 +261,53 @@ public class FoodDao {
 		return cardList;
 	}
 
+	//カテゴリーをすべて取得
+		public List<Food> name_select () {
+			Connection conn = null;
+			List<Food> cardList = new ArrayList<Food>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/mippy", "sa", "");
+
+
+				String sql = "SELECT DISTINCT FOODS_NAME FROM M_FOODS";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				//結果を保存
+				ResultSet rs = pStmt.executeQuery();
+
+				while(rs.next()) {
+					Food card = new Food();
+					card.setFoods_name(rs.getString("FOODS_NAME"));
+					cardList.add(card);
+				}
+				System.out.println(cardList.get(0).getFoods_category());
+
+			}catch (SQLException e) {
+
+
+			}catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					cardList = null;
+			}finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+			return cardList;
+		}
+
+
 
 }
