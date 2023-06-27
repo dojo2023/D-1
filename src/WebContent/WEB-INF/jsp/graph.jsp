@@ -46,7 +46,7 @@
 				</c:forEach>
 
 				<c:set var="average" value="${sum / count}" />
-				平均カロリー： <span id = "ave"></span> kcal
+				平均カロリー： <span id = "ave"></span>
 			</p>
 			<div class = "back">
        				<input type = "month" id = "cal" value = "" onchange="onInput()">
@@ -231,8 +231,8 @@
 									color: 'blue',
 									stepSize: 20,
 									showLabelBackdrop: true,
-									backdropColor: '#ddf',
-									backdropPadding: { x: 4, y: 2 },
+									/* backdropColor: '#ddf',
+									backdropPadding: { x: 4, y: 2 }, */
 									major: {
 										enabled: true,
 									},
