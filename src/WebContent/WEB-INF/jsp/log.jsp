@@ -39,35 +39,43 @@
                 <!-- 記録した食事のリスト -->
                 <div id = "food_list">
                         <ul id = "log_list_1">
-                            <li id = "list_1">
-                                ＜朝＞${list.getBreakfast()}kcal<br>
+                            <li class = "list_1">
+                                <span class = "left">＜朝＞</span><span class = "right">合計:${list.getBreakfast()}kcal</span>
+							</li>
+							<li class = "list_1">
 								<c:forEach var = "a" items = "${breakfast}">
-									<p><span>${a.foods_name}</span>
-									   <span id = "kal">${a.foods_cal} kcal</span></p>
+									<p><span class = "left">${a.foods_name}</span>
+									   <span class = "right" id = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>
                         <ul id = "log_list_2">
-                            <li id = "list_2">
-                                ＜昼＞${list.getLunch()}kcal<br>
+                            <li class = "list_1">
+                                <span class = "left">＜昼＞</span><span class = "right">合計:${list.getLunch()}kcal</span>
+							</li>
+							<li class = "list_1">
 								<c:forEach var = "a" items = "${lunch}">
-									<p><span>${a.foods_name}</span><span class = "kal">${a.foods_cal} kcal</span></p>
+									<p><span class = "left">${a.foods_name}</span><span class = "right" id = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>
                         <ul id = "log_list_3">
-                            <li id = "list_3">
-                                ＜夜＞${list.getDinner()}kcal<br>
+                            <li class = "list_1">
+                                <span>＜夜＞</span><span class = "right">合計:${list.getDinner()}kcal</span>
+							</li>
+							<li class = "list_1">
 								<c:forEach var = "a" items = "${dinner}">
-									<p><span>${a.foods_name}</span><span class = "kal">${a.foods_cal} kcal</span></p>
+									<p><span class = "left">${a.foods_name}</span><span class = "right" id = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>
                         <ul id = "log_list_4">
-                            <li id = "list_4">
-                                ＜その他＞${list.getDessert()}kcal<br>
+                            <li class = "list_1">
+                                <span class = "left">＜その他＞</span><span class = "right">合計:${list.getDessert()}kcal</span>
+							</li>
+							<li class = "list_1">
 								<c:forEach var = "a" items = "${dessert}">
-									<p><span>${a.foods_name}</span><span class = "kal" >${a.foods_cal} kcal</span></p>
+									<p><span class = "left">${a.foods_name}</span><span class = "right" id = "kal" >${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>

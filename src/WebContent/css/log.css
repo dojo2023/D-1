@@ -61,10 +61,15 @@ h1 {
     margin: 2%;
     background-color: #e6fffd;
     font-size: 15px;
-    display: flex;
-    justify-content: space-between;
     list-style-type: none;
 }
+
+.list_1{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 
 #record_form {
     width: 27.5%;
