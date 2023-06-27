@@ -243,7 +243,8 @@
         <script>
         	food_cal();
 			function food_cal(){
-				const count_start = document.getElementsByClassName("cal");
+				let count_start = document.getElementsByClassName("cal");
+				console.log("動きました");
 				for(let ex of count_start){
 				    <c:forEach var = "e" items = "${list}">
 				        if(ex.getAttribute("name") == '${e.record_date}'){

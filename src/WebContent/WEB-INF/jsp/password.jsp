@@ -1,12 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<title>mippy</title>
 
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="img/favicon.png" type="image/x-icon">
+       <title>パスワード変更</title>
+        <!-- 共通css -->
+        <link rel = "stylesheet" href = "css/common.css">
+        <!-- ページcss -->
+        <link rel = "stylesheet" href = "css/password.css">
+    </head>
+
+   <body>
+	<header>
+		<div id = "head">
+			<a id = "logo" href = "/mippy/CalendarServlet">
+			<img class = "img" src = "img/mippy_logo.png" alt = "ロゴ">
+			</a>
+		</div>
+	</header>
+<main>
+    <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder=新規パスワード required/>
+                <input type="password" id = "co_pw" class = "co_pw"  placeholder=パスワードをもう一度入力してください  required/><br><br>
+                <span id="errorText" style="color: red;"></span><br>
+                   <div class = bigbutton>
+	                <input type="submit"  class="button2"name="pw_update"  value="更新">
+					<input type="reset" class="button2" name="reset" value="リセット" id = "resetbutton">
+				   </div>
+</main>
+        <script src = "/mippy/js/common.js"></script>
+	    <script src = "/mippy/js/password.js"></script>
+    </body>
 </html>
+

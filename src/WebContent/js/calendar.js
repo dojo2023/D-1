@@ -23,12 +23,12 @@ function onInput() {
 
     //表示
     show_cal(display_year, display_month, display_first, display_last);
+    clean_cal();
+    food_cal();
 }
 
 
 function beforeMonth(){
-	clean_cal();
-	food_cal();
     //カレンダーの月日を取得
     let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
@@ -54,12 +54,12 @@ function beforeMonth(){
         cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
         console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     }
-
+   	clean_cal();
+	food_cal();
 }
 
+
 function afterMonth(){
-	clean_cal();
-	food_cal();
     let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
     let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
     let display_first = new Date(display_year, display_month , 1).getDay();
@@ -85,6 +85,8 @@ function afterMonth(){
         cal_date.value = display_year + "-" + ('00' + (display_month + 1)).slice( -2 );
         console.log("変更後" + display_year + "+" + (display_month) + "+" + display_first + "+" + display_last);
     }
+    clean_cal();
+	food_cal();
 }
 
 
@@ -214,7 +216,6 @@ for (let i = 0 ; i < 7; i++){
     });
 }
 for (let i = 0 ; i < 6; i++){
-
     secondDay[i].addEventListener('click',function(){
         c_day = 2;
         c_week = i + 1;
