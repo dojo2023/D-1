@@ -4,6 +4,10 @@
   src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
 }
 
+select{
+	font-family: "Yusei Magic";
+}
+
 button{
 	font-family: "Yusei Magic";
 }
