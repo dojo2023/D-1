@@ -97,6 +97,7 @@ h1 {
     margin-left: 10%;
     border-radius: 5px;
     outline: none;
+    font-family:"Yusei Magic";
 }
 
 #button {
@@ -138,6 +139,7 @@ h1 {
     padding-left: 1em;
     height: 15%;
     text-indent: 10%;
+
 }
 
 p.item {

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Yusei Magic";
+  src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
+
 body {
     margin: 0;
     width: 98vw;
@@ -30,11 +35,13 @@ h1 {
     height: 10%;
     margin: 0 20%;
     font-size:0;
+
 }
 
 .search_input {
     height: 100%;
     display: inline-block;
+    font-family:"Yusei Magic";
 }
 
 #s_category {
@@ -42,6 +49,7 @@ h1 {
     border: none;
     outline: none;
     border-radius: 5px 0 0 5px;
+
 }
 
 #s_name {
@@ -112,6 +120,7 @@ h1 {
     margin-left: 10%;
     border-radius: 5px;
     outline: none;
+    font-family:"Yusei Magic";
 }
 .loog-link {
     margin-top: 0px;

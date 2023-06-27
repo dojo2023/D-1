@@ -1,4 +1,8 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Yusei Magic";
+  src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
 
 #before {
   	width: 50px;
@@ -48,7 +52,6 @@
   bottom: 0;
   color: #fff0c6;
 }
-
 .rand, .scor, .box, .pct{
 	float:left;
 }
