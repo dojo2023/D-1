@@ -1,5 +1,11 @@
 @charset "UTF-8";
-
+@font-face {
+  font-family: "Yusei Magic";
+  src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
+boby{
+	font-family:"Yusei Magic";
+}
 /* アバターの選択 */
 .avatar-image {
 	display: none; /* 画像を初めは非表示にする */

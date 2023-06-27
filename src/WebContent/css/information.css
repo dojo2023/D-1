@@ -1,4 +1,8 @@
 @charset "utf-8";
+@font-face {
+  font-family: "Yusei Magic";
+  src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
 *{
     margin:0px;
 	padding:0px;
