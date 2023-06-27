@@ -9,6 +9,7 @@
 
     <link rel = "stylesheet" href = "css/secret.css">
     <head>
+    	<link rel="icon" href="img/favicon.png" type="image/x-icon">
         <!-- 共通css -->
         <link rel = "stylesheet" href = "css/common.css">
         <!-- ページcss -->
@@ -36,7 +37,7 @@
                                <div class = "form">
                                 <h1>本人確認</h1>
                                     <div class = "group">
-                                    <input id = "u_addr" type = "text" class = "q_addr" name = "user_addr" placeholder="メールアドレス">
+                                    <input id = "u_addr" type = "email" class = "q_addr" name = "user_addr" placeholder="メールアドレス">
                                     </div>
                                     <select name="USER_SECRET" class="input2">
                                     	<option value="0" selected hidden>秘密の質問</option>
@@ -49,7 +50,7 @@
 										<option value="7">好きなお寿司のネタは？</option>
 										<option value="8">好きなキャラクターは？</option>
 									</select><br>
-                     				<input placeholder="秘密の質問答え" type="text" name="answer"><br>
+                     				<input placeholder="秘密の質問答え" type="text" name="answer" class = "s_answer"><br>
                                     <input type = "submit" class = "q_submit" value="送信" name = "secretsubmit" onclick="addrsecretcheck()" >
 								</div>
 
@@ -64,11 +65,11 @@
 
 		                                    <h2>パスワード変更</h2>
 							                <input type="password" id = "new_pw" class = "new_pw" name="new_pw"  placeholder= "新規パスワード" required/>
-							                <input type="password" id = "co_pw" class = "co_pw" name="co_pw"  placeholder= "パスワードをもう一度入力してください"  required/><br>
-							                <span id="errorText" style="color: red;"></span>
+							                <input type="password" id = "co_pw" class = "co_pw" name="co_pw"  placeholder= "パスワードをもう一度入力してください"  required/><br><br>
+							                <span id="errorText" style="color: red;"></span><br>
 
 							                <input type="submit"  class="button2" name="pw_update"  value="更新">
-											<input type="reset" class="button2" name="reset" value="リセット">
+											<input type="reset" class="button2" name="reset" value="リセット" id="resetbutton">
 
 	                                </div>
                                 </div>

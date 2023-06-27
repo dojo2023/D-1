@@ -8,6 +8,7 @@
 <title>mippy</title>
 
     <head>
+    	<link rel="icon" href="img/favicon.png" type="image/x-icon">
         <!-- 共通css -->
         <link rel = "stylesheet" href = "/mippy/css/common.css">
         <!-- ページcss -->

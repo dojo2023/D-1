@@ -25,4 +25,12 @@ function validateForm() {
 	return true;
 }
 
+//リセットボタンをクリックした時の処理
+document.getElementById("resetbutton").addEventListener("click",function() {
+//エラーメッセージの要素を取得
+var output = document.getElementById("errorText");
+//エラーメッセージをクリアする
+output.textContent = "";
+});
+
 

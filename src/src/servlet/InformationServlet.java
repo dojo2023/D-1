@@ -25,9 +25,20 @@ public class InformationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//login forward
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/information.jsp");
-		dispatcher.forward(request, response);
+		//sessionを取得
+		HttpSession session = request.getSession();
+		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
+		
+		//user_addrがあるのか判定
+		 if (user_addr != null) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/information.jsp");
+				dispatcher.forward(request, response);
+		 }
+		 else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+				dispatcher.forward(request, response);
+		 }
+
 	}
 
 
