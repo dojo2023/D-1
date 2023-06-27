@@ -17,7 +17,7 @@ function check() {
 		form.action = "/mippy/Log_Servlet";
 		form.submit();
 	}else{
-	document.getElementById("output").textContent= "未入力の項目があります";
+	document.getElementById("output").textContent= "※未入力の項目があります";
 	}
 
 }

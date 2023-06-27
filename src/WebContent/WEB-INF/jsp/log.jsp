@@ -42,7 +42,8 @@
                             <li id = "list_1">
                                 ＜朝＞${list.getBreakfast()}kcal<br>
 								<c:forEach var = "a" items = "${breakfast}">
-									<p><span>${a.foods_name}</span><span>${a.foods_cal} kcal</span></p>
+									<p><span>${a.foods_name}</span>
+									   <span>${a.foods_cal} kcal</span></p>
 								</c:forEach>
                             </li>
                         </ul>
@@ -106,16 +107,17 @@
 
                     <div class = "record_input">
                         <p class = "item">品目</p>
-                        <input type = "text" name = "record_item" id = "record_item" placeholder = "品目"  >
+                        <input type = "text" name = "record_item" id = "record_item" placeholder = "品目"  required>
                     </div><br>
-
-                    <div class = "foot-link">
-                        <a href = /mippy/Food_registerServlet>該当がなければこちら</a>
-                    </div><br>
-                    <p id = "output">${error}</p>
-
-                    <input type = "button" value = "登録" name = "record_submit" id = "button" onclick = "check()">
+	                <div class = "foot-link">
+	                    <a href = /mippy/Food_registerServlet>該当がなければこちら</a>
+	                </div>
+					<div class = "touroku">
+	                <input type = "button" value = "登録" name = "record_submit" id = "button" onclick = "check()">
+	                </div>
+	                <p id = "output"style="color: red;">${error}</p>
                 </form>
+
             </div>
         </main>
         <!-- 共通js -->
