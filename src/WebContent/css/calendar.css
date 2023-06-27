@@ -1,5 +1,8 @@
 @charset "UTF-8";
-
+@font-face {
+  font-family: "Yusei Magic";
+  src: url("/mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
 body {
 	margin: 0;
 	font-family:"Yusei Magic";
@@ -56,7 +59,7 @@ padding: 0 0 5% 0;
 }
 
 .Dayof:first-of-type{
-  background-color: #cf4242;
+  background-color: #eb7254;
 }
 
 .Dayof:last-of-type{
