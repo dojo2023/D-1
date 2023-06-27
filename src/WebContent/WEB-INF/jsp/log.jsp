@@ -42,7 +42,7 @@
                             <li class = "list_1">
                                 <span class = "left">＜朝＞</span><span class = "right">合計:${list.getBreakfast()}kcal</span>
 							</li>
-							<li class = "list_1">
+							<li class = "list_2">
 								<c:forEach var = "a" items = "${breakfast}">
 									<p><span class = "left">${a.foods_name}</span>
 									   <span class = "right" id = "kal">${a.foods_cal} kcal</span></p>
@@ -53,7 +53,7 @@
                             <li class = "list_1">
                                 <span class = "left">＜昼＞</span><span class = "right">合計:${list.getLunch()}kcal</span>
 							</li>
-							<li class = "list_1">
+							<li class = "list_2">
 								<c:forEach var = "a" items = "${lunch}">
 									<p><span class = "left">${a.foods_name}</span><span class = "right" id = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
@@ -63,7 +63,7 @@
                             <li class = "list_1">
                                 <span>＜夜＞</span><span class = "right">合計:${list.getDinner()}kcal</span>
 							</li>
-							<li class = "list_1">
+							<li class = "list_2">
 								<c:forEach var = "a" items = "${dinner}">
 									<p><span class = "left">${a.foods_name}</span><span class = "right" id = "kal">${a.foods_cal} kcal</span></p>
 								</c:forEach>
@@ -73,7 +73,7 @@
                             <li class = "list_1">
                                 <span class = "left">＜その他＞</span><span class = "right">合計:${list.getDessert()}kcal</span>
 							</li>
-							<li class = "list_1">
+							<li class = "list_2">
 								<c:forEach var = "a" items = "${dessert}">
 									<p><span class = "left">${a.foods_name}</span><span class = "right" id = "kal" >${a.foods_cal} kcal</span></p>
 								</c:forEach>

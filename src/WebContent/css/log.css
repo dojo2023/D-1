@@ -65,7 +65,10 @@ h1 {
 }
 
 .list_1{
-    display: flex;
+	display: flex;
+    justify-content: space-between;
+}
+.list_2{
     justify-content: space-between;
 }
 
