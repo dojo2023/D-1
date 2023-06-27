@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.FoodDao;
 import model.Food;
+import model.Loggedin;
 
 /**
  * Servlet implementation class Food_registerServlet
@@ -24,6 +26,15 @@ public class Food_registerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
+
+		//sessionを取得
+		HttpSession session = request.getSession();
+		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
+
+		//user_addrがあるのか判定
+		 if (user_addr != null) {
 		System.out.println("ああ");
 		//
 		FoodDao Fdao = new FoodDao();
@@ -36,7 +47,12 @@ public class Food_registerServlet extends HttpServlet {
 		//画面にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/food_register.jsp");
 		dispatcher.forward(request, response);
+		 }
 
+		 else{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+				dispatcher.forward(request, response);
+		 }
 	}
 
 
