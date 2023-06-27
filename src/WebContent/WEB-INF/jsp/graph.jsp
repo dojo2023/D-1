@@ -136,13 +136,13 @@
 	    //こっからファンクション--------------------------------------------------------------------------------------
 	    function onInput() {
 		        //カレンダーの月日を取得
-		        let year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-		        let month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-		        let first = new Date(year, month, 1).getDate();
-		        let last = new Date(year, month + 1, 0).getDate();
+		        let display_year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+		        let display_month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+		        let display_first = new Date(display_year, display_month, 1).getDate();
+		        let display_last = new Date(display_year, display_month + 1, 0).getDate();
 
-		        data = define(year, month, first, last);
-		        console.log(define(year, month, first, last));
+		        data = define(display_year, display_month, display_first, display_last);
+		        console.log(define(display_year, display_month, display_first, display_last));
 		    }
 
 
@@ -157,31 +157,31 @@
 	    //beforメソッド--------------------------------------------------------------------------------------------------
 	    function beforeMonth(){
 	        //カレンダーの月日を取得
-	        let year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-	        let month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-	        let first = new Date(year, month , 1).getDate();
-	        let last = new Date(year, month + 1 , 0).getDate();
+	        let display_year1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+	        let display_month1 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+	        let display_first1 = new Date(display_year1, display_month1 , 1).getDate();
+	        let display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
 
-	        console.log("現在は" + year + "+" + (month) + "+" + first + "+" + last);
-	        if(month == 0){
-	            year -= 1;
-	            month = 11;
-	            first = new Date(year,  , 1).getDate();
-	            last = new Date(year, month + 1 , 0).getDate();
+	        console.log("現在は" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
+	        if(display_month1 == 0){
+	            display_year1 -= 1;
+	            display_month1 = 11;
+	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
+	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
 
-		        data = define(year, month, first, last);
+		        data = define(display_year1, display_month1, display_first1, display_last1);
 		        console.log(data);
-	            cal_date.value = year + "-" + "12";
-	            console.log("変更後" + year + "+" + (month) + "+" + first + "+" + last);
+	            cal_date.value = display_year1 + "-" + "12";
+	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
 	        }else{
-	            month -= 1;
-	            first = new Date(year, month , 1).getDate();
-	            last = new Date(year, month + 1 , 0).getDate();
+	            display_month1 -= 1;
+	            display_first1 = new Date(display_year1, display_month1 , 1).getDate();
+	            display_last1 = new Date(display_year1, display_month1 + 1 , 0).getDate();
 
-	            data = define(year, month, first, last);
+	            data = define(display_year1, display_month1, display_first1, display_last1);
 		        console.log(data);
-	            cal_date.value = year + "-" + ('00' + (month + 1)).slice( -2 );
-	            console.log("変更後" + year + "+" + (month) + "+" + first + "+" + last);
+	            cal_date.value = display_year1 + "-" + ('00' + (display_month1 + 1)).slice( -2 );
+	            console.log("変更後" + display_year1 + "+" + (display_month1) + "+" + display_first1 + "+" + display_last1);
 	        }
 	    }
 	    //beforeMonth();
@@ -189,32 +189,32 @@
 
 	    //afterメソッド--------------------------------------------------------------------------------------------------
 	    function afterMonth(){
-	    	let year = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
-	    	let month = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
-	    	let first = new Date(year, month , 1).getDate();
-	    	let last = new Date(year, month + 1 , 0).getDate();
+	    	let display_year2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getYear() + 1900;
+	    	let display_month2 = new Date(cal_date.value.slice(0,-3), (cal_date.value.slice(5) - 1), 1).getMonth();
+	    	let display_first2 = new Date(display_year2, display_month2 , 1).getDate();
+	    	let display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
 
-	        console.log("現在は" + year + "+" + (month) + "+" + first + "+" + last);
+	        console.log("現在は" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
 
-	        if(month == 11){
-	            year += 1;
-	            month = 0;
-	            first = new Date(year, month , 1).getDate();
-	            last = new Date(year, month + 1 , 0).getDate();
+	        if(display_month2 == 11){
+	            display_year2 += 1;
+	            display_month2 = 0;
+	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
+	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
 
-	            data = define(year, month, first, last);
+	            data = define(display_year2, display_month2, display_first2, display_last2);
 		        console.log(data);
-	            cal_date.value = year + "-" + "01";
-	            console.log("変更後" + year + "+" + (month) + "+" + first + "+" + last);
+	            cal_date.value = display_year2 + "-" + "01";
+	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
 	        }else{
-	            month += 1;
-	            first = new Date(year, month , 1).getDate();
-	            last = new Date(year, month + 1 , 0).getDate();
+	            display_month2 += 1;
+	            display_first2 = new Date(display_year2, display_month2 , 1).getDate();
+	            display_last2 = new Date(display_year2, display_month2 + 1 , 0).getDate();
 
-	            data = define(year, month, first, last);
+	            data = define(display_year2, display_month2, display_first2, display_last2);
 		        console.log(data);
-	            cal_date.value = year + "-" + ('00' + (month + 1)).slice( -2 );
-	            console.log("変更後" + year + "+" + (month) + "+" + first + "+" + last);
+	            cal_date.value = display_year2 + "-" + ('00' + (display_month2 + 1)).slice( -2 );
+	            console.log("変更後" + display_year2 + "+" + (display_month2) + "+" + display_first2 + "+" + display_last2);
 	        }
 	    }
 	    //afterMonth();
@@ -341,8 +341,8 @@
 								},
 							},
 							x: {
-								min: new Date(year, month, 1),
-								max: new Date(year, (month+1), 0),
+								/* min: new Date(year, month, 1),
+								max: new Date(year, (month+1), 0), */
 								scaleLabel: {
 									display: true,
 								},

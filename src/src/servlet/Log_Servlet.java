@@ -181,10 +181,11 @@ public class Log_Servlet extends HttpServlet {
 					}
 				}
 			}
-		}catch(NumberFormatException e) {
+		}catch(Exception e) {
+			request.setAttribute("error", "一致する品目がありませんでした");
 			String date = request.getParameter("record_category_date");
 			request.setAttribute("day", date);
-			e.printStackTrace();
+
 			//日程から登録した品目を取得する処理
 			List<Record> list = Redao.select1(id);
 			for (int i = 0 ; i < list.size() ; i++ ) {
@@ -205,9 +206,6 @@ public class Log_Servlet extends HttpServlet {
 					request.setAttribute("dessert", dessert);
 				}
 			}
-
-		}catch(IndexOutOfBoundsException e) {
-			request.setAttribute("error", "一致する品目がありませんでした");
 		}finally {
 			//画面へフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/log.jsp");
