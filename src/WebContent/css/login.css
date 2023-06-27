@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Yusei Magic";
-  src: url("mippy/fonts/YuseiMagic-Regular.ttf") format("truetype");
+  src: url("fonts/YuseiMagic-Regular.ttf") format("truetype");
 }
 body {
 	background-color: #ffffff;
