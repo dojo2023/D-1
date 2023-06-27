@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 import model.Loggedin;
+import model.User;
 
 /**
  * Servlet implementation class InformationServlet
@@ -28,7 +30,7 @@ public class InformationServlet extends HttpServlet {
 		//sessionを取得
 		HttpSession session = request.getSession();
 		Loggedin user_addr = (Loggedin)session.getAttribute("user_addr");
-		
+
 		//user_addrがあるのか判定
 		 if (user_addr != null) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/information.jsp");
@@ -62,6 +64,19 @@ public class InformationServlet extends HttpServlet {
 			String session_now = old_addr;
 			UserDao uDao = new UserDao();
 
+	        // メールアドレスが既に存在するかを検索
+	        User existingUser = uDao.findByEmail(u_addr);
+
+	        if (existingUser != null) {
+	        	response.setContentType("text/html; charset=UTF-8");
+	            PrintWriter out = response.getWriter();
+	            out.println("<script type='text/javascript'>");
+	            out.println("alert('このメールアドレスは既に登録済みです。');");
+	            out.println("window.location.href = '/mippy/InformationServlet';");  // リダイレクト先のURLを指定
+	            out.println("</script>");
+	        }
+
+	        else {
 			if (request.getParameter("addr_update") != null) {
 
 
@@ -84,7 +99,7 @@ public class InformationServlet extends HttpServlet {
 			        request.setAttribute("message", "update complete");
 			        request.getRequestDispatcher("/WEB-INF/jsp/message.jsp").forward(request, response);
 			}
-
+	        }
 
 }
 		else {
