@@ -183,16 +183,90 @@
 					type: 'line',
 					data: graphData,
 					options: {
+						plugins: {
+							// グラフタイトル
+							title: {
+								display: true,
+								text: '摂取カロリー',
+								color: 'black',
+								padding: { top: 5, bottom: 5 },
+								font: {
+									family: '"Arial", "Times New Roman"',
+									size: 12,
+								},
+							},
+							// 凡例
+							legend: {
+								position: 'bottom',
+								align: 'end',
+								// 凡例ラベル
+								labels: {
+									boxWidth: 20,
+									boxHeight: 8,
+								},
+								// 凡例タイトル
+								title: {
+									display: true,
+									text: '日付',
+									padding: { top: 20 },
+								},
+							},
+							// ツールチップ
+							tooltip: {
+								backgroundColor: '#933',
+							},
+						},
 						scales: {
 							y: {
 								// 最小値・最大値
 								suggestedMin: 0,
        							suggestedMax: 2500,
+       							title: {
+									display: true,
+									text: '摂取カロリー',
+									color: 'black',
+								},
+								// 目盛ラベル
+								ticks: {
+									color: 'blue',
+									stepSize: 20,
+									showLabelBackdrop: true,
+									backdropColor: '#ddf',
+									backdropPadding: { x: 4, y: 2 },
+									major: {
+										enabled: true,
+									},
+									align: 'end',
+									crossAlign: 'center',
+									sampleSize: 4,
+								},
+								grid: {
+									// 軸線
+									borderColor: 'orange',
+									borderWidth: 2,
+									drawBorder: true,
+									// 目盛線＆グリッド線
+									color: '#080',
+									display: true,
+									// グリッド線
+									borderDash: [3, 3],
+									borderDashOffset: 0,
+									// 目盛線
+									drawTicks: true,
+									tickColor: 'blue',
+									tickLength: 10,
+									tickWidth: 2,
+									tickBorderDash: [2, 2],
+									tickBorderDashOffset: 0,
+								},
 							},
 							x: {
 								// 最小値・最大値
 								min: new Date(year, month, 1),
 								max: new Date(year, (month+1), 0),
+								scaleLabel: {
+									display: true,
+								},
 								type: 'time',
 								time: {
 									parser: 'D',
@@ -201,6 +275,16 @@
 									displayFormats: {
 										'day': 'D'
 									}
+								},
+								ticks: {
+									autoSkip: false,  // ラベルの自動スキップを無効化
+									maxRotation: 0,   // ラベルの最大回転角度を0度に設定
+									minRotation: 0
+								},
+								grid: {
+									borderColor: 'orange',
+									borderWidth: 2,
+									sampleSize: 31
 								},
 							},
 						},
