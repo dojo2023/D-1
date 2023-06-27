@@ -46,7 +46,7 @@
 				</c:forEach>
 
 				<c:set var="average" value="${sum / count}" />
-				平均カロリー： <p id = "ave"> </p>kcal
+				平均カロリー： <span id = "ave"></span> kcal
 			</p>
 			<div class = "back">
        				<input type = "month" id = "cal" value = "" onchange="onInput()">
@@ -106,7 +106,7 @@
 	<!-- 共通js -->
     <script src="js/common.js"></script>
     <!-- top用js -->
-    <script src="js/graph."></script>
+    <script src="js/graph.js"></script>
     <!-- guraph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
@@ -138,8 +138,6 @@
 	    define(year, month, first, last);
 		myLineChart = new Chart(context, showGraph(year, month));
 
-
-
 	    //こっからファンクション--------------------------------------------------------------------------------------
 		function define(display_year, display_month, display_first, display_last){
 	    	var display_month3 = display_month + 1;
@@ -161,7 +159,9 @@
 		   		ave += parseInt(filteredData.map(data => data.total_calories)[i]);
 		   	}
 		   	if(ave > 0) {
-		   		document.getElementById("ave").textContent = ave / (filteredData.map(data => data.total_calories).length);
+		   		let ave1 = ave / (filteredData.map(data => data.total_calories).length);
+		   		let aveFormatted = ave1.toFixed(2);
+		   		document.getElementById("ave").textContent = aveFormatted + " kcal";
 		   	}else {
 		   		document.getElementById("ave").textContent = 0;
 		   	}
@@ -269,10 +269,7 @@
 		    myLineChart.destroy();
 		    define(display_year, display_month, display_first, display_last);
 			myLineChart = new Chart(context, showGraph(display_year, display_month));
-
 		}
-
-
     </script>
 </body>
 </html>
