@@ -151,5 +151,14 @@ p.item {
 	text-align: center;
 	margin-bottom:20px;
 	font-size: 15px;
-
 }
+
+.sj {
+	background-color: #fff;
+    width: 78%;
+    margin-left: 11%;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: dotted;
+}
+

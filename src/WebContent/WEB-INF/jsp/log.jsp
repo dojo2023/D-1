@@ -115,7 +115,7 @@
 
                     <div class = "record_input">
                         <p class = "item">品目</p>
-                        <input type = "text" name = "record_item" id = "record_item" placeholder = "品目"  onkeyup="keyDown()" required>
+                        <input type = "text" name = "record_item" id = "record_item" placeholder = "品目"  oninput="keyDown()" required>
                     	<div id = "suje"></div>
                     </div><br>
 	                <div class = "foot-link">
@@ -135,34 +135,81 @@
         <script src = "/mippy/js/log.js"></script>
 
         <script>
+
         let text ;
+		let food ;
+		let list = [];
+		<c:forEach var = "e" items = "${f_name}">
+			food = String('${e.foods_name}')
+			list.push(food);
+		</c:forEach>
+
         function keyDown(){
-        	if(document.getElementsByClassName("sj") != null){
-        		let sj = document.getElementsByClassName("sj");
-        		for (let i = 0 ; i < sj.length; i++){
-        			sj[i].remove();
+
+        	delete_item();
+
+        	text = document.getElementById("record_item").value;
+        	let suj = list.filter(n => !n.indexOf(text));
+        	console.log(text);
+
+        	if(suj.length > 0 && text != ""){
+        		for(let i = 0; i < suj.length ; i++){
+      				let li = '<p id = "' + (i+1) + '" class = "sj">'+ suj[i] + '</p> ';
+      				document.getElementById("suje").insertAdjacentHTML("beforeend", li);
+      				if(i >= 4){
+      					break;
+      				}
         		}
         	}
 
-			text = document.getElementById("record_item").value;
-			let food
-			let list = [];
-			<c:forEach var = "e" items = "${f_name}">
-				food = String('${e.foods_name}');
-				if(text === food){
-					console.log("完全一意:" + food);
-				}else if(!food.indexOf(text)){
-					console.log("前方一致:" + food);
-					list.push(food);
-				}
-			</c:forEach>
-			console.log("検索終わり");
-			for (let i = 0 ; i < list.length; i++){
-				let li = '<p class = "sj">'+ list[i] + '</p> ';
-				document.getElementById("suje").insertAdjacentHTML("beforeend", li);
-			}
+        	if(document.getElementById(1) != null){
+        		document.getElementById(1).addEventListener('click',function(){
+        			document.getElementById("record_item").value = document.getElementById(1).textContent;
+        			delete_item()
+        		});
+        	}
+        	if(document.getElementById(2) != null){
+        		document.getElementById(2).addEventListener('click',function(){
+        			document.getElementById("record_item").value = document.getElementById(2).textContent;
+        			delete_item()
+        		});
+        	}
+        	if(document.getElementById(3) != null){
+        		document.getElementById(3).addEventListener('click',function(){
+        			document.getElementById("record_item").value = document.getElementById(3).textContent;
+        			delete_item()
+        		});
+        	}
+        	if(document.getElementById(4) != null){
+        		document.getElementById(4).addEventListener('click',function(){
+        			document.getElementById("record_item").value = document.getElementById(4).textContent;
+        			delete_item()
+        		});
+        	}
+        	if(document.getElementById(5) != null){
+        		document.getElementById(5).addEventListener('click',function(){
+        			document.getElementById("record_item").value = document.getElementById(5).textContent;
+        			delete_item()
+        		});
+        	}
+        }
 
-
+        function delete_item(){
+        	if(document.getElementById(1) != null){
+        		document.getElementById(1).remove();
+        	}
+        	if(document.getElementById(2) != null){
+        		document.getElementById(2).remove();
+        	}
+        	if(document.getElementById(3) != null){
+        		document.getElementById(3).remove();
+        	}
+        	if(document.getElementById(4) != null){
+        		document.getElementById(4).remove();
+        	}
+        	if(document.getElementById(5) != null){
+        		document.getElementById(5).remove();
+        	}
         }
         </script>
     </body>
