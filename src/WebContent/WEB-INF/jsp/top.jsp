@@ -33,9 +33,9 @@
 		<main>
 			<p>Eat well, live well.</p>
 			<div class="slide">
-				<img src="img/intro1.png" alt="calendar" class="active">
-				<img src="img/intro2.png" alt="profile">
-				<img src="img/intro3.png" alt="graph">
+				<img src="img/intro1.png" alt="calendar" class="calendar">
+				<img src="img/intro2.png" alt="profile" class="profile">
+				<img src="img/intro3.png" alt="graph" class="graph">
 			</div>
 			<p class="exp">説明文</p>
 			<div class="sign">
