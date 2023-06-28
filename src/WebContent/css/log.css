@@ -16,6 +16,7 @@ main {
 
 h1 {
     text-align: center;
+    margin: 1%;
 }
 
 #list_show {
@@ -98,6 +99,7 @@ h1 {
     border-radius: 5px;
     outline: none;
     font-family:"Yusei Magic";
+    padding: 1.5%;
 }
 
 #button {
@@ -133,6 +135,7 @@ h1 {
 	color: black;
     text-decoration: underline;
     margin-bottom:10px;
+    margin-top: 10px;
 }
 
 .recor_input {
@@ -144,6 +147,7 @@ h1 {
 
 p.item {
     padding-left: 2em;
+    margin-bottom: 1%;
 }
 #output {
 	color:red;
@@ -155,10 +159,14 @@ p.item {
 
 .sj {
 	background-color: #fff;
-    width: 78%;
-    margin-left: 11%;
     margin-top: 0;
     margin-bottom: 0;
     border-bottom: dotted;
 }
 
+#suje {
+	width: 21.5%;
+    position: absolute;
+    z-index: 5;
+    margin-left: 2.9%;
+}

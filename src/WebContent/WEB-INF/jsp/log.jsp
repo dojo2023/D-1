@@ -117,7 +117,7 @@
                         <p class = "item">品目</p>
                         <input type = "text" name = "record_item" id = "record_item" placeholder = "品目"  oninput="keyDown()" required>
                     	<div id = "suje"></div>
-                    </div><br>
+                    </div>
 	                <div class = "foot-link">
 	                    <a href = /mippy/Food_registerServlet>該当がなければこちら</a>
 	                </div>
