@@ -13,13 +13,13 @@
 	<link rel="stylesheet" type="text/css" href="css/common.css">
     <!-- top用css -->
     <link rel="stylesheet" type="text/css" href="css/top.css">
-    <style>
+    <!-- <style>
    		body{
 			background-image: url('img/4.jpg');
 			background-size: cover;
 			background-position: center;
 		}
-	</style>
+	</style> -->
 </head>
 <body>
 	<header>
