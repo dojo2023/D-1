@@ -62,7 +62,7 @@
 		            <c:forEach var="e" items="${userList}" >
 		            	<div class = "basal">
 		            		基礎代謝<br>
-			            	<input type="button" onclick="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})" value = "BMR">：<span id="result"></span><br>
+			            	<!--<input type="button" onclick="result(${e.getUser_gender()}, ${e.getUser_weight()}, ${e.getUser_height()}, ${e.getUser_age()})" value = "BMR">  :--><span id="result"></span><br>
 		            	</div>
 		            	<div class = "basal">
 		            		目標体重<br>${e.user_goalw} kg<br>
@@ -74,6 +74,9 @@
 					<%-- <c:forEach var = "a" items = "${cardList }">
 						${a.record_date}:${a.totalcal}<br>
 					</c:forEach> --%>
+				</div>
+				<div>
+					<p id = "ck">
 				</div>
 				<div class = "rand">
 					<%!
@@ -87,7 +90,7 @@
 					    int selectnum = (int) (Math.random() * imglist.length);
 					    String selectedImage = imglist[selectnum];
 					%>
-					<img class = "pct" src = "<%= selectedImage %>">
+					<img class = "pct" id = "ava" src = "<%= selectedImage %>">
 					<%!
 					    String[] msg = {
 					        "<b>大吉！</b> … 今日はものすごく良いことがあるでしょう",
@@ -137,6 +140,9 @@
 		//グラフデータを取得し描写する
 	    define(year, month, first, last);
 		myLineChart = new Chart(context, showGraph(year, month));
+
+		calculate();
+		avator();
 
 	    //こっからファンクション--------------------------------------------------------------------------------------
 		function define(display_year, display_month, display_first, display_last){
@@ -356,6 +362,60 @@
 		    define(display_year, display_month, display_first, display_last);
 			myLineChart = new Chart(context, showGraph(display_year, display_month));
 		}
+
+		function BMR() {
+			let BMR = 0;
+			const gender = parseInt('${userList.get(0).user_gender}');
+			const weight = parseFloat('${userList.get(0).user_weight}');
+			const height = parseFloat('${userList.get(0).user_height}');
+			const age = parseInt('${userList.get(0).user_age}');
+			if (gender == 1) {
+				BMR =(0.0481 * weight + 0.0234 * height - 0.0138 * age - 0.4235) * 1000 / 4.186;
+			}else {
+				BMR =(0.0481 * weight + 0.0234 * height - 0.0138 * age - 0.9708) *1000 / 4.186;
+			}
+			document.getElementById("result").textContent = BMR.toFixed(1) + "kcal";
+			return BMR;
+		}
+
+		function calculate(){
+			let ave = document.getElementById("ave").textContent.replace("kcal", "");
+			if(ave == 0){
+				console.log("aa");
+			}else if (ave > BMR()){
+				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + "さん！ この調子だと太ります";
+			}else if (ave > BMR()){
+				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + "さん！ この調子だとやせます";
+			}
+		}
+		const img_a  = [
+		        "img/mippy_1.gif",
+		        "img/mippy_2.gif",
+		        "img/mippy_3.gif",
+		        "img/mippy_4.gif",
+		        "img/mippy_5.gif",
+		        "img/mippy_6.gif",
+		        "img/mippy_7.gif",
+		        "img/mippy_8.gif",
+		        "img/mippy_9.gif"
+		    ];
+		function avator(){
+			let num = '${userList.get(0).user_avatar}';
+			document.getElementById("ave".setAttribute("src" , img_a[num]));
+
+		}
+		/*
+		function calculate (){
+			const today = new Date()
+			const G_day = new Date('${userList.get(0).user_limit}');
+			const G_weight = parseFloat('${userList.get(0).user_goalw}');
+			const weight = parseFloat('${userList.get(0).user_weight}');
+			const diff = Math.floor((G_day - today)/ (1000 * 60 * 60 * 24)) + 1;
+			//基礎代謝-((7200×減らしたい体重kg)÷日数)＝目安摂取カロリー
+			const cal = BMR() * 1.75  - (7200 * (weight - G_weight) / diff);
+			console.log(cal);
+		}
+		*/
     </script>
 </body>
 </html>
