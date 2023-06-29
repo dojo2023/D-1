@@ -40,6 +40,7 @@
 			<p class="exp">記録した食事の摂取カロリーを元にグラフを形成し、</p>
 			<p class="exp">視覚的に分かりやすく日々の食事や体重をWebアプリ上で</p>
 			<p class="exp">一括管理することで、あなたの健康管理を手助けいたします。</p>
+			<br>
 
 			<div class="sign">
 				<input name="signup" type="button" onclick="location.href='/mippy/User_RegisterServlet'" value="新規登録">
