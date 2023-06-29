@@ -75,33 +75,17 @@
 						${a.record_date}:${a.totalcal}<br>
 					</c:forEach> --%>
 				</div>
-				<div>
-					<p id = "ck">
-				</div>
-				<div class = "rand">
-					<%!
-					    String[] imglist = {
-					        "img/mippy_1.gif",
-					        "img/mippy_2.gif",
-					        "img/mippy_3.gif",
-					        "img/mippy_4.gif",
-					        "img/mippy_5.gif"
-					    };
-					    int selectnum = (int) (Math.random() * imglist.length);
-					    String selectedImage = imglist[selectnum];
-					%>
-					<img class = "pct" id = "ava" src = "<%= selectedImage %>">
-					<%!
-					    String[] msg = {
-					        "<b>大吉！</b> … 今日はものすごく良いことがあるでしょう",
-					        "<b>吉！</b> … 今日はまあまあ良いことがあるでしょう",
-					        "<b>小吉！</b> … 今日は普通の日ですね",
-					        "<b>凶！</b> … 今日は凶。。。",
-					        "<b>大・激・凶！</b> … もう最悪っスね！！（ウソです）"
-					    };
-					    String randomMessage = msg[(int) (Math.random() * msg.length)];
-					%>
-					<div class = "box"><%= randomMessage %></div>
+				<div id = "side_con">
+					<div id = "baloon">
+						<p id = "ck">
+					</div>
+					<div class = "rand">
+						<img class = "pct" id = "ava" src ="">
+					</div>
+					<div>
+						<p>基礎代謝とは…人が生きていくために最低限必要なエネルギー</p>
+						<p>基礎代謝 > 摂取カロリー　を維持していくと体重が落ちてきます</p>
+					</div>
 				</div>
             </div>
         </main>
@@ -388,7 +372,9 @@
 				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + "さん！ この調子だとやせます";
 			}
 		}
-		const img_a  = [
+
+		function avator(){
+			const img_a = [
 		        "img/mippy_1.gif",
 		        "img/mippy_2.gif",
 		        "img/mippy_3.gif",
@@ -397,25 +383,12 @@
 		        "img/mippy_6.gif",
 		        "img/mippy_7.gif",
 		        "img/mippy_8.gif",
-		        "img/mippy_9.gif"
+		        "img/mippy_9.gif",
+		        "img/mippy_10.gif"
 		    ];
-		function avator(){
-			let num = '${userList.get(0).user_avatar}';
-			document.getElementById("ave".setAttribute("src" , img_a[num]));
-
+			let num = parseInt('${userList.get(0).user_avatar}') - 1;
+			document.getElementById("ava").setAttribute("src" , img_a[num]);
 		}
-		/*
-		function calculate (){
-			const today = new Date()
-			const G_day = new Date('${userList.get(0).user_limit}');
-			const G_weight = parseFloat('${userList.get(0).user_goalw}');
-			const weight = parseFloat('${userList.get(0).user_weight}');
-			const diff = Math.floor((G_day - today)/ (1000 * 60 * 60 * 24)) + 1;
-			//基礎代謝-((7200×減らしたい体重kg)÷日数)＝目安摂取カロリー
-			const cal = BMR() * 1.75  - (7200 * (weight - G_weight) / diff);
-			console.log(cal);
-		}
-		*/
     </script>
 </body>
 </html>
