@@ -368,7 +368,7 @@
 				console.log("aa");
 			}else if (ave > BMR()){
 				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + "さん！ この調子だと太ります";
-			}else if (ave > BMR()){
+			}else if (ave < BMR()){
 				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + "さん！ この調子だとやせます";
 			}
 		}
