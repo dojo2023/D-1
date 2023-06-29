@@ -363,13 +363,41 @@
 		}
 
 		function calculate(){
+			const neg = [
+				"さん、この調子だと体重が増えていきますね！",
+				"さん、この調子だと体重が増えていきますね！",
+				"さん、この調子だとますます太ってしまいそうですね！",
+				"さん、この調子だと体が丸くなっていきますよ！",
+				"さん、この調子だと体型が太り気味になりますね！",
+				"さん、この調子だとお腹周りがどんどん大きくなっていくでしょう！",
+				"さん、フェイスラインがたるんでいます！",
+				"さん、この調子だと体がふっくらしていくみたいですね！",
+				"さん、この調子だとますます太ってしまうことが予想されますね！",
+				"さん、肉がついて鼻と二重幅が埋もれてブスになってしまいます！",
+				"さん、この調子だと体重が増え続けてしまうかもしれませんよ！"
+			]
+			const pos = [
+				"さん、この調子だとどんどん痩せていっていますね！",
+				"さん、この調子だとどんどん痩せていっていますね！",
+				"さん、この調子だとますますスリムになっていきますね！",
+				"さん、この調子だと体が引き締まっていくでしょう！",
+				"さん、この調子だと体型がすっきりしていきますよ！",
+				"さん、この調子だとウエストがどんどん細くなっていくでしょう！",
+				"씨, 이 상태라면 점점 마르고 있어요!",
+				"さん、この調子だと体が引き締まってきているように見えますよ！",
+				"さん、この調子だとますますスリムな体型に近づいていくことでしょう！",
+				"さん、この調子だと体がシェイプアップされていっているようですね！",
+				"さん、この調子だと体重が減り続けていくことが予想されますよ！"
+			]
+
 			let ave = document.getElementById("ave").textContent.replace("kcal", "");
+			const rand = Math.ceil(Math.random() * 10);
 			if(ave == 0){
 				console.log("aa");
 			}else if (ave > BMR()){
-				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + "さん！ この調子だと太ります";
+				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + neg[rand];
 			}else if (ave < BMR()){
-				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + "さん！ この調子だとやせます";
+				document.getElementById("ck").textContent = '${userList.get(0).user_nickname}' + pos[rand];
 			}
 		}
 
